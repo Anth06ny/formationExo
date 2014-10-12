@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BoutonExemple/BoutonExemple.iml" filepath="$PROJECT_DIR$/BoutonExemple/BoutonExemple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DAOExercice/DAOExercice.iml" filepath="$PROJECT_DIR$/DAOExercice/DAOExercice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GreenDAOExemple/GreenDAOExemple.iml" filepath="$PROJECT_DIR$/GreenDAOExemple/GreenDAOExemple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MainActivityAndHandler/MainActivityAndHandler.iml" filepath="$PROJECT_DIR$/MainActivityAndHandler/MainActivityAndHandler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MainActivityAndHandlerSolution/MainActivityAndHandlerSolution.iml" filepath="$PROJECT_DIR$/MainActivityAndHandlerSolution/MainActivityAndHandlerSolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyDaoGenerator/MyDaoGenerator.iml" filepath="$PROJECT_DIR$/MyDaoGenerator/MyDaoGenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SQLIDAOExemple/SQLIDAOExemple.iml" filepath="$PROJECT_DIR$/SQLIDAOExemple/SQLIDAOExemple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/asyncTask/asyncTask.iml" filepath="$PROJECT_DIR$/asyncTask/asyncTask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/asyncTaskSolution/asyncTaskSolution.iml" filepath="$PROJECT_DIR$/asyncTaskSolution/asyncTaskSolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/formation.iml" filepath="$PROJECT_DIR$/formation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragmentFromScratch/fragmentFromScratch.iml" filepath="$PROJECT_DIR$/fragmentFromScratch/fragmentFromScratch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/listViewRecyclage/listViewRecyclage.iml" filepath="$PROJECT_DIR$/listViewRecyclage/listViewRecyclage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sendSMS/sendSMS.iml" filepath="$PROJECT_DIR$/sendSMS/sendSMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serviceWithotto/serviceWithotto.iml" filepath="$PROJECT_DIR$/serviceWithotto/serviceWithotto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smsBroadCast/smsBroadCast.iml" filepath="$PROJECT_DIR$/smsBroadCast/smsBroadCast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testFragment/testFragment.iml" filepath="$PROJECT_DIR$/testFragment/testFragment.iml" />
+    </modules>
+  </component>
+</project>
+
