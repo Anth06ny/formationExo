@@ -4,14 +4,18 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BoutonExemple/BoutonExemple.iml" filepath="$PROJECT_DIR$/BoutonExemple/BoutonExemple.iml" />
       <module fileurl="file://$PROJECT_DIR$/DAOExercice/DAOExercice.iml" filepath="$PROJECT_DIR$/DAOExercice/DAOExercice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/GreenDAOExemple/GreenDAOExemple.iml" filepath="$PROJECT_DIR$/GreenDAOExemple/GreenDAOExemple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DAOGreenSolution/DAOGreenSolution.iml" filepath="$PROJECT_DIR$/DAOGreenSolution/DAOGreenSolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DAOSQLISolution/DAOSQLISolution.iml" filepath="$PROJECT_DIR$/DAOSQLISolution/DAOSQLISolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FacebookLogin/FacebookLogin.iml" filepath="$PROJECT_DIR$/FacebookLogin/FacebookLogin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GraphExemple/GraphExemple.iml" filepath="$PROJECT_DIR$/GraphExemple/GraphExemple.iml" />
       <module fileurl="file://$PROJECT_DIR$/MainActivityAndHandler/MainActivityAndHandler.iml" filepath="$PROJECT_DIR$/MainActivityAndHandler/MainActivityAndHandler.iml" />
       <module fileurl="file://$PROJECT_DIR$/MainActivityAndHandlerSolution/MainActivityAndHandlerSolution.iml" filepath="$PROJECT_DIR$/MainActivityAndHandlerSolution/MainActivityAndHandlerSolution.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyDaoGenerator/MyDaoGenerator.iml" filepath="$PROJECT_DIR$/MyDaoGenerator/MyDaoGenerator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SQLIDAOExemple/SQLIDAOExemple.iml" filepath="$PROJECT_DIR$/SQLIDAOExemple/SQLIDAOExemple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZBar_reader/ZBar_reader.iml" filepath="$PROJECT_DIR$/ZBar_reader/ZBar_reader.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/asyncTask/asyncTask.iml" filepath="$PROJECT_DIR$/asyncTask/asyncTask.iml" />
       <module fileurl="file://$PROJECT_DIR$/asyncTaskSolution/asyncTaskSolution.iml" filepath="$PROJECT_DIR$/asyncTaskSolution/asyncTaskSolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
       <module fileurl="file://$PROJECT_DIR$/formation.iml" filepath="$PROJECT_DIR$/formation.iml" />
       <module fileurl="file://$PROJECT_DIR$/fragmentFromScratch/fragmentFromScratch.iml" filepath="$PROJECT_DIR$/fragmentFromScratch/fragmentFromScratch.iml" />
       <module fileurl="file://$PROJECT_DIR$/listViewRecyclage/listViewRecyclage.iml" filepath="$PROJECT_DIR$/listViewRecyclage/listViewRecyclage.iml" />
