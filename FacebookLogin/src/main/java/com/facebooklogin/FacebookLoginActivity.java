@@ -7,18 +7,12 @@
  */
 package com.facebooklogin;
 
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
 import com.facebook.FacebookException;
@@ -36,11 +30,15 @@ import com.sromku.simple.fb.listeners.OnLoginListener;
 import com.sromku.simple.fb.listeners.OnLogoutListener;
 import com.sromku.simple.fb.listeners.OnPublishListener;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
+
 /**
  * @author Anthony
  * Affiche une fenetre de popup facebook et de connexion Urbanpulse.
  */
-public class FacebookLoginActivity extends Activity implements OnClickListener, OnTouchListener, OnLoginListener {
+public class FacebookLoginActivity extends Activity implements OnClickListener, OnLoginListener {
 
     public static final String PENDING_ACTION = "PENDING_ACTION";
     public static final String FRIENDS_ID = "FRIENDS_ID";
@@ -51,6 +49,7 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
     private ButtonHighlight bt_facebook_connect, bt_retry;
     private View rl_retry;
     private TextView tv_message;
+    private TextView tv_facebook;
 
     //facebook
     private SimpleFacebook mSimpleFacebook;
@@ -94,15 +93,15 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
         }
     }
 
-    //-----------------------------
+    /*-----------------------------
     // view
-    //-----------------------------
+    //-----------------------------*/
 
     /** @see android.app.Activity#onCreate(android.os.Bundle) */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_main);
+        super.setContentView(R.layout.dialog_login_inscription);
 
         mSimpleFacebook = SimpleFacebook.getInstance(this);
         bt_facebook_connect = (ButtonHighlight) findViewById(R.id.bt_facebook_connect);
@@ -110,6 +109,7 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
         tv_message = (TextView) findViewById(R.id.tv_message);
         progressView = findViewById(R.id.progress);
         rl_retry = findViewById(R.id.rl_retry);
+        tv_facebook = (TextView) findViewById(R.id.tv_facebook);
 
         textColor = getResources().getColor(R.color.black);
         textColorErreur = getResources().getColor(R.color.red);
@@ -122,14 +122,6 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
         if (pendingAction == null) {
             pendingAction = PendingAction.NONE;
         }
-
-        findViewById(R.id.iv_croix).setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(final View v) {
-                onBackPressed();
-            }
-        });
 
         //sinon on met la progress bar
         if (mSimpleFacebook.isLogin()) {
@@ -145,7 +137,6 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
         }
         else if (pendingAction == PendingAction.LOG_OUT) {
             //on est déjà deco
-            finish();
         }
 
     }
@@ -155,7 +146,7 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
         super.onResume();
         mSimpleFacebook = SimpleFacebook.getInstance(this);
         mSimpleFacebook.eventAppLaunched();
-        bt_facebook_connect.setVisibility(mSimpleFacebook.isLogin() ? View.GONE : View.VISIBLE);
+        updateButton();
     }
 
     @Override
@@ -171,9 +162,9 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
         super.onBackPressed();
     }
 
-    //--------------------------
+    /* --------------------------
     // click touch
-    //---------------------------
+    //-------------------------- */
 
     /** @see android.view.View.OnClickListener#onClick(android.view.View) */
     @Override
@@ -182,8 +173,13 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
 
         //connexion avec facebook
         if (v.getId() == R.id.bt_facebook_connect) {
-            showProgress(true);
-            mSimpleFacebook.login(this);
+            if (mSimpleFacebook.isLogin()) {
+                logOut();
+            }
+            else {
+                showProgress(true);
+                mSimpleFacebook.login(this);
+            }
         }
         //relance la dernière action
         else if (v.getId() == R.id.bt_retry) {
@@ -192,24 +188,9 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
         }
     }
 
-    /**
-     *
-     */
-
-    /** @see android.view.View.OnTouchListener#onTouch(android.view.View, android.view.MotionEvent) */
-    @Override
-    public boolean onTouch(final View v, final MotionEvent event) {
-
-        if (v.getId() == R.id.ll_main) {
-            finish();
-        }
-
-        return false;
-    }
-
-    //----------------------
+    /*----------------------
     // traitement de retour des appel fb
-    //----------------------
+    //---------------------- */
     /** @see com.sromku.simple.fb.listeners.OnLoginListener#onLogin() */
     @Override
     public void onLogin() {
@@ -227,6 +208,7 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
     public void onFail(final String reason) {
         setMessage(reason, getResources().getColor(R.color.red));
         showProgress(false);
+        updateButton();
     }
 
     @Override
@@ -237,6 +219,7 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
 
         setMessage(message, textColorErreur);
         showProgress(false);
+        updateButton();
     }
 
     @Override
@@ -250,11 +233,12 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
     public void onNotAcceptingPermissions(final Type type) {
         setMessage(getResources().getString(R.string.com_facebook_requesterror_permissions), textColorErreur);
         showProgress(false);
+        updateButton();
     }
 
-    //------------------------
+    /* ------------------------
     //FaceBookAction
-    //------------------------
+    //------------------------ */
     private void pendingAction() {
 
         switch (pendingAction) {
@@ -281,7 +265,6 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
                 break;
             case NONE:
                 showProgress(false);
-                finish();
                 break;
         }
 
@@ -297,13 +280,11 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
             @Override
             public void onFail(final String reason) {
                 FacebookLoginActivity.this.onFail(reason);
-                finish();
             }
 
             @Override
             public void onException(final Throwable throwable) {
                 FacebookLoginActivity.this.onException(throwable);
-                finish();
             }
 
             @Override
@@ -315,8 +296,7 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
             @Override
             public void onComplete(final String postId) {
                 ToastUtils.showToastOnUIThread(FacebookLoginActivity.this, R.string.facebook_stub_post_title);
-                //on peut terminer l'activité
-                finish();
+                updateButton();
             }
         });
     }
@@ -328,6 +308,7 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
             @Override
             public void onComplete(final List<Profile> friends) {
                 //on transmet à la classe qui appelle les amis.
+                updateButton();
             }
 
             /** @see com.sromku.simple.fb.listeners.OnActionListener#onException(Throwable) */
@@ -380,7 +361,6 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
                             @Override
                             public void onComplete(final Bundle values, final FacebookException error) {
                                 ToastUtils.showToastOnUIThread(FacebookLoginActivity.this, R.string.facebook_stub_post_friend_title);
-                                finish();
                             }
 
                         }).build();
@@ -391,35 +371,6 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
                 setBt_retry(true);
             }
 
-            //            mSimpleFacebook.invite(friendId, message,
-            //
-            //            new OnInviteListener() {
-            //
-            //                @Override
-            //                public void onComplete(final List<String> invitedFriends, final String requestId) {
-            //                    ToastUtils.showToastOnUIThread(FacebookLoginActivity.this, R.string.facebook_stub_post_friend_title);
-            //                    finish();
-            //                }
-            //
-            //                @Override
-            //                public void onFail(final String reason) {
-            //                    FacebookLoginActivity.this.onFail(reason);
-            //                    bt_retry.setVisibility(View.VISIBLE);
-            //
-            //                }
-            //
-            //                @Override
-            //                public void onException(final Throwable throwable) {
-            //                    FacebookLoginActivity.this.onException(throwable);
-            //                    setBt_retry(true);
-            //                }
-            //
-            //                @Override
-            //                public void onCancel() {
-            //                    //on quitte l'écran
-            //                    onBackPressed();
-            //                }
-            //            }, "secret data");
         }
     }
 
@@ -457,7 +408,7 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
                 @Override
                 public void onComplete(final String postId) {
                     ToastUtils.showToastOnUIThread(FacebookLoginActivity.this, R.string.facebook_stub_post_title);
-                    //on peut terminer l'activité
+                    updateButton();
                 }
             });
         }
@@ -484,14 +435,26 @@ public class FacebookLoginActivity extends Activity implements OnClickListener, 
 
             @Override
             public void onLogout() {
+                updateButton();
             }
         });
 
     }
 
-    //------------------------
+    /* ------------------------
     //Update interface graphique
-    //------------------------
+    //------------------------ */
+    private void updateButton() {
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                tv_facebook.setText(mSimpleFacebook.isLogin() ? getString(R.string.com_facebook_loginview_log_out_button)
+                        : getString(R.string.com_facebook_loginview_log_in_button));
+            }
+        });
+    }
+
     private void showProgress(final boolean show) {
         runOnUiThread(new Runnable() {
 
