@@ -20,5 +20,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':Simple Facebook')
+    compile files('libs/commons-lang3-3.2.1.jar')
 }

@@ -5,4 +5,31 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="facebook_app_id">610587985720268</string>
+    <string name="error_try_later">Merci de réessayer dans quelques secondes</string>
+    <string name="may_take_several_minutes">Veuillez patienter…</string>
+
+    <string name="tab_friends_invitations_fb_text">Voici le site internet de mon formateur : http://www.amonteiro.fr</string>
+    <string name="facebook_post_progress_body">Veuillez patienter durant la publication sur votre Mur Facebook</string>
+    <!-- widgets' strings -->
+    <string name="facebook_stub_post_title">Poster sur votre mur</string>
+    <string name="facebook_stub_post_friend_title">Poster sur le mur de votre ami</string>
+    <string name="facebook_stub_post_share">Partager</string>
+    <string name="facebook_stub_post_cancel">Annuler</string>
+
+    <!-- SDK -->
+    <string name="com_facebook_loginview_log_out_button">Déconnexion</string>
+    <string name="com_facebook_loginview_log_in_button">Connexion avec Facebook</string>
+    <string name="com_facebook_loginview_logged_in_as">Connecté en tant que: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Connecté en utilisant Facebook</string>
+    <string name="com_facebook_loginview_log_out_action">Déconnexion</string>
+    <string name="com_facebook_loginview_cancel_action">Annuler</string>
+    <string name="com_facebook_logo_content_description">Facebook Logo</string>
+    <string name="com_facebook_loading">Veuillez patienter...</string>
+    <string name="com_facebook_requesterror_web_login">Your Facebook account is locked. Please log into www.facebook.com to continue.</string>
+    <string name="com_facebook_requesterror_relogin">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_password_changed">Your Facebook password has changed. Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_reconnect">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_permissions">This app doesn’t have permission to do this. To change permissions, try logging into the app again.</string>
+
 </resources>
