@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="stylableButton">
+        <attr name="android:text"/>
+        <attr name="android:textColorHighlight"/>
+        <attr name="android:textColor"/>
+        <attr name="android:src"/>
+        <attr name="backGroundColor" format="color"/>
+        <attr name="backGroundColorHighlight" format="color"/>
+
+    </declare-styleable>
+</resources>

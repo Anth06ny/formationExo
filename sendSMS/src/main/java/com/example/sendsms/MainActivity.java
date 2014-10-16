@@ -37,9 +37,9 @@ public class MainActivity extends Activity implements OnClickListener {
             final SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNo, null, sms, null, null);
             Toast.makeText(getApplicationContext(), "SMS envoyé!", Toast.LENGTH_LONG).show();
-        } catch (final Exception e) {
-            Toast.makeText(getApplicationContext(), "Echec de l'envoie, merci de réessayer plus tard!",
-                    Toast.LENGTH_LONG).show();
+        }
+        catch (final Exception e) {
+            Toast.makeText(getApplicationContext(), "Echec de l'envoie, merci de réessayer plus tard!", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
 
