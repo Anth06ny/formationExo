@@ -28,6 +28,7 @@ public class SecondActivity extends Activity implements OnClickListener {
 
     //outils
     private EleveAdapter eleveAdapter;
+    private EleveBDDManager eleveBDDManager;
 
     //--------------------
     // view
@@ -46,6 +47,7 @@ public class SecondActivity extends Activity implements OnClickListener {
 
         bt = (Button) findViewById(R.id.bt);
         bt.setOnClickListener(this);
+        eleveBDDManager = new EleveBDDManager();
 
         loadEleveFromBDD();
 
@@ -82,11 +84,11 @@ public class SecondActivity extends Activity implements OnClickListener {
 
     private void loadEleveFromBDD() {
 
-        List<Eleve> temp = EleveBDDManager.getAllEleve();
+        List<Eleve> temp = eleveBDDManager.getAllEleve();
         eleveBeanList.addAll(temp);
     }
 
     private void saveEleveInBDD(Eleve eleveBean) {
-        EleveBDDManager.insertOrUpdate(eleveBean);
+        eleveBDDManager.insertOrUpdate(eleveBean);
     }
 }

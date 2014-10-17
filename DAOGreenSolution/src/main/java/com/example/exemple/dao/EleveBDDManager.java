@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.exemple.MyApplication;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import greendao.Eleve;
 import greendao.EleveDao;
@@ -32,6 +33,15 @@ public class EleveBDDManager {
 
     public static ArrayList<Eleve> getAllEleve(Context context) {
         return (ArrayList<Eleve>) getEleveDao(context).loadAll();
+    }
+
+    /**
+     * Retourne une liste d'élève en fonction du prénom
+     * @param context
+     * @return
+     */
+    public static List<Eleve> getEleveByPrenom(Context context, String prenom) {
+        return getEleveDao(context).queryBuilder().where(EleveDao.Properties.Prenom.eq(prenom)).list();
     }
 
     private static EleveDao getEleveDao(Context c) {

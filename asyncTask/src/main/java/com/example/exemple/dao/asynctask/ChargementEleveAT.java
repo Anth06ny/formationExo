@@ -2,8 +2,7 @@ package com.example.exemple.dao.asynctask;
 
 public class ChargementEleveAT {
 
-
-    private int nbrEleve;
+    private int nbrEleve = 5;
 
     //--------------------
     // AT
@@ -13,10 +12,8 @@ public class ChargementEleveAT {
 
     }
 
-
     //--------------------
     // Interface
     //-------------------
-
 
 }

@@ -119,10 +119,10 @@ public class EleveBDDManager {
                     eleveListe.add(eleveBean);
                 } while (c.moveToNext());
             }
-        }
 
-        //On ferme le cursor
-        c.close();
+            //On ferme le cursor
+            c.close();
+        }
 
         //On retourne la liste
         return eleveListe;

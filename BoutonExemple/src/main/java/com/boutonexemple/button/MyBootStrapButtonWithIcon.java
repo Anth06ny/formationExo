@@ -22,8 +22,6 @@ public class MyBootStrapButtonWithIcon extends LinearLayout implements View.OnTo
     private TextView tv;
     private ImageView iv;
     private View root;
-    private OnClickListener onClickListener;
-    //pour gerer le clic
 
     private int textColorHighlight, textColor, backGroundColor, backGroundColorHighlight;
 

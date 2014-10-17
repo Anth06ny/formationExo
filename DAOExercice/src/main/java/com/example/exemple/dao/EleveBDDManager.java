@@ -7,22 +7,22 @@ import java.util.ArrayList;
  */
 public class EleveBDDManager {
 
-    public static void insertOrUpdate(Eleve eleve) {
+    public void insertOrUpdate(Eleve eleve) {
 
     }
 
-    public static void clearEleve() {
+    public void clearEleve() {
     }
 
-    public static void deleteEleveWithId(long id) {
+    public void deleteEleveWithId(long id) {
     }
 
-    public static Eleve getEleveForId(long id) {
+    public Eleve getEleveForId(long id) {
         return null;
     }
 
-    public static ArrayList<Eleve> getAllEleve() {
-        return null;
+    public ArrayList<Eleve> getAllEleve() {
+        return new ArrayList<Eleve>();
     }
 
 }
