@@ -13,12 +13,12 @@ import android.widget.TextView;
 import com.example.exemple.adapter.EleveAdapter;
 import com.example.exemple.bean.Eleve;
 import com.example.exemple.dao.asynctask.ChargementEleveAT;
-import com.example.exemple.dao.asynctask.ChargementEleveAT.LoadEleveListener;
+import com.example.exemple.dao.asynctask.ChargementEleveAT.CallBack;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements OnClickListener, LoadEleveListener {
+public class MainActivity extends Activity implements OnClickListener, CallBack {
 
     //composants graphique
     private ListView lv;

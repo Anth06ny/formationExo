@@ -10,12 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.example.fragmentfromscratch.ListFragment.OnClickListListener;
+import com.example.fragmentfromscratch.ListFragment.CallBack;
 import com.example.fragmentfromscratch.bean.Eleve;
 
 import java.util.ArrayList;
 
-public class MainActivity extends FragmentActivity implements OnClickListListener {
+public class MainActivity extends FragmentActivity implements CallBack {
 
     private FrameLayout fl_fragment2;
 
@@ -100,7 +100,7 @@ public class MainActivity extends FragmentActivity implements OnClickListListene
     //--------------------
 
     @Override
-    public void onClickOnList(final Eleve eleve) {
+    public void onClickOnEleve(final Eleve eleve) {
 
         if (MyApplication.getInstance().isTwoPane()) {
             detailFragment.setEleve(eleve);

@@ -1,7 +1,5 @@
 package com.example.fragmentfromscratch;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +12,8 @@ import android.widget.ListView;
 import com.example.fragmentfromscratch.adapter.EleveAdapter;
 import com.example.fragmentfromscratch.bean.Eleve;
 
+import java.util.ArrayList;
+
 public class ListFragment extends Fragment implements OnItemClickListener {
 
     private ListView lv;
@@ -21,7 +21,7 @@ public class ListFragment extends Fragment implements OnItemClickListener {
     private EleveAdapter eleveAdapter;
     private ArrayList<Eleve> eleveList;
 
-    private OnClickListListener OnClickOnList = null;
+    private CallBack OnClickOnList = null;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class ListFragment extends Fragment implements OnItemClickListener {
         final Eleve eleve = eleveList.get(position);
 
         if (OnClickOnList != null) {
-            OnClickOnList.onClickOnList(eleve);
+            OnClickOnList.onClickOnEleve(eleve);
         }
 
     }
@@ -59,15 +59,15 @@ public class ListFragment extends Fragment implements OnItemClickListener {
     //----------
     // getter setter
     //----------------
-    public void setOnClickListListener(final OnClickListListener onClickOnList) {
+    public void setOnClickListListener(final CallBack onClickOnList) {
         OnClickOnList = onClickOnList;
     }
 
     //------------
     // interface
     //-------------
-    public interface OnClickListListener {
-        void onClickOnList(Eleve eleve);
+    public interface CallBack {
+        void onClickOnEleve(Eleve eleve);
     }
 
 }

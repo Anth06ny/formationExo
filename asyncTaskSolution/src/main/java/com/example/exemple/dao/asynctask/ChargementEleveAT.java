@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class ChargementEleveAT extends AsyncTask<Void, Integer, String> {
 
-    private final LoadEleveListener loadEleveListener;
+    private final CallBack callBack;
     private final ArrayList<Eleve> eleveList;
     private final Random random;
     private int nbrEleve;
@@ -20,8 +20,8 @@ public class ChargementEleveAT extends AsyncTask<Void, Integer, String> {
     // AT
     //-------------------
 
-    public ChargementEleveAT(final LoadEleveListener loadEleveListener) {
-        this.loadEleveListener = loadEleveListener;
+    public ChargementEleveAT(final CallBack callBack) {
+        this.callBack = callBack;
         eleveList = new ArrayList<Eleve>();
         random = new Random();
     }
@@ -66,8 +66,8 @@ public class ChargementEleveAT extends AsyncTask<Void, Integer, String> {
      */
     protected void onProgressUpdate(final Integer... values) {
         super.onProgressUpdate(values);
-        if (loadEleveListener != null) {
-            loadEleveListener.updateChargement(nbrEleve, values[0]);
+        if (callBack != null) {
+            callBack.updateChargement(nbrEleve, values[0]);
         }
     };
 
@@ -79,13 +79,13 @@ public class ChargementEleveAT extends AsyncTask<Void, Integer, String> {
     protected void onPostExecute(final String messageErreur) {
 
         if (messageErreur == null) {
-            if (loadEleveListener != null) {
-                loadEleveListener.eleveLoad(eleveList);
+            if (callBack != null) {
+                callBack.eleveLoad(eleveList);
             }
         }
         else {
-            if (loadEleveListener != null) {
-                loadEleveListener.loadFail(messageErreur);
+            if (callBack != null) {
+                callBack.loadFail(messageErreur);
             }
         }
     };
@@ -94,7 +94,7 @@ public class ChargementEleveAT extends AsyncTask<Void, Integer, String> {
     // Interface
     //-------------------
 
-    public interface LoadEleveListener {
+    public interface CallBack {
         //succes
         void eleveLoad(List<Eleve> eleve);
 
