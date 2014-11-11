@@ -8,8 +8,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.exemple.adapter.EleveAdapter;
-import com.example.exemple.bean.Eleve;
+import com.formation.utils.adapter.EleveAdapter;
+import com.formation.utils.bean.Eleve;
 
 import java.util.ArrayList;
 

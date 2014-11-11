@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.example.handlerexemplesolution.manager.PopupsManager;
+import com.formation.utils.PopupsManager;
 
 public class CommonActivity extends Activity {
 
@@ -33,7 +33,7 @@ public class CommonActivity extends Activity {
     /**
      * Override of the setContentView Method to 'inject' the layout passed as parameter into a frameLayout, with this layout organization, UpActivity will
      * provide facilities to put/remove progressBar whenever needed + generic behaviour for Back and Home button / Title of the screen
-     * 
+     *
      * @see android.app.Activity#setContentView(int)
      */
     @Override
@@ -47,7 +47,7 @@ public class CommonActivity extends Activity {
     /**
      * Override of the setContentView Method to 'inject' the layout passed as parameter into a frameLayout, with this layout organization, UpActivity will
      * provide facilities to put/remove progressBar whenever needed + generic behaviour for Back and Home button / Title of the screen
-     * 
+     *
      * @see android.app.Activity#setContentView(View)
      */
     @Override
@@ -69,7 +69,7 @@ public class CommonActivity extends Activity {
     //------------------------
     /**
      * Update the screen title (this could occur during an async update of the underlying screen)
-     * 
+     *
      * @param title
      */
     public void updateScreenTitle(final String title) {

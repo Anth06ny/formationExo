@@ -18,6 +18,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         myBootStrapButtonWithIcon = (MyBootStrapButtonWithIcon) findViewById(R.id.button3);
         myBootStrapButtonWithIcon.setOnClickListener(this);
+
     }
 
     @Override

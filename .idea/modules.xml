@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/DAOGreenSolution/DAOGreenSolution.iml" filepath="$PROJECT_DIR$/DAOGreenSolution/DAOGreenSolution.iml" />
       <module fileurl="file://$PROJECT_DIR$/DAOSQLISolution/DAOSQLISolution.iml" filepath="$PROJECT_DIR$/DAOSQLISolution/DAOSQLISolution.iml" />
       <module fileurl="file://$PROJECT_DIR$/FacebookLogin/FacebookLogin.iml" filepath="$PROJECT_DIR$/FacebookLogin/FacebookLogin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FormationUtils/FormationUtils.iml" filepath="$PROJECT_DIR$/FormationUtils/FormationUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/GraphExemple/GraphExemple.iml" filepath="$PROJECT_DIR$/GraphExemple/GraphExemple.iml" />
       <module fileurl="file://$PROJECT_DIR$/MainActivityAndHandler/MainActivityAndHandler.iml" filepath="$PROJECT_DIR$/MainActivityAndHandler/MainActivityAndHandler.iml" />
       <module fileurl="file://$PROJECT_DIR$/MainActivityAndHandlerSolution/MainActivityAndHandlerSolution.iml" filepath="$PROJECT_DIR$/MainActivityAndHandlerSolution/MainActivityAndHandlerSolution.iml" />
@@ -19,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
       <module fileurl="file://$PROJECT_DIR$/formation.iml" filepath="$PROJECT_DIR$/formation.iml" />
       <module fileurl="file://$PROJECT_DIR$/fragmentFromScratch/fragmentFromScratch.iml" filepath="$PROJECT_DIR$/fragmentFromScratch/fragmentFromScratch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httpExemple/httpExemple.iml" filepath="$PROJECT_DIR$/httpExemple/httpExemple.iml" />
       <module fileurl="file://$PROJECT_DIR$/listViewRecyclage/listViewRecyclage.iml" filepath="$PROJECT_DIR$/listViewRecyclage/listViewRecyclage.iml" />
       <module fileurl="file://$PROJECT_DIR$/sendSMS/sendSMS.iml" filepath="$PROJECT_DIR$/sendSMS/sendSMS.iml" />
       <module fileurl="file://$PROJECT_DIR$/serviceWithotto/serviceWithotto.iml" filepath="$PROJECT_DIR$/serviceWithotto/serviceWithotto.iml" />

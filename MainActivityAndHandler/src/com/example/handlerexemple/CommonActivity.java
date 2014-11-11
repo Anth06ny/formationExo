@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.example.handlerexemple.manager.PopupsManager;
+import com.formation.utils.PopupsManager;
 
 public class CommonActivity extends Activity {
 
@@ -77,9 +77,7 @@ public class CommonActivity extends Activity {
     // Handler ProgressBar
     //------------------------
 
-
     private int progressCount = 0;
-
 
     /**
      * Affiche l'icone de progression. A utiliser typiquement lorsque des appels réseau sont en cours. Le nombre d'appel est comptabilisé et il faudra un même
@@ -87,6 +85,7 @@ public class CommonActivity extends Activity {
      */
     public void startProgress() {
         progressCount++;
+        //TODO : prévenir le handler d'afficher la fentre
     }
 
     /**
@@ -100,11 +99,13 @@ public class CommonActivity extends Activity {
         }
         progressCount--;
         if (progressCount == 0) {
+            //TODO : prévenir le handler de stopper la fenetre
         }
     }
 
     public void forceStopProgress() {
         progressCount = 0;
+        //TODO : prévenir le handler de stopper la fenetre
     }
 
 }

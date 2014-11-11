@@ -32,12 +32,15 @@ public class MainActivity extends CommonActivity implements OnClickListener {
     @Override
     public void onClick(final View v) {
         //lancement de la fenetre d'attente
+        //TODO : Utiliser les methodes de la main activity pour afficher une fenetre d'attente
+
         new Thread(new Runnable() {
 
             @Override
             public void run() {
                 SystemClock.sleep(5000);
                 //fin du lancement de la fenetre d'attente
+                //TODO : Utiliser les methodes de la main activity pour stopper la fenetre d'attente
             }
         }).start();
     }

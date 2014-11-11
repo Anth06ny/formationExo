@@ -9,8 +9,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.example.fragmentfromscratch.adapter.EleveAdapter;
-import com.example.fragmentfromscratch.bean.Eleve;
+import com.formation.utils.adapter.EleveAdapter;
+import com.formation.utils.bean.Eleve;
 
 import java.util.ArrayList;
 

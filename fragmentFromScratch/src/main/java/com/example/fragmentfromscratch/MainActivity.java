@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.fragmentfromscratch.ListFragment.CallBack;
-import com.example.fragmentfromscratch.bean.Eleve;
+import com.formation.utils.bean.Eleve;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,6 @@ public class MainActivity extends FragmentActivity implements CallBack {
             eleveList = getEleves();
         }
 
-
         //on lance le 1er fragment et on lui passe comme argument la liste d'�l�ve
         listFragment = new ListFragment();
         final Bundle bundle = new Bundle();
@@ -60,7 +59,8 @@ public class MainActivity extends FragmentActivity implements CallBack {
             getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment2, detailFragment).commit();
             //on rend le 2eme emplacement visible
             fl_fragment2.setVisibility(View.VISIBLE);
-        } else {
+        }
+        else {
             fl_fragment2.setVisibility(View.GONE);
         }
     }
@@ -105,7 +105,8 @@ public class MainActivity extends FragmentActivity implements CallBack {
         if (MyApplication.getInstance().isTwoPane()) {
             detailFragment.setEleve(eleve);
             detailFragment.refreshText();
-        } else {
+        }
+        else {
             //on remplace le fragment visible par celui de l'ajout
             final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             detailFragment = new DetailFragment();
@@ -119,9 +120,9 @@ public class MainActivity extends FragmentActivity implements CallBack {
 
     //donnee
     private static ArrayList<Eleve> getEleves() {
-        final Eleve eleve1 = new Eleve("Jean", "Pierre");
-        final Eleve eleve2 = new Eleve("Marie", "Laure");
-        final Eleve eleve3 = new Eleve("Anne", "Cécile");
+        final Eleve eleve1 = new Eleve("Jean", "Pierre", false);
+        final Eleve eleve2 = new Eleve("Marie", "Laure", true);
+        final Eleve eleve3 = new Eleve("Anne", "Cécile", true);
 
         final ArrayList<Eleve> list = new ArrayList<Eleve>();
         list.add(eleve1);

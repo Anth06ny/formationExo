@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.fragmentfromscratch.bean.Eleve;
+import com.formation.utils.bean.Eleve;
 
 public class DetailFragment extends Fragment {
 
@@ -54,7 +54,8 @@ public class DetailFragment extends Fragment {
             public void run() {
                 if (eleve == null) {
                     tv.setText("Aucun éléve");
-                } else {
+                }
+                else {
                     tv.setText(eleve.getPrenom() + " " + eleve.getNom());
                 }
 
