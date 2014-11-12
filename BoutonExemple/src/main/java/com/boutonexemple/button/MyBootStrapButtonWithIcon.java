@@ -73,33 +73,10 @@ public class MyBootStrapButtonWithIcon extends LinearLayout implements View.OnTo
         }
 
         //les couleurs
-        if (a.getInt(R.styleable.stylableButton_android_textColorHighlight, 0) != 0) {
-            textColorHighlight = a.getInt(R.styleable.stylableButton_android_textColorHighlight, 0);
-        }
-        else {
-            textColorHighlight = Color.BLACK;
-        }
-
-        if (a.getInt(R.styleable.stylableButton_android_textColor, 0) != 0) {
-            textColor = a.getInt(R.styleable.stylableButton_android_textColor, 0);
-        }
-        else {
-            textColor = Color.BLACK;
-        }
-
-        if (a.getInt(R.styleable.stylableButton_backGroundColor, 0) != 0) {
-            backGroundColor = a.getInt(R.styleable.stylableButton_backGroundColor, 0);
-        }
-        else {
-            backGroundColor = Color.BLACK;
-        }
-
-        if (a.getInt(R.styleable.stylableButton_backGroundColorHighlight, 0) != 0) {
-            backGroundColorHighlight = a.getInt(R.styleable.stylableButton_backGroundColorHighlight, 0);
-        }
-        else {
-            backGroundColorHighlight = Color.BLACK;
-        }
+        textColorHighlight = a.getInt(R.styleable.stylableButton_android_textColorHighlight, Color.BLACK);
+        textColor = a.getInt(R.styleable.stylableButton_android_textColor, Color.BLACK);
+        backGroundColor = a.getInt(R.styleable.stylableButton_backGroundColor, Color.BLACK);
+        backGroundColorHighlight = a.getInt(R.styleable.stylableButton_backGroundColorHighlight, Color.BLACK);
 
         updateComposant();
 
