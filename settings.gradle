@@ -1,5 +1,5 @@
-include ':app', ':MyDaoGenerator', ':BoutonExemple', ':GraphExemple', ':ZBar_reader', ':FacebookLogin', ':facebook', ':Simple Facebook'
-include ':FormationUtils'
+include ':app', ':FormationUtils', ':MyDaoGenerator', ':BoutonExemple', ':GraphExemple', ':ZBar_reader',
+        ':FacebookLogin', ':facebook', ':Simple Facebook', ':webServiceGSONSolution', 'WebServiceGSONExercice'
 include ':MainActivityAndHandler'
 include ':asyncTask', ':asyncTaskSolution'
 include ':fragmentFromScratch'

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.exemple.adapter.EleveAdapter;
-import com.example.exemple.dao.Eleve;
+import com.example.exemple.bean.Eleve;
 import com.example.exemple.dao.EleveBDDManager;
 
 import java.util.ArrayList;
@@ -67,11 +67,9 @@ public class SecondActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(final View v) {
-        Eleve eleveBean = new Eleve();
-        eleveBean.setNom("Bob");
-        eleveBean.setPrenom("John");
+        Eleve eleveBean = new Eleve("Bob", "John", true);
 
-        //on le sauvegarde en abse
+        //on le sauvegarde en base
         saveEleveInBDD(eleveBean);
         eleveBeanList.add(eleveBean);
         //on previent la liste que les donn�es ont chang�es

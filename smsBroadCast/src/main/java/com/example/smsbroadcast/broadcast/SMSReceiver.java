@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.widget.Toast;
 
-import com.example.smsbroadcast.NotificationHelper;
+import com.example.smsbroadcast.MainActivity;
+import com.formation.utils.NotificationHelper;
 
 public class SMSReceiver extends BroadcastReceiver {
 
@@ -38,7 +39,7 @@ public class SMSReceiver extends BroadcastReceiver {
                     Toast.makeText(context, "Expediteur : " + phoneNumber, Toast.LENGTH_LONG).show();
                     Toast.makeText(context, "Message : " + messageBody, Toast.LENGTH_LONG).show();
 
-                    NotificationHelper.createNotification(context);
+                    NotificationHelper.createNotification(context, MainActivity.class);
                 }
             }
         }

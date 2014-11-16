@@ -49,7 +49,6 @@ public class HTTPUtils {
             conn.setReadTimeout(10000 /* milliseconds */);
             conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("GET");
-            conn.setDoInput(true);
             // Starts the query
             conn.connect();
             int response = conn.getResponseCode();
