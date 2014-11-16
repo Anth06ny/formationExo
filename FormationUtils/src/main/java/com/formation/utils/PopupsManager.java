@@ -52,8 +52,7 @@ public class PopupsManager {
         return dialog;
     }
 
-    public static void showPopup(final Activity activity, final String message,
-                         final View.OnClickListener ocl) {
+    public static void showPopup(final Activity activity, final String message, final View.OnClickListener oclButtonOk) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -67,7 +66,6 @@ public class PopupsManager {
                 final ImageView iv_retry = (ImageView) promptsView.findViewById(R.id.iv_retry);
                 final ImageView iv_cancel = (ImageView) promptsView.findViewById(R.id.iv_cancel);
 
-
                 tv_message.setText(message);
 
                 bt_annuler.setVisibility(View.GONE);
@@ -77,8 +75,8 @@ public class PopupsManager {
 
                     @Override
                     public void onClick(final View v) {
-                        if (ocl != null) {
-                            ocl.onClick(v);
+                        if (oclButtonOk != null) {
+                            oclButtonOk.onClick(v);
                         }
                         dialog.dismiss();
 
@@ -95,7 +93,5 @@ public class PopupsManager {
         });
 
     }
-
-
 
 }
