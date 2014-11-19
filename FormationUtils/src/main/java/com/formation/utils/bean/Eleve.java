@@ -24,7 +24,11 @@ public class Eleve implements Parcelable {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
+
+
     }
+
+
 
     /* -------------------------
     // getter/setter
@@ -62,6 +66,9 @@ public class Eleve implements Parcelable {
         this.id = id;
     }
 
+    /* -------------------------
+    //  PArcelable
+    //------------------------- */
     protected Eleve(Parcel in) {
         nom = in.readString();
         prenom = in.readString();
@@ -81,8 +88,7 @@ public class Eleve implements Parcelable {
         dest.writeByte((byte) (sexe ? 0x01 : 0x00));
         if (id == null) {
             dest.writeByte((byte) (0x00));
-        }
-        else {
+        } else {
             dest.writeByte((byte) (0x01));
             dest.writeLong(id);
         }

@@ -37,26 +37,27 @@ public final class R {
         public static final int text_white_selected=0x7f020009;
     }
     public static final class id {
-        public static final int action_settings=0x7f090013;
+        public static final int action_settings=0x7f090014;
         public static final int bt=0x7f090004;
-        public static final int bt_annuler=0x7f090010;
-        public static final int bt_valider=0x7f09000f;
+        public static final int bt_annuler=0x7f090011;
+        public static final int bt_valider=0x7f090010;
+        public static final int button=0x7f090005;
         public static final int container=0x7f090003;
-        public static final int ec_iv=0x7f090007;
-        public static final int ec_tv_nom=0x7f090009;
-        public static final int ec_tv_prenom=0x7f090008;
-        public static final int imageView=0x7f09000c;
-        public static final int iv_cancel=0x7f090012;
-        public static final int iv_retry=0x7f090011;
-        public static final int layout_root=0x7f09000a;
-        public static final int ll_header=0x7f09000b;
-        public static final int progress_horizontal=0x7f090005;
+        public static final int ec_iv=0x7f090008;
+        public static final int ec_tv_nom=0x7f09000a;
+        public static final int ec_tv_prenom=0x7f090009;
+        public static final int imageView=0x7f09000d;
+        public static final int iv_cancel=0x7f090013;
+        public static final int iv_retry=0x7f090012;
+        public static final int layout_root=0x7f09000b;
+        public static final int ll_header=0x7f09000c;
+        public static final int progress_horizontal=0x7f090006;
         public static final int root_layout=0x7f090000;
         public static final int screenTitle=0x7f090002;
-        public static final int textView1=0x7f090006;
+        public static final int textView1=0x7f090007;
         public static final int toolbar_top_layout=0x7f090001;
-        public static final int tv_message=0x7f09000e;
-        public static final int tv_title=0x7f09000d;
+        public static final int tv_message=0x7f09000f;
+        public static final int tv_title=0x7f09000e;
     }
     public static final class layout {
         public static final int activity_common_layout=0x7f030000;
