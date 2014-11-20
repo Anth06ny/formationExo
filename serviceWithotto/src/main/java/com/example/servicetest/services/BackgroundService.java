@@ -31,20 +31,27 @@ public class BackgroundService extends Service implements LocationListener {
 
         timer = new Timer();
         locationMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0, this);
+
+        //On teste si le provider existe avant de s'y abonner, sinon ca plante.
+        if (locationMgr.getAllProviders().contains(LocationManager.NETWORK_PROVIDER))
+            locationMgr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, this);
+
+        if (locationMgr.getAllProviders().contains(LocationManager.GPS_PROVIDER))
+            locationMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, this);
 
     }
 
     @Override
     public int onStartCommand(final Intent intent, final int flags, final int startId) {
-        Toast.makeText(BackgroundService.this, "Service start", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Service start", Toast.LENGTH_SHORT).show();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 //faire quelque chose toutes les 6 secondes indéfiniment
-                //pas de toast ici car pas dans l'uithread
+                //1er execution au bout de 1seconde
+                //ToastUtils.showToastOnUIThread(BackgroundService.this, "test");
             }
-        }, 10000, 6000);
+        }, 1000, 6000);
 
         return START_NOT_STICKY;
     }
@@ -72,9 +79,9 @@ public class BackgroundService extends Service implements LocationListener {
         final Double latitude = location.getLatitude();
         final Double longitude = location.getLongitude();
 
-        Toast.makeText(this, "Coordon�es : lat=" + latitude + " Lon=" + longitude, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Coordonées : lat=" + latitude + " Lon=" + longitude, Toast.LENGTH_SHORT).show();
 
-        //Par le biais d'otto on envoie un resultat � toute activit� ecoutante ce type de poste
+        //Par le biais d'otto on envoie un resultat à toute activitée qui ecoutent ce type de poste
         MyApplication.getEventBus().post(new BackgroundServiceEvent(latitude, longitude));
 
     }

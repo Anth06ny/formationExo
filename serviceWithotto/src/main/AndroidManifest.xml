@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.example.servicetest.services.BackgroundService"/>
+        <service android:name=".services.BackgroundService"/>
     </application>
 
 </manifest>
