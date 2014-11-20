@@ -17,28 +17,38 @@ public class ToastUtils {
     public static Toast toast;
     public static int lastToastTaskId;
 
+
+    /**
+     * Envoie sur lUIThread s'il y a un UIThread
+     * @param context
+     * @param message
+     * @param length
+     */
     public static void showToastOnUIThread(final Context context, final String message, final int length) {
+
         if (context instanceof Activity) {
             ((Activity) context).runOnUiThread(new Runnable() {
 
                 @Override
                 public void run() {
-                    final int newLastToastTaskId = ((Activity) context).getTaskId();
-
-                    //on est sur la même activity
-                    if (toast != null && lastToastTaskId == newLastToastTaskId) {
-                        toast.setText(message);
-                        toast.show();
-                    }
-                    else {
-                        toast = Toast.makeText(context, message, length);
-                        lastToastTaskId = newLastToastTaskId;
-                        toast.show();
-                    }
-
+                    showToast(context, message, length);
                 }
             });
         }
+        else {
+            showToast(context, message, length);
+        }
+
+
+    }
+
+    public static void showToast(final Context context, final String message, final int length){
+        //on efface l'ancien pour eviter d'en avoir 50 en attente
+        if (toast != null) {
+            toast.cancel();
+        }
+        toast = Toast.makeText(context, message, length);
+        toast.show();
     }
 
     public static void showToastOnUIThread(final Context context, final int messageId) {
