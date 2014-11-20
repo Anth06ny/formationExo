@@ -10,12 +10,6 @@ public final class R {
 	public static final class color {
 		public static final int blue = 0x7f050006;
 		public static final int orange = 0x7f05001a;
-		public static final int pizza_not_enable = 0x7f05001b;
-		public static final int pizza_second = 0x7f05001c;
-		public static final int pizza_succes_main = 0x7f05001d;
-		public static final int pizza_succes_text = 0x7f05001e;
-		public static final int pizza_text = 0x7f05001f;
-		public static final int pizza_text_light = 0x7f050020;
 	}
 	public static final class drawable {
 		public static final int background_rounded_corners_dialog = 0x7f020000;
@@ -30,20 +24,20 @@ public final class R {
 		public static final int text_white_selected = 0x7f020009;
 	}
 	public static final class id {
-		public static final int bt_annuler = 0x7f0a000f;
-		public static final int bt_valider = 0x7f0a000e;
+		public static final int bt_annuler = 0x7f0a0010;
+		public static final int bt_valider = 0x7f0a000f;
 		public static final int ec_iv = 0x7f0a0005;
 		public static final int ec_tv_nom = 0x7f0a0007;
 		public static final int ec_tv_prenom = 0x7f0a0006;
-		public static final int imageView = 0x7f0a000b;
-		public static final int iv_cancel = 0x7f0a0011;
-		public static final int iv_retry = 0x7f0a0010;
-		public static final int layout_root = 0x7f0a0009;
-		public static final int ll_header = 0x7f0a000a;
+		public static final int imageView = 0x7f0a000c;
+		public static final int iv_cancel = 0x7f0a0012;
+		public static final int iv_retry = 0x7f0a0011;
+		public static final int layout_root = 0x7f0a000a;
+		public static final int ll_header = 0x7f0a000b;
 		public static final int progress_horizontal = 0x7f0a0003;
 		public static final int textView1 = 0x7f0a0004;
-		public static final int tv_message = 0x7f0a000d;
-		public static final int tv_title = 0x7f0a000c;
+		public static final int tv_message = 0x7f0a000e;
+		public static final int tv_title = 0x7f0a000d;
 	}
 	public static final class layout {
 		public static final int dialog_progress = 0x7f030002;

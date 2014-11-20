@@ -6,12 +6,6 @@
 
     <color name="blue">#00AAD4</color>
     <color name="orange">#ff7f2a</color>
-    <color name="pizza_not_enable">#7a7a7a</color>
-    <color name="pizza_second">#FF6600</color>
-    <color name="pizza_succes_main">#C5E7A6</color>
-    <color name="pizza_succes_text">#3B5F19</color>
-    <color name="pizza_text">#666666</color>
-    <color name="pizza_text_light">#A0A0A0</color>
     <!-- From: file:/D:/workspace_studio/formation/FormationUtils/src/main/res/values/strings.xml -->
     <eat-comment />
 

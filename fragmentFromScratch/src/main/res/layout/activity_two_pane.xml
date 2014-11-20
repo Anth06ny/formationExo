@@ -10,7 +10,8 @@
         android:id="@+id/fl_fragment1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@android:color/holo_purple">
     </FrameLayout>
 
     <FrameLayout
@@ -18,7 +19,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:background="@color/blue">
     </FrameLayout>
 
 </LinearLayout>

@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_weight="20"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:adjustViewBounds="false"/>
 
     <TextView
         android:id="@+id/ec_tv_prenom"

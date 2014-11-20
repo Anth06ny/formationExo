@@ -1,12 +1,9 @@
 package com.example.fragmentfromscratch;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -15,7 +12,9 @@ import com.formation.utils.bean.Eleve;
 
 import java.util.ArrayList;
 
-public class MainActivity extends FragmentActivity implements CallBack {
+public class MainActivity extends Activity implements CallBack {
+
+    private final static String RESTART_EXTRA = "RESTART_EXTRA";
 
     private FrameLayout fl_fragment2;
 
@@ -33,31 +32,12 @@ public class MainActivity extends FragmentActivity implements CallBack {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_pane);
 
-        //on charge une base d'eleve
-        if (eleveList == null) {
-            eleveList = getEleves();
-        }
-
-        //on lance le 1er fragment et on lui passe comme argument la liste d'�l�ve
-        listFragment = new ListFragment();
-        final Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList(Constante.EXTRA_LIST_ELEVE, eleveList);
-        listFragment.setArguments(bundle);
-        //on s'inscrit au callback
-        listFragment.setOnClickListListener(this);
-        //on positionne le fragment sur l'emplacement fragment1
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment1, listFragment).commit();
-
+        //On définit si on utilise 1 ou 2 layout en fonction de l'appareil.
         //le fragment 2
         fl_fragment2 = (FrameLayout) findViewById(R.id.fl_fragment2);
 
         //Si on souhaite afficher 2 fragment en même temps
         if (MyApplication.getInstance().isTwoPane()) {
-            //on crée le 2eme
-            detailFragment = new DetailFragment();
-            //on le positionne sur le 2eme emplacement
-            getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment2, detailFragment).commit();
-            //on rend le 2eme emplacement visible
             fl_fragment2.setVisibility(View.VISIBLE);
         }
         else {
@@ -65,35 +45,47 @@ public class MainActivity extends FragmentActivity implements CallBack {
         }
     }
 
-    //-----------------
-    // menu
-    //-----------------
 
-    @SuppressWarnings("null")
-    @Override
-    public boolean onPrepareOptionsMenu(final Menu menu) {
-        if (menu != null) {
-            menu.clear();
-        }
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        menu.add(0, MENU_CHERCHER, 0, "Chercher sur Google");
-        menu.add(0, MENU_QUIT, 0, "Quit");
-
-        return super.onPrepareOptionsMenu(menu);
-    }
 
     @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
+    protected void onStart() {
+        super.onStart();
 
-        if (item.getItemId() == MENU_CHERCHER && detailFragment != null) {
-            final Uri uri = Uri.parse("http://www.google.com/#q=" + detailFragment.getEleve().getNom());
-            final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+
+        //On verifie si les fragment n'existent pas déjà. Ceux ci peuvebt avoir été recréer par android lors d'une
+        // rotation d'écran par exemple. On les récupère grâce à leur tag.
+        listFragment = (ListFragment) getFragmentManager().findFragmentByTag(ListFragment.class.toString());
+        detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag(DetailFragment.class.toString());
+
+
+        //Si la liste n'existe pas on la crée.
+        if(listFragment == null) {
+            listFragment = new ListFragment();
         }
 
-        return super.onOptionsItemSelected(item);
+        if (MyApplication.getInstance().isTwoPane()) {
+            //On est obligé de recréer le fragment car Android n'autorise pas le déplacement de fragment dans un autre
+            // frameLayout
+            if(detailFragment != null) {
+                detailFragment = (DetailFragment) recreateFragment(detailFragment);
+            }
+            else {
+                //on crée le 2eme
+                detailFragment = new DetailFragment();
+            }
+            //on le positionne sur le 2eme emplacement
+            getFragmentManager().beginTransaction().replace(R.id.fl_fragment2, detailFragment, DetailFragment.class.toString())
+                        .commit();
+        }
+
+        //on positionne le fragment sur l'emplacement fragment1
+        getFragmentManager().beginTransaction().replace(R.id.fl_fragment1, listFragment, ListFragment.class.toString()).commit();
+
+        //On définit le callBack
+        listFragment.setOnClickListListener(this);
+
     }
+
 
     //-------------------
     //callback fragment
@@ -103,33 +95,42 @@ public class MainActivity extends FragmentActivity implements CallBack {
     public void onClickOnEleve(final Eleve eleve) {
 
         if (MyApplication.getInstance().isTwoPane()) {
+            //On met à jour le 2eme fragment
             detailFragment.setEleve(eleve);
             detailFragment.refreshText();
         }
         else {
-            //on remplace le fragment visible par celui de l'ajout
-            final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            //on remplace le fragment visible par celui du detail
+            final FragmentTransaction ft = getFragmentManager().beginTransaction();
             detailFragment = new DetailFragment();
             detailFragment.setEleve(eleve);
 
-            ft.replace(R.id.fl_fragment1, detailFragment);
+            ft.replace(R.id.fl_fragment1, detailFragment,  DetailFragment.class.toString());
             ft.addToBackStack(null); // permet de revenir à l'écran d'avant avec un back bouton
             ft.commit();
         }
     }
 
-    //donnee
-    private static ArrayList<Eleve> getEleves() {
-        final Eleve eleve1 = new Eleve("Jean", "Pierre", false);
-        final Eleve eleve2 = new Eleve("Marie", "Laure", true);
-        final Eleve eleve3 = new Eleve("Anne", "Cécile", true);
+    /* -------------------------
+    // private
+    //------------------------- */
 
-        final ArrayList<Eleve> list = new ArrayList<Eleve>();
-        list.add(eleve1);
-        list.add(eleve2);
-        list.add(eleve3);
-
-        return list;
+    /**
+     * permet de créer un nouveau fragment avec les sauvegardes de l'ancien.
+     * @param fragment
+     * @return
+     */
+    private static Fragment recreateFragment(Fragment fragment){
+        try {
+            Fragment.SavedState oldState= fragment.getFragmentManager().saveFragmentInstanceState(fragment);
+            Fragment newInstance = fragment.getClass().newInstance();
+            newInstance.setInitialSavedState(oldState);
+            return newInstance;
+        }
+        catch (Exception e) // InstantiationException, IllegalAccessException
+        {
+            return null;
+        }
     }
 
 }
