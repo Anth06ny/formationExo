@@ -10,10 +10,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.exemple.adapter.EleveAdapter;
-import com.example.exemple.bean.Eleve;
 import com.example.exemple.dao.asynctask.ChargementEleveAT;
 import com.example.exemple.dao.asynctask.ChargementEleveAT.CallBack;
+import com.formation.utils.adapter.EleveAdapter;
+import com.formation.utils.bean.Eleve;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,9 +63,9 @@ public class MainActivity extends Activity implements OnClickListener, CallBack 
         refreshVue(false, null);
     }
 
-    //--------------------
+    /*--------------------
     // click
-    //-------------------
+    //-------------------*/
     @Override
     public void onClick(final View v) {
         //si la tache n'existe pas ou qu'elle est terminée on en recrée une.
@@ -80,9 +80,15 @@ public class MainActivity extends Activity implements OnClickListener, CallBack 
         }
     }
 
-    //--------------------
+    /*--------------------
     // vue
-    //-------------------
+    //------------------- */
+    /**
+     * Methode mettant à jour l'affichage graphique
+     * @param loadInProgress si à true affichee une fenetre d'attente (prioritaire)
+     * @param erreurMessage si remplit affiche un message d'erreur, sinon affiche la liste
+     *
+     */
     private void refreshVue(final boolean loadInProgress, final String erreurMessage) {
         runOnUiThread(new Runnable() {
 

@@ -3,7 +3,7 @@ package com.example.exemple.dao.asynctask;
 import android.os.AsyncTask;
 import android.os.SystemClock;
 
-import com.example.exemple.bean.Eleve;
+import com.formation.utils.bean.Eleve;
 
 import java.util.ArrayList;
 import java.util.List;

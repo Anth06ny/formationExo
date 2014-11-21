@@ -9,9 +9,11 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.exemple.adapter.EleveAdapter;
-import com.example.exemple.bean.Eleve;
 import com.example.exemple.dao.asynctask.ChargementEleveAT;
+import com.formation.utils.adapter.EleveAdapter;
+import com.formation.utils.bean.Eleve;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,8 @@ public class MainActivity extends Activity implements OnClickListener {
         pb = (ProgressBar) findViewById(R.id.pb);
         pb_indeterminate = (ProgressBar) findViewById(R.id.pb_indeterminate);
 
+
+
     }
 
     @Override
@@ -66,6 +70,8 @@ public class MainActivity extends Activity implements OnClickListener {
     //-------------------
     @Override
     public void onClick(final View v) {
+        //TODO charger les éléves par l'asyncTask en gérant le double clic
+
         //si la tache n'existe pas ou qu'elle est terminée on en recrée une.
         //on ne peut executer qu'une seul fois une AsyncTask
     }
@@ -73,6 +79,13 @@ public class MainActivity extends Activity implements OnClickListener {
     //--------------------
     // vue
     //-------------------
+
+    /**
+     * Methode mettant à jour l'affichage graphique
+     * @param loadInProgress si à true affichee une fenetre d'attente (prioritaire)
+     * @param erreurMessage si remplit affiche un message d'erreur, sinon affiche la liste
+     *
+     */
     private void refreshVue(final boolean loadInProgress, final String erreurMessage) {
         runOnUiThread(new Runnable() {
 
@@ -86,7 +99,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     pb_indeterminate.setVisibility(View.VISIBLE);
                     lv.setVisibility(View.INVISIBLE);
                     bt.setEnabled(false);
-                } else if (erreurMessage != null) {
+                } else if (StringUtils.isNotBlank(erreurMessage)) {
                     tv_message.setText(erreurMessage);
                     tv_message.setVisibility(View.VISIBLE);
                     pb.setVisibility(View.INVISIBLE);
@@ -117,5 +130,6 @@ public class MainActivity extends Activity implements OnClickListener {
     //--------------------
     // Retour AsyncTask
     //-------------------
+    //TODO gerer les methodes de retour de l'AsyncTask
 
 }
