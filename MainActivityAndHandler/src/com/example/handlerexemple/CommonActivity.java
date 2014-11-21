@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.formation.utils.PopupsManager;
 
-public class CommonActivity extends Activity {
+public abstract class CommonActivity extends Activity {
 
     private Dialog progressDialog;
 

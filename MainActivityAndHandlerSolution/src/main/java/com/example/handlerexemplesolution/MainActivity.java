@@ -25,10 +25,9 @@ public class MainActivity extends CommonActivity implements OnClickListener {
 
     }
 
-    //------------------------
-    // click
-    //------------------------
-
+    /* -------------------------
+    // Click
+    //------------------------- */
     @Override
     public void onClick(final View v) {
         startProgress();

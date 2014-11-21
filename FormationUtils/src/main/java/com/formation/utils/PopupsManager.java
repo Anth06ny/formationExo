@@ -49,6 +49,8 @@ public class PopupsManager {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(dialogView);
 
+
+
         return dialog;
     }
 
