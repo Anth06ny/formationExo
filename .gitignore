@@ -1,32 +1,49 @@
-.gradle
+# Built application files
+*.apk
+*.ap_
+
+# Files for the Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+
+# Gradle files
+.gradle/
+
+# Built application files
+/*/build/
+
+# Signing files
+.signing/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log Files
+*.log
+
+# User-specific configurations
+.idea/libraries/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/libraries/wasync_1_3_2.xml
+.idea/vcs.xml
+*.iml
+
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
-/build
 
-app/build
-asyncTask/build
-asyncTaskSolution/build
-BoutonExemple/build
-DAOExercice/build
-DAOGreenSolution/build
-DAOSQLISolution/build
-facebook/build
-FacebookLogin/build
-FormationUtils/build
-fragmentFromScratch/build
-GraphExemple/build
-httpExemple/build
-listViewRecyclage/build
-MainActivityAndHandler/bin
-MainActivityAndHandler/build
-MainActivityAndHandlerSolution/build
-sendSMS/build
-serviceWithotto/build
-smsBroadCast/build
-Simple Facebook/build
-webServiceGSONSolution/build
-WebServiceGSONExercice/build
-testFragment/build
-ZBar_reader/build
