@@ -47,3 +47,28 @@ local.properties
 /.idea/libraries
 .DS_Store
 
+
+app/build
+asyncTask/build
+asyncTaskSolution/build
+BoutonExemple/build
+DAOExercice/build
+DAOGreenSolution/build
+DAOSQLISolution/build
+facebook/build
+FacebookLogin/build
+FormationUtils/build
+fragmentFromScratch/build
+GraphExemple/build
+httpExemple/build
+listViewRecyclage/build
+MainActivityAndHandler/build
+MainActivityAndHandlerSolution/build
+sendSMS/build
+serviceWithotto/build
+Simple Facebook/build
+smsBroadCast/build
+testFragment/build
+WebServiceGSONExercice/build
+webServiceGSONSolution/build
+ZBar_reader/build
