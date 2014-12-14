@@ -1,11 +1,6 @@
 package com.formation.utils;
 
-/**
-* (C)opyright 2012 - UrbanPulse - All rights Reserved Released by CARDIWEB File : OneTimePopup.java
-*
-* @date 30 mai 2012
-* @author mbaroukh
-*/
+
 
 import android.app.Activity;
 import android.app.Dialog;

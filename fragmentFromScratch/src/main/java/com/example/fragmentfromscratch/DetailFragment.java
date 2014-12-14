@@ -52,7 +52,7 @@ public class DetailFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        refreshText();
+        refreshScreen();
     }
 
     /* -------------------------
@@ -60,7 +60,7 @@ public class DetailFragment extends Fragment {
     //------------------------- */
 
     //Comme il est public on ne sait pas si il sera appelé depuis l'UIThread donc au cas ou...
-    public void refreshText() {
+    public void refreshScreen() {
         getActivity().runOnUiThread(new Runnable() {
 
             @Override

@@ -11,6 +11,42 @@ public final class R {
 		public static final int blue = 0x7f040000;
 		public static final int orange = 0x7f040001;
 	}
+	public static final class dimen {
+		public static final int activity_horizontal_margin = 0x7f050000;
+		public static final int font_10 = 0x7f050002;
+		public static final int font_11 = 0x7f050003;
+		public static final int font_12 = 0x7f050004;
+		public static final int font_13 = 0x7f050005;
+		public static final int font_14 = 0x7f050006;
+		public static final int font_15 = 0x7f050007;
+		public static final int font_16 = 0x7f050008;
+		public static final int font_17 = 0x7f050009;
+		public static final int font_18 = 0x7f05000a;
+		public static final int font_20 = 0x7f05000b;
+		public static final int font_25 = 0x7f05000c;
+		public static final int font_30 = 0x7f05000d;
+		public static final int font_40 = 0x7f05000e;
+		public static final int font_50 = 0x7f05000f;
+		public static final int margin_10 = 0x7f050010;
+		public static final int margin_15 = 0x7f050011;
+		public static final int margin_20 = 0x7f050012;
+		public static final int margin_25 = 0x7f050013;
+		public static final int margin_30 = 0x7f050014;
+		public static final int margin_5 = 0x7f050015;
+		public static final int margin_50 = 0x7f050016;
+		public static final int margin_80 = 0x7f050017;
+		public static final int menu_item_margin_top = 0x7f050018;
+		public static final int menu_text_size = 0x7f050019;
+		public static final int navigationbar_height = 0x7f05001a;
+		public static final int pf_touche_clavier_height = 0x7f05001b;
+		public static final int popup_bt_image_width = 0x7f05001c;
+		public static final int popup_bt_width = 0x7f05001d;
+		public static final int popup_image_height = 0x7f05001e;
+		public static final int progress_bar_size = 0x7f05001f;
+		public static final int slidingMenu_marge_home = 0x7f050020;
+		public static final int standard_bt_radius = 0x7f050021;
+		public static final int standard_height = 0x7f050022;
+	}
 	public static final class drawable {
 		public static final int background_rounded_corners_dialog = 0x7f020000;
 		public static final int background_rounded_main = 0x7f020001;

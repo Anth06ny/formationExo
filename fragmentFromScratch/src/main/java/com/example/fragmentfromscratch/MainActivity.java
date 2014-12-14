@@ -97,7 +97,7 @@ public class MainActivity extends Activity implements CallBack {
         if (MyApplication.getInstance().isTwoPane()) {
             //On met à jour le 2eme fragment
             detailFragment.setEleve(eleve);
-            detailFragment.refreshText();
+            detailFragment.refreshScreen();
         }
         else {
             //on remplace le fragment visible par celui du detail
