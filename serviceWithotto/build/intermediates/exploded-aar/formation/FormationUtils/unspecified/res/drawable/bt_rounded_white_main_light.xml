@@ -4,4 +4,4 @@
     <item android:drawable="@drawable/background_rounded_main_light"   android:state_pressed="true"/>
     <item android:drawable="@drawable/background_rounded_white"  />
 
-</selector><!-- From: file:/D:/workspace_studio/formation/FormationUtils/src/main/res/drawable/bt_rounded_white_main_light.xml -->
+</selector><!-- From: file:/D:/Documents/workspaceStudio/formation/FormationUtils/src/main/res/drawable/bt_rounded_white_main_light.xml -->

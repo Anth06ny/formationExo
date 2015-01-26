@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/workspace_studio/formation/FormationUtils/src/main/res/values/color.xml -->
+    <!-- From: file:/D:/Documents/workspaceStudio/formation/FormationUtils/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="blue">#00AAD4</color>
     <color name="orange">#ff7f2a</color>
-    <!-- From: file:/D:/workspace_studio/formation/FormationUtils/src/main/res/values/dimens.xml -->
+    <!-- From: file:/D:/Documents/workspaceStudio/formation/FormationUtils/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="font_10">10sp</dimen>
     <dimen name="font_11">11sp</dimen>
@@ -39,7 +39,7 @@
     <dimen name="slidingMenu_marge_home">65dp</dimen>
     <dimen name="standard_bt_radius">22dp</dimen>
     <dimen name="standard_height">44dp</dimen>
-    <!-- From: file:/D:/workspace_studio/formation/FormationUtils/src/main/res/values/strings.xml -->
+    <!-- From: file:/D:/Documents/workspaceStudio/formation/FormationUtils/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="annuler">Annuler</string>
