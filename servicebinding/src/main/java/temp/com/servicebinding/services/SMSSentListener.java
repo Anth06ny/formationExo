@@ -27,7 +27,6 @@ public class SMSSentListener extends BroadcastReceiver {
         if (intent.getAction().equals(SENT_SMS_ACTION_NAME)) {
             switch (getResultCode()) {
                 case Activity.RESULT_OK: // Sms sent
-                    SMSSpamer.smsSend++;
                     Toast.makeText(context, "Message sent ", Toast.LENGTH_SHORT).show();
                     break;
                 case SmsManager.RESULT_ERROR_GENERIC_FAILURE: // generic failure
