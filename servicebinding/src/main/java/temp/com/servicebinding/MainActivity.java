@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.formation.utils.ToastUtils;
 
-import temp.com.servicebinding.services.UpdateDataService;
+import temp.com.servicebinding.services.SMSSpamer;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements OnClickListener {
     // ServiceConnection permet de gérer l'état du lien entre l'activité et le service.
     private ServiceConnection serviceConnection;
     //L'instance du service
-    private UpdateDataService updateDataService;
+    private SMSSpamer updateDataService;
 
     //-----------------------
     //View
@@ -68,7 +68,7 @@ public class MainActivity extends Activity implements OnClickListener {
      */
     public void refreshServiceValue() {
         if (updateDataService != null) {
-            updateTextView(updateDataService.getServiceTimeExecutionInSecond() + "");
+            //updateTextView(updateDataService.getServiceTimeExecutionInSecond() + "");
         }
         else {
             updateTextView("Aucun service bindé");
@@ -100,7 +100,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 //le service se connecte
                 public void onServiceConnected(ComponentName arg0, IBinder binder) {
                     //on récupère l'instance du service dans l'activité
-                    updateDataService = ((UpdateDataService.UpdateDataServiceBinder) binder).getUpdateDataService();
+                    updateDataService = ((SMSSpamer.SMSSpamerBinder) binder).getSMSSpamer();
 
                     ToastUtils.showToast(MainActivity.this, "Service bindé", Toast.LENGTH_LONG);
 
@@ -114,8 +114,8 @@ public class MainActivity extends Activity implements OnClickListener {
         //démarre le service si il n'est pas démarrer, la différence ici est que le fait de
         //démarrer le service par "startService" fait que si l'activité est détruite, le service
         //reste en vie
-        startService(new Intent(this, UpdateDataService.class));
-        Intent intent = new Intent(this, UpdateDataService.class);
+        startService(new Intent(this, SMSSpamer.class));
+        Intent intent = new Intent(this, SMSSpamer.class);
         //lance le binding du service
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
