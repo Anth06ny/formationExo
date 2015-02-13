@@ -9,4 +9,10 @@
     <string name="valider">Valider</string>
     <string name="annuler">Annuler</string>
 
+    <!-- Date format -->
+    <string name="date_ddMMyyyy">yyyy/MM/dd</string>
+    <string name="date_ddMMyyyy_HHmm">yyyy/MM/dd HH:mm</string>
+    <string name="date_HHmm">HH:mm</string>
+
+
 </resources>
