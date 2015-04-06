@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\gson-2.3-62ca8ccf9c158e8ec16b3c3dbc44b27cb584787c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="90a3822c38ec8c996e84c16a3477ef632cbc87a3">
+        <dex dex="D:\workspace_studio\formation\httpExemple\build\intermediates\pre-dexed\debug\commons-lang3-3.3.2-8a15c1682585894376a9510f34916d7f3a8a38c6.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="f46b1927c94aea4b13ba149f3d08226ac25115b9">
+        <dex dex="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\classes-4958ab24576c147f57647ccb2ffcb21dda7ec8f4.jar" />
+    </item>
+    <item
+        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="D:\workspace_studio\formation\DAOGreenSolution\build\intermediates\pre-dexed\debug\support-v4-19.1.0-7f8deabed24c39b7c4fb99d764c25af17d1390ae.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\BoutonExemple\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e86531971c1a9e3a744d7cc48a83039f86e84112">
+        <dex dex="D:\workspace_studio\formation\BoutonExemple\build\intermediates\pre-dexed\debug\classes-4c2c1bdc5dca06450d304b55f98bc5f5134d4f93.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\DAOGreenSolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="f46b1927c94aea4b13ba149f3d08226ac25115b9">
+        <dex dex="D:\workspace_studio\formation\DAOGreenSolution\build\intermediates\pre-dexed\debug\classes-4292f8a694e6ddda79f28ed7bcf3ab245391d03a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\de.greenrobot\greendao\1.3.7\dda08161d004c4df96938da6909f1c2b96cd33c8\greendao-1.3.7.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="dda08161d004c4df96938da6909f1c2b96cd33c8">
+        <dex dex="D:\workspace_studio\formation\DAOGreenSolution\build\intermediates\pre-dexed\debug\greendao-1.3.7-44e75c8e57e268cee3770fa9cfd84d448caac34a.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\httpExemple\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="f46b1927c94aea4b13ba149f3d08226ac25115b9">
+        <dex dex="D:\workspace_studio\formation\httpExemple\build\intermediates\pre-dexed\debug\classes-18b18c8b5f26fb8d327e23807857effb5cf5791a.jar" />
+    </item>
+
+</items>
