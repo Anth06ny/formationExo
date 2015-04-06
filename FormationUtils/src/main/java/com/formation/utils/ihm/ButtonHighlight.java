@@ -1,6 +1,5 @@
 /**
  * (C)opyright 2014 - UrbanPulse - All rights Reserved
- * Released by CARDIWEB
  * File : ImageHighlight.java
  * @date 28 févr. 2014
  * @author Anthony
@@ -23,31 +22,8 @@ import android.widget.Button;
  */
 public class ButtonHighlight extends Button implements OnTouchListener {
 
-    //pour gerer le clic
     private int colorId, highlightedColorId;
 
-    /**
-     * @param context
-     */
-    public ButtonHighlight(final Context context) {
-        super(context);
-        setOnTouchListener(this);
-    }
-
-    /**
-     * @param context
-     * @param attrs
-     */
-    public ButtonHighlight(final Context context, final AttributeSet attrs) {
-        super(context, attrs);
-        setOnTouchListener(this);
-    }
-
-    /**
-     * @param context
-     * @param attrs
-     * @param defStyle
-     */
     public ButtonHighlight(final Context context, final AttributeSet attrs, final int defStyle) {
         super(context, attrs, defStyle);
         setOnTouchListener(this);
@@ -55,7 +31,6 @@ public class ButtonHighlight extends Button implements OnTouchListener {
 
     @Override
     public boolean onTouch(final View view, final MotionEvent motionEvent) {
-
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (highlightedColorId != 0) {
                 getBackground().setColorFilter(highlightedColorId, Mode.MULTIPLY);
@@ -76,11 +51,6 @@ public class ButtonHighlight extends Button implements OnTouchListener {
         return false;
     }
 
-    /**
-     * Permet de gerer les changements de couleur d'une image sur le ontouch
-     * @param colorId
-     * @param highlightedColorId
-     */
     public void setColorFilter(final int colorId, final int highlightedColorId) {
         getBackground().setColorFilter(colorId, Mode.MULTIPLY);
         this.highlightedColorId = highlightedColorId;
