@@ -1,7 +1,5 @@
 package com.formation.utils;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.util.Log;
 
 import org.apache.http.client.methods.HttpGet;
@@ -23,16 +21,7 @@ import java.net.URL;
  */
 public class HTTPUtils {
 
-    /**
-     * Teste la connexion internet
-     * @param context
-     * @return true si il y a un acces à internet
-     */
-    public static boolean isInternetConnexion(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        return cm != null && cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
-    }
 
     /**
      * Retourne la page http en parametre
@@ -69,6 +58,12 @@ public class HTTPUtils {
         }
     }
 
+    /**
+     * @param stream
+     * @return Le string contenut dans le stream.
+     * @throws IOException
+     * @throws UnsupportedEncodingException
+     */
     private static String readIt(InputStream stream) throws IOException, UnsupportedEncodingException {
         StringBuilder builder = new StringBuilder();
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));

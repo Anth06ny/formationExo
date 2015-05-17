@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.formation.utils.ConnectivityUtils;
 import com.formation.utils.HTTPUtils;
 import com.formation.utils.PopupsManager;
 import com.formation.utils.ToastUtils;
@@ -60,7 +61,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == btLoad) {
 
-            if (!HTTPUtils.isInternetConnexion(this)) {
+            if (!ConnectivityUtils.isConnected(this)) {
                 ToastUtils.showToastOnUIThread(this, "Pas de connexion internet", Toast.LENGTH_LONG);
             }
             else {

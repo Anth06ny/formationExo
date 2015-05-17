@@ -80,7 +80,8 @@ public class PopupsManager {
                     }
                 });
 
-                // create alert dialog and show it
+
+                // create alert dialog and activity it
                 dialog.setCanceledOnTouchOutside(false);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -90,5 +91,7 @@ public class PopupsManager {
         });
 
     }
+
+
 
 }

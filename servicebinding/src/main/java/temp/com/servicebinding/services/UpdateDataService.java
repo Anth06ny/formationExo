@@ -26,6 +26,11 @@ public class UpdateDataService extends Service {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public int onStartCommand(final Intent intent, final int flags, final int startId) {
 
         return START_NOT_STICKY;
