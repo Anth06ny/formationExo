@@ -2,242 +2,18 @@
 <items version="2" >
 
     <item
-        jar="D:\workspace_studio\formation\GoogleMap\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="D:\workspace_studio\formation\GoogleMap\build\intermediates\pre-dexed\debug\classes-501351083e77d32edacbbfbaadbd1e31ca565533.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\fragmentFromScratch\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\fragmentFromScratch\build\intermediates\pre-dexed\debug\classes-6a94424705b90530da2da7481d5a71d1f1ce526c.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\GraphExemple\build\intermediates\exploded-aar\com.jjoe64\graphview\3.1.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="7eedf8c110966da7d80d4198b2e9d1e8051611be">
-        <dex dex="D:\workspace_studio\formation\GraphExemple\build\intermediates\pre-dexed\debug\classes-626006899e716f3f6270a0944fff2411d7857c0e.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\GoogleMap\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="D:\workspace_studio\formation\GoogleMap\build\intermediates\pre-dexed\debug\classes-559be9511e2ff71e8081dea119d60faf7186bb3a.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\classes-4958ab24576c147f57647ccb2ffcb21dda7ec8f4.jar" />
-    </item>
-    <item
-        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="D:\workspace_studio\formation\DAOGreenSolution\build\intermediates\pre-dexed\debug\support-v4-19.1.0-7f8deabed24c39b7c4fb99d764c25af17d1390ae.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\sendSMS\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="D:\workspace_studio\formation\sendSMS\build\intermediates\pre-dexed\debug\classes-cdaecd68ea47d0d9fe6ecfe2df4f46f7968c23bb.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\asyncTaskSolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\asyncTaskSolution\build\intermediates\pre-dexed\debug\classes-3797c9087bcbf3159158da96b6b007fca182b954.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\asyncTask\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\asyncTask\build\intermediates\pre-dexed\debug\classes-d450f722a982f9367cc9239bdee1068c72676893.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-57c6de905e1103caf69889364197731d41fdcce6.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\FacebookLogin\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\FacebookLogin\build\intermediates\pre-dexed\debug\classes-6d98b5153007ba8efe3d68cbf1146145874c2f5c.jar" />
-    </item>
-    <item
-        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="D:\workspace_studio\formation\GoogleMap\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-d468e72c8ea79625b7615186601440b8d5bb481e.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\servicebinding\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="D:\workspace_studio\formation\servicebinding\build\intermediates\pre-dexed\debug\classes-0ca5bb7885293b79260b9ad0993f746d76d3318a.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\DAOGreenSolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\DAOGreenSolution\build\intermediates\pre-dexed\debug\classes-4292f8a694e6ddda79f28ed7bcf3ab245391d03a.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\FacebookLogin\libs\commons-lang3-3.2.1.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="66f13681add50ca9e4546ffabafaaac7645db3cf">
-        <dex dex="D:\workspace_studio\formation\FacebookLogin\build\intermediates\pre-dexed\debug\commons-lang3-3.2.1-9901ec18d5d4279ed79e9cc407d1e0c0e1713b81.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\FacebookLogin\build\intermediates\exploded-aar\formation\Simple Facebook\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ddcc5dc195032924206955f18b9e0fc018044f95">
-        <dex dex="D:\workspace_studio\formation\FacebookLogin\build\intermediates\pre-dexed\debug\classes-53f1f631765beedd6ea9143287ff9606865eb0e8.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\GraphExemple\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef">
-        <dex dex="D:\workspace_studio\formation\GraphExemple\build\intermediates\pre-dexed\debug\classes-51c7f1be0fb514adefecaaa271fb2184defcb042.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\sendSMS\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\sendSMS\build\intermediates\pre-dexed\debug\classes-c5c81ca778ec9e765f74abf1d80d39ceafee06cc.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\MainActivityAndHandler\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\MainActivityAndHandler\build\intermediates\pre-dexed\debug\classes-6953f42e69e7ce1fa5cdb8a9efc11875660fe5bd.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\GoogleMap\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="D:\workspace_studio\formation\GoogleMap\build\intermediates\pre-dexed\debug\classes-ca84109fce7c4382e73066346985e3ac730b3280.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\GraphExemple\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="D:\workspace_studio\formation\GraphExemple\build\intermediates\pre-dexed\debug\classes-92d7e6ee27823eddf084e7851d951aad9882518a.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\classes-ff39c9fd4fd54c0517797c19b882b0ccbcbf6946.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\BoutonExemple\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\BoutonExemple\build\intermediates\pre-dexed\debug\classes-4c2c1bdc5dca06450d304b55f98bc5f5134d4f93.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\servicebinding\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="D:\workspace_studio\formation\servicebinding\build\intermediates\pre-dexed\debug\classes-a442410acad0970a5002206dffc4976c8ff13527.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\servicebinding\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\servicebinding\build\intermediates\pre-dexed\debug\classes-0a37f4af86d436a979317f315afd2add4c3ec6e8.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\servicebinding\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="D:\workspace_studio\formation\servicebinding\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-c2a93200c8d4c3ec7ae7a6a9ddac99b1527d8375.jar" />
-    </item>
-    <item
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\de.greenrobot\greendao\1.3.7\dda08161d004c4df96938da6909f1c2b96cd33c8\greendao-1.3.7.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="dda08161d004c4df96938da6909f1c2b96cd33c8">
-        <dex dex="D:\workspace_studio\formation\DAOGreenSolution\build\intermediates\pre-dexed\debug\greendao-1.3.7-44e75c8e57e268cee3770fa9cfd84d448caac34a.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-ec61ae87dc2cbc02e582197c3d6714b17a6c5480.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\GraphExemple\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="D:\workspace_studio\formation\GraphExemple\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-0cf13ea3dc0ad3adb45e4d5527727a91880f62c7.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\FacebookLogin\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="D:\workspace_studio\formation\FacebookLogin\build\intermediates\pre-dexed\debug\classes-57d192dabd59b908d21b533225c1533111e0050c.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\FacebookLogin\build\intermediates\exploded-aar\formation\facebook\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="d344f4659e582d24b261d2cbe1c34f469f1f651c">
-        <dex dex="D:\workspace_studio\formation\FacebookLogin\build\intermediates\pre-dexed\debug\classes-63a8d7000acf22b91e2525147c89f1c7ea24b473.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\MainActivityAndHandlerSolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\MainActivityAndHandlerSolution\build\intermediates\pre-dexed\debug\classes-0dc0c9b8622be5b6cbd553247bcf6943b659717d.jar" />
-    </item>
-    <item
         jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="D:\workspace_studio\formation\FacebookLogin\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-8450e98f08896c2d293cc2c2766f88b37866c334.jar" />
+        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-8450e98f08896c2d293cc2c2766f88b37866c334.jar" />
     </item>
     <item
-        jar="D:\workspace_studio\formation\FacebookLogin\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\classes.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="D:\workspace_studio\formation\FacebookLogin\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-bdd0112f7c6ea4bd712eb59559be4f70c6cf9a42.jar" />
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-9e743ff18d5ba46373c5dc50d4059a8bd29ca65d.jar" />
     </item>
     <item
         jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
@@ -247,88 +23,74 @@
         <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-bb356320c3b2a5da55b682678ca52d3505bc63ff.jar" />
     </item>
     <item
-        jar="D:\workspace_studio\formation\sendSMS\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="D:\workspace_studio\formation\sendSMS\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-4f691fb7095bf798769ccd0be34d2f2c84f647fc.jar" />
-    </item>
-    <item
         jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
+        sha1="27bfe74ed4aaaf20fb53a38554bf6c67cd721cbd">
         <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-09980cd32e8b1fe4130eba7715aa2b6e0d71b7f4.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.1.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e0b0c35d02308b270015a74cada4887e2e49b889">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-10978649b23370c01457d68645b411e5a7b0bf2d.jar" />
+    </item>
+    <item
+        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-b233b74fe5520d05c554cac6ef9a646cf2e81928.jar" />
     </item>
     <item
         jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="90a3822c38ec8c996e84c16a3477ef632cbc87a3">
-        <dex dex="D:\workspace_studio\formation\httpExemple\build\intermediates\pre-dexed\debug\commons-lang3-3.3.2-8a15c1682585894376a9510f34916d7f3a8a38c6.jar" />
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\commons-lang3-3.3.2-8a15c1682585894376a9510f34916d7f3a8a38c6.jar" />
     </item>
     <item
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
+        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
-        <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\otto-1.3.5-19a43d9d76d9ad47241a8d8bc490b9ecd90edcad.jar" />
+        sha1="e4de20a57b7a185493c73e40817aedd86759fda5">
+        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-57c6de905e1103caf69889364197731d41fdcce6.jar" />
     </item>
     <item
         jar="D:\workspace_studio\formation\httpExemple\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
+        sha1="e4de20a57b7a185493c73e40817aedd86759fda5">
         <dex dex="D:\workspace_studio\formation\httpExemple\build\intermediates\pre-dexed\debug\classes-18b18c8b5f26fb8d327e23807857effb5cf5791a.jar" />
     </item>
     <item
-        jar="D:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.afollestad\material-dialogs\0.7.4.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="d255a721dd229574dfec5056df3764036c338dbe">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-ce1ab96e8b0b080dc5cde189ffa1136b27e653a9.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\libs\internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-80dc6ee19742f20e1f5da65298417d270fc18fa1.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-69b2ff347a6cf005d89008e3b694f7f4717abcc0.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\classes-b10c2fbd5d2e2b8d43a3bc8ab426751b36b1a499.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\MainActivityAndHandler\libs\android-support-v4.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="efec67655f6db90757faa37201efcee2a9ec3507">
-        <dex dex="D:\workspace_studio\formation\MainActivityAndHandler\build\intermediates\pre-dexed\debug\android-support-v4-299df45150bac2834ad185d8d5da7de52eb038b2.jar" />
-    </item>
-    <item
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\gson-2.3-62ca8ccf9c158e8ec16b3c3dbc44b27cb584787c.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-5d578cd1fb149e04c9c2c1fa4ce5ce2d48876fc7.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\DAOSQLISolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ffc849c7a9a20aef569b9c7fcc132f92804e7b4c">
-        <dex dex="D:\workspace_studio\formation\DAOSQLISolution\build\intermediates\pre-dexed\debug\classes-242a3ec4a498cb537f7b73172388e1d2839f2739.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\GoogleMap\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="D:\workspace_studio\formation\GoogleMap\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-dfad2204a8482e438e02181f9716b12983f1b0aa.jar" />
-    </item>
-    <item
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.2\91c20388c9a45f62b5ed8fe0502bb76ff6251fc7\bolts-android-1.1.2.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
-        <dex dex="D:\workspace_studio\formation\FacebookLogin\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-8dd5c1e3cf40568983bc049717018dee0826157b.jar" />
+        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-ec61ae87dc2cbc02e582197c3d6714b17a6c5480.jar" />
     </item>
 
 </items>
