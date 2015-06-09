@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
         super.onResume();
 
         String saveValue = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getString(SAVE_HELLO_WORLD_KEY, null);
-        //On remet la valeur sauvegardé s'il y en a une
+        //On remet la valeur sauvegarde s'il y en a une
         if (saveValue != null) {
             tv_hello_world.setText(saveValue);
         }
@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        //On sauvegarde en préférence la valeur dans helloWorld
+        //On sauvegarde en preference la valeur dans helloWorld
         PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString(SAVE_HELLO_WORLD_KEY, tv_hello_world.getText().toString())
                 .apply();
 
