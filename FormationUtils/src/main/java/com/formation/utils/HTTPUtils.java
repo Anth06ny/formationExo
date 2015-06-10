@@ -38,6 +38,7 @@ public class HTTPUtils {
             conn.setReadTimeout(10000 /* milliseconds */);
             conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("GET");
+
             // Starts the query
             conn.connect();
             int response = conn.getResponseCode();
@@ -49,8 +50,7 @@ public class HTTPUtils {
 
             // Makes sure that the InputStream is closed after the app is
             // finished using it.
-        }
-        finally {
+        } finally {
             if (is != null) {
                 is.close();
                 conn.disconnect();
@@ -88,8 +88,7 @@ public class HTTPUtils {
         try {
             new DefaultHttpClient(httpParameters).execute(httpGet);
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }

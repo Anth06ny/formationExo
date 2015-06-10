@@ -40,7 +40,7 @@ public class DetailFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        if(savedInstanceState != null ) {
+        if (savedInstanceState != null) {
             Eleve temp = savedInstanceState.getParcelable(ELEVE_EXTRA);
             if (temp != null) {
                 eleve = temp;
@@ -61,19 +61,20 @@ public class DetailFragment extends Fragment {
 
     //Comme il est public on ne sait pas si il sera appelé depuis l'UIThread donc au cas ou...
     public void refreshScreen() {
-        getActivity().runOnUiThread(new Runnable() {
+        if (getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
 
-            @Override
-            public void run() {
-                if (eleve == null) {
-                    tv.setText("Aucun éléve");
-                }
-                else {
-                    tv.setText(eleve.getPrenom() + " " + eleve.getNom());
-                }
+                @Override
+                public void run() {
+                    if (eleve == null) {
+                        tv.setText("Aucun éléve");
+                    } else {
+                        tv.setText(eleve.getPrenom() + " " + eleve.getNom());
+                    }
 
-            }
-        });
+                }
+            });
+        }
 
     }
 

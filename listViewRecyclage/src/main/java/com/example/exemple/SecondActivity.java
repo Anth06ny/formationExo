@@ -5,15 +5,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.formation.utils.adapter.EleveAdapter;
 import com.formation.utils.bean.Eleve;
 
 import java.util.ArrayList;
 
-public class SecondActivity extends Activity implements OnClickListener {
+public class SecondActivity extends Activity implements OnClickListener, AdapterView.OnItemClickListener {
 
     private final static String SAVE_LIST_KEY = "SAVE_LIST_KEY";
 
@@ -45,6 +47,8 @@ public class SecondActivity extends Activity implements OnClickListener {
 
         bt = (Button) findViewById(R.id.bt);
         bt.setOnClickListener(this);
+
+        lv.setOnItemClickListener(this);
 
     }
 
@@ -91,5 +95,26 @@ public class SecondActivity extends Activity implements OnClickListener {
         eleveList.add(new Eleve("Bob", "John", false));
         //on previent la liste que les donn�es ont chang�es
         eleveAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        final EleveAdapter.ViewHolder viewHolder = (EleveAdapter.ViewHolder) view.getTag();
+        if (viewHolder != null) {
+            new MaterialDialog.Builder(this).title("Suppression").icon(getResources().getDrawable(R.drawable
+                    .ic_launcher))
+                    .positiveText("Supprimer")
+                    .negativeText
+                            (android.R
+                                    .string.cancel)
+                    .content("Supprimer l'élève " + viewHolder.eleveBean.getNom() + " ?").callback(new MaterialDialog.ButtonCallback() {
+                @Override
+                public void onPositive(MaterialDialog dialog) {
+                    super.onPositive(dialog);
+                    eleveList.remove(viewHolder.eleveBean);
+                    eleveAdapter.notifyDataSetChanged();
+                }
+            }).build();
+        }
     }
 }
