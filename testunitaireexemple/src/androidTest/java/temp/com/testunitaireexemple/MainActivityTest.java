@@ -28,13 +28,16 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         tv_hello_world = (TextView) mainActivity.findViewById(R.id.tv_hello_world);
         helloWorldValue = getActivity().getString(R.string.hello_world);
 
-        mainActivity.runOnUiThread(new Runnable() {
+        getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
+
                 //valeur par defaut
                 tv_hello_world.setText(helloWorldValue);
             }
         });
+
+        getInstrumentation().waitForIdleSync();
 
     }
 
@@ -51,12 +54,14 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     public void testRestartActivitySaveValue() {
         final String saveValue = "saveValue";
 
-        mainActivity.runOnUiThread(new Runnable() {
+        getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
                 tv_hello_world.setText(saveValue);
             }
         });
+
+        getInstrumentation().waitForIdleSync();
 
         // Close the activity
         mainActivity.finish();
@@ -72,6 +77,7 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     }
 
     public void testEchec() {
+        //test qui echoura
         assertNull(tv_hello_world.getText());
     }
 
