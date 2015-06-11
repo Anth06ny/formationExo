@@ -56,6 +56,7 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
+
             public void run() {
                 tv_hello_world.setText(saveValue);
             }

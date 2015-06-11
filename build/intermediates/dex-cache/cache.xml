@@ -2,11 +2,39 @@
 <items version="2" >
 
     <item
+        jar="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-767804cc2564be3957b9324451cc72255e735379.jar" />
+    </item>
+    <item
+        jar="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\classes-937e53e4fdc82c1a5d2ea7b95a718832321b3342.jar" />
+    </item>
+    <item
+        jar="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\libs\robotium-solo-5.3.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="28c81719af0e439878269bca02bdbd3a924b9ac0">
+        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\robotium-solo-5.3.0-2bf69d82430177f445df8a6ab95e7fba6107743f.jar" />
+    </item>
+    <item
         jar="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
         <dex dex="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\pre-dexed\debug\classes-e7e2f3b2bd43d5602655da91aa93bb38133aa03d.jar" />
+    </item>
+    <item
+        jar="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\pre-dexed\debug\classes-cd81cc732e26dcbac8954020c648002d1f134522.jar" />
     </item>
     <item
         jar="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\libs\internal_impl-22.2.0.jar"
@@ -23,11 +51,18 @@
         <dex dex="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-c4b5f6c6ed6681e37e928d96fb04ede92e9e2591.jar" />
     </item>
     <item
-        jar="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\classes.jar"
+        jar="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
-        revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\pre-dexed\debug\classes-cd81cc732e26dcbac8954020c648002d1f134522.jar" />
+        revision="21.1.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\classes-394ce02a22c8d8f86abbce2dd9018017abc952fe.jar" />
+    </item>
+    <item
+        jar="D:\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-e410d168da2ccd76c270125857347248d301d6f5.jar" />
     </item>
 
 </items>
