@@ -2,67 +2,95 @@
 <items version="2" >
 
     <item
-        jar="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-767804cc2564be3957b9324451cc72255e735379.jar" />
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-8450e98f08896c2d293cc2c2766f88b37866c334.jar" />
     </item>
     <item
-        jar="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\classes.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\classes-937e53e4fdc82c1a5d2ea7b95a718832321b3342.jar" />
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-9e743ff18d5ba46373c5dc50d4059a8bd29ca65d.jar" />
     </item>
     <item
-        jar="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\libs\robotium-solo-5.3.0.jar"
+        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="28c81719af0e439878269bca02bdbd3a924b9ac0">
-        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\robotium-solo-5.3.0-2bf69d82430177f445df8a6ab95e7fba6107743f.jar" />
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-bb356320c3b2a5da55b682678ca52d3505bc63ff.jar" />
     </item>
     <item
-        jar="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\pre-dexed\debug\classes-e7e2f3b2bd43d5602655da91aa93bb38133aa03d.jar" />
-    </item>
-    <item
-        jar="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\pre-dexed\debug\classes-cd81cc732e26dcbac8954020c648002d1f134522.jar" />
-    </item>
-    <item
-        jar="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-d24a64bf76c5ea36239ea29ae0feb2a2ff6c2504.jar" />
-    </item>
-    <item
-        jar="D:\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="D:\Documents\workspaceStudio\formation\testunitaireexemple\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-c4b5f6c6ed6681e37e928d96fb04ede92e9e2591.jar" />
-    </item>
-    <item
-        jar="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\classes-394ce02a22c8d8f86abbce2dd9018017abc952fe.jar" />
+        sha1="27bfe74ed4aaaf20fb53a38554bf6c67cd721cbd">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-09980cd32e8b1fe4130eba7715aa2b6e0d71b7f4.jar" />
     </item>
     <item
-        jar="D:\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.1.1\classes.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="D:\Documents\workspaceStudio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-e410d168da2ccd76c270125857347248d301d6f5.jar" />
+        sha1="e0b0c35d02308b270015a74cada4887e2e49b889">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-10978649b23370c01457d68645b411e5a7b0bf2d.jar" />
+    </item>
+    <item
+        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-b233b74fe5520d05c554cac6ef9a646cf2e81928.jar" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="90a3822c38ec8c996e84c16a3477ef632cbc87a3">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\commons-lang3-3.3.2-8a15c1682585894376a9510f34916d7f3a8a38c6.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e4de20a57b7a185493c73e40817aedd86759fda5">
+        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-57c6de905e1103caf69889364197731d41fdcce6.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\httpExemple\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e4de20a57b7a185493c73e40817aedd86759fda5">
+        <dex dex="D:\workspace_studio\formation\httpExemple\build\intermediates\pre-dexed\debug\classes-18b18c8b5f26fb8d327e23807857effb5cf5791a.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.afollestad\material-dialogs\0.7.4.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="d255a721dd229574dfec5056df3764036c338dbe">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-ce1ab96e8b0b080dc5cde189ffa1136b27e653a9.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\libs\internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-80dc6ee19742f20e1f5da65298417d270fc18fa1.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="D:\workspace_studio\formation\listViewRecyclage\build\intermediates\pre-dexed\debug\classes-69b2ff347a6cf005d89008e3b694f7f4717abcc0.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-ec61ae87dc2cbc02e582197c3d6714b17a6c5480.jar" />
     </item>
 
 </items>
