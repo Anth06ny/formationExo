@@ -1,5 +1,5 @@
 include ':app', ':FormationUtils', ':MyDaoGenerator', ':BoutonExemple', ':GraphExemple', ':ZBar_reader', ':GoogleMap', ':servicebinding',
-        ':FacebookLogin', ':facebook', ':Simple Facebook', ':webServiceGSONSolution', 'WebServiceGSONExercice'
+        ':FacebookLogin', ':facebook', ':Simple Facebook', ':webServiceGSONSolution', 'WebServiceGSONExercice', ':testunitaireexemple', ':TestUnitaireRobotium'
 include ':MainActivityAndHandler'
 include ':asyncTask', ':asyncTaskSolution'
 include ':fragmentFromScratch'
