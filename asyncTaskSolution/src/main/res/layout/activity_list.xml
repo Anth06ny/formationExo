@@ -50,8 +50,8 @@
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/bt"
-        tools:listitem="@layout/eleve_cellule">
+        tools:listitem="@layout/eleve_cellule"
+        android:layout_below="@+id/bt">
     </ListView>
 
 </RelativeLayout>

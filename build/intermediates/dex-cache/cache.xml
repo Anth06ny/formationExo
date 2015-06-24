@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="D:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-5d578cd1fb149e04c9c2c1fa4ce5ce2d48876fc7.jar" />
-    </item>
-    <item
         jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
         <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-8450e98f08896c2d293cc2c2766f88b37866c334.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\TestUnitaireRobotium\libs\robotium-solo-5.3.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="28c81719af0e439878269bca02bdbd3a924b9ac0">
+        <dex dex="D:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\robotium-solo-5.3.0-e7276a5ee7ee23e734c6cb25a422e7070b4137b5.jar" />
     </item>
     <item
         jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar"
@@ -37,11 +37,11 @@
         <dex dex="D:\workspace_studio\formation\asyncTaskSolution\build\intermediates\pre-dexed\debug\support-v4-19.1.0-7f8deabed24c39b7c4fb99d764c25af17d1390ae.jar" />
     </item>
     <item
-        jar="D:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
+        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="7cb8cb4e0f91f5504cb589e0b09ff96d06e61f15">
-        <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\classes-ff39c9fd4fd54c0517797c19b882b0ccbcbf6946.jar" />
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-d468e72c8ea79625b7615186601440b8d5bb481e.jar" />
     </item>
     <item
         jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
@@ -56,6 +56,41 @@
         revision="21.1.1"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0">
         <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\classes-b10c2fbd5d2e2b8d43a3bc8ab426751b36b1a499.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\classes-3225682f59d5655aeddd918ec3f56856936917b7.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-5d578cd1fb149e04c9c2c1fa4ce5ce2d48876fc7.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-2ea7645d324528fa6ce932707801a5d1799cb989.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="D:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\pre-dexed\debug\classes-79d75e47df42d178092dea07e46f495198ac04a6.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="7cb8cb4e0f91f5504cb589e0b09ff96d06e61f15">
+        <dex dex="D:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\classes-ff39c9fd4fd54c0517797c19b882b0ccbcbf6946.jar" />
     </item>
 
 </items>
