@@ -21,9 +21,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:22.1.1'
+    compile 'com.android.support:support-v4:22.+'
     compile project(':FormationUtils')
 
     //dialog https://github.com/afollestad/material-dialogs
-    compile 'com.afollestad:material-dialogs:0.7.+'
+    //compile 'com.afollestad:material-dialogs:0.7.+'
 }

@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.formation.utils.adapter.EleveAdapter;
 import com.formation.utils.bean.Eleve;
 
@@ -101,20 +100,20 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final EleveAdapter.ViewHolder viewHolder = (EleveAdapter.ViewHolder) view.getTag();
         if (viewHolder != null) {
-            new MaterialDialog.Builder(this).title("Suppression").icon(getResources().getDrawable(R.drawable
-                    .ic_launcher))
-                    .positiveText("Supprimer")
-                    .negativeText
-                            (android.R
-                                    .string.cancel)
-                    .content("Supprimer l'élève " + viewHolder.eleveBean.getNom() + " ?").callback(new MaterialDialog.ButtonCallback() {
-                @Override
-                public void onPositive(MaterialDialog dialog) {
-                    super.onPositive(dialog);
-                    eleveList.remove(viewHolder.eleveBean);
-                    eleveAdapter.notifyDataSetChanged();
-                }
-            }).build();
+//            new MaterialDialog.Builder(this).title("Suppression").icon(getResources().getDrawable(R.drawable
+//                    .ic_launcher))
+//                    .positiveText("Supprimer")
+//                    .negativeText
+//                            (android.R
+//                                    .string.cancel)
+//                    .content("Supprimer l'élève " + viewHolder.eleveBean.getNom() + " ?").callback(new MaterialDialog.ButtonCallback() {
+//                @Override
+//                public void onPositive(MaterialDialog dialog) {
+//                    super.onPositive(dialog);
+//                    eleveList.remove(viewHolder.eleveBean);
+//                    eleveAdapter.notifyDataSetChanged();
+//                }
+//            }).build();
         }
     }
 }
