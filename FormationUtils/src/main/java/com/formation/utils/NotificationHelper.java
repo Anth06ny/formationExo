@@ -11,7 +11,7 @@ public class NotificationHelper {
     private static final int NOTIFICATION_REQUEST_CODE = 13; //au hasard
     private static final int NOTIFICATION_ID = 14; //au hasard
 
-    //UNiquemeent pour JellyBean
+    //A partir de JellyBean
     public static void createNotification(final Context context, Class<?> activityToLaunchOnClick) {
 
         final NotificationManager mNotification = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

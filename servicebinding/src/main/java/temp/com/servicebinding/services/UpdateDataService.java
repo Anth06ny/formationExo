@@ -7,7 +7,7 @@ import android.os.IBinder;
 
 public class UpdateDataService extends Service {
 
-    private IBinder iBinder = null; //l'instance du binder correspondant à notre service
+    private IBinder iBinder = null; //l'instance du binder corespondant à notre service
 
     //Note l'heure de création du service
     private long creationTime;

@@ -15,8 +15,6 @@ public class MainActivity extends CommonActivity implements OnClickListener {
     //------------------------
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-
-        // Cette méthode est a appeler APRES la récuperation des extras
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_main);
 

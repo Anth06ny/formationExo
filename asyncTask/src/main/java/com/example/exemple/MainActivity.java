@@ -20,7 +20,7 @@ import java.util.List;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-    //composants graphique
+    //composants graphiques
     private ListView lv;
     private Button bt;
     private TextView tv_message;
@@ -82,7 +82,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     /**
      * Methode mettant à jour l'affichage graphique
-     * @param loadInProgress si à true affichee une fenetre d'attente (prioritaire)
+     * @param loadInProgress si à true affiche une fenetre d'attente (prioritaire)
      * @param erreurMessage si remplit affiche un message d'erreur, sinon affiche la liste
      *
      */

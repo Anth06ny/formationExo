@@ -86,7 +86,7 @@ public class EleveBDDManager {
 
     public List<Eleve> getAllEleves() {
         open();
-        //Récupère dans un Cursor tous les élèves correspondant au prénom
+        //Récupère dans un Cursor tous les élèves
         Cursor c = bdd.query(TABLE_ELEVE, new String[] { COL_ID, COL_PRENOM, COL_NOM }, null, null, null, null, null);
         List<Eleve> result = cursorToEleves(c);
         close();
@@ -112,7 +112,7 @@ public class EleveBDDManager {
         ArrayList<Eleve> eleveListe = new ArrayList<Eleve>();
 
         if (c != null) {
-            //Sinon on se place sur le premier élément
+            //On se place sur le premier élément
             if (c.moveToFirst()) {
                 do {
                     Eleve eleveBean = new Eleve(c.getString(c.getColumnIndex(COL_NOM)), c.getString(c.getColumnIndex(COL_PRENOM)), false);

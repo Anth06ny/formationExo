@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.formation.utils.adapter.EleveAdapter;
 import com.formation.utils.bean.Eleve;
@@ -22,7 +23,7 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
     private ListView lv;
     private Button bt;
 
-    //donn�es
+    //donnees
     private ArrayList<Eleve> eleveList;
 
     //outils
@@ -37,7 +38,7 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        eleveList = new ArrayList<Eleve>();
+        eleveList = new ArrayList<>();
 
         eleveAdapter = new EleveAdapter(this, eleveList);
 
@@ -48,7 +49,6 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
         bt.setOnClickListener(this);
 
         lv.setOnItemClickListener(this);
-
     }
 
     @Override
@@ -63,7 +63,6 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
     @Override
@@ -75,7 +74,6 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
         if (savedInstanceState != null) {
             ArrayList<Eleve> temp = savedInstanceState.getParcelableArrayList(SAVE_LIST_KEY);
             eleveList.addAll(temp);
-
         }
     }
 
@@ -92,7 +90,7 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
     @Override
     public void onClick(final View v) {
         eleveList.add(new Eleve("Bob", "John", false));
-        //on previent la liste que les donn�es ont chang�es
+        //on previent la liste que les donnees ont changees
         eleveAdapter.notifyDataSetChanged();
     }
 
@@ -100,20 +98,7 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final EleveAdapter.ViewHolder viewHolder = (EleveAdapter.ViewHolder) view.getTag();
         if (viewHolder != null) {
-//            new MaterialDialog.Builder(this).title("Suppression").icon(getResources().getDrawable(R.drawable
-//                    .ic_launcher))
-//                    .positiveText("Supprimer")
-//                    .negativeText
-//                            (android.R
-//                                    .string.cancel)
-//                    .content("Supprimer l'élève " + viewHolder.eleveBean.getNom() + " ?").callback(new MaterialDialog.ButtonCallback() {
-//                @Override
-//                public void onPositive(MaterialDialog dialog) {
-//                    super.onPositive(dialog);
-//                    eleveList.remove(viewHolder.eleveBean);
-//                    eleveAdapter.notifyDataSetChanged();
-//                }
-//            }).build();
+            Toast.makeText(this, viewHolder.eleveBean.getNom(), Toast.LENGTH_SHORT).show();
         }
     }
 }

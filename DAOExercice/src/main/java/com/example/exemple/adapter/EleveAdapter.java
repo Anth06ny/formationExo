@@ -1,7 +1,5 @@
 package com.example.exemple.adapter;
 
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -13,6 +11,8 @@ import android.widget.TextView;
 
 import com.example.exemple.R;
 import com.example.exemple.bean.Eleve;
+
+import java.util.List;
 
 public class EleveAdapter extends BaseAdapter {
 
@@ -51,7 +51,7 @@ public class EleveAdapter extends BaseAdapter {
         //-------------------------
         final ViewHolder viewHolder;
         if (rowView == null) {
-            //cr�ation
+            //creation
             rowView = mInflater.inflate(R.layout.eleve_cellule, null);
 
             viewHolder = new ViewHolder();

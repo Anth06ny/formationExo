@@ -43,7 +43,7 @@ public class SMSSentListener extends BroadcastReceiver {
                     break;
             }
         }
-        //detect la reception d'un sms
+        //detect l'accuse reception d'un sms
         else if (intent.getAction().equals(DELIVERED_SMS_ACTION_NAME)) {
             switch (getResultCode()) {
                 case Activity.RESULT_OK:

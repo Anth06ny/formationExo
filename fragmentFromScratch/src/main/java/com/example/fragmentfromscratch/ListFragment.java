@@ -39,7 +39,7 @@ public class ListFragment extends Fragment implements OnItemClickListener, View.
         bt.setOnClickListener(this);
 
         if(eleveList == null) {
-            eleveList = new ArrayList<Eleve>();
+            eleveList = new ArrayList<>();
         }
 
         eleveAdapter = new EleveAdapter(getActivity(), eleveList);

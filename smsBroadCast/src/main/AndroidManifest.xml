@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.smsbroadcast"
-          xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    package="com.example.smsbroadcast"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
 
@@ -24,11 +25,15 @@
             class="com.example.smsbroadcast.broadcast.SMSReceiver">
             <intent-filter android:priority="100">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
             </intent-filter>
         </receiver>
+
+
     </application>
 
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
 </manifest>

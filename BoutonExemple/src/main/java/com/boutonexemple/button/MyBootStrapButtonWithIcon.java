@@ -31,7 +31,6 @@ public class MyBootStrapButtonWithIcon extends LinearLayout implements View.OnTo
         setOnTouchListener(this);
     }
 
-    // ce constructeur ne devrait jamais être appelé, car il n'a pas d'AttributeSet en paramètre.
     public MyBootStrapButtonWithIcon(Context context) {
         super(context);
         setOnTouchListener(this);

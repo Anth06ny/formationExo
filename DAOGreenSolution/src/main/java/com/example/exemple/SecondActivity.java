@@ -73,7 +73,7 @@ public class SecondActivity extends Activity implements OnClickListener {
         //on le sauvegarde en abse
         saveEleveInBDD(eleveBean);
         eleveBeanList.add(eleveBean);
-        //on previent la liste que les donn�es ont chang�es
+        //on previent la liste que les donnees ont changees
         eleveAdapter.notifyDataSetChanged();
     }
 

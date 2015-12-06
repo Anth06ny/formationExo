@@ -127,7 +127,7 @@ public class CommonActivity extends Activity {
     }
 
     /**
-     * Enlever l'icone de progression. cf startProgress : l'icone ne sera retiré que s'il y a un même nombre d'appel qu'à startProgress
+     * Enlever l'icone de progression. cf startProgress : l'icone ne sera retiré que s'il y a un même nombre d'appel à stopProgress
      */
     public void stopProgress() {
         if (progressCount == 0) {

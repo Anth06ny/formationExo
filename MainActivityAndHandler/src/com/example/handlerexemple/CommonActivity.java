@@ -85,7 +85,7 @@ public abstract class CommonActivity extends Activity {
      */
     public void startProgress() {
         progressCount++;
-        //TODO : prévenir le handler d'afficher la fentre
+        //TODO : prévenir le handler d'afficher la fenetre
     }
 
     /**

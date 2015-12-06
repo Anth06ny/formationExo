@@ -45,14 +45,14 @@ public class CityWS {
             // ResultBean resultBean = gson.fromJson(resultString, ResultBean.class);
             //LogUtils.logTemp(convertStreamToString(reader));
 
-            //version optimisée on lit à la volé.
+            //version optimisée on lit à la volée.
             //TODO parser le résultat et le traiter
             Object result = null;
             if (result == null) {
                 throw new LogicException("result est nulle");
             }
             else {
-                return new ArrayList<CityBean>();
+                return new ArrayList<>();
             }
         }
         catch (LogicException e) {
@@ -78,6 +78,7 @@ public class CityWS {
 
     /**
      * Recuperer le flux de réponse de la requete
+     *
      * @param url
      * @return
      * @throws LogicException
@@ -85,7 +86,7 @@ public class CityWS {
     private InputStreamReader getReader(String url) throws LogicException {
 
         try {
-            // Envoi de la requête
+            // Envoie de la requête
             InputStream inputStream = sendRequest(new URL(url));
             if (inputStream == null) {
                 throw new LogicException("inputStream à null");
@@ -101,6 +102,7 @@ public class CityWS {
 
     /**
      * Envoyer la requete
+     *
      * @param url
      * @return
      * @throws Exception

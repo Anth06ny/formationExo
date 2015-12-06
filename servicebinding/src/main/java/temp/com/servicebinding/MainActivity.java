@@ -23,6 +23,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     // ServiceConnection permet de gérer l'état du lien entre l'activité et le service.
     private ServiceConnection serviceConnection;
+
     //L'instance du service
     private UpdateDataService updateDataService;
 
@@ -109,9 +110,9 @@ public class MainActivity extends Activity implements OnClickListener {
                 }
             };
         }
-        //démarre le service si il n'est pas démarré
+        //démarre le service s'il n'est pas démarré
         //Le binding du service est configuré avec "BIND_AUTO_CREATE" ce qui normalement
-        //démarre le service si il n'est pas démarrer, la différence ici est que le fait de
+        //démarre le service s'il n'est pas démarré, la différence ici est que le fait de
         //démarrer le service par "startService" fait que si l'activité est détruite, le service
         //reste en vie
         startService(new Intent(this, UpdateDataService.class));

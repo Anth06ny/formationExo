@@ -79,9 +79,9 @@ public class BackgroundService extends Service implements LocationListener {
         final Double latitude = location.getLatitude();
         final Double longitude = location.getLongitude();
 
-        Toast.makeText(this, "Coordonées : lat=" + latitude + " Lon=" + longitude, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Coordonnées : lat=" + latitude + " Lon=" + longitude, Toast.LENGTH_SHORT).show();
 
-        //Par le biais d'otto on envoie un resultat à toute activitée qui ecoutent ce type de poste
+        //Par le biais d'otto on envoie un resultat à toutes activitées qui ecoutent ce type de poste
         MyApplication.getEventBus().post(new BackgroundServiceEvent(latitude, longitude));
 
     }

@@ -22,7 +22,7 @@ public class ChargementEleveAT extends AsyncTask<Void, Integer, String> {
 
     public ChargementEleveAT(final CallBack callBack) {
         this.callBack = callBack;
-        eleveList = new ArrayList<Eleve>();
+        eleveList = new ArrayList<>();
         random = new Random();
     }
 
@@ -38,8 +38,9 @@ public class ChargementEleveAT extends AsyncTask<Void, Integer, String> {
 
     @Override
     /**
-     * traitement
-     * Jamais sur l'UIThread
+     * Traitement jamais sur l'UIThread.
+     * Genere un chiffre aleatoire, 2 chance sur 3 de retourner une liste d'eleve, et 1 chance sur 3 de retourner un message d'erreur
+     *
      */
     protected String doInBackground(final Void... arg0) {
         //Appel WS avec attente

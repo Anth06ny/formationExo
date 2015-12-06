@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         bt_ok = (Button) findViewById(R.id.bt_ok);
         lv = (ListView) findViewById(R.id.lv);
 
-        cityBeanArrayList = new ArrayList<CityBean>();
+        cityBeanArrayList = new ArrayList<>();
 
         cityAdapter = new CityAdapter(this, cityBeanArrayList);
         lv.setAdapter(cityAdapter);
@@ -56,7 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == bt_ok) {
             if (StringUtils.isNotBlank(et.getText().toString())) {
-                new WSAsyncTask().execute();
+                new WSAsyncTask(et.getText().toString()).execute();
             }
         }
     }
@@ -69,6 +69,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         private Dialog waintingDialog;
         private List<CityBean> result = null;
+        private String cp;
+
+        public WSAsyncTask(String cp) {
+            this.cp = cp;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -82,7 +87,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         protected LogicException doInBackground(Void... params) {
 
             try {
-                result = cityWS.getCity(et.getText().toString());
+                result = cityWS.getCity(cp);
                 return null;
             }
             catch (LogicException e) {

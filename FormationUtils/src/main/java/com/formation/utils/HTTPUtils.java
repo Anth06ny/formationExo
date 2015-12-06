@@ -2,12 +2,6 @@ package com.formation.utils;
 
 import android.util.Log;
 
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,22 +68,4 @@ public class HTTPUtils {
         return builder.toString();
     }
 
-    /**
-     * Est ce que google répond.
-     */
-    public static boolean pingGoogle() {
-        HttpGet httpGet = new HttpGet("http://www.google.com");
-        HttpParams httpParameters = new BasicHttpParams();
-        // Set the timeout in milliseconds until a connection is established.
-        // The default value is zero, that means the timeout is not used.
-        int timeoutConnection = 3000;
-        HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
-        HttpConnectionParams.setSoTimeout(httpParameters, timeoutConnection);
-        try {
-            new DefaultHttpClient(httpParameters).execute(httpGet);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }

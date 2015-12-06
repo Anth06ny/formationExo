@@ -23,7 +23,7 @@ public class SecondActivity extends Activity implements OnClickListener {
     private ListView lv;
     private Button bt;
 
-    //donn�es
+    //donnees
     private ArrayList<Eleve> eleveBeanList;
 
     //outils
@@ -72,7 +72,7 @@ public class SecondActivity extends Activity implements OnClickListener {
         //on le sauvegarde en base
         saveEleveInBDD(eleveBean);
         eleveBeanList.add(eleveBean);
-        //on previent la liste que les donn�es ont chang�es
+        //on previent la liste que les donnees ont changees
         eleveAdapter.notifyDataSetChanged();
     }
 

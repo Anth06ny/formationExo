@@ -20,7 +20,7 @@ public class EleveAdapter extends BaseAdapter {
     private final List<Eleve> eleveBeanList;
 
     public EleveAdapter(final Context context, final List<Eleve> eleveBeanList) {
-        //Pour permettre la création de composant graphique
+        //Pour permettre la création de composants graphiques
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //la liste qu'on veut afficher
         this.eleveBeanList = eleveBeanList;
@@ -51,7 +51,7 @@ public class EleveAdapter extends BaseAdapter {
         //-------------------------
         final ViewHolder viewHolder;
         if (rowView == null) {
-            //cr�ation
+            //creation
             rowView = mInflater.inflate(R.layout.eleve_cellule, null);
 
             viewHolder = new ViewHolder();

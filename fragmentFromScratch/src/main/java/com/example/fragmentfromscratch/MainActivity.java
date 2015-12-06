@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements CallBack {
         //le fragment 2
         fl_fragment2 = (FrameLayout) findViewById(R.id.fl_fragment2);
 
-        //Si on souhaite afficher 2 fragment en même temps
+        //Si on souhaite afficher 2 fragments en même temps
         if (MyApplication.getInstance().isTwoPane()) {
             fl_fragment2.setVisibility(View.VISIBLE);
         }
@@ -52,7 +52,7 @@ public class MainActivity extends Activity implements CallBack {
         super.onStart();
 
 
-        //On verifie si les fragment n'existent pas déjà. Ceux ci peuvebt avoir été recréer par android lors d'une
+        //On verifie si les fragments n'existent pas déjà. Ceux-ci peuvent avoir été recréées par le systeme lors d'une
         // rotation d'écran par exemple. On les récupère grâce à leur tag.
         listFragment = (ListFragment) getFragmentManager().findFragmentByTag(ListFragment.class.toString());
         detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag(DetailFragment.class.toString());
@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements CallBack {
         }
 
         if (MyApplication.getInstance().isTwoPane()) {
-            //On est obligé de recréer le fragment car Android n'autorise pas le déplacement de fragment dans un autre
+            //On est obligé de recréer le fragment car le systeme n'autorise pas le déplacement de fragment dans un autre
             // frameLayout
             if(detailFragment != null) {
                 detailFragment = (DetailFragment) recreateFragment(detailFragment);

@@ -17,7 +17,7 @@ public class CityAdapter extends BaseAdapter {
     private final List<CityBean> cityBeanList;
 
     public CityAdapter(final Context context, final List<CityBean> cityBeanList) {
-        //Pour permettre la création de composant graphique
+        //Pour permettre la création de composants graphiques
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //la liste qu'on veut afficher
         this.cityBeanList = cityBeanList;
@@ -48,7 +48,7 @@ public class CityAdapter extends BaseAdapter {
         //-------------------------
         final ViewHolder viewHolder;
         if (rowView == null) {
-            //cr�ation
+            //creation
             rowView = mInflater.inflate(R.layout.city_cellule, null);
 
             viewHolder = new ViewHolder();

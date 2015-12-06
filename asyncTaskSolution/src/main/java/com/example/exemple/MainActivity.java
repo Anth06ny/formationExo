@@ -20,7 +20,7 @@ import java.util.List;
 
 public class MainActivity extends Activity implements OnClickListener, CallBack {
 
-    //composants graphique
+    //composants graphiques
     private ListView lv;
     private Button bt;
     private TextView tv_message;
@@ -42,7 +42,7 @@ public class MainActivity extends Activity implements OnClickListener, CallBack 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        eleveList = new ArrayList<Eleve>();
+        eleveList = new ArrayList<>();
         eleveAdapter = new EleveAdapter(this, eleveList);
 
         lv = (ListView) findViewById(R.id.lv);
@@ -68,7 +68,7 @@ public class MainActivity extends Activity implements OnClickListener, CallBack 
     //-------------------*/
     @Override
     public void onClick(final View v) {
-        //si la tache n'existe pas ou qu'elle est terminée on en recrée une.
+        //Si la tache n'existe pas ou qu'elle est terminée on en recrée une.
         //on ne peut executer qu'une seul fois une AsyncTask
         if (chargementEleveAT == null || chargementEleveAT.getStatus() == Status.FINISHED) {
             chargementEleveAT = new ChargementEleveAT(this);
