@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\gson-2.3-62ca8ccf9c158e8ec16b3c3dbc44b27cb584787c.jar" />
+    </item>
+    <item
         jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -14,6 +21,13 @@
         revision="23.0.1"
         sha1="9b1fb1094158956d7f5072b701d2b3f4d30e7f94">
         <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-029c3949a862157bee8aa9e2e693f3e904a0cbe0.jar" />
+    </item>
+    <item
+        jar="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9b1fb1094158956d7f5072b701d2b3f4d30e7f94">
+        <dex dex="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\classes-a2a29d458dc6d41adbe99b683e55f29700ab4b49.jar" />
     </item>
     <item
         jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar"

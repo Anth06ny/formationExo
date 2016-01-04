@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.formation.utils.PopupsManager;
-import com.formation.utils.exceptions.LogicException;
 import com.formation.webservice.bean.CityBean;
 
 import org.apache.commons.lang3.StringUtils;
@@ -22,7 +21,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private EditText et;
     private Button bt_ok;
-    private CityWS cityWS;
     private ListView lv;
     private CityAdapter cityAdapter;
     private ArrayList<CityBean> cityBeanArrayList;
@@ -41,14 +39,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         cityAdapter = new CityAdapter(this, cityBeanArrayList);
         lv.setAdapter(cityAdapter);
 
-        try {
-            cityWS = new CityWS();
-        }
-        catch (LogicException e) {
-            e.printStackTrace();
-            updateError(e);
-        }
-
         bt_ok.setOnClickListener(this);
     }
 
@@ -61,11 +51,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void updateError(LogicException e) {
-        PopupsManager.showPopup(this, e.getMessageUtilisateur(), null);
+    private void updateError(Exception e) {
+        PopupsManager.showPopup(this, e.getMessage(), null);
     }
 
-    public class WSAsyncTask extends AsyncTask<Void, Void, LogicException> {
+    public class WSAsyncTask extends AsyncTask<Void, Void, Exception> {
 
         private Dialog waintingDialog;
         private List<CityBean> result = null;
@@ -84,20 +74,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
 
         @Override
-        protected LogicException doInBackground(Void... params) {
+        protected Exception doInBackground(Void... params) {
 
             try {
-                result = cityWS.getCity(cp);
+                result = CityWS.getCity(cp);
                 return null;
             }
-            catch (LogicException e) {
+            catch (Exception e) {
                 e.printStackTrace();
                 return e;
             }
         }
 
         @Override
-        protected void onPostExecute(LogicException le) {
+        protected void onPostExecute(Exception le) {
             waintingDialog.dismiss();
 
             if (le != null) {

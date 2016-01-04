@@ -16,7 +16,7 @@ public class MainActivity extends Activity implements ZBarScannerView.ResultHand
         super.onCreate(savedInstanceState);
 
         mScannerView = new ZBarScannerView(this);
-        setContentView(mScannerView);
+        setContentView(mScannerView);                               ²
 
     }
 
