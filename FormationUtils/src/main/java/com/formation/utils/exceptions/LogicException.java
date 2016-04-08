@@ -5,22 +5,19 @@ package com.formation.utils.exceptions;
  */
 public class LogicException extends ExceptionA {
 
-    private static final String exceptionName = LogicException.class.getName();
-
     /**
      * On n'affiche qu'un message pour l'utilisateur
      *
      * @param messageUtilisateur
      */
     public LogicException(String messageUtilisateur) {
-        super(exceptionName, messageUtilisateur, null);
+        this(messageUtilisateur, null);
     }
 
     /**
      * On n'affiche qu'un message pour l'utilisateur
-     *
      */
     public LogicException(String messageUtilisateur, Throwable e) {
-        super(exceptionName, messageUtilisateur, null, e);
+        super(messageUtilisateur, null, e);
     }
 }

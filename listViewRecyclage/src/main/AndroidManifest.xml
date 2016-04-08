@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.exemple"
-          xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    package="com.example.exemple"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
 
@@ -19,9 +20,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.exemple.SecondActivity"
+            android:name=".ListViewActivity"
             android:label="@string/title_activity_second">
         </activity>
-    </application>
+        <activity
+            android:name=".recycleview.RecycleViewActivity"></activity>
 
+    </application>
 </manifest>

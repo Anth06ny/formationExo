@@ -15,6 +15,8 @@ public class MyApplication extends Application {
         eventBus = new Bus(ThreadEnforcer.ANY);
     }
 
+
+
     public static Bus getEventBus() {
         return eventBus;
     }

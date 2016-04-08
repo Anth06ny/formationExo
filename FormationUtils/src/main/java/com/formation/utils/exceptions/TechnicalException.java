@@ -6,15 +6,13 @@ package com.formation.utils.exceptions;
  */
 public class TechnicalException extends ExceptionA {
 
-    private static final String exceptionName = TechnicalException.class.getName();
-
     /**
      * On affichera un message par defaut pour l'utilisateur
      *
      * @param messageTechnique
      */
     public TechnicalException(String messageTechnique) {
-        super(exceptionName, "Une erreur technique est intervenue", messageTechnique);
+        this("Une erreur technique est intervenue", null);
     }
 
     /**
@@ -23,7 +21,7 @@ public class TechnicalException extends ExceptionA {
      * @param messageTechnique
      */
     public TechnicalException(String messageTechnique, Throwable throwable) {
-        super(exceptionName, "Une erreur technique est intervenue", messageTechnique, throwable);
+        super( "Une erreur technique est intervenue", messageTechnique, throwable);
     }
 
 }

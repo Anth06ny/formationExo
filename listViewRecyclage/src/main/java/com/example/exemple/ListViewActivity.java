@@ -1,8 +1,7 @@
 package com.example.exemple;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -15,7 +14,7 @@ import com.formation.utils.bean.Eleve;
 
 import java.util.ArrayList;
 
-public class SecondActivity extends Activity implements OnClickListener, AdapterView.OnItemClickListener {
+public class ListViewActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener {
 
     private final static String SAVE_LIST_KEY = "SAVE_LIST_KEY";
 
@@ -36,7 +35,7 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_listview);
 
         eleveList = new ArrayList<>();
 
@@ -61,11 +60,6 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
     /**
      * on récupère des objets si l'activité a du être recréée
      */
@@ -75,13 +69,6 @@ public class SecondActivity extends Activity implements OnClickListener, Adapter
             ArrayList<Eleve> temp = savedInstanceState.getParcelableArrayList(SAVE_LIST_KEY);
             eleveList.addAll(temp);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(final Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.second, menu);
-        return true;
     }
 
     //--------------------

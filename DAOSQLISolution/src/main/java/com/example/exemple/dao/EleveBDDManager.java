@@ -1,10 +1,10 @@
 package com.example.exemple.dao;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.exemple.MyApplication;
 import com.example.exemple.bean.Eleve;
 
 import java.util.ArrayList;
@@ -17,39 +17,18 @@ import java.util.List;
 public class EleveBDDManager {
 
     public static final String TABLE_ELEVE = "Eleve";
-
     private static final String COL_ID = "ID";
     private static final String COL_PRENOM = "Prenom";
     private static final String COL_NOM = "Nom";
 
-    public static final String CREATE_ELEVE_TABLE = "CREATE TABLE " + TABLE_ELEVE + " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+    public static final String CREATE_ELEVE_TABLE = "CREATE TABLE " + TABLE_ELEVE
+            + " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COL_PRENOM + " TEXT NOT NULL, " + COL_NOM + " TEXT NOT NULL);";
 
-    private SQLiteDatabase bdd;
-    private MaBaseSQLite maBaseSQLite;
 
-    public EleveBDDManager(Context context) {
-        //On créer la BDD et sa table
-        maBaseSQLite = new MaBaseSQLite(context, null);
-    }
-
-    /* *****************************
-     * Gestion session ***
-     *****************************   */
-    private void open() {
-        bdd = maBaseSQLite.getWritableDatabase();
-    }
-
-    private void close() {
-        bdd.close();
-    }
-
-    /* *****************************
-    *           Acces BDD        ***
-    *****************************   */
-
-    public void insertEleve(Eleve eleve) {
-        open();
+    public static void insertEleve(Eleve eleve) {
+        //Open en écriture
+        SQLiteDatabase bdd = MyApplication.getMaBaseSQLite().getWritableDatabase();
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associée à une clé (qui est le nom de la colonne dans laquelle on veut mettre la
@@ -61,45 +40,52 @@ public class EleveBDDManager {
         if (eleve.getId() == -1) {
             //gestion erreur
         }
-        close();
+        bdd.close();
     }
 
-    public int updateEleve(Eleve eleve) {
-        open();
+
+
+    /* *****************************
+    *           Acces BDD        ***
+    *****************************   */
+
+
+    public static int updateEleve(Eleve eleve) {
+        SQLiteDatabase bdd = MyApplication.getMaBaseSQLite().getWritableDatabase();
         //La mise à jour d'un élève dans la BDD fonctionne plus ou moins comme une insertion
         //il faut simplement préciser quel élève on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
         values.put(COL_PRENOM, eleve.getPrenom());
         values.put(COL_NOM, eleve.getNom());
         int result = bdd.update(TABLE_ELEVE, values, COL_ID + " = " + eleve.getId(), null);
-        close();
+        bdd.close();
         return result;
     }
 
-    public int removeEleveWithID(int id) {
-        open();
+    public static int removeEleveWithID(int id) {
+        SQLiteDatabase bdd = MyApplication.getMaBaseSQLite().getWritableDatabase();
         //Suppression d'un élève de la BDD grâce à l'ID
         int result = bdd.delete(TABLE_ELEVE, COL_ID + " = " + id, null);
-        close();
+        bdd.close();
         return result;
     }
 
-    public List<Eleve> getAllEleves() {
-        open();
+    public static List<Eleve> getAllEleves() {
+        SQLiteDatabase bdd = MyApplication.getMaBaseSQLite().getWritableDatabase();
         //Récupère dans un Cursor tous les élèves
-        Cursor c = bdd.query(TABLE_ELEVE, new String[] { COL_ID, COL_PRENOM, COL_NOM }, null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_ELEVE, new String[]{COL_ID, COL_PRENOM, COL_NOM}, null, null, null, null, null);
         List<Eleve> result = cursorToEleves(c);
-        close();
+        bdd.close();
         return result;
     }
 
-    public List<Eleve> getElevesWithPrenom(String prenom) {
-        open();
+    public static List<Eleve> getElevesWithPrenom(String prenom) {
+        SQLiteDatabase bdd = MyApplication.getMaBaseSQLite().getWritableDatabase();
         //Récupère dans un Cursor tous les élèves correspondant au prénom
-        Cursor c = bdd.query(TABLE_ELEVE, new String[] { COL_ID, COL_PRENOM, COL_NOM }, COL_PRENOM + " LIKE \"" + prenom + "\"", null, null, null,
+        Cursor c = bdd.query(TABLE_ELEVE, new String[]{COL_ID, COL_PRENOM, COL_NOM}, COL_PRENOM + " LIKE \"" + prenom + "\"", null, null, null,
                 null);
         List<Eleve> result = cursorToEleves(c);
-        close();
+        bdd.close();
         return result;
     }
 
@@ -108,7 +94,7 @@ public class EleveBDDManager {
     *****************************   */
 
     //Cette méthode permet de convertir un cursor en list d'Eleve
-    private List<Eleve> cursorToEleves(Cursor c) {
+    private static List<Eleve> cursorToEleves(Cursor c) {
         ArrayList<Eleve> eleveListe = new ArrayList<Eleve>();
 
         if (c != null) {
@@ -128,11 +114,5 @@ public class EleveBDDManager {
         return eleveListe;
     }
 
-    /* *****************************
-     *******  Gestion session   ***
-     *****************************   */
 
-    public SQLiteDatabase getBDD() {
-        return bdd;
-    }
 }

@@ -30,6 +30,7 @@ public class CommonActivity extends Activity {
         progressDialog = PopupsManager.createProgressPopup(this, getString(R.string.loading));
     }
 
+
     /**
      * Override of the setContentView Method to 'inject' the layout passed as parameter into a frameLayout, with this layout organization, UpActivity will
      * provide facilities to put/remove progressBar whenever needed + generic behaviour for Back and Home button / Title of the screen
@@ -67,6 +68,7 @@ public class CommonActivity extends Activity {
     //------------------------
     // Update
     //------------------------
+
     /**
      * Update the screen title (this could occur during an async update of the underlying screen)
      *
@@ -91,7 +93,9 @@ public class CommonActivity extends Activity {
 
     private int progressCount = 0;
 
-    /** Handler pemettant de gerer certains evenements. */
+    /**
+     * Handler pemettant de gerer certains evenements.
+     */
     private Handler getHandler() {
         return new Handler() {
 

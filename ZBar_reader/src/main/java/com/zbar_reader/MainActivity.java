@@ -16,8 +16,7 @@ public class MainActivity extends Activity implements ZBarScannerView.ResultHand
         super.onCreate(savedInstanceState);
 
         mScannerView = new ZBarScannerView(this);
-        setContentView(mScannerView);                               ²
-
+        setContentView(mScannerView);
     }
 
     @Override
@@ -44,7 +43,5 @@ public class MainActivity extends Activity implements ZBarScannerView.ResultHand
         Toast.makeText(this, "Contents = " + rawResult.getContents() + ", Format = " + rawResult.getBarcodeFormat().getName(), Toast.LENGTH_SHORT)
                 .show();
         mScannerView.startCamera();
-
     }
-
 }

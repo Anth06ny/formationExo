@@ -12,8 +12,8 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
     private static final String NOM_BDD = "mabase.db";
     private static final int VERSION_BDD = 1;
 
-    public MaBaseSQLite(Context context, SQLiteDatabase.CursorFactory factory) {
-        super(context, NOM_BDD, factory, VERSION_BDD);
+    public MaBaseSQLite(Context context) {
+        super(context, NOM_BDD, null, VERSION_BDD);
     }
 
     @Override

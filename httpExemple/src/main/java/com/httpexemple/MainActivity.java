@@ -2,6 +2,7 @@ package com.httpexemple;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 
 import com.formation.utils.ConnectivityUtils;
 import com.formation.utils.HTTPUtils;
-import com.formation.utils.PopupsManager;
 import com.formation.utils.ToastUtils;
 
 import java.io.IOException;
@@ -41,13 +41,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         //Reglages de la webView
         WebSettings webviewSettings = webviewResultat.getSettings();
-        webviewSettings.setUseWideViewPort(true);
         webviewSettings.setJavaScriptEnabled(true);
-        webviewSettings.setBuiltInZoomControls(true);
-        webviewSettings.setLoadWithOverviewMode(true);
-        webviewSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
 
-        waintingDialog = PopupsManager.createProgressPopup(this, getString(R.string.loading));
+        waintingDialog = ProgressDialog.show(this, "Chargement en cours", "Veuillez patientez", true, false);
+
 
         btLoad.setOnClickListener(this);
     }
@@ -64,8 +61,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             if (!ConnectivityUtils.isConnected(this)) {
                 ToastUtils.showToastOnUIThread(this, "Pas de connexion internet", Toast.LENGTH_LONG);
-            }
-            else {
+            } else {
                 String url = et.getText().length() == 0 ? et.getHint().toString() : et.getText().toString();
 
                 waintingDialog.show();
@@ -94,8 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         protected String doInBackground(Void... params) {
             try {
                 return HTTPUtils.downloadUrl(url);
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 return e.getMessage();
             }
         }
@@ -104,7 +99,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             tvResultat.setText(s);
-
             waintingDialog.cancel();
 
         }

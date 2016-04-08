@@ -48,7 +48,7 @@ public class SMSReceiver extends BroadcastReceiver {
         }
         //Wifi on / off
         else if (intent.getAction().equals(WifiManager.WIFI_STATE_CHANGED_ACTION)) {
-            switch (intent.getExtras().getInt(WifiManager.EXTRA_WIFI_STATE)) {
+            switch (intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, WifiManager.WIFI_STATE_UNKNOWN)) {
                 case WifiManager.WIFI_STATE_DISABLING:
                     Toast.makeText(context, "WIFI_STATE_DISABLING", Toast.LENGTH_SHORT).show();
                     break;
