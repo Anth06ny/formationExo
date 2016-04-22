@@ -4,8 +4,6 @@ import com.formation.webservice.bean.CityBean;
 import com.formation.webservice.bean.ResultBean;
 import com.google.gson.Gson;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -25,7 +23,7 @@ public class CityWS {
     private final static String CP_PARAM = "cp";
 
     public static List<CityBean> getCity(String postalCode) throws Exception {
-        if (StringUtils.isBlank(postalCode)) {
+        if (postalCode == null) {
             throw new Exception("Le code postal n'a pas été remplie");
         }
         String urlString = CITY_REQ + "&" + CP_PARAM + "=" + postalCode;
@@ -57,27 +55,21 @@ public class CityWS {
             ResultBean result = gson.fromJson(inputStreamReader, ResultBean.class);
             if (result == null) {
                 throw new Exception("result est nulle");
-            }
-            else if (result.getErrors() != null) {
+            } else if (result.getErrors() != null) {
                 throw new Exception(result.getErrors().getMessage());
-            }
-            else if (result.getCityBean() == null) {
+            } else if (result.getCityBean() == null) {
                 throw new Exception("result.getCityBean() est nulle");
-            }
-            else {
+            } else {
                 return Arrays.asList(result.getCityBean());
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw e;
-        }
-        finally {
+        } finally {
             try {
                 if (reader != null) {
                     reader.close();
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
             }
         }
     }
