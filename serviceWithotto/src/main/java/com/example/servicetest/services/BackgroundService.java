@@ -1,13 +1,16 @@
 package com.example.servicetest.services;
 
+import android.Manifest;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import com.example.servicetest.MyApplication;
@@ -32,13 +35,19 @@ public class BackgroundService extends Service implements LocationListener {
         timer = new Timer();
         locationMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
         //On teste si le provider existe avant de s'y abonner, sinon ca plante.
-        if (locationMgr.getAllProviders().contains(LocationManager.NETWORK_PROVIDER))
+        if (locationMgr.getAllProviders().contains(LocationManager.NETWORK_PROVIDER)) {
             locationMgr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, this);
+        }
 
-        if (locationMgr.getAllProviders().contains(LocationManager.GPS_PROVIDER))
+        if (locationMgr.getAllProviders().contains(LocationManager.GPS_PROVIDER)) {
             locationMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, this);
-
+        }
     }
 
     @Override
@@ -61,7 +70,12 @@ public class BackgroundService extends Service implements LocationListener {
         super.onDestroy();
         //desabonne
         MyApplication.getEventBus().unregister(this);
-        locationMgr.removeUpdates(this);
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationMgr.removeUpdates(this);
+        }
+
         this.timer.cancel();
     }
 
@@ -83,7 +97,6 @@ public class BackgroundService extends Service implements LocationListener {
 
         //Par le biais d'otto on envoie un resultat à toutes activitées qui ecoutent ce type de poste
         MyApplication.getEventBus().post(new BackgroundServiceEvent(latitude, longitude));
-
     }
 
     @Override
@@ -118,7 +131,8 @@ public class BackgroundService extends Service implements LocationListener {
         if (event.stopService) {
             Toast.makeText(this, "Le service s'arrete", Toast.LENGTH_SHORT).show();
             stopSelf();
-        } else if (event.restartService) {
+        }
+        else if (event.restartService) {
             //do what you whant
         }
     }

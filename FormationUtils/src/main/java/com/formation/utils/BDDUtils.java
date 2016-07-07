@@ -30,13 +30,10 @@ public class BDDUtils {
         File downloadDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "/" + tableName);
 
         try {
-
             if (database.exists()) {
-
                 if (!downloadDirectory.exists()) {
                     downloadDirectory.createNewFile();
                 }
-
                 InputStream in = new FileInputStream(database);
                 OutputStream out = new FileOutputStream(downloadDirectory);
 
@@ -60,7 +57,6 @@ public class BDDUtils {
 
             //Permet de le voir directement dans windows
             MediaScannerConnection.scanFile(context, new String[] { downloadDirectory.getAbsolutePath() }, null, null);
-
         }
         catch (IOException e) {
             e.printStackTrace();

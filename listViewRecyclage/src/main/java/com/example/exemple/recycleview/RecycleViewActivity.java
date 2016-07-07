@@ -34,7 +34,6 @@ public class RecycleViewActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_recycleview);
 
         rv = (RecyclerView) findViewById(R.id.rv);
-        rv = new RecyclerView(this);
         bt = (Button) findViewById(R.id.bt);
 
         eleveList = new ArrayList<>();

@@ -2,53 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\gson-2.3-62ca8ccf9c158e8ec16b3c3dbc44b27cb584787c.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-5f40497ace534d2a7a17fca5f036bff9070b0c3f.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="9b1fb1094158956d7f5072b701d2b3f4d30e7f94">
-        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\classes-029c3949a862157bee8aa9e2e693f3e904a0cbe0.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="9b1fb1094158956d7f5072b701d2b3f4d30e7f94">
-        <dex dex="D:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\classes-a2a29d458dc6d41adbe99b683e55f29700ab4b49.jar" />
-    </item>
-    <item
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="90a3822c38ec8c996e84c16a3477ef632cbc87a3">
-        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\commons-lang3-3.3.2-8a15c1682585894376a9510f34916d7f3a8a38c6.jar" />
-    </item>
-    <item
-        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-0ba23d30e82ca3f6e12a064da746f3a00bb0b6ca.jar" />
-    </item>
-    <item
-        jar="D:\workspace_studio\formation\smsBroadCast\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="D:\workspace_studio\formation\smsBroadCast\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-a97c3925cf3ffafa8be5f0927e6fd4cb79cd4a8c.jar" />
+        jar="D:\workspace_studio\formation\notificationexemple\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="126b1c10a91e42c7a1f0506b0b50697804d6fc7c">
+        <dex dex="D:\workspace_studio\formation\notificationexemple\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_16adf4076f6d933f3e15370b0e9cb63675829940\classes.dex" />
     </item>
 
 </items>

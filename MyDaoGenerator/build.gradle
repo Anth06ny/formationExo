@@ -4,6 +4,7 @@ project(':MyDaoGenerator') {
 
     mainClassName = "pl.surecase.eu.MyDaoGenerator"
     // edit output direction
+    def output =  "../DAOGreenSolution/src/main/java-gen"
 
     dependencies {
         compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -11,11 +12,11 @@ project(':MyDaoGenerator') {
     }
 
     task createDocs {
-        def docs = file("../DAOGreenSolution/src/main/java-gen")
+        def docs = file(output)
         docs.mkdirs()
     }
 
     run {
-        args "../DAOGreenSolution/src/main/java-gen"
+        args output
     }
 }

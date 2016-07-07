@@ -1,7 +1,6 @@
-include ':app', ':FormationUtils', ':MyDaoGenerator', ':BoutonExemple', ':GraphExemple', ':ZBar_reader', ':GoogleMap', ':servicebinding',
-        ':FacebookLogin', ':facebook', ':Simple Facebook', ':webServiceGSONSolution', 'WebServiceGSONExercice', ':testunitaireexemple', ':TestUnitaireRobotium'
-include ':MainActivityAndHandler'
-include ':asyncTask', ':asyncTaskSolution'
+include ':app', ':FormationUtils', ':MyDaoGenerator', ':BoutonExemple', ':GraphExemple', ':ZBar_reader', ':GoogleMap', ':servicebinding', ':notificationexemple',
+        ':FacebookLogin', ':facebook', ':Simple Facebook', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium'
+include ':asyncTaskSolution'
 include ':fragmentFromScratch'
 include ':MainActivityAndHandlerSolution'
 include ':listViewRecyclage'
@@ -10,5 +9,4 @@ include ':serviceWithotto'
 include ':smsBroadCast'
 include ':DAOSQLISolution'
 include ':DAOGreenSolution'
-include ':DAOExercice'
 include ':httpExemple'

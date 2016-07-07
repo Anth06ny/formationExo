@@ -1,6 +1,7 @@
 package com.formation.utils.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public class EleveAdapter extends BaseAdapter {
         //-------------------------
         final ViewHolder viewHolder;
         if (rowView == null) {
+            Log.w("TAG", "Création");
             //cr�ation
             rowView = mInflater.inflate(R.layout.eleve_cellule, null);
 
@@ -61,6 +63,7 @@ public class EleveAdapter extends BaseAdapter {
             rowView.setTag(viewHolder);
         }
         else {
+            Log.w("TAG", "Recyclage");
             //recyclage
             viewHolder = (ViewHolder) rowView.getTag();
         }
@@ -87,5 +90,4 @@ public class EleveAdapter extends BaseAdapter {
         public ImageView ec_iv;
         public Eleve eleveBean;
     }
-
 }
