@@ -116,6 +116,7 @@ public class MainActivity extends Activity implements OnClickListener {
         //démarrer le service par "startService" fait que si l'activité est détruite, le service
         //reste en vie
         startService(new Intent(this, UpdateDataService.class));
+
         Intent intent = new Intent(this, UpdateDataService.class);
         //lance le binding du service
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);

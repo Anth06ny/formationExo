@@ -15,6 +15,38 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Show me AlertDialog"
+        android:id="@+id/bt_alert_dialog"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show me a TimePicker"
+        android:id="@+id/bt_timepicker"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show me a DatePicker"
+        android:id="@+id/bt_date_picker"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date : "
+        android:id="@+id/tv_date"
+        android:layout_gravity="left"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send me a notification at"
+        android:id="@+id/bt_notif_date"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Send me a notification in 10 seconds"
         android:id="@+id/button"
         android:layout_centerInParent="true"/>
@@ -22,6 +54,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show me a TimePicker"
-        android:id="@+id/bt_timepicker"/>
+        android:text="Notification With Button"
+        android:id="@+id/bt_notif_with_button"/>
+
 </LinearLayout>

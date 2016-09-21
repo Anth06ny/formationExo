@@ -1,13 +1,13 @@
 package com.httpexemple;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,8 +26,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView tvResultat;
     private WebView webviewResultat;
 
-    private Dialog waintingDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +41,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         WebSettings webviewSettings = webviewResultat.getSettings();
         webviewSettings.setJavaScriptEnabled(true);
 
-        waintingDialog = ProgressDialog.show(this, "Chargement en cours", "Veuillez patientez", true, false);
-
+        webviewResultat.setWebViewClient(new WebViewClient());
 
         btLoad.setOnClickListener(this);
     }
@@ -61,10 +58,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             if (!ConnectivityUtils.isConnected(this)) {
                 ToastUtils.showToastOnUIThread(this, "Pas de connexion internet", Toast.LENGTH_LONG);
-            } else {
+            }
+            else {
                 String url = et.getText().length() == 0 ? et.getHint().toString() : et.getText().toString();
-
-                waintingDialog.show();
 
                 //utilise le mechanisme des handler on peut lancer l'appel sur le main thread
                 webviewResultat.loadUrl(url);
@@ -81,16 +77,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public class LoadPageAT extends AsyncTask<Void, Void, String> {
 
         private String url;
+        private ProgressDialog progressDialog;
 
         public LoadPageAT(String url) {
             this.url = url;
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(MainActivity.this, "", "Chargement...");
+        }
+
+        @Override
         protected String doInBackground(Void... params) {
             try {
                 return HTTPUtils.downloadUrl(url);
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 return e.getMessage();
             }
         }
@@ -99,9 +103,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             tvResultat.setText(s);
-            waintingDialog.cancel();
-
+            progressDialog.cancel();
         }
     }
-
 }

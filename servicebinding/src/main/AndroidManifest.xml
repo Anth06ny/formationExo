@@ -28,7 +28,15 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.UpdateDataService"/>
+        <service
+            android:name=".services.UpdateDataService"
+            android:exported="true"
+            >
+            <!--<intent-filter>-->
+            <!--<action android:name="temp.com.servicebinding.services.UpdateDataService">-->
+            <!--</action>-->
+            <!--</intent-filter>-->
+        </service>
 
     </application>
 

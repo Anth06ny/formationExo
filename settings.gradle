@@ -1,4 +1,4 @@
-include ':app', ':FormationUtils', ':MyDaoGenerator', ':BoutonExemple', ':GraphExemple', ':ZBar_reader', ':GoogleMap', ':servicebinding', ':notificationexemple',
+include ':app', ':FormationUtils', ':MyDaoGenerator', ':BoutonExemple', ':GraphExemple', ':ZBar_reader', ':GoogleMap', ':servicebinding', ':notificationexemple', ':servicebinding2',
         ':FacebookLogin', ':facebook', ':Simple Facebook', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium'
 include ':asyncTaskSolution'
 include ':fragmentFromScratch'

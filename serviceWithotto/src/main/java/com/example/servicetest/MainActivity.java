@@ -74,6 +74,7 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(final View v) {
         if (v.getId() == R.id.startService) {
+            //Est ce qu'on a déjà la permission ?
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 final Intent intent = new Intent(this, BackgroundService.class);

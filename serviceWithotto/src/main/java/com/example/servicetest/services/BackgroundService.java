@@ -30,15 +30,15 @@ public class BackgroundService extends Service implements LocationListener {
     @Override
     public void onCreate() {
         super.onCreate();
-        MyApplication.getEventBus().register(this);
-
-        timer = new Timer();
-        locationMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
+
+        MyApplication.getEventBus().register(this);
+
+        timer = new Timer();
+        locationMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         //On teste si le provider existe avant de s'y abonner, sinon ca plante.
         if (locationMgr.getAllProviders().contains(LocationManager.NETWORK_PROVIDER)) {

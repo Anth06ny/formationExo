@@ -17,6 +17,9 @@ import java.util.List;
  */
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.ViewHolder> {
 
+    int normal= 1;
+    int image = 2;
+
     private List<Eleve> eleveBeanList;
     private RecycleViewAdapterListener recycleViewAdapterListener;
 
@@ -26,6 +29,8 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
         notifyDataSetChanged();
     }
+
+
 
     @Override
     public RecycleViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

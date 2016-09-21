@@ -21,6 +21,7 @@ public class RecycleViewActivity extends AppCompatActivity implements View.OnCli
     //Composant graphique
     private Button bt;
     private RecyclerView rv;
+    private RecyclerView.LayoutManager layoutManager;
 
     //metier
     private RecycleViewAdapter recycleViewAdapter;
@@ -44,7 +45,7 @@ public class RecycleViewActivity extends AppCompatActivity implements View.OnCli
         //est ce que la taille de la recycle view va changer ?
         rv.setHasFixedSize(true);
         //A ajouter obligatoirement
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setLayoutManager(layoutManager = new LinearLayoutManager(this));
         rv.setItemAnimator(new DefaultItemAnimator());
 
         recycleViewAdapter = new RecycleViewAdapter(eleveList, this);
@@ -67,7 +68,9 @@ public class RecycleViewActivity extends AppCompatActivity implements View.OnCli
         Eleve eleve = new Eleve("Nom" + eleveList.size(), "Prénom", eleveList.size() % 2 == 0);
         eleveList.add(0, eleve);
         //Pour permettre l'animation on indique qu'un élément à été ajouté à l'emplacement 0
-        //recycleViewAdapter.notifyItemInserted(0);
-        recycleViewAdapter.notifyDataSetChanged();
+        recycleViewAdapter.notifyItemInserted(0);
+        //recycleViewAdapter.notifyDataSetChanged();
+        //Remonte l'assenceur à la position 0
+        layoutManager.scrollToPosition(0);
     }
 }

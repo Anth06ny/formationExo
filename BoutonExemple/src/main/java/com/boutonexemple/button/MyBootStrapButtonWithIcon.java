@@ -107,7 +107,6 @@ public class MyBootStrapButtonWithIcon extends LinearLayout implements View.OnTo
         this.backGroundColor = backGroundColor;
         this.backGroundColorHighlight = backGroundColorHighlight;
         updateComposant();
-
     }
 
     private void updateComposant() {
@@ -123,5 +122,4 @@ public class MyBootStrapButtonWithIcon extends LinearLayout implements View.OnTo
     public ImageView getIv() {
         return iv;
     }
-
 }

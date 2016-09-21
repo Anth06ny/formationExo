@@ -22,7 +22,6 @@ public class UpdateDataService extends Service {
         //au démarrage du service, on créé le binder en envoyant le service
         iBinder = new UpdateDataServiceBinder(this);
         creationTime = System.currentTimeMillis();
-
     }
 
     @Override
@@ -33,7 +32,7 @@ public class UpdateDataService extends Service {
     @Override
     public int onStartCommand(final Intent intent, final int flags, final int startId) {
 
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
 
     @Override
@@ -46,7 +45,6 @@ public class UpdateDataService extends Service {
     // -------------------------------- */
 
     /**
-     *
      * @return Le temps en second d'existence du service
      */
     public long getServiceTimeExecutionInSecond() {
@@ -73,7 +71,9 @@ public class UpdateDataService extends Service {
         // Getter / Setter
         // -------------------------------- */
 
-        /** @return l'instance du service */
+        /**
+         * @return l'instance du service
+         */
         public UpdateDataService getUpdateDataService() {
             return updateDataService;
         }
