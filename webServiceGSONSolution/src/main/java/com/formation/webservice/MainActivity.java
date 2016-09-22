@@ -1,15 +1,18 @@
 package com.formation.webservice;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 
-import com.formation.utils.PopupsManager;
 import com.formation.webservice.bean.CityBean;
 
 import org.apache.commons.lang3.StringUtils;
@@ -19,11 +22,16 @@ import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    //Composant graphique
     private EditText et;
     private Button bt_ok;
-    private CityWS cityWS;
-    private ListView lv;
+    private RecyclerView rv;
+    private RecyclerView.LayoutManager layoutManager;
+
+    //metier
     private CityAdapter cityAdapter;
+
+    //donnees
     private ArrayList<CityBean> cityBeanArrayList;
 
     @Override
@@ -33,12 +41,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         et = (EditText) findViewById(R.id.et);
         bt_ok = (Button) findViewById(R.id.bt_ok);
-        lv = (ListView) findViewById(R.id.lv);
+        rv = (RecyclerView) findViewById(R.id.rv);
 
         cityBeanArrayList = new ArrayList<>();
 
-        cityAdapter = new CityAdapter(this, cityBeanArrayList);
-        lv.setAdapter(cityAdapter);
+        //est ce que la taille de la recycle view va changer ?
+        rv.setHasFixedSize(true);
+        //A ajouter obligatoirement
+        rv.setLayoutManager(layoutManager = new LinearLayoutManager(this));
+        rv.setItemAnimator(new DefaultItemAnimator());
+
+        cityAdapter = new CityAdapter(cityBeanArrayList);
+        rv.setAdapter(cityAdapter);
 
         bt_ok.setOnClickListener(this);
     }
@@ -53,7 +67,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void updateError(Exception e) {
-        PopupsManager.showPopup(this, e.getMessage(), null);
+        AlertDialog alertDialog = new AlertDialog.Builder(this).setMessage(e.getMessage()).setIcon(R.drawable.ic_launcher).setPositiveButton("Ok", null).show();
     }
 
     public class WSAsyncTask extends AsyncTask<Void, Void, Exception> {
@@ -70,7 +84,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            waintingDialog = PopupsManager.createProgressPopup(MainActivity.this, "Chargement en cours");
+            waintingDialog = ProgressDialog.show(MainActivity.this, "", "Chargement en cours...");
             waintingDialog.show();
         }
 
@@ -100,24 +114,5 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 cityAdapter.notifyDataSetChanged();
             }
         }
-    }
-
-
-
-    public class Jeu {
-        public Jeu(String t) {
-
-        }
-    }
-
-
-
-
-
-    public void dodzd() {
-
-        CityAdapter cityAdapter = new CityAdapter(this, cityBeanArrayList);
-        cityAdapter.notifyDataSetChanged();
-
     }
 }

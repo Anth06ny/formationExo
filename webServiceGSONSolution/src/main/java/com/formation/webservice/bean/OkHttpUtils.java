@@ -1,5 +1,7 @@
 package com.formation.webservice.bean;
 
+import android.util.Log;
+
 import java.net.HttpURLConnection;
 
 import okhttp3.Callback;
@@ -15,6 +17,7 @@ import okhttp3.Response;
 public class OkHttpUtils {
 
     public static String sendGetOkHttpRequest(String url) throws Exception {
+        Log.w("TAG", url);
         OkHttpClient client = new OkHttpClient();
 
         //Création de la requete

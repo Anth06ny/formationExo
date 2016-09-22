@@ -3,19 +3,21 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context="${relativePackage}.${activityClass}">
+              android:background="#eeeded">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark"
         android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Code postal :"/>
+            android:text="Code postal :"
+            android:textColor="#ffffff"/>
 
         <EditText
             android:id="@+id/et"
@@ -23,7 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="phone"/>
+            android:inputType="phone"
+            android:textColor="#ffffff"
+            android:backgroundTint="#ffffff"/>
 
         <Button
             android:id="@+id/bt_ok"
@@ -31,14 +35,17 @@
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="OK"/>
+            android:text="OK"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="#ffffff"/>
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/lv"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/city_cellule" />
+        tools:listitem="@layout/city_cellule"/>
+
 
 </LinearLayout>

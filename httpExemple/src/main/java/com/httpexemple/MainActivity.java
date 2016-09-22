@@ -2,11 +2,13 @@ package com.httpexemple;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
+import android.webkit.WebView;  l
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +46,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         webviewResultat.setWebViewClient(new WebViewClient());
 
         btLoad.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        hideKeypad();
+    }
+
+    private void hideKeypad() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
     }
 
     /**

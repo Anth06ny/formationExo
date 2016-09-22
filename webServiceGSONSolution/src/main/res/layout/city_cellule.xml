@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="horizontal"
-    android:padding="20dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:cardCornerRadius="4dp"
+    >
 
-
-    <TextView
-        android:id="@+id/cc_tv_cp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="40"
-        android:text="TextView"/>
-
-    <TextView
-        android:id="@+id/cc_tv_ville"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="40"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:text="TextView"/>
+        android:orientation="horizontal"
+        android:padding="20dp">
 
-</LinearLayout>
+
+        <TextView
+            android:id="@+id/cc_tv_cp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:text="TextView"
+            android:textColor="@color/colorAccent"/>
+
+        <TextView
+            android:id="@+id/cc_tv_ville"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/colorAccent"/>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

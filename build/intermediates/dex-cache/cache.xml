@@ -2,11 +2,102 @@
 <items version="2" >
 
     <item
-        jar="D:\workspace_studio\formation\notificationexemple\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="126b1c10a91e42c7a1f0506b0b50697804d6fc7c">
-        <dex dex="D:\workspace_studio\formation\notificationexemple\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_16adf4076f6d933f3e15370b0e9cb63675829940\classes.dex" />
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_5227a0cee55320e87aea22e9985be0428044dbf4\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_9493a4cecb793886a8517d73c7d1ec6870da6296\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.1\c7c4f9e35c2fd5900da24f9872e3971801f08ce0\okhttp-3.4.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.4.1_72e6aa5c35ff9b32e524b90ab1b32eb68502143c\classes.dex" />
+    </item>
+    <item
+        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_dcdc7b36a9058978faa3cf64f636e360ee288e68\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="80a820621ef0377287b75b7884a208aa81a211f8">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_251b9a0c13b4dc8b303279ada1abf1d693fdd49c\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_61311394600612c4696815606310363519c06eab\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.9.0\f824591a0016efbaeddb8300bee54832a1398cfa\okio-1.9.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.9.0_99da1320608154e00b7e08392d7db6946bbac2ba\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="521d2b479d4e7e69628020aa28c13af3a693706d">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_bfc8d6e2482ed9de1053a33384bcf3f518c2eaaf\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.4.0_0ca66e21c113b864acfdafa401d695361727b178\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_be7f21cf50f56303cdee2891f2d4c2a692b5b77e\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_badc7320afab8d72885b5b5b0daf5ca6ef59b4ae\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.4.0_f99eb522e460a50c9b86a406d02f8944f9a5de6d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\commons-lang3-3.4_0275bbd0a242111677a9adc0108bd75aa1d5ba6f\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_c9a4b82ee66d3dec9b5742fc7035436a317f391e\classes.dex" />
     </item>
 
 </items>
