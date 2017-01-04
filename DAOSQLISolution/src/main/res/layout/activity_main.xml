@@ -31,4 +31,12 @@
         android:layout_marginBottom="26dp"
         android:text="go" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copier la base"
+        android:id="@+id/bt_copy"
+        android:layout_below="@+id/bt_go"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

@@ -17,14 +17,13 @@ import java.util.List;
 public class EleveBDDManager {
 
     public static final String TABLE_ELEVE = "Eleve";
-    private static final String COL_ID = "ID";
+    public static final String COL_ID = "ID";
     private static final String COL_PRENOM = "Prenom";
     private static final String COL_NOM = "Nom";
 
     public static final String CREATE_ELEVE_TABLE = "CREATE TABLE " + TABLE_ELEVE
             + " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COL_PRENOM + " TEXT NOT NULL, " + COL_NOM + " TEXT NOT NULL);";
-
 
     public static void insertEleve(Eleve eleve) {
         //Open en écriture
@@ -48,7 +47,6 @@ public class EleveBDDManager {
     /* *****************************
     *           Acces BDD        ***
     *****************************   */
-
 
     public static int updateEleve(Eleve eleve) {
         SQLiteDatabase bdd = MyApplication.getMaBaseSQLite().getWritableDatabase();
@@ -103,7 +101,8 @@ public class EleveBDDManager {
                 do {
                     Eleve eleveBean = new Eleve(c.getString(c.getColumnIndex(COL_NOM)), c.getString(c.getColumnIndex(COL_PRENOM)), false);
                     eleveListe.add(eleveBean);
-                } while (c.moveToNext());
+                }
+                while (c.moveToNext());
             }
 
             //On ferme le cursor
@@ -113,6 +112,4 @@ public class EleveBDDManager {
         //On retourne la liste
         return eleveListe;
     }
-
-
 }

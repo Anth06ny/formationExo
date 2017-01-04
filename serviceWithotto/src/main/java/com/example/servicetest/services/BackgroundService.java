@@ -62,7 +62,7 @@ public class BackgroundService extends Service implements LocationListener {
             }
         }, 1000, 6000);
 
-        return START_NOT_STICKY;
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override

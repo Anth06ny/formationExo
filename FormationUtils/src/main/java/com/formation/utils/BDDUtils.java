@@ -19,6 +19,7 @@ public class BDDUtils {
 
     /**
      * Copier la base de donnée de l'application dans le repertoire download
+     *
      * @param context
      * @param tableName
      */
@@ -28,6 +29,7 @@ public class BDDUtils {
         File database = new File("data/data/" + context.getPackageName() + "/databases/" + tableName);
         //Ou on la copie
         File downloadDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "/" + tableName);
+        Toast.makeText(context, "Copier dans : " + downloadDirectory.getAbsolutePath(), Toast.LENGTH_SHORT).show();
 
         try {
             if (database.exists()) {
@@ -49,14 +51,13 @@ public class BDDUtils {
                 out.close();
 
                 Toast.makeText(context, "Le fichier a été copié", Toast.LENGTH_LONG).show();
-
             }
             else {
                 Toast.makeText(context, "Erreur lors de la copie", Toast.LENGTH_LONG).show();
             }
 
             //Permet de le voir directement dans windows
-            MediaScannerConnection.scanFile(context, new String[] { downloadDirectory.getAbsolutePath() }, null, null);
+            MediaScannerConnection.scanFile(context, new String[]{downloadDirectory.getAbsolutePath()}, null, null);
         }
         catch (IOException e) {
             e.printStackTrace();

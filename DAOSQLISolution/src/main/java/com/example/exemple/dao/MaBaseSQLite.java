@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class MaBaseSQLite extends SQLiteOpenHelper {
 
-    private static final String NOM_BDD = "mabase.db";
+    public static final String NOM_BDD = "mabase.db";
     private static final int VERSION_BDD = 1;
 
     public MaBaseSQLite(Context context) {

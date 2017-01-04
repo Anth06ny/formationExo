@@ -14,8 +14,8 @@ public class MyDaoGenerator {
         eleve.addIdProperty();
         eleve.addStringProperty("Nom");
         eleve.addStringProperty("Prenom");
-        eleve.setHasKeepSections(true);
 
+        eleve.setHasKeepSections(true);
 
         new DaoGenerator().generateAll(schema, args[0]);
     }

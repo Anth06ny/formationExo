@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.exemple">
+    package="com.example.exemple"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 
     <application
@@ -14,14 +16,28 @@
             android:name="com.example.exemple.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <!-- Pour le content Provider -->
+                <!--<category android:name="android.intent.category.DEFAULT"/>-->
+                <!--<data android:mimeType="@string/type_mime"/>-->
             </intent-filter>
         </activity>
+
+
+        <!-- Déclaration du provider, sur la classe
+        Authorities est le lien uri à utilsier dans le client -->
+        <provider
+            android:name=".dao.EleveContentProvider"
+            android:authorities="com.example.exemple.dao.elevecontentorovider"
+            android:exported="true"/>
+
+
         <activity
             android:name="com.example.exemple.SecondActivity"
-            android:label="@string/title_activity_second"></activity>
+            android:label="@string/title_activity_second">
+
+        </activity>
     </application>
 
 </manifest>

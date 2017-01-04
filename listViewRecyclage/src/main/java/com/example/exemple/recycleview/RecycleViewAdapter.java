@@ -17,25 +17,20 @@ import java.util.List;
  */
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.ViewHolder> {
 
-    int normal= 1;
-    int image = 2;
-
     private List<Eleve> eleveBeanList;
-    private RecycleViewAdapterListener recycleViewAdapterListener;
+    private RVAdapterCallBack RVAdapterCallBack;
 
-    public RecycleViewAdapter(List<Eleve> eleveBeanList, RecycleViewAdapterListener recycleViewAdapterListener) {
+    public RecycleViewAdapter(List<Eleve> eleveBeanList, RVAdapterCallBack RVAdapterCallBack) {
         this.eleveBeanList = eleveBeanList;
-        this.recycleViewAdapterListener = recycleViewAdapterListener;
+        this.RVAdapterCallBack = RVAdapterCallBack;
 
         notifyDataSetChanged();
     }
 
-
-
     @Override
     public RecycleViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.eleve_cellule, parent, false);
-        return new RecycleViewAdapter.ViewHolder(view, recycleViewAdapterListener);
+        return new RecycleViewAdapter.ViewHolder(view, RVAdapterCallBack);
     }
 
     @Override
@@ -60,19 +55,21 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
         public TextView ec_tv_nom, ec_tv_prenom;
         public ImageView ec_iv;
+        public View root;
         public Eleve eleve;
 
-        public ViewHolder(View itemView, final RecycleViewAdapterListener recycleViewAdapterListener) {
+        public ViewHolder(View itemView, final RVAdapterCallBack RVAdapterCallBack) {
             super(itemView);
             ec_tv_nom = (TextView) itemView.findViewById(com.formation.utils.R.id.ec_tv_nom);
             ec_tv_prenom = (TextView) itemView.findViewById(R.id.ec_tv_prenom);
             ec_iv = (ImageView) itemView.findViewById(R.id.ec_iv);
+            root = itemView.findViewById(R.id.root);
 
             itemView.findViewById(R.id.root).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (recycleViewAdapterListener != null) {
-                        recycleViewAdapterListener.onEleveClic(eleve);
+                    if (RVAdapterCallBack != null) {
+                        RVAdapterCallBack.onEleveClic(eleve);
                     }
                 }
             });
@@ -82,8 +79,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     /* ---------------------------------
     // Interface
     // -------------------------------- */
-
-    public interface RecycleViewAdapterListener {
+    public interface RVAdapterCallBack {
         void onEleveClic(Eleve eleve);
     }
 }

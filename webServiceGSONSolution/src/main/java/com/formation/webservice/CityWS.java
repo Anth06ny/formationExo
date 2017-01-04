@@ -1,7 +1,6 @@
 package com.formation.webservice;
 
 import com.formation.webservice.bean.CityBean;
-import com.formation.webservice.bean.OkHttpUtils;
 import com.formation.webservice.bean.ResultBean;
 import com.google.gson.Gson;
 

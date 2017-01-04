@@ -6,4 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_second">SecondActivity</string>
 
+    <string name="type_mime">vnd.android.cursor.item/vnd.content.provider.eleve</string>
+
 </resources>

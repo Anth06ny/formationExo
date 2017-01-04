@@ -1,4 +1,4 @@
-package com.formation.webservice.bean;
+package com.formation.webservice;
 
 import android.util.Log;
 

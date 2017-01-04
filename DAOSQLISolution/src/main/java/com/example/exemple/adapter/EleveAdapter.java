@@ -97,5 +97,4 @@ public class EleveAdapter extends BaseAdapter {
         public ImageView ec_iv;
         public Eleve eleve;
     }
-
 }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by Anthony on 08/01/2016.
  */
-public class RecycleViewActivity extends AppCompatActivity implements View.OnClickListener, RecycleViewAdapter.RecycleViewAdapterListener {
+public class RecycleViewActivity extends AppCompatActivity implements View.OnClickListener, RecycleViewAdapter.RVAdapterCallBack {
 
     //Composant graphique
     private Button bt;
@@ -50,6 +50,7 @@ public class RecycleViewActivity extends AppCompatActivity implements View.OnCli
 
         recycleViewAdapter = new RecycleViewAdapter(eleveList, this);
         rv.setAdapter(recycleViewAdapter);
+
 
         bt.setOnClickListener(this);
     }
