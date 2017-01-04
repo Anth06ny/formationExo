@@ -1,8 +1,7 @@
-package com.example.exemple;
+package com.formation.webservice;
 
 import android.app.Application;
 
-import com.example.exemple.dao.MaBaseSQLite;
 import com.facebook.stetho.Stetho;
 
 /**
@@ -10,16 +9,9 @@ import com.facebook.stetho.Stetho;
  */
 public class MyApplication extends Application {
 
-    private static MaBaseSQLite maBaseSQLite;
-
-    public static MaBaseSQLite getMaBaseSQLite() {
-        return maBaseSQLite;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
-        maBaseSQLite = new MaBaseSQLite(this);
 
         //Stetho
         Stetho.initialize(

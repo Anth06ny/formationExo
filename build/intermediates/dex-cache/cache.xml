@@ -2,67 +2,123 @@
 <items version="2" >
 
     <item
-        jar="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="b5ba0f55b879291d751240e32d7af659142d1125">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_9031fb8bf3b6f416a6c20cb7c45134371afa3e7c\classes.dex" />
-    </item>
-    <item
-        jar="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_6ea4faafce0466d56cd01e5029586be9b8672482\classes.dex" />
-    </item>
-    <item
-        jar="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_8981f393ae8794ce3a100997d6d0a1e02d53028a\classes.dex" />
+        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\jsr305-2.0.1_96660b42877580f800502df17ff268691c692369\classes.dex" />
     </item>
     <item
         jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
         jumboMode="true"
         revision="23.0.3"
         sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_dcdc7b36a9058978faa3cf64f636e360ee288e68\classes.dex" />
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_dcdc7b36a9058978faa3cf64f636e360ee288e68\classes.dex" />
     </item>
     <item
-        jar="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_004e7654b809507fc4f0e1094c66294c0488f6e4\classes.dex" />
+        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.8.0_c0d111c9b2e14a675b30e58c022cc2dc5d60deb7\classes.dex" />
     </item>
     <item
-        jar="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.5.0\4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83\okhttp-3.5.0.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="e5de72df97a82f371727b4a9212b2620aed32894">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_89a9bf64ebe61d160198d30ba590fe16eef9fed3\classes.dex" />
+        sha1="4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.5.0_5c31e2bb9058bc1a01e4c89b29c6df698f501a4c\classes.dex" />
     </item>
     <item
-        jar="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.4.0_0ca66e21c113b864acfdafa401d695361727b178\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.4.0_f99eb522e460a50c9b86a406d02f8944f9a5de6d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.5\6c6c702c89bfff3cd9e80b04d668c5e190d588c6\commons-lang3-3.5.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="6c6c702c89bfff3cd9e80b04d668c5e190d588c6">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\commons-lang3-3.5_258394f93bf44e393e61d985c58820b496af7c6b\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.3"
         sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_cb4095977d703e95d0f66d124697a6016d0e1be2\classes.dex" />
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_9493a4cecb793886a8517d73c7d1ec6870da6296\classes.dex" />
     </item>
     <item
-        jar="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="876adfbed90d8f327296b54e423819a509879829">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_251b9a0c13b4dc8b303279ada1abf1d693fdd49c\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_61311394600612c4696815606310363519c06eab\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="9277cc6e1272d29e32e2ac88ee5044ea818f13ac">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_bfc8d6e2482ed9de1053a33384bcf3f518c2eaaf\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\commons-cli\commons-cli\1.2\2bf96b7aa8b611c177d329452af1dc933e14501c\commons-cli-1.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2bf96b7aa8b611c177d329452af1dc933e14501c">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\commons-cli-1.2_5043579dfc2a1280ba0794091aebff29f603c2ca\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.11.0_be6edd3d388196b06c1136f9c81d729d6d32e526\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.facebook.stetho\stetho\1.4.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="32f45bd44a3e7efc235bbfed120029290f5d674a">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.facebook.stetho-stetho-1.4.2_5652a33d0a7f4b9a670bfe3275ebd07ba139ecc7\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_be7f21cf50f56303cdee2891f2d4c2a692b5b77e\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_badc7320afab8d72885b5b5b0daf5ca6ef59b4ae\classes.dex" />
+    </item>
+    <item
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.3"
         sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_0c39f547cea607a332d1236cb89d8c903a248aa0\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
-        <dex dex="C:\workspace_studio\formation\DAOSQLISolution\build\intermediates\transforms\dex\debug\folders\1000\10\commons-lang3-3.4_0275bbd0a242111677a9adc0108bd75aa1d5ba6f\classes.dex" />
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_c9a4b82ee66d3dec9b5742fc7035436a317f391e\classes.dex" />
     </item>
 
 </items>
