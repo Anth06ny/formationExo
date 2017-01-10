@@ -23,7 +23,7 @@ public class NotificationHelper {
 
         //La notification
         final Notification.Builder builder = new Notification.Builder(context).setWhen(System.currentTimeMillis()).setTicker("Ticker")
-                .setSmallIcon(R.drawable.ic_launcher).setContentTitle("ContentTitle").setContentText("ContentText").setContentIntent(pendingIntent);
+                .setSmallIcon(R.mipmap.ic_launcher).setContentTitle("ContentTitle").setContentText("ContentText").setContentIntent(pendingIntent);
 
         //création de la notification
         mNotification.notify(NOTIFICATION_ID, builder.build());

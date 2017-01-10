@@ -9,15 +9,14 @@ import com.facebook.stetho.Stetho;
  */
 public class MyApplication extends Application {
 
+    public static final boolean DEBUG = true;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        //Stetho
-        Stetho.initialize(
-                Stetho.newInitializerBuilder(this)
-                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-                        .build());
+        if (DEBUG) {
+            Stetho.initializeWithDefaults(this);
+        }
     }
 }

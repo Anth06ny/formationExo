@@ -37,7 +37,7 @@
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:src="@drawable/ic_launcher"
+        android:src="@mipmap/ic_launcher"
         android:text="MyBootStrapButtonWithIcon"
 
         app:backGroundColor="@color/main"

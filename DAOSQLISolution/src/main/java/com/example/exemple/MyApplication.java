@@ -21,11 +21,13 @@ public class MyApplication extends Application {
         super.onCreate();
         maBaseSQLite = new MaBaseSQLite(this);
 
+        Stetho.initializeWithDefaults(this);
+
         //Stetho
-        Stetho.initialize(
-                Stetho.newInitializerBuilder(this)
-                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-                        .build());
+        //        Stetho.initialize(
+        //                Stetho.newInitializerBuilder(this)
+        //                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+        //                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+        //                        .build());
     }
 }

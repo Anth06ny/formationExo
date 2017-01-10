@@ -10,22 +10,13 @@ import android.widget.FrameLayout;
 import com.example.fragmentfromscratch.ListFragment.CallBack;
 import com.formation.utils.bean.Eleve;
 
-import java.util.ArrayList;
-
 public class MainActivity extends Activity implements CallBack {
-
-    private final static String RESTART_EXTRA = "RESTART_EXTRA";
 
     private FrameLayout fl_fragment2;
 
     //nos fragments
     private ListFragment listFragment;
     private DetailFragment detailFragment = null;
-
-    private static final int MENU_CHERCHER = 3;
-    private static final int MENU_QUIT = 4;
-
-    protected ArrayList<Eleve> eleveList;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -45,28 +36,24 @@ public class MainActivity extends Activity implements CallBack {
         }
     }
 
-
-
     @Override
     protected void onStart() {
         super.onStart();
-
 
         //On verifie si les fragments n'existent pas déjà. Ceux-ci peuvent avoir été recréées par le systeme lors d'une
         // rotation d'écran par exemple. On les récupère grâce à leur tag.
         listFragment = (ListFragment) getFragmentManager().findFragmentByTag(ListFragment.class.toString());
         detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag(DetailFragment.class.toString());
 
-
         //Si la liste n'existe pas on la crée.
-        if(listFragment == null) {
+        if (listFragment == null) {
             listFragment = new ListFragment();
         }
 
         if (MyApplication.getInstance().isTwoPane()) {
             //On est obligé de recréer le fragment car le systeme n'autorise pas le déplacement de fragment dans un autre
             // frameLayout
-            if(detailFragment != null) {
+            if (detailFragment != null) {
                 detailFragment = (DetailFragment) recreateFragment(detailFragment);
             }
             else {
@@ -75,7 +62,7 @@ public class MainActivity extends Activity implements CallBack {
             }
             //on le positionne sur le 2eme emplacement
             getFragmentManager().beginTransaction().replace(R.id.fl_fragment2, detailFragment, DetailFragment.class.toString())
-                        .commit();
+                    .commit();
         }
 
         //on positionne le fragment sur l'emplacement fragment1
@@ -83,9 +70,7 @@ public class MainActivity extends Activity implements CallBack {
 
         //On définit le callBack
         listFragment.setOnClickListListener(this);
-
     }
-
 
     //-------------------
     //callback fragment
@@ -105,7 +90,7 @@ public class MainActivity extends Activity implements CallBack {
             detailFragment = new DetailFragment();
             detailFragment.setEleve(eleve);
 
-            ft.replace(R.id.fl_fragment1, detailFragment,  DetailFragment.class.toString());
+            ft.replace(R.id.fl_fragment1, detailFragment, DetailFragment.class.toString());
             ft.addToBackStack(null); // permet de revenir à l'écran d'avant avec un back bouton
             ft.commit();
         }
@@ -117,12 +102,13 @@ public class MainActivity extends Activity implements CallBack {
 
     /**
      * permet de créer un nouveau fragment avec les sauvegardes de l'ancien.
+     *
      * @param fragment
      * @return
      */
-    private static Fragment recreateFragment(Fragment fragment){
+    private static Fragment recreateFragment(Fragment fragment) {
         try {
-            Fragment.SavedState oldState= fragment.getFragmentManager().saveFragmentInstanceState(fragment);
+            Fragment.SavedState oldState = fragment.getFragmentManager().saveFragmentInstanceState(fragment);
             Fragment newInstance = fragment.getClass().newInstance();
             newInstance.setInitialSavedState(oldState);
             return newInstance;
@@ -132,5 +118,4 @@ public class MainActivity extends Activity implements CallBack {
             return null;
         }
     }
-
 }

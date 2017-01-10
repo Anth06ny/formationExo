@@ -2,6 +2,8 @@ package com.formation.webservice;
 
 import android.util.Log;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+
 import java.net.HttpURLConnection;
 
 import okhttp3.Callback;
@@ -18,7 +20,10 @@ public class OkHttpUtils {
 
     public static String sendGetOkHttpRequest(String url) throws Exception {
         Log.w("TAG", url);
-        OkHttpClient client = new OkHttpClient();
+        //OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
 
         //Création de la requete
         Request request = new Request.Builder().url(url).build();
@@ -37,7 +42,10 @@ public class OkHttpUtils {
     }
 
     public static void sendGetOkHttpRequestAsync(String url, Callback okHttpCallBack) throws Exception {
-        OkHttpClient client = new OkHttpClient();
+        //OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
 
         //Création de la requete
         Request request = new Request.Builder().url(url).build();
@@ -48,7 +56,8 @@ public class OkHttpUtils {
 
     public static String sendPostOkHttpRequest(String url, String paramJson) throws Exception {
 
-        OkHttpClient client = new OkHttpClient();
+        //OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = getOkHttpClient();
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
         //Corps de la requête
@@ -61,6 +70,19 @@ public class OkHttpUtils {
         }
         else {
             return response.body().string();
+        }
+    }
+
+    private static OkHttpClient getOkHttpClient() {
+
+        if (MyApplication.DEBUG) {
+
+            return new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+        }
+        else {
+            return new OkHttpClient();
         }
     }
 }

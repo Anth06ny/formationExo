@@ -16,10 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.formation.utils.ConnectivityUtils;
-import com.formation.utils.HTTPUtils;
+import com.formation.utils.OkHttpUtils;
 import com.formation.utils.ToastUtils;
-
-import java.io.IOException;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -105,9 +103,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         @Override
         protected String doInBackground(Void... params) {
             try {
-                return HTTPUtils.downloadUrl(url);
+                return OkHttpUtils.sendGetOkHttpRequest(url);
             }
-            catch (IOException e) {
+            catch (Exception e) {
                 return e.getMessage();
             }
         }
