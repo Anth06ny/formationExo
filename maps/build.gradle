@@ -35,6 +35,5 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile project(':FormationUtils')
 
-    //
-    compile 'com.google.maps:google-maps-services:0.1.17'
+
 }

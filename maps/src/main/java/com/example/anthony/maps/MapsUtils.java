@@ -1,5 +1,6 @@
 package com.example.anthony.maps;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -29,14 +30,14 @@ public class MapsUtils {
      * @return
      * @throws Exception
      */
-    public static ArrayList<LatLng> getPolylineFromAdrasse(String geoStart, String geoEnd) throws Exception {
+    public static ArrayList<LatLng> getPolylineFromAdresse(@NonNull LatLng geoStart, @NonNull LatLng geoEnd) throws Exception {
 
         //Construction de l'url à appeler
         final StringBuilder url = new StringBuilder(URL_WS_GOOGLE);
         url.append("&origin=");
-        url.append(geoStart);
+        url.append(geoStart.latitude + "," + geoStart.longitude);
         url.append("&destination=");
-        url.append(geoEnd);
+        url.append(geoEnd.latitude + "," + geoEnd.longitude);
 
         Log.w("TAG_GEO", url.toString());
 
@@ -74,21 +75,6 @@ public class MapsUtils {
                 lstLatLng.addAll(decodePolylines(elementStep.getElementsByTagName("points").item(0).getTextContent()));
             }
         }
-
-        return lstLatLng;
-    }
-
-    public static ArrayList<LatLng> getPolylineFromAdresse(String geoStart, String geoEnd) throws Exception {
-        //Construction de l'url à appeler
-        final StringBuilder url = new StringBuilder(URL_WS_GOOGLE);
-        url.append("&origin=");
-        url.append(geoStart);
-        url.append("&destination=");
-        url.append(geoEnd);
-
-        Log.w("TAG_GEO", url.toString());
-
-        ArrayList<LatLng> lstLatLng = new ArrayList<>();
 
         return lstLatLng;
     }

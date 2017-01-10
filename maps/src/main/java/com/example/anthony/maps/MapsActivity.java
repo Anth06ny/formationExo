@@ -108,7 +108,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         protected ArrayList<LatLng> doInBackground(Void... params) {
             try {
 
-                return MapsUtils.getPolylineFromAdresse("43.603341,1.435578", "43.584166,1.437178");
+                LatLng start = new LatLng(43.603341, 1.435578);
+                LatLng end = new LatLng(43.584166, 1.437178);
+                return MapsUtils.getPolylineFromAdresse(start, end);
             }
             catch (final Exception e) {
                 exception = e;
