@@ -1,8 +1,12 @@
 package com.example.anthony.maps;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,14 +16,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdate;
+import com.example.anthony.maps.beans.DirectionResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -29,7 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private final static int LOCATION_REQ_CODE = 456;
-    private Button bt_add;
+    private Button bt_it, bt_it2, bt_addPosition, bt_clear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        bt_add = (Button) findViewById(R.id.bt_add);
-        bt_add.setOnClickListener(this);
+        bt_it = (Button) findViewById(R.id.bt_it);
+        bt_it.setOnClickListener(this);
+        bt_it2 = (Button) findViewById(R.id.bt_it2);
+        bt_it2.setOnClickListener(this);
+        bt_addPosition = (Button) findViewById(R.id.bt_addPosition);
+        bt_addPosition.setOnClickListener(this);
+        bt_clear = (Button) findViewById(R.id.bt_clear);
+        bt_clear.setOnClickListener(this);
     }
 
     @Override
@@ -55,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     // Maps
     // -------------------------------- */
     private void afficherLocalisationMap() {
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         }
         else {
@@ -88,13 +97,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onClick(View v) {
-        new LoadAT().execute();
+        if (v == bt_it) {
+            new LoadAT().execute();
+        }
+        else if (v == bt_it2) {
+            new LoadAT().execute(true);
+        }
+        else if (v == bt_addPosition) {
+            afficherLocalisationMap();
+        }
+        else if (v == bt_clear) {
+            mMap.clear();
+        }
     }
 
     /* ---------------------------------
     // AsyncTask
     // -------------------------------- */
-    private class LoadAT extends AsyncTask<Void, Void, ArrayList<LatLng>> {
+    private class LoadAT extends AsyncTask<Boolean, Void, DirectionResult> {
         private ProgressDialog dialog;
         private Exception exception;
 
@@ -105,12 +125,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         @Override
-        protected ArrayList<LatLng> doInBackground(Void... params) {
+        protected DirectionResult doInBackground(Boolean... params) {
             try {
 
                 LatLng start = new LatLng(43.603341, 1.435578);
+
+                if (params != null && params.length > 0 && params[0]) {
+                    if (ActivityCompat.checkSelfPermission(MapsActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        LocationManager locationManager = (LocationManager)
+                                getSystemService(Context.LOCATION_SERVICE);
+                        Criteria criteria = new Criteria();
+                        Location location = locationManager.getLastKnownLocation(locationManager
+                                .getBestProvider(criteria, false));
+                        if (location != null) {
+                            start = new LatLng(location.getLatitude(), location.getLongitude());
+                        }
+                    }
+                }
+
                 LatLng end = new LatLng(43.584166, 1.437178);
-                return MapsUtils.getPolylineFromAdresse(start, end);
+
+                return MapsUtils.getPolylineFromAdresseWithLib(start, end);
             }
             catch (final Exception e) {
                 exception = e;
@@ -119,7 +154,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         @Override
-        protected void onPostExecute(ArrayList<LatLng> result) {
+        protected void onPostExecute(DirectionResult result) {
             super.onPostExecute(result);
             dialog.dismiss();
 
@@ -127,42 +162,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Toast.makeText(MapsActivity.this, "Erreur de chargement : " + exception.getMessage(), Toast.LENGTH_SHORT).show();
                 exception.printStackTrace();
             }
-            else if (result.isEmpty()) {
+            else if (result == null) {
                 Toast.makeText(MapsActivity.this, "Pas de résultat ", Toast.LENGTH_SHORT).show();
             }
             else {
+                ArrayList<LatLng> points = result.getLstLatLng();
+
                 //On déclare le polyline, c'est-à-dire le trait (ici bleu) que l'on ajoute sur la carte pour tracer l'itinéraire
                 final PolylineOptions polylines = new PolylineOptions();
+                polylines.addAll(points);
                 polylines.color(Color.BLUE);
-
-                LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                //On construit le polyline
-                for (final LatLng latLng : result) {
-                    polylines.add(latLng);
-                    builder.include(latLng);
-                }
 
                 //On déclare un marker vert que l'on placera sur le départ
                 final MarkerOptions markerA = new MarkerOptions();
-                markerA.position(result.get(0));
+                markerA.position(result.getStartPosition());
                 markerA.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 
                 //On déclare un marker rouge que l'on mettra sur l'arrivée
                 final MarkerOptions markerB = new MarkerOptions();
-                markerB.position(result.get(result.size() - 1));
+                markerB.position(result.getStopPosition());
                 markerB.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
                 //On met à jour la carte
-                LatLngBounds bounds = builder.build();
-                int padding = 0; // offset from edges of the map in pixels
-                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-                mMap.moveCamera(cu);
-
-                //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(result.get(0), 15));
-
+                mMap.clear();
                 mMap.addMarker(markerA);
                 mMap.addPolyline(polylines);
                 mMap.addMarker(markerB);
+
+                int padding = 30; // offset from edges of the map in pixels
+                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(result.getLatLngBounds(), padding));
             }
         }
     }

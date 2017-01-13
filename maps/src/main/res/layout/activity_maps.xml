@@ -21,16 +21,28 @@
 
 
         <Button
-            android:id="@+id/bt_add"
+            android:id="@+id/bt_it"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Itinéraire"/>
+            android:text="It"/>
+
+        <Button
+            android:id="@+id/bt_it2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="It Json"/>
 
         <Button
             android:id="@+id/bt_addPosition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ma Position"/>
+
+        <Button
+            android:id="@+id/bt_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear"/>
     </LinearLayout>
 
 

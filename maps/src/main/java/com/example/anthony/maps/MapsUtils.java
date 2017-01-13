@@ -3,7 +3,10 @@ package com.example.anthony.maps;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.anthony.maps.beans.DirectionResult;
+import com.formation.utils.OkHttpUtils;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -11,16 +14,52 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import okhttp3.Response;
+
 /**
  * Created by Anthony on 10/01/2017.
  */
 public class MapsUtils {
+
+    private final static String URL_WS_GOOGLE_JSON = "http://maps.googleapis.com/maps/api/directions/json?sensor=false&language=fr";
+
+    /**
+     * Retourne l'objet direction result en fonction du point de départ /arrivé
+     * @param geoStart
+     * @param geoEnd
+     * @return
+     * @throws Exception
+     */
+    public static DirectionResult getPolylineFromAdresseWithLib(@NonNull LatLng geoStart, @NonNull LatLng geoEnd) throws Exception {
+
+        final StringBuilder url = new StringBuilder(URL_WS_GOOGLE_JSON);
+        url.append("&origin=");
+        url.append(geoStart.latitude + "," + geoStart.longitude);
+        url.append("&destination=");
+        url.append(geoEnd.latitude + "," + geoEnd.longitude);
+
+        Response result = OkHttpUtils.sendGetOkHttpRequestWithResponse(url.toString());
+        InputStreamReader inputStreamReader = null;
+        try {
+            inputStreamReader = new InputStreamReader(result.body().byteStream());
+            return new Gson().fromJson(inputStreamReader, DirectionResult.class);
+        }
+        finally {
+            if (inputStreamReader != null) {
+                inputStreamReader.close();
+            }
+            if (result != null) {
+                result.close();
+            }
+        }
+    }
 
     private final static String URL_WS_GOOGLE = "http://maps.googleapis.com/maps/api/directions/xml?sensor=false&language=fr";
 
@@ -30,7 +69,7 @@ public class MapsUtils {
      * @return
      * @throws Exception
      */
-    public static ArrayList<LatLng> getPolylineFromAdresse(@NonNull LatLng geoStart, @NonNull LatLng geoEnd) throws Exception {
+    public static ArrayList<LatLng> getPolylineFromAdresseXML(@NonNull LatLng geoStart, @NonNull LatLng geoEnd) throws Exception {
 
         //Construction de l'url à appeler
         final StringBuilder url = new StringBuilder(URL_WS_GOOGLE);

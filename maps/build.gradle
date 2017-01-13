@@ -35,5 +35,8 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile project(':FormationUtils')
 
+    //Direction API
+    compile 'com.cs:googlemaproute:1.0.0'
+
 
 }

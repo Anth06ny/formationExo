@@ -16,6 +16,18 @@ import okhttp3.Response;
  */
 public class OkHttpUtils {
 
+    public static Response sendGetOkHttpRequestWithResponse(String url) throws Exception {
+        Log.w("TAG", url);
+        //OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient();
+
+        //Création de la requete
+        Request request = new Request.Builder().url(url).build();
+
+        //Execution de la requête
+        return client.newCall(request).execute();
+    }
+
     public static String sendGetOkHttpRequest(String url) throws Exception {
         Log.w("TAG", url);
         //OkHttpClient client = new OkHttpClient();
