@@ -12,8 +12,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.anthony.maps.beans.DirectionResult;
@@ -23,12 +26,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnInfoWindowClickListener, GoogleMap.InfoWindowAdapter {
+
+    private static final int TAG_START = 1;
+    private static final int TAG_STOP = 2;
 
     private GoogleMap mMap;
     private final static int LOCATION_REQ_CODE = 456;
@@ -72,9 +79,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    /* ---------------------------------
-    // CallBack
-    // -------------------------------- */
+    /**
+     * Clic sur une fenetre d'un marker
+     *
+     * @param marker
+     */
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(MapsActivity.this, "Go go go", Toast.LENGTH_SHORT).show();
+        //Ferme la fenêtre
+        marker.hideInfoWindow();
+    }
 
     /**
      * Manipulates the map once available.
@@ -89,11 +104,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        //        LatLng sydney = new LatLng(-34, 151);
-        //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Gestion des clicks sur les marker
+        mMap.setOnInfoWindowClickListener(this);
+
+        //Gestion d'affichage des markers
+        mMap.setInfoWindowAdapter(this);
     }
+
+    @Override
+    public View getInfoWindow(Marker marker) {
+        return null;
+    }
+
+    @Override
+    public View getInfoContents(Marker marker) {
+        View view = LayoutInflater.from(this).inflate(R.layout.marker_cellule, null);
+
+        TextView tv = (TextView) view.findViewById(R.id.tv);
+        ImageView iv = (ImageView) view.findViewById(R.id.iv);
+
+        Integer tag = (Integer) marker.getTag();
+
+        if (tag != null && tag == TAG_START) {
+            tv.setText("C'est le début");
+            iv.setImageResource(R.mipmap.ic_start);
+            iv.setColorFilter(Color.CYAN);
+        }
+        else if (tag != null && tag == TAG_STOP) {
+            tv.setText("C'est la fin");
+            iv.setImageResource(R.mipmap.ic_end);
+            iv.setColorFilter(Color.GREEN);
+        }
+
+        return view;
+    }
+
+    /* ---------------------------------
+    // CallBack
+    // -------------------------------- */
 
     @Override
     public void onClick(View v) {
@@ -168,6 +216,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             else {
                 ArrayList<LatLng> points = result.getLstLatLng();
 
+                if (points.isEmpty()) {
+                    Toast.makeText(MapsActivity.this, "Pas de résultat retourné ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 //On déclare le polyline, c'est-à-dire le trait (ici bleu) que l'on ajoute sur la carte pour tracer l'itinéraire
                 final PolylineOptions polylines = new PolylineOptions();
                 polylines.addAll(points);
@@ -176,20 +229,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //On déclare un marker vert que l'on placera sur le départ
                 final MarkerOptions markerA = new MarkerOptions();
                 markerA.position(result.getStartPosition());
+                markerA.title("Début");
                 markerA.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 
                 //On déclare un marker rouge que l'on mettra sur l'arrivée
                 final MarkerOptions markerB = new MarkerOptions();
                 markerB.position(result.getStopPosition());
+                markerB.title("Fin");
                 markerB.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
                 //On met à jour la carte
                 mMap.clear();
-                mMap.addMarker(markerA);
-                mMap.addPolyline(polylines);
-                mMap.addMarker(markerB);
+                mMap.addMarker(markerA).setTag(TAG_START);
 
-                int padding = 30; // offset from edges of the map in pixels
+                mMap.addPolyline(polylines);
+                mMap.addMarker(markerB).setTag(TAG_STOP);
+
+                int padding = 100; // offset from edges of the map in pixels
                 mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(result.getLatLngBounds(), padding));
             }
         }
