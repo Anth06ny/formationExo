@@ -4,12 +4,14 @@ import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.NotNull;
-import org.greenrobot.greendao.annotation.ToOne;
+import org.greenrobot.greendao.annotation.JoinEntity;
+import org.greenrobot.greendao.annotation.ToMany;
+
+import java.util.List;
 
 import greendaobeans.ClasseDao;
 import greendaobeans.DaoSession;
-import greendaobeans.EleveDao;
+import greendaobeans.EnseignantDao;
 
 @Entity(
 
@@ -38,22 +40,23 @@ import greendaobeans.EleveDao;
         // Whether getters and setters for properties should be generated if missing.
         generateGettersSetters = true
 )
-public class Eleve {
+public class Enseignant {
 
     @Id(autoincrement = true)
     private Long id;
     private String nom;
     private String prenom;
 
-    //Jointure avec la Classe : 1 élève à 1 classe
-    @ToOne(joinProperty = "classeId")
-    private Classe classe;
-    private long classeId;
-
-    public Eleve(String nom, String prenom) {
-        this.nom = nom;
-        this.prenom = prenom;
-    }
+    @ToMany
+    @JoinEntity(
+            //Table intermediaire
+            entity = ClasseEnseignant.class,
+            //Id representant cette table dans la table intermediaire
+            sourceProperty = "enseignantId",
+            //Id representant la table voulu dans la table intermediraire
+            targetProperty = "classeId"
+    )
+    private List<Classe> classeList;
 
     @Override
     public String toString() {
@@ -63,18 +66,6 @@ public class Eleve {
     /* ---------------------------------
     // Generes
     // -------------------------------- */
-
-    @Generated(hash = 1853661841)
-    public Eleve(Long id, String nom, String prenom, long classeId) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.classeId = classeId;
-    }
-
-    @Generated(hash = 1796364228)
-    public Eleve() {
-    }
 
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
@@ -115,24 +106,22 @@ public class Eleve {
     /**
      * called by internal mechanisms, do not call yourself.
      */
-    @Generated(hash = 311604629)
+    @Generated(hash = 1167124596)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getEleveDao() : null;
+        myDao = daoSession != null ? daoSession.getEnseignantDao() : null;
     }
 
     /**
      * Used for active entity operations.
      */
-    @Generated(hash = 1736315468)
-    private transient EleveDao myDao;
+    @Generated(hash = 1865954379)
+    private transient EnseignantDao myDao;
     /**
      * Used to resolve relations
      */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
-    @Generated(hash = 632681660)
-    private transient Long classe__resolvedKey;
 
     public String getPrenom() {
         return this.prenom;
@@ -159,47 +148,43 @@ public class Eleve {
     }
 
     /**
-     * called by internal mechanisms, do not call yourself.
+     * Resets a to-many relationship, making the next get call to query for a fresh result.
      */
-    @Generated(hash = 795697025)
-    public void setClasse(@NotNull Classe classe) {
-        if (classe == null) {
-            throw new DaoException(
-                    "To-one property 'classeId' has not-null constraint; cannot set to-one to null");
-        }
-        synchronized (this) {
-            this.classe = classe;
-            classeId = classe.getId();
-            classe__resolvedKey = classeId;
-        }
+    @Generated(hash = 739549146)
+    public synchronized void resetClasseList() {
+        classeList = null;
     }
 
     /**
-     * To-one relationship, resolved on first access.
+     * To-many relationship, resolved on first access (and after reset).
+     * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 841537653)
-    public Classe getClasse() {
-        long __key = this.classeId;
-        if (classe__resolvedKey == null || !classe__resolvedKey.equals(__key)) {
+    @Generated(hash = 1276104001)
+    public List<Classe> getClasseList() {
+        if (classeList == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
             ClasseDao targetDao = daoSession.getClasseDao();
-            Classe classeNew = targetDao.load(__key);
+            List<Classe> classeListNew = targetDao._queryEnseignant_ClasseList(id);
             synchronized (this) {
-                classe = classeNew;
-                classe__resolvedKey = __key;
+                if (classeList == null) {
+                    classeList = classeListNew;
+                }
             }
         }
-        return classe;
+        return classeList;
     }
 
-    public long getClasseId() {
-        return this.classeId;
+    @Generated(hash = 1990634895)
+    public Enseignant(Long id, String nom, String prenom) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
-    public void setClasseId(long classeId) {
-        this.classeId = classeId;
+    @Generated(hash = 992391933)
+    public Enseignant() {
     }
 }
