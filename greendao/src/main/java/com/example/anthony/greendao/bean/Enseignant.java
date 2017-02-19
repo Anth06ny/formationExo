@@ -9,10 +9,6 @@ import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
 
-import greendaobeans.ClasseDao;
-import greendaobeans.DaoSession;
-import greendaobeans.EnseignantDao;
-
 @Entity(
 
         // Flag to make an entity "active": Active entities have update,
@@ -57,15 +53,36 @@ public class Enseignant {
             targetProperty = "classeId"
     )
     private List<Classe> classeList;
+    /* ---------------------------------
+    // Generes
+    // -------------------------------- */
+
+    /**
+     * Used for active entity operations.
+     */
+    @Generated(hash = 1865954379)
+    private transient EnseignantDao myDao;
+    /**
+     * Used to resolve relations
+     */
+    @Generated(hash = 2040040024)
+    private transient DaoSession daoSession;
+
+    @Generated(hash = 1990634895)
+    public Enseignant(Long id, String nom, String prenom) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    @Generated(hash = 992391933)
+    public Enseignant() {
+    }
 
     @Override
     public String toString() {
         return nom + " " + prenom;
     }
-
-    /* ---------------------------------
-    // Generes
-    // -------------------------------- */
 
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
@@ -104,50 +121,6 @@ public class Enseignant {
     }
 
     /**
-     * called by internal mechanisms, do not call yourself.
-     */
-    @Generated(hash = 1167124596)
-    public void __setDaoSession(DaoSession daoSession) {
-        this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getEnseignantDao() : null;
-    }
-
-    /**
-     * Used for active entity operations.
-     */
-    @Generated(hash = 1865954379)
-    private transient EnseignantDao myDao;
-    /**
-     * Used to resolve relations
-     */
-    @Generated(hash = 2040040024)
-    private transient DaoSession daoSession;
-
-    public String getPrenom() {
-        return this.prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getNom() {
-        return this.nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * Resets a to-many relationship, making the next get call to query for a fresh result.
      */
     @Generated(hash = 739549146)
@@ -177,14 +150,36 @@ public class Enseignant {
         return classeList;
     }
 
-    @Generated(hash = 1990634895)
-    public Enseignant(Long id, String nom, String prenom) {
-        this.id = id;
-        this.nom = nom;
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
+    @Generated(hash = 1167124596)
+    public void __setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
+        myDao = daoSession != null ? daoSession.getEnseignantDao() : null;
+    }
+
+    public String getPrenom() {
+        return this.prenom;
+    }
+
+    public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
-    @Generated(hash = 992391933)
-    public Enseignant() {
+    public String getNom() {
+        return this.nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

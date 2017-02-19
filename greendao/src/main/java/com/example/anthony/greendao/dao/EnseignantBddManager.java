@@ -2,8 +2,7 @@ package com.example.anthony.greendao.dao;
 
 import com.example.anthony.greendao.MyApplication;
 import com.example.anthony.greendao.bean.Enseignant;
-
-import greendaobeans.EnseignantDao;
+import com.example.anthony.greendao.bean.EnseignantDao;
 
 /**
  * Created by Anthony on 17/01/2017.

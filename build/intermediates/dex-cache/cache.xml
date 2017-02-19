@@ -1,3 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.facebook.stetho\stetho-okhttp3\1.4.2\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="79c3d4a8ca3c04c5fd5a4a72d43a29fe6d3667b4">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.facebook.stetho-stetho-okhttp3-1.4.2_e082c0de35060f596b28fa718ffa0bd3f9efebd6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.facebook.stetho\stetho\1.4.2\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="32f45bd44a3e7efc235bbfed120029290f5d674a">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.facebook.stetho-stetho-1.4.2_5652a33d0a7f4b9a670bfe3275ebd07ba139ecc7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.4.0_f99eb522e460a50c9b86a406d02f8944f9a5de6d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_be7f21cf50f56303cdee2891f2d4c2a692b5b77e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_9493a4cecb793886a8517d73c7d1ec6870da6296.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_edb9e73fcac94a5580c99aa5e4b2e53f84a6db65.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\otto-1.3.5_19a43d9d76d9ad47241a8d8bc490b9ecd90edcad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c8bb82c643667cc5c92588cc54e52f11bcc39075">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\formation-FormationUtils-unspecified_d65af6ae5ffbf1afb77db35fd186f1aeffec6d3d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_badc7320afab8d72885b5b5b0daf5ca6ef59b4ae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\support-annotations-23.4.0_dcdc7b36a9058978faa3cf64f636e360ee288e68.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_9064656acc13d20e3bd29cae054a33b4ef994e97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.6.0\69edde9fc4b01c9fd51d25b83428837478c27254\okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\okhttp-3.6.0_39ffb94c44ad44b5ca433f7397e0c4b27952f314.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\converter-gson-2.1.0_a5c11048b1cc49c73381022e5d5519481beec419.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.5\6c6c702c89bfff3cd9e80b04d668c5e190d588c6\commons-lang3-3.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="6c6c702c89bfff3cd9e80b04d668c5e190d588c6">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\commons-lang3-3.5_258394f93bf44e393e61d985c58820b496af7c6b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\gson-2.8.0_c0d111c9b2e14a675b30e58c022cc2dc5d60deb7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_3fe72c138b31dcd3e92f5f56149347653cf7020e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_4c03fb7c55e278d13247699377944be3961baf5c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_231cf075c2fad26ce2b81f2160e6d396706fa362.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_c9a4b82ee66d3dec9b5742fc7035436a317f391e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\jsr305-2.0.1_96660b42877580f800502df17ff268691c692369.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.4.0_0ca66e21c113b864acfdafa401d695361727b178.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\retrofit-2.1.0_e905fc769b4d3521ebbb142677ecfe1272ff335e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\commons-cli\commons-cli\1.2\2bf96b7aa8b611c177d329452af1dc933e14501c\commons-cli-1.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="2bf96b7aa8b611c177d329452af1dc933e14501c">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\commons-cli-1.2_5043579dfc2a1280ba0794091aebff29f603c2ca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_61311394600612c4696815606310363519c06eab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\okio-1.11.0_be6edd3d388196b06c1136f9c81d729d6d32e526.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
+        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\commons-lang3-3.4_0275bbd0a242111677a9adc0108bd75aa1d5ba6f.jar" />
+    </item>
+
+</items>

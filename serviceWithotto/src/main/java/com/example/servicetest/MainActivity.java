@@ -50,6 +50,22 @@ public class MainActivity extends Activity implements OnClickListener {
     //Service Otto
     //-------------------
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == FINE_LOCATION_REQ_CODE) {
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                final Intent intent = new Intent(this, BackgroundService.class);
+                startService(intent);
+            }
+            else {
+                Toast.makeText(MainActivity.this, "La permission est nécéssaire pour lancer le service !!",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     @Subscribe
     public void onBackgroundServiceCallBack(final BackgroundServiceEvent event) {
         runOnUiThread(new Runnable() {
@@ -88,22 +104,6 @@ public class MainActivity extends Activity implements OnClickListener {
         }
         else if (v.getId() == R.id.stopService) {
             stopService();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == FINE_LOCATION_REQ_CODE) {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                final Intent intent = new Intent(this, BackgroundService.class);
-                startService(intent);
-            }
-            else {
-                Toast.makeText(MainActivity.this, "La permission est nécéssaire pour lancer le service !!",
-                        Toast.LENGTH_SHORT).show();
-            }
         }
     }
 }

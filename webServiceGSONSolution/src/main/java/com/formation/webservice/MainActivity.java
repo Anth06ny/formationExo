@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     //Composant graphique
     private EditText et;
-    private Button bt_ok;
+    private Button bt_ok, bt_ok_with_retrofit;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
 
@@ -41,6 +41,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         et = (EditText) findViewById(R.id.et);
         bt_ok = (Button) findViewById(R.id.bt_ok);
+        bt_ok_with_retrofit = (Button) findViewById(R.id.bt_ok_with_retrofit);
         rv = (RecyclerView) findViewById(R.id.rv);
 
         cityBeanArrayList = new ArrayList<>();
@@ -55,19 +56,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
         rv.setAdapter(cityAdapter);
 
         bt_ok.setOnClickListener(this);
+        bt_ok_with_retrofit.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (v == bt_ok) {
             if (StringUtils.isNotBlank(et.getText().toString())) {
-                new WSAsyncTask(et.getText().toString()).execute();
+                new WSAsyncTask(et.getText().toString(), false).execute();
             }
+        }
+        else if (v == bt_ok_with_retrofit) {
+            new WSAsyncTask(et.getText().toString(), true).execute();
         }
     }
 
     private void updateError(Exception e) {
-        AlertDialog alertDialog = new AlertDialog.Builder(this).setMessage(e.getMessage()).setIcon(R.drawable.ic_launcher).setPositiveButton("Ok", null).show();
+        new AlertDialog.Builder(this).setMessage(e.getMessage()).setIcon(R.drawable.ic_launcher).setPositiveButton("Ok", null).show();
     }
 
     public class WSAsyncTask extends AsyncTask<Void, Void, Exception> {
@@ -75,9 +80,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
         private Dialog waintingDialog;
         private List<CityBean> result = null;
         private String cp;
+        private boolean withRetrofit;
 
-        public WSAsyncTask(String cp) {
+        public WSAsyncTask(String cp, boolean withRetrofit) {
             this.cp = cp;
+            this.withRetrofit = withRetrofit;
+        }
+
+        @Override
+        protected Exception doInBackground(Void... params) {
+
+            try {
+                if (withRetrofit) {
+                    result = CityWS.getCity(cp);
+                }
+                else {
+                    result = CityWS.getCity(cp);
+                }
+
+                return null;
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                return e;
+            }
         }
 
         @Override
@@ -86,19 +112,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             waintingDialog = ProgressDialog.show(MainActivity.this, "", "Chargement en cours...");
             waintingDialog.show();
-        }
-
-        @Override
-        protected Exception doInBackground(Void... params) {
-
-            try {
-                result = CityWS.getCity(cp);
-                return null;
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-                return e;
-            }
         }
 
         @Override

@@ -30,7 +30,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.+'
     compile 'com.google.android.gms:play-services:10.0.1'
 
-    //Corrige l'erreur
+    //Corrige l'erreur   des google play services
     //com.android.build.api.transform.TransformException: com.android.ide.common.process.ProcessException: java.util.concurrent.ExecutionException: com.android.dex.DexIndexOverflowException: method ID not in [0, 0xffff]: 65536
     compile 'com.android.support:multidex:1.0.1'
     compile project(':FormationUtils')

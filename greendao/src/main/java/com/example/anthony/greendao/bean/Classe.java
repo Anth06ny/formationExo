@@ -10,11 +10,6 @@ import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
 
-import greendaobeans.ClasseDao;
-import greendaobeans.DaoSession;
-import greendaobeans.EleveDao;
-import greendaobeans.EnseignantDao;
-
 @Entity(
 
         // Flag to make an entity "active": Active entities have update,
@@ -63,38 +58,9 @@ public class Classe {
             targetProperty = "enseignantId"
     )
     private List<Enseignant> enseignantList;
-
-
      /* ---------------------------------
     // Generes
     // -------------------------------- */
-
-    /**
-     * Used for active entity operations.
-     */
-    @Generated(hash = 1659662464)
-    private transient ClasseDao myDao;
-
-    /**
-     * Used to resolve relations
-     */
-    @Generated(hash = 2040040024)
-    private transient DaoSession daoSession;
-
-    @Generated(hash = 1415365288)
-    public Classe(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    @Generated(hash = 11538485)
-    public Classe() {
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
@@ -201,6 +167,18 @@ public class Classe {
         myDao = daoSession != null ? daoSession.getClasseDao() : null;
     }
 
+    /**
+     * Used for active entity operations.
+     */
+    @Generated(hash = 1659662464)
+    private transient ClasseDao myDao;
+
+    /**
+     * Used to resolve relations
+     */
+    @Generated(hash = 2040040024)
+    private transient DaoSession daoSession;
+
     public String getName() {
         return this.name;
     }
@@ -215,5 +193,15 @@ public class Classe {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Generated(hash = 1415365288)
+    public Classe(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Generated(hash = 11538485)
+    public Classe() {
     }
 }

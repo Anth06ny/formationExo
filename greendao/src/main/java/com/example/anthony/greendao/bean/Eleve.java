@@ -7,10 +7,6 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.ToOne;
 
-import greendaobeans.ClasseDao;
-import greendaobeans.DaoSession;
-import greendaobeans.EleveDao;
-
 @Entity(
 
         // Flag to make an entity "active": Active entities have update,
@@ -49,32 +45,9 @@ public class Eleve {
     @ToOne(joinProperty = "classeId")
     private Classe classe;
     private long classeId;
-
-    public Eleve(String nom, String prenom) {
-        this.nom = nom;
-        this.prenom = prenom;
-    }
-
-    @Override
-    public String toString() {
-        return nom + " " + prenom;
-    }
-
     /* ---------------------------------
     // Generes
     // -------------------------------- */
-
-    @Generated(hash = 1853661841)
-    public Eleve(Long id, String nom, String prenom, long classeId) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.classeId = classeId;
-    }
-
-    @Generated(hash = 1796364228)
-    public Eleve() {
-    }
 
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
@@ -115,52 +88,6 @@ public class Eleve {
     /**
      * called by internal mechanisms, do not call yourself.
      */
-    @Generated(hash = 311604629)
-    public void __setDaoSession(DaoSession daoSession) {
-        this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getEleveDao() : null;
-    }
-
-    /**
-     * Used for active entity operations.
-     */
-    @Generated(hash = 1736315468)
-    private transient EleveDao myDao;
-    /**
-     * Used to resolve relations
-     */
-    @Generated(hash = 2040040024)
-    private transient DaoSession daoSession;
-    @Generated(hash = 632681660)
-    private transient Long classe__resolvedKey;
-
-    public String getPrenom() {
-        return this.prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getNom() {
-        return this.nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * called by internal mechanisms, do not call yourself.
-     */
     @Generated(hash = 795697025)
     public void setClasse(@NotNull Classe classe) {
         if (classe == null) {
@@ -195,11 +122,70 @@ public class Eleve {
         return classe;
     }
 
+    @Generated(hash = 632681660)
+    private transient Long classe__resolvedKey;
+
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
+    @Generated(hash = 311604629)
+    public void __setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
+        myDao = daoSession != null ? daoSession.getEleveDao() : null;
+    }
+
+    /**
+     * Used for active entity operations.
+     */
+    @Generated(hash = 1736315468)
+    private transient EleveDao myDao;
+    /**
+     * Used to resolve relations
+     */
+    @Generated(hash = 2040040024)
+    private transient DaoSession daoSession;
+
     public long getClasseId() {
         return this.classeId;
     }
 
     public void setClasseId(long classeId) {
         this.classeId = classeId;
+    }
+
+    public String getPrenom() {
+        return this.prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getNom() {
+        return this.nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Generated(hash = 1853661841)
+    public Eleve(Long id, String nom, String prenom, long classeId) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.classeId = classeId;
+    }
+
+    @Generated(hash = 1796364228)
+    public Eleve() {
     }
 }

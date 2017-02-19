@@ -35,7 +35,6 @@ android {
 //Version de la base
 greendao {
     schemaVersion 2
-    daoPackage "greendaobeans"
 }
 
 dependencies {

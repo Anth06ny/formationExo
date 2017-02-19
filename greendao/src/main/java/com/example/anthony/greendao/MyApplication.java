@@ -3,6 +3,8 @@ package com.example.anthony.greendao;
 import android.app.Application;
 
 import com.example.anthony.greendao.bean.Classe;
+import com.example.anthony.greendao.bean.DaoMaster;
+import com.example.anthony.greendao.bean.DaoSession;
 import com.example.anthony.greendao.bean.Eleve;
 import com.example.anthony.greendao.bean.Enseignant;
 import com.example.anthony.greendao.dao.ClassesBddManager;
@@ -15,9 +17,6 @@ import org.greenrobot.greendao.database.Database;
 
 import java.util.ArrayList;
 import java.util.Random;
-
-import greendaobeans.DaoMaster;
-import greendaobeans.DaoSession;
 
 public class MyApplication extends Application {
 

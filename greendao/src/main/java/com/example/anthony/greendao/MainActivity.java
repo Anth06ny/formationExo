@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
 
 import com.example.anthony.greendao.adapter.RecycleViewAdapter;
 import com.example.anthony.greendao.bean.Classe;
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
     private static final String ID_EXTRA = "ID_EXTRA";
 
     //Composant graphique
-    private Button bt;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
 
