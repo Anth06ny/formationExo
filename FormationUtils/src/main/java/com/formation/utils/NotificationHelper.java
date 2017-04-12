@@ -1,31 +1,74 @@
 package com.formation.utils;
 
+import android.app.AlarmManager;
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.util.Log;
 
 public class NotificationHelper {
 
-    private static final int NOTIFICATION_REQUEST_CODE = 13; //au hasard
-    private static final int NOTIFICATION_ID = 14; //au hasard
+    public static void envoyerNotification(Context context, String message) {
 
-    //A partir de JellyBean
-    public static void createNotification(final Context context, Class<?> activityToLaunchOnClick) {
+        Notification notification = creerNotification(context, message);
 
-        final NotificationManager mNotification = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        //Ce qu'on lance au clic sur la notification
-        final Intent launchNotifiactionIntent = new Intent(context, activityToLaunchOnClick);
-        final PendingIntent pendingIntent = PendingIntent.getActivity(context, NOTIFICATION_REQUEST_CODE, launchNotifiactionIntent,
-                PendingIntent.FLAG_ONE_SHOT);
-
-        //La notification
-        final Notification.Builder builder = new Notification.Builder(context).setWhen(System.currentTimeMillis()).setTicker("Ticker")
-                .setSmallIcon(R.mipmap.ic_launcher).setContentTitle("ContentTitle").setContentText("ContentText").setContentIntent(pendingIntent);
-
-        //création de la notification
-        mNotification.notify(NOTIFICATION_ID, builder.build());
+        //On demande au système d'afficher la notification
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
+        notificationManagerCompat.notify(1, notification);
     }
+
+    private static Notification creerNotification(Context context, String message) {
+        //Action quand on clique sur la notification
+        Intent intent = new Intent(context, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //Image de droite sur la notification
+        Bitmap icon = BitmapFactory.decodeResource(context.getResources(),
+                R.mipmap.ic_launcher);
+
+        //Création de la notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(icon)
+                .setContentTitle("Le titre")
+                .setContentText(message)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)  //Permet d'enlever la notification quand on clique dessus
+                .setPriority(Notification.PRIORITY_HIGH) // Permet un affichage de la notification à la récéption
+                .setDefaults(Notification.DEFAULT_ALL);  //Affichage + son + vibration
+
+        //Mettre une couleur au titre
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            builder.setColor(context.getResources().getColor(R.color.colorAccent))
+                    .setVisibility(Notification.VISIBILITY_PUBLIC);
+        }
+
+        return builder.build();
+    }
+
+    public static void programmerNotification(Context context, String message, long delayInMillis) {
+
+        Log.w("TAG", "Delay : " + delayInMillis);
+
+        Notification notification = creerNotification(context, message);
+
+        //On prépare un Broadcast et on met en paramètre la notification
+        Intent notificationIntent = new Intent(context, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_EXTRA, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //La date dans le futur
+        long futureInMillis = SystemClock.elapsedRealtime() + delayInMillis;
+
+        //Grâce à l'alarme Manager, on demande au système de déclancher ce Broadcast à l'heure représentée par futurInMillis.
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+    }
+
 }
