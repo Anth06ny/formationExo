@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //La notification
         Notification notification = new Notification.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)
+                .setAutoCancel(true)  //Permet d'enlever la notification quand on clique dessus
                 .setContentTitle("Le titre").setContentText(message)
                 .setContentIntent(pendingIntent).build();
 

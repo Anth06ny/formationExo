@@ -2,175 +2,247 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.facebook.stetho\stetho-okhttp3\1.4.2\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\df6cc11a9567bcec9b4d452c86135c69b8f7b640\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="79c3d4a8ca3c04c5fd5a4a72d43a29fe6d3667b4">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.facebook.stetho-stetho-okhttp3-1.4.2_e082c0de35060f596b28fa718ffa0bd3f9efebd6.jar" />
+        revision="25.0.2"
+        sha1="df1cb17511aabbb63264a0024949d1e42502a512">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dc0e479b5ef0d8ee9866ff83554bfcac01cf23d3\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.facebook.stetho\stetho\1.4.2\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\0940cb7232b1d49e9a4cb0f0adac308828d3b66d\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="32f45bd44a3e7efc235bbfed120029290f5d674a">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.facebook.stetho-stetho-1.4.2_5652a33d0a7f4b9a670bfe3275ebd07ba139ecc7.jar" />
+        revision="25.0.2"
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_126735869550a382fca107247f8b29c8bc7b5e11\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.4.0_f99eb522e460a50c9b86a406d02f8944f9a5de6d.jar" />
+        revision="25.0.2"
+        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\commons-lang3-3.4_0275bbd0a242111677a9adc0108bd75aa1d5ba6f\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\7fec6721ecb20f8a611198361258f8cf9ccd94eb\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_be7f21cf50f56303cdee2891f2d4c2a692b5b77e.jar" />
+        revision="25.0.2"
+        sha1="7a64bf6dc775198eed9db9468a133adf7dfe6562">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4aa755ae8d2f26c79a2c3315bcf20513e2328a0f\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_9493a4cecb793886a8517d73c7d1ec6870da6296.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_edb9e73fcac94a5580c99aa5e4b2e53f84a6db65.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\otto-1.3.5_19a43d9d76d9ad47241a8d8bc490b9ecd90edcad.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\formation\FormationUtils\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c8bb82c643667cc5c92588cc54e52f11bcc39075">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\formation-FormationUtils-unspecified_d65af6ae5ffbf1afb77db35fd186f1aeffec6d3d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_badc7320afab8d72885b5b5b0daf5ca6ef59b4ae.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\support-annotations-23.4.0_dcdc7b36a9058978faa3cf64f636e360ee288e68.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_9064656acc13d20e3bd29cae054a33b4ef994e97.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.6.0\69edde9fc4b01c9fd51d25b83428837478c27254\okhttp-3.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\okhttp-3.6.0_39ffb94c44ad44b5ca433f7397e0c4b27952f314.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\converter-gson-2.1.0_a5c11048b1cc49c73381022e5d5519481beec419.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.5\6c6c702c89bfff3cd9e80b04d668c5e190d588c6\commons-lang3-3.5.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="6c6c702c89bfff3cd9e80b04d668c5e190d588c6">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\commons-lang3-3.5_258394f93bf44e393e61d985c58820b496af7c6b.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
+        revision="25.0.2"
         sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\gson-2.8.0_c0d111c9b2e14a675b30e58c022cc2dc5d60deb7.jar" />
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.8.0_c0d111c9b2e14a675b30e58c022cc2dc5d60deb7\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_3fe72c138b31dcd3e92f5f56149347653cf7020e.jar" />
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_9e3c63bd18c6299a0811febc90ec81686578868a\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\f7824787a96eda823fbb788d6bed0b13fc903146\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_4c03fb7c55e278d13247699377944be3961baf5c.jar" />
+        revision="25.0.2"
+        sha1="44a694d4095be84c2888764b1f7256b385c030ad">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_03a272a392d5288d255f211ae45170dd1cb0870e\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\serviceWithotto\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\70ceb99c4fc621535e840af8a8fd5d67e2068b7b\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_231cf075c2fad26ce2b81f2160e6d396706fa362.jar" />
+        revision="25.0.2"
+        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_697a5948f988088771dc6ef07dd871638dd29336\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\1757544aeb487ccbe015e8f36c272093cef94fee\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_c9a4b82ee66d3dec9b5742fc7035436a317f391e.jar" />
+        revision="25.0.2"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_56a044b009ab56cae4841f37b478071aa18550de\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\1cc4919e9d3e391653a6e94c2a17bff553ab8d3b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5b7d35a611a42112c4ddaf3bb316e40079a6f551\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\34617f9382f53ffbea3e45d2e0665c3b336f111e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e871881b36b32e6bfd271a830c6eeb54ff0fc185">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ea39b0814f1c0a545ebbae869710062baca7f3d7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\57885fafb58765c82c76a0eabfdcf227e7c031f7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e90e57ffbae4220d13feb034cd165f7daf3dbe26\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\28e2727c67bbafafba39bf2e80248d786e2b462e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_779a42e58be0928b26326bfd721093e819c52243\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\c184843e0144dd50b8c44da9e2df4217d7b13bab\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4fad3c1e2914ff7944f80d7c55682be37a0c5928">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2bb02b9f6ac02df852591ce393eeb30716394189\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\workspace_studio\formation\FormationUtils\build\intermediates\bundles\default\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c8bb82c643667cc5c92588cc54e52f11bcc39075">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\4\classes_cfc8b2d54e322ee3b3bedd887d90da123ea374ef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\4c2e628d80d8d44f7f9535de01b8c6517f35e297\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_baec0952d7fb0de352484a025d6608331d32363d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\57425d8891187ba52f9d371147361e3e883f334d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="408a599ac77cd17fe8e8919326bec617b3d005bd">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d868cd696499548b1bc93baf45ceb647df95b70e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\5f2a377c7387d82c6fd5cdd0b4f57171cc725f29\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b67b150c7e04893e18da6de7a8653339054c9239\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\0b74cbd8a05ed990a32d4162ff1191f41af745d4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4c829ff0ccfecb28a999ee46d9e75948dfc777a4">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_13b8be422402f124273c0dcb3b4e7acc4ce393a6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\a539ecb8e0ffdc5934cee0447ae4c53a00a00949\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e96c6974cf924e7ee3b230e6847d5731423388c9">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bde952af2ec94098db1eb6b10d2a54cdfe3cdf2f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\104739b6051b232142ad42147ba87656ad865f23\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="57c2eceb8548de84509d1ebc293fedec53231f6c">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7f502232de7cc048a42f9756b9e412ea6208e05f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\7c28ceb4acc61d75b26ceab4063a1002b98dc60d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8308ed003522a2ee8958311afcc4cfd0470377cd">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e79d2afcd5ec9127a93a5241b84148a830e60aa8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\67faee1bf94643ecad6383eee56f54b9df3e1066\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ffcb0754a692537c7f1282a98a2aac77eca9bf03\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\a9b60242980568d03198867f456ed31a3870b3fc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_57e9c4950d7ad97202fb99068c7dc5a9fbb04ab9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\3d817ac8f5a1148a443b313a89a1451c2e27c7a0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f780ee8ee8b7ae124491777459b8b3894bf67673\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\cdd23cfc50a36586ac73933680501d35ae9521e6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_845faaa6c1364a83518faca2b84800b3c5b107fe\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\f13371e94381d32c43a786fbeb9bef19de5d3c09\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1d193729baf37df3d902a423291423a0df7e3779">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_21f9f6fed91e7d07408d274557c26e5e960725a9\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -182,13 +254,13 @@
         <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\jsr305-2.0.1_96660b42877580f800502df17ff268691c692369.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.4.0\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\30378386822bfa59382f49efc55989967e85b25c\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.4.0_0ca66e21c113b864acfdafa401d695361727b178.jar" />
+        revision="25.0.2"
+        sha1="45305e6af414dab5aba6c3225081c2f15c3bdd1e">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3a7ab7d77960d361e8530df453e9e9688692f4f0\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -200,6 +272,24 @@
         <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\retrofit-2.1.0_e905fc769b4d3521ebbb142677ecfe1272ff335e.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\d4d45d2c477dd2ecf6e4a88f4a8f98712af85d53\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_13d9870984bb4542daa43169ab8b2b342c80ed67\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\e39509cfd9784107cff374fb9a51d759aba108a6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="771267c5b0c7a5b348d3205dcfa1f871af7e0177">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7908c835d8f005aae96d8cf315c17df5ede9d27d\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\commons-cli\commons-cli\1.2\2bf96b7aa8b611c177d329452af1dc933e14501c\commons-cli-1.2.jar"
         jumboMode="false"
@@ -209,31 +299,409 @@
         <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\commons-cli-1.2_5043579dfc2a1280ba0794091aebff29f603c2ca.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\897bca8e051ee8baf499db7ec11d8337e46bd846\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_61311394600612c4696815606310363519c06eab.jar" />
+        revision="25.0.2"
+        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2f6e4574dcf22e33a66f1959f8a8fa14bb126616\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\03f69449b59174249251df703c397ae0591bd272\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="de29a39f9260f88151b1ef453140e71c76b6c415">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_271003e39b940afa2898606645f7caece8c0df22\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\86b3559100a99883a63509010315f83dfc0e2386\output\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_c689956420ec2486a67f19afee379507d7dd09a1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\3a06c986d7eaf37294eb38fd98ad130606bcceb5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_17386b1becbba4b52d4bf7d5ca4cabd5dafc8bc7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\5db24185816126a2375b1f8fee934ec825896479\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_476d43fb88e8cdac724f0419fba716e94f0b0be0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\6303bae7181559058205bf85cd4d61c72ef3ad80\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c6e1f361e9d61aece9dac39b77fcc98a337a144d">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_282ae7307f5c740fc380a4b02aacdd9fc417e0b4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\be233479d6774eca8ca26a68c591bb0955db1922\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_170fe34d698c443b546d6bb6cd9b811f01cfd446\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.7.0\6edbebdd8868708db718d15c09c4b28037fd487e\okhttp-3.7.0.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\okio-1.11.0_be6edd3d388196b06c1136f9c81d729d6d32e526.jar" />
+        revision="25.0.2"
+        sha1="6edbebdd8868708db718d15c09c4b28037fd487e">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\okhttp-3.7.0_13e0e3237bc288edb822007b2a0c540c42ad9314.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\e6d21be5f07474fc04a9c3337d1b67b4ddd620e7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7c75610e45ef350bd48647d6fc447e4dc5075849\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.12.0\3742beff8024d0a0073d284b7c5e4cbf73d99b25\okio-1.12.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3742beff8024d0a0073d284b7c5e4cbf73d99b25">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.12.0_1f1b553599e63e2062b70462dd8074af4c569460\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\46adaba328dcfba480f3f5dff3a535af6bfc24a7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="39907d5c8f5902fffef30160ca7447c93b82405c">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e89cd4ee525838b10c20791448cb04086a4dffc3\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\converter-gson-2.1.0_a5c11048b1cc49c73381022e5d5519481beec419.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\retrofit-2.1.0_e905fc769b4d3521ebbb142677ecfe1272ff335e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.android\build-cache\5816c86e9d2c847f30527eb9800dd089bf3d6412\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="79c3d4a8ca3c04c5fd5a4a72d43a29fe6d3667b4">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\classes_9b619dee7004813f6853c308d6bf30f79af74580.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\09f39046bb5f1001685584b9379b3a767af88885\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e2185aff89caeb337b1ffc36d5e525d8318e7cfe">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5d8923381d537ce34404b3105f208c191e9aa41d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\b999064535d81073ebf68ee86730b7af93851180\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_29b9bc54cd7d9c1c00f592a1c2a701bce2a3a2cd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\7c3e0241797959f936a819a49b1f28500e728935\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6bb5d347ebc0c6ef3c83a905222a688da5d2f7b4">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ab02f6f22d3de5e33e1f43f8622904cb80436669\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\f28cceab1b3898ab4ea10855c94e964dea7472a9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9204aa4b8882fd1f52132f2291a69e869eb74333\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.7.0\6edbebdd8868708db718d15c09c4b28037fd487e\okhttp-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6edbebdd8868708db718d15c09c4b28037fd487e">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.7.0_13e0e3237bc288edb822007b2a0c540c42ad9314\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\8355d3151d74928e09006861a9f3c8c647323814\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d0460bf07cc3657e0be518ca01c174493951c6b8">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f13d9697c714f2e420d4c1f176ca109ffd028bb0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\e1e169761322dd5b36835359c7a0e538f3c6cab9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2c94786ff0c115e8ad0791185933fcb6e8e4c2a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\4d1895bc7a9e693b3e12eb72e357a6076811773e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e18ba9ff12b38e0a1ec16855954622d5b9611502\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\ec59212ae5c3cc4c9c82f9c95bd1ad5ea0749a32\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f3e51e9c5233b8897f61e08a6a27bc36283c2724">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_994cd4de4b2e795369185f9eb1b65ba1b9625786\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
-        <dex dex="C:\workspace_studio\formation\serviceWithotto\build\intermediates\pre-dexed\debug\commons-lang3-3.4_0275bbd0a242111677a9adc0108bd75aa1d5ba6f.jar" />
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\converter-gson-2.1.0_a5c11048b1cc49c73381022e5d5519481beec419.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\07c560596a2e2bfd55471d3e4ea330233c82bdbb\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ba6aa5e69ef31dee57208125323cee958fc67565">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a8d613962d67d8c9d0085cc15d7d067f095a66ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\86b3559100a99883a63509010315f83dfc0e2386\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c8164cb08b2076dcb92812c1152fa1cd9816fb84\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\c2647ad7de9579fe2dbeddf1b0aff55672fcb755\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ae80d328a8548b4610ead6c624bab8c6a6984f5b">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6eca033d4d0cf0d21d6a4ebe9335175765b2d5e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.5\6c6c702c89bfff3cd9e80b04d668c5e190d588c6\commons-lang3-3.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="6c6c702c89bfff3cd9e80b04d668c5e190d588c6">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\commons-lang3-3.5_258394f93bf44e393e61d985c58820b496af7c6b.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\217c2f9148326a9c385bdb65784baa8615e7d030\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6a4d3d4595ac1d1c823aaadc7caddd9b8c5f4717\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\5d103426fd91b9144a51699914d7c083870bc2d9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2d5d113b0352ab60946fc44c518cf68fd26cbb79">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7619c142255599db47a8b6b6a56515df8709e84a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\c78c987fda7fb1ebc10397407320cc2f1183a454\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="971509bbe30bb7b971fc1c49d7b23d0d818830ac">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7ab4557335591c3fde8f57b2f597189a1221d023\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\4e623e63ec4da24a156611666aac67438ad93002\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_44085ace57ff0a6b04bb333d56933d547646a658\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.12.0\3742beff8024d0a0073d284b7c5e4cbf73d99b25\okio-1.12.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3742beff8024d0a0073d284b7c5e4cbf73d99b25">
+        <dex dex="C:\workspace_studio\formation\webServiceGSONSolution\build\intermediates\pre-dexed\debug\okio-1.12.0_1f1b553599e63e2062b70462dd8074af4c569460.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\e18f83259b74b322cb87bb45f55111dff731d038\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b955cb3a1ad6f1b6ff728ce1e0cd592c1717b440">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2f09e0a321202da1c322acb3e200aeeb7c755ca8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\a40e8fdac5c7129cf4010257f33c1b9a76c2f62a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ffc15e965a9e8c28f24455eedd4cac215c45d1fc">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2b7a8bfbcea131bcb77954b38f064efc550a023b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\9b743ac11a9e09e75707cab6c486c85c419fc944\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c14f0c89f28cf782e42581ab0aba5f63af39b3d2">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_326643e1b06e2204023f4915c03695abaa4dc71a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\d7805dfe77db108f10b5e5f7c3808d2c3c84ecff\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4385ccc0a88b33d182a836eadb47be55c8eb1107">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a90512ee60688ce8ed1e45961a9aba17e3e32425\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\4809b210e7646de85c94dbb3841abf589fe39e03\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="028f8255cb977b29cdffbfcf05caa0459686120c">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d3292658df4547db1d4f43bc5d92768b7c9dc6a5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\b5234cb21a1b606e9e4a5e413aadf11376f4770a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="92c871a22463a247e8a77a9f3fd231c278788c4a">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b7605848726727172aa116c13e25b4f324f78d40\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\67d82e084cf1a8c59be89c4fcd3f9ceb27b3277a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a48dc0b148059764d32500be558702d5ff932058">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9351d1403b500bdc382b38a9af2d1ea4f5b5b57d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\296b360af9f75aea0194d52082f132b0b63372c1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f6cf557be4dbd0282ea2388633e5378634423226">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8ebca1523c2558777a7620b4dbaa7a6b21e7875f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\6516a5cedecc3f87cda490b0790e76d757739f8b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1e11c68fec92a17c84dd8d1dd80e74c4e67b12e2">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_adfa2e30b2ce332ebe47382ad09ba6722ba306f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\d4d0113793c2fea5dc24aa094c926da3cfb7c2db\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f23ad0f8e58713ff4b55f61c0bbde3830378347c">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ce6884b2a98027453da09ceea466d1c1e8da1f23\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\c1267c9945a75a5899c42af317ec3c36e03428ee\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b1df8fa3d372a27e4e969ce00b00689ee1eed031">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dd32da0801316252a6cdca971147dcf2fa4a0f34\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Anthony\.android\build-cache\1f73fd900a091c315505a04a2cd44ed9104fcede\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
+        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f11b4d8e3936bda10eac6ecacc5d120557dc6c2b\classes.dex" />
     </item>
 
 </items>

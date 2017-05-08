@@ -26,24 +26,41 @@ authors and should not be interpreted as representing official policies, either 
 or implied, of TENEA TECNOLOG�AS.
 */
 
-package com.example.anthony.maps.beans;
+package com.example.anthony.maps.beans.tracer;
 
-public class Polyline {
+import java.util.List;
 
-    private String points;
+public class Route {
 
-    public Polyline() {
+    private Bounds bounds;
+    private List<Leg> legs;
+    private String summary;
+
+    public Route() {
+
     }
 
-    public Polyline(String points) {
-        this.points = points;
+    public String getSummary() {
+        return summary;
     }
 
-    public String getPoints() {
-        return points;
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
-    public void setPoints(String points) {
-        this.points = points;
+    public List<Leg> getLegs() {
+        return legs;
+    }
+
+    public void setLegs(List<Leg> legs) {
+        this.legs = legs;
+    }
+
+    public Bounds getBounds() {
+        return bounds;
+    }
+
+    public void setBounds(Bounds bounds) {
+        this.bounds = bounds;
     }
 }

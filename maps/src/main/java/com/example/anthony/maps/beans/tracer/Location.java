@@ -26,26 +26,43 @@ authors and should not be interpreted as representing official policies, either 
 or implied, of TENEA TECNOLOG�AS.
 */
 
-package com.example.anthony.maps.beans;
+package com.example.anthony.maps.beans.tracer;
 
-public class Bounds {
+import com.google.android.gms.maps.model.LatLng;
 
-    private Location northeast;
-    private Location southwest;
+public class Location {
 
-    public Location getNortheast() {
-        return northeast;
+    private double lat;
+    private double lng;
+
+    public Location() {
+
     }
 
-    public void setNortheast(Location northeast) {
-        this.northeast = northeast;
+    /**
+     * @return Version LatLng
+     */
+    public LatLng getLatLng() {
+        return new LatLng(lat, lng);
     }
 
-    public Location getSouthwest() {
-        return southwest;
+    /* ---------------------------------
+    // Getter / Setter
+    // -------------------------------- */
+
+    public double getLat() {
+        return lat;
     }
 
-    public void setSouthwest(Location southwest) {
-        this.southwest = southwest;
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 }

@@ -3,7 +3,7 @@ package com.example.anthony.maps;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.anthony.maps.beans.DirectionResult;
+import com.example.anthony.maps.beans.tracer.DirectionResult;
 import com.formation.utils.OkHttpUtils;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;

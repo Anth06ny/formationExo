@@ -2,6 +2,7 @@ package com.example.anthony.maps;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Criteria;
@@ -13,24 +14,22 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.anthony.maps.beans.DirectionResult;
+import com.example.anthony.maps.beans.Trajet;
+import com.example.anthony.maps.beans.tracer.DirectionResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
-
-import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnInfoWindowClickListener, GoogleMap.InfoWindowAdapter {
 
@@ -67,9 +66,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         afficherLocalisationMap();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Velo");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        startActivity(new Intent(this, VeloActivity.class));
+        finish();
+        return super.onOptionsItemSelected(item);
+    }
+
     /* ---------------------------------
-    // Maps
-    // -------------------------------- */
+            // Maps
+            // -------------------------------- */
     private void afficherLocalisationMap() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
@@ -214,39 +226,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Toast.makeText(MapsActivity.this, "Pas de résultat ", Toast.LENGTH_SHORT).show();
             }
             else {
-                ArrayList<LatLng> points = result.getLstLatLng();
+                try {
+                    Trajet trajet = new Trajet(result);
+                    //On met à jour la carte
+                    mMap.clear();
+                    mMap.addMarker(trajet.getDepart()).setTag(TAG_START);
 
-                if (points.isEmpty()) {
+                    mMap.addPolyline(trajet.getPolylineOptions());
+                    mMap.addMarker(trajet.getArrivee()).setTag(TAG_STOP);
+
+                    int padding = 100; // offset from edges of the map in pixels
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(result.getLatLngBounds(), padding));
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
                     Toast.makeText(MapsActivity.this, "Pas de résultat retourné ", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                //On déclare le polyline, c'est-à-dire le trait (ici bleu) que l'on ajoute sur la carte pour tracer l'itinéraire
-                final PolylineOptions polylines = new PolylineOptions();
-                polylines.addAll(points);
-                polylines.color(Color.BLUE);
-
-                //On déclare un marker vert que l'on placera sur le départ
-                final MarkerOptions markerA = new MarkerOptions();
-                markerA.position(result.getStartPosition());
-                markerA.title("Début");
-                markerA.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-
-                //On déclare un marker rouge que l'on mettra sur l'arrivée
-                final MarkerOptions markerB = new MarkerOptions();
-                markerB.position(result.getStopPosition());
-                markerB.title("Fin");
-                markerB.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-
-                //On met à jour la carte
-                mMap.clear();
-                mMap.addMarker(markerA).setTag(TAG_START);
-
-                mMap.addPolyline(polylines);
-                mMap.addMarker(markerB).setTag(TAG_STOP);
-
-                int padding = 100; // offset from edges of the map in pixels
-                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(result.getLatLngBounds(), padding));
             }
         }
     }

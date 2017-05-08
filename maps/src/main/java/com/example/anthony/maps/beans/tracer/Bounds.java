@@ -26,31 +26,26 @@ authors and should not be interpreted as representing official policies, either 
 or implied, of TENEA TECNOLOG�AS.
 */
 
-package com.example.anthony.maps.beans;
+package com.example.anthony.maps.beans.tracer;
 
-public class Distance {
+public class Bounds {
 
-	private String text;
-	private double value;
+    private Location northeast;
+    private Location southwest;
 
-	public Distance(String text, double value) {
-		setText(text);
-		setValue(value);
-	}
+    public Location getNortheast() {
+        return northeast;
+    }
 
-	public String getText() {
-		return text;
-	}
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setNortheast(Location northeast) {
+        this.northeast = northeast;
+    }
 
-	public double getValue() {
-		return value;
-	}
+    public Location getSouthwest() {
+        return southwest;
+    }
 
-	public void setValue(double value) {
-		this.value = value;
-	}
-
+    public void setSouthwest(Location southwest) {
+        this.southwest = southwest;
+    }
 }

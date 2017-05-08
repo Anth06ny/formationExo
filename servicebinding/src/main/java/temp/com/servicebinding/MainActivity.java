@@ -2,7 +2,6 @@ package temp.com.servicebinding;
 
 import android.app.Activity;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -27,6 +26,8 @@ public class MainActivity extends Activity implements OnClickListener {
     //L'instance du service
     private UpdateDataService updateDataService;
 
+    private Intent serviceIntent;
+
     //-----------------------
     //View
     //-------------------
@@ -36,23 +37,43 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_main);
         tv = (TextView) findViewById(R.id.tv);
 
+        serviceIntent = new Intent(this, UpdateDataService.class);
+
+        serviceConnection = new ServiceConnection() {
+
+            //le service s'est déconnecté
+            public void onServiceDisconnected(ComponentName name) {
+                updateDataService = null;
+                if (MainActivity.this != null) {
+                    ToastUtils.showToast(MainActivity.this, "Déconnecté du service", Toast.LENGTH_LONG);
+                    updateTextView("Le service s'est arreté");
+                }
+            }
+
+            //le service se connecte
+            public void onServiceConnected(ComponentName arg0, IBinder binder) {
+                //on récupère l'instance du service dans l'activité
+                updateDataService = ((UpdateDataService.UpdateDataServiceBinder) binder).getUpdateDataService();
+
+                ToastUtils.showToast(MainActivity.this, "Service bindé", Toast.LENGTH_LONG);
+
+                refreshServiceValue();
+            }
+        };
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        tv.setText("Activité prête");
+    protected void onStart() {
+        super.onStart();
+        //Je me bind au service au cas ou il existe
+        bindService(serviceIntent, serviceConnection, 0);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        //Sinon impossible de tuer l'activité
-        if (serviceConnection != null) {
-            unbindService(serviceConnection);
-        }
+    protected void onStop() {
+        super.onStop();
+        unbindService(serviceConnection);
         updateDataService = null;
-        serviceConnection = null;
     }
 
     public void updateTextView(final String text) {
@@ -77,78 +98,21 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
     /* ---------------------------------
-    // Service
-    // -------------------------------- */
-
-    /**
-     * Lance ou récupère l'instance du service
-     */
-    private void bindToService() {
-
-        if (serviceConnection == null) {
-
-            serviceConnection = new ServiceConnection() {
-
-                //le service s'est déconnecté
-                public void onServiceDisconnected(ComponentName name) {
-                    updateDataService = null;
-                    if (MainActivity.this != null) {
-                        ToastUtils.showToast(MainActivity.this, "Déconnecté du service", Toast.LENGTH_LONG);
-                        updateTextView("Le service s'est arreté");
-                    }
-                }
-
-                //le service se connecte
-                public void onServiceConnected(ComponentName arg0, IBinder binder) {
-                    //on récupère l'instance du service dans l'activité
-                    updateDataService = ((UpdateDataService.UpdateDataServiceBinder) binder).getUpdateDataService();
-
-                    ToastUtils.showToast(MainActivity.this, "Service bindé", Toast.LENGTH_LONG);
-
-                    refreshServiceValue();
-
-                }
-            };
-        }
-        //démarre le service s'il n'est pas démarré
-        //Le binding du service est configuré avec "BIND_AUTO_CREATE" ce qui normalement
-        //démarre le service s'il n'est pas démarré, la différence ici est que le fait de
-        //démarrer le service par "startService" fait que si l'activité est détruite, le service
-        //reste en vie
-        startService(new Intent(this, UpdateDataService.class));
-
-        Intent intent = new Intent(this, UpdateDataService.class);
-        //lance le binding du service
-        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-
-        updateTextView("Démarrage du service");
-    }
-
-    private void stopService() {
-        updateTextView("Arret du service");
-        //on detruit le service
-        if (updateDataService != null) {
-            updateDataService.stopSelf();
-            updateDataService = null;
-        }
-        if (serviceConnection != null) {
-            unbindService(serviceConnection);
-            serviceConnection = null;
-        }
-
-    }
-
-    /* ---------------------------------
     // Evenements
     // -------------------------------- */
 
     @Override
     public void onClick(final View v) {
         if (v.getId() == R.id.startService) {
-            bindToService();
+            startService(serviceIntent);
+            bindService(serviceIntent, serviceConnection, 0);
         }
         else if (v.getId() == R.id.stopService) {
-            stopService();
+            updateTextView("Arret du service");
+            if (updateDataService != null) {
+                updateDataService.stopSelf();
+                updateDataService = null;
+            }
         }
         else if (v.getId() == R.id.updateTime) {
             refreshServiceValue();
@@ -158,5 +122,4 @@ public class MainActivity extends Activity implements OnClickListener {
             startActivity(new Intent(this, MainActivity.class));
         }
     }
-
 }

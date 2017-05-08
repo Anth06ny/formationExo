@@ -26,7 +26,7 @@ authors and should not be interpreted as representing official policies, either 
 or implied, of TENEA TECNOLOG�AS.
 */
 
-package com.example.anthony.maps.beans;
+package com.example.anthony.maps.beans.tracer;
 
 public class Step {
 

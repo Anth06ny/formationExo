@@ -37,7 +37,7 @@ import java.util.List;
         // Whether getters and setters for properties should be generated if missing.
         generateGettersSetters = true
 )
-public class Classe {
+public class 'Classe {
     @Id(autoincrement = true)
     private Long id;
 

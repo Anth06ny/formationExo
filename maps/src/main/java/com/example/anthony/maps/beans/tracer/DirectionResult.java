@@ -1,4 +1,4 @@
-package com.example.anthony.maps.beans;
+package com.example.anthony.maps.beans.tracer;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;

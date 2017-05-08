@@ -26,43 +26,31 @@ authors and should not be interpreted as representing official policies, either 
 or implied, of TENEA TECNOLOG�AS.
 */
 
-package com.example.anthony.maps.beans;
+package com.example.anthony.maps.beans.tracer;
 
-import com.google.android.gms.maps.model.LatLng;
+public class Distance {
 
-public class Location {
+	private String text;
+	private double value;
 
-    private double lat;
-    private double lng;
+	public Distance(String text, double value) {
+		setText(text);
+		setValue(value);
+	}
 
-    public Location() {
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
 
-    }
+	public double getValue() {
+		return value;
+	}
 
-    /**
-     * @return Version LatLng
-     */
-    public LatLng getLatLng() {
-        return new LatLng(lat, lng);
-    }
+	public void setValue(double value) {
+		this.value = value;
+	}
 
-    /* ---------------------------------
-    // Getter / Setter
-    // -------------------------------- */
-
-    public double getLat() {
-        return lat;
-    }
-
-    public void setLat(double lat) {
-        this.lat = lat;
-    }
-
-    public double getLng() {
-        return lng;
-    }
-
-    public void setLng(double lng) {
-        this.lng = lng;
-    }
 }

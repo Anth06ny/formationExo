@@ -51,7 +51,6 @@ public class RecycleViewActivity extends AppCompatActivity implements View.OnCli
         recycleViewAdapter = new RecycleViewAdapter(eleveList, this);
         rv.setAdapter(recycleViewAdapter);
 
-
         bt.setOnClickListener(this);
     }
 
