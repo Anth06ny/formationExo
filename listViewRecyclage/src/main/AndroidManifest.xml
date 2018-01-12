@@ -25,6 +25,7 @@
         </activity>
         <activity
             android:name=".recycleview.RecycleViewActivity"></activity>
+        <activity android:name=".TransitionImageActivity"/>
 
     </application>
 </manifest>

@@ -2,39 +2,43 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
 
-    <!-- dimension du text * 1.5 -->
-    <dimen name="font_10">15sp</dimen>
-    <dimen name="font_11">16sp</dimen>
-    <dimen name="font_12">18sp</dimen>
-    <dimen name="font_13">19sp</dimen>
-    <dimen name="font_14">21sp</dimen>
-    <dimen name="font_15">22sp</dimen>
-    <dimen name="font_16">24sp</dimen>
-    <dimen name="font_17">25sp</dimen>
-    <dimen name="font_18">27sp</dimen>
-    <dimen name="font_20">30sp</dimen>
-    <dimen name="font_25">37sp</dimen>
-    <dimen name="font_30">45sp</dimen>
-    <dimen name="font_40">60sp</dimen>
-    <dimen name="font_50">75sp</dimen>
+    <!-- dimension du text * 2 -->
+    <dimen name="font_10">20sp</dimen>
+    <dimen name="font_11">22sp</dimen>
+    <dimen name="font_12">24sp</dimen>
+    <dimen name="font_13">26sp</dimen>
+    <dimen name="font_14">28sp</dimen>
+    <dimen name="font_15">30sp</dimen>
+    <dimen name="font_16">32sp</dimen>
+    <dimen name="font_17">34sp</dimen>
+    <dimen name="font_18">36sp</dimen>
+    <dimen name="font_20">40sp</dimen>
+    <dimen name="font_25">50sp</dimen>
+    <dimen name="font_30">60sp</dimen>
+    <dimen name="font_40">80sp</dimen>
+    <dimen name="font_50">100sp</dimen>
 
-    <!-- Margin *1.5 -->
-    <dimen name="margin_1">1dp</dimen>
-    <dimen name="margin_2">2dp</dimen>
-    <dimen name="margin_5">8dp</dimen>
-    <dimen name="margin_8">12dp</dimen>
-    <dimen name="margin_10">15dp</dimen>
-    <dimen name="margin_13">19dp</dimen>
-    <dimen name="margin_15">22dp</dimen>
-    <dimen name="margin_20">30dp</dimen>
-    <dimen name="margin_25">37dp</dimen>
-    <dimen name="margin_30">45dp</dimen>
-    <dimen name="margin_40">60dp</dimen>
-    <dimen name="margin_50">75dp</dimen>
-    <dimen name="margin_80">120dp</dimen>
+    <!-- Margin *2 -->
+    <dimen name="margin_1">2dp</dimen>
+    <dimen name="margin_2">4dp</dimen>
+    <dimen name="margin_5">10dp</dimen>
+    <dimen name="margin_8">16dp</dimen>
+    <dimen name="margin_10">20dp</dimen>
+    <dimen name="margin_13">26dp</dimen>
+    <dimen name="margin_15">30dp</dimen>
+    <dimen name="margin_20">40dp</dimen>
+    <dimen name="margin_25">50dp</dimen>
+    <dimen name="margin_30">60dp</dimen>
+    <dimen name="margin_40">80dp</dimen>
+    <dimen name="margin_50">100dp</dimen>
+    <dimen name="margin_60">120dp</dimen>
+    <dimen name="margin_80">160dp</dimen>
+    <dimen name="margin_100">200dp</dimen>
+    <dimen name="margin_120">240dp</dimen>
+    <dimen name="margin_150">300dp</dimen>
 
     <!-- Standart height -->
-    <dimen name="standard_height">64dp</dimen>
+    <dimen name="standard_height">80dp</dimen>
     <dimen name="standard_bt_radius">32dp</dimen>
 
     <!-- ################ -->

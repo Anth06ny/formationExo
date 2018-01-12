@@ -80,15 +80,6 @@ public class ClasseEnseignant {
     }
 
     /**
-     * called by internal mechanisms, do not call yourself.
-     */
-    @Generated(hash = 1792759407)
-    public void __setDaoSession(DaoSession daoSession) {
-        this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getClasseEnseignantDao() : null;
-    }
-
-    /**
      * Used for active entity operations.
      */
     @Generated(hash = 991473283)
@@ -122,6 +113,13 @@ public class ClasseEnseignant {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /** called by internal mechanisms, do not call yourself. */
+    @Generated(hash = 1792759407)
+    public void __setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
+        myDao = daoSession != null ? daoSession.getClasseEnseignantDao() : null;
     }
 
     @Generated(hash = 162869341)

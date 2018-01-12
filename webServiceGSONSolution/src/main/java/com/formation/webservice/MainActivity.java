@@ -1,26 +1,30 @@
 package com.formation.webservice;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.formation.webservice.bean.CityBean;
+import com.formation.webservice.wsocket.WSocketActivity;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Composant graphique
     private EditText et;
@@ -69,6 +73,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
         else if (v == bt_ok_with_retrofit) {
             new WSAsyncTask(et.getText().toString(), true).execute();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, 1, 0, "WSocketActivity");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == 1) {
+            startActivity(new Intent(this, WSocketActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void updateError(Exception e) {

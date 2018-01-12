@@ -150,15 +150,6 @@ public class Enseignant {
         return classeList;
     }
 
-    /**
-     * called by internal mechanisms, do not call yourself.
-     */
-    @Generated(hash = 1167124596)
-    public void __setDaoSession(DaoSession daoSession) {
-        this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getEnseignantDao() : null;
-    }
-
     public String getPrenom() {
         return this.prenom;
     }
@@ -181,5 +172,12 @@ public class Enseignant {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /** called by internal mechanisms, do not call yourself. */
+    @Generated(hash = 1167124596)
+    public void __setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
+        myDao = daoSession != null ? daoSession.getEnseignantDao() : null;
     }
 }

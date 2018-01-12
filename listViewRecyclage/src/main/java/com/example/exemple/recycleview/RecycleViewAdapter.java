@@ -69,10 +69,22 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                 @Override
                 public void onClick(View v) {
                     if (RVAdapterCallBack != null) {
-                        RVAdapterCallBack.onEleveClic(eleve);
+                        RVAdapterCallBack.onEleveClic(eleve, ec_iv, ec_tv_nom);
                     }
                 }
             });
+
+            itemView.findViewById(R.id.root).setOnLongClickListener(
+                    new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
+                            if (RVAdapterCallBack != null) {
+                                RVAdapterCallBack.onEleveLongClic(eleve);
+                                return true;
+                            }
+                            return false;
+                        }
+                    });
         }
     }
 
@@ -80,6 +92,8 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     // Interface
     // -------------------------------- */
     public interface RVAdapterCallBack {
-        void onEleveClic(Eleve eleve);
+        void onEleveClic(Eleve eleve, ImageView ec_iv, TextView ec_tv_nom);
+
+        void onEleveLongClic(Eleve eleve);
     }
 }

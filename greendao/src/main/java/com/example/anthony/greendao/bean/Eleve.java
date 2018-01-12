@@ -126,15 +126,6 @@ public class Eleve {
     private transient Long classe__resolvedKey;
 
     /**
-     * called by internal mechanisms, do not call yourself.
-     */
-    @Generated(hash = 311604629)
-    public void __setDaoSession(DaoSession daoSession) {
-        this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getEleveDao() : null;
-    }
-
-    /**
      * Used for active entity operations.
      */
     @Generated(hash = 1736315468)
@@ -175,6 +166,13 @@ public class Eleve {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /** called by internal mechanisms, do not call yourself. */
+    @Generated(hash = 311604629)
+    public void __setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
+        myDao = daoSession != null ? daoSession.getEleveDao() : null;
     }
 
     @Generated(hash = 1853661841)

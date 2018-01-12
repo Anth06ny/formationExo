@@ -38,6 +38,12 @@
         <activity
             android:name=".VeloActivity"
             android:label="@string/title_activity_maps">
+
+        </activity>
+
+        <activity
+            android:name=".VeloWithClusterActivity"
+            android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

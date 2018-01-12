@@ -1,12 +1,7 @@
-include ':app', ':FormationUtils', ':MyDaoGenerator', ':BoutonExemple', ':GraphExemple', ':ZBar_reader', ':servicebinding', ':notificationexemple', ':daosqlicontentproviderclient', ':databinding', ':maps',
-        ':FacebookLogin', ':facebook', ':Simple Facebook', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium'
-include ':asyncTaskSolution'
-include ':fragmentFromScratch'
-include ':MainActivityAndHandlerSolution'
+include ':FormationUtils', ':BoutonExemple', ':ZBar_reader', ':servicebinding', ':notificationexemple', ':daosqlicontentproviderclient', ':databinding', ':maps', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium'
 include ':listViewRecyclage'
 include ':sendSMS'
 include ':serviceWithotto'
 include ':smsBroadCast'
 include ':DAOSQLISolution'
-include ':DAOGreenSolution'
 include ':httpExemple', ':greendao'

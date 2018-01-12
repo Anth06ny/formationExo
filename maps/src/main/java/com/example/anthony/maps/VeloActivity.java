@@ -35,9 +35,6 @@ import java.util.ArrayList;
 
 public class VeloActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener, GoogleMap.InfoWindowAdapter {
 
-    private static final int TAG_START = 1;
-    private static final int TAG_STOP = 2;
-
     private GoogleMap mMap;
     private final static int LOCATION_REQ_CODE = 456;
 
@@ -108,7 +105,7 @@ public class VeloActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Gestion des clicks sur les marker
+        // Gestion des clicks sur les marker (non clusters)
         mMap.setOnInfoWindowClickListener(this);
 
         //Gestion d'affichage des markers
@@ -175,7 +172,7 @@ public class VeloActivity extends FragmentActivity implements OnMapReadyCallback
 
             for (Station station : stations) {
                 final MarkerOptions marker = new MarkerOptions();
-                LatLng latLng = new LatLng(station.getPosition().getLat(), station.getPosition().getLng());
+                LatLng latLng = station.getPosition();
 
                 marker.position(latLng);
                 marker.title(station.getName());

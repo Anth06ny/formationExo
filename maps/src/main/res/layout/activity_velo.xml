@@ -6,6 +6,12 @@
     tools:context="com.example.anthony.maps.MapsActivity"
     >
 
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/bt_refresh"
+        android:text="Refresh"
+        android:layout_height="wrap_content"/>
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"

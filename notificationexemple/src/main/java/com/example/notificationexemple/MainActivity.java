@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if (v == bt_notif_date) {
 
-            scheduleNotification("Ma notification programmée", calendar.getTimeInMillis() - System.currentTimeMillis());
+            scheduleNotification("Ma notification programmée", calendar.getTimeInMillis() - Calendar.getInstance().getTimeInMillis());
         }
 
         else if (v == bt_notif_with_button) {
@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Redirection vers le broadcast
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, builder.build());
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

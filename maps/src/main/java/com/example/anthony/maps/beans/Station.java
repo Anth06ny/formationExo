@@ -1,27 +1,43 @@
 package com.example.anthony.maps.beans;
 
 import com.example.anthony.maps.beans.tracer.Position;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.clustering.ClusterItem;
 
 /**
  * Created by Anthony on 03/05/2017.
  */
 
-public class Station {
+public class Station implements ClusterItem {
 
-    public Integer number;
-    public String name;
-    public String address;
-    public Position position;
-    public Boolean banking;
-    public Boolean bonus;
-    public String status;
-    public String contract_name;
-    public Integer bike_stands;
-    public Integer available_bike_stands;
-    public Integer available_bikes;
-    public Long last_update;
+    private Integer number;
+    private String name;
+    private String address;
+    private Position position;
+    private Boolean banking;
+    private Boolean bonus;
+    private String status;
+    private String contract_name;
+    private Integer bike_stands;
+    private Integer available_bike_stands;
+    private Integer available_bikes;
+    private Long last_update;
+
+    //calculé
+    private LatLng latLng;
 
     public Station() {
+    }
+
+    public LatLng getPosition() {
+        if (latLng == null) {
+            latLng = new LatLng(position.getLat(), position.getLng());
+        }
+        return latLng;
+    }
+
+    public Position getPositionObject() {
+        return position;
     }
 
     public Integer getNumber() {
@@ -46,10 +62,6 @@ public class Station {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Position getPosition() {
-        return position;
     }
 
     public void setPosition(Position position) {

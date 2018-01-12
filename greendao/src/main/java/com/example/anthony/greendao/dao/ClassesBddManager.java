@@ -6,7 +6,6 @@ import com.example.anthony.greendao.bean.ClasseDao;
 
 import java.util.List;
 
-
 /**
  * Created by Anthony on 17/01/2017.
  */
