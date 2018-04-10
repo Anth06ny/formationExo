@@ -1,13 +1,12 @@
 package com.example.anthony.maps.beans.metro;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.maps.android.clustering.ClusterItem;
 
 /**
  * Created by Anthony on 12/01/2018.
  */
 
-public class StationMetroBean implements ClusterItem {
+public class StationMetroBean {
 
     private LatLng position;
     private String name;
