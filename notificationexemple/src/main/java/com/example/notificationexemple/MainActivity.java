@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Calendar calendar;
 
     private Button button, bt_timepicker, bt_date_picker, bt_notif_date, bt_alert_dialog;
-    private Button bt_notif_with_button;
+    private Button bt_notif_with_button, btInstant;
     private TextView tv_date;
 
     @Override
@@ -49,12 +49,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_date_picker = (Button) findViewById(R.id.bt_date_picker);
         bt_alert_dialog = (Button) findViewById(R.id.bt_alert_dialog);
         bt_notif_with_button = (Button) findViewById(R.id.bt_notif_with_button);
+        btInstant = (Button) findViewById(R.id.btInstant);
         button.setOnClickListener(this);
         bt_timepicker.setOnClickListener(this);
         bt_date_picker.setOnClickListener(this);
         bt_notif_date.setOnClickListener(this);
         bt_alert_dialog.setOnClickListener(this);
         bt_notif_with_button.setOnClickListener(this);
+        btInstant.setOnClickListener(this);
 
         refreshScreen();
     }
@@ -103,6 +105,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (v == bt_notif_with_button) {
             scheduleNotificationWithButton("Mon message");
         }
+        else if (v == btInstant) {
+            NotificationUtils.createInstantNotification(this, "Mon message");
+        }
     }
 
     @Override
@@ -145,29 +150,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         long futureInMillis = SystemClock.elapsedRealtime() + delay;
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
-    }
-
-    public static void createInstantNotification(Context context, String message) {
-
-        int notifReCode = 1;
-
-        //Ce qui se passera quand on cliquera sur la notif
-        Intent intent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_ONE_SHOT);
-
-        //La notification
-        Notification notification = new Notification.Builder(context)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setAutoCancel(true)  //Permet d'enlever la notification quand on clique dessus
-                .setContentTitle("Le titre").setContentText(message)
-                .setContentIntent(pendingIntent).build();
-
-        //Envoyer la notification
-        NotificationManager notificationManager = (NotificationManager)
-                context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        //ENVOIE
-        notificationManager.notify(1, notification);
     }
 
     private void scheduleNotificationWithButton(String message) {

@@ -1,6 +1,6 @@
-include ':FormationUtils', ':BoutonExemple', ':ZBar_reader', ':servicebinding', ':notificationexemple', ':daosqlicontentproviderclient', ':databinding', ':maps', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium', ':UltimateWarmUp'
+include ':FormationUtils', ':ZBar_reader', ':servicebinding', ':notificationexemple', ':daosqlicontentproviderclient', ':databinding', ':maps', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium', ':UltimateWarmUp'
 include ':listViewRecyclage'
 include ':sendSMS'
 include ':serviceWithotto'
 include ':DAOSQLISolution'
-include ':httpExemple', ':greendao'
+include ':greendao'
