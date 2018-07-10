@@ -1,4 +1,4 @@
-include ':FormationUtils', ':ZBar_reader', ':servicebinding', ':notificationexemple', ':daosqlicontentproviderclient', ':databinding', ':maps', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium', ':UltimateWarmUp'
+include ':FormationUtils', ':ZBar_reader', ':servicebinding', ':notificationexemple', ':daosqlicontentproviderclient', ':databinding', ':maps', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium', ':UltimateWarmUp', ':backgroundservice'
 include ':listViewRecyclage'
 include ':sendSMS'
 include ':serviceWithotto'

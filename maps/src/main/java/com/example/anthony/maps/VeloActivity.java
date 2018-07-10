@@ -188,9 +188,9 @@ public class VeloActivity extends FragmentActivity implements OnMapReadyCallback
                 else {
                     marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                 }
-
-                mMap.addMarker(marker).setTag(station);
-
+                Marker marker1 = mMap.addMarker(marker);
+                marker1.setTag(station);
+                marker1.setDraggable(true); //pour le rendre déplaceable
                 latLngBounds.include(latLng);
             }
 
@@ -210,6 +210,8 @@ public class VeloActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+
+    //Pour
 
     /* ---------------------------------
     // AsyncTask

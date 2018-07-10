@@ -27,21 +27,21 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:27.+'
-    compile 'com.google.android.gms:play-services:10.2.4'
+    implementation 'com.android.support:appcompat-v7:27.+'
+    implementation 'com.google.android.gms:play-services:10.2.4'
     //compile 'com.google.android.gms:play-services-maps:10.2.4'
-    compile 'com.android.support:mediarouter-v7:27.+'
+    implementation 'com.android.support:mediarouter-v7:27.+'
 
     //Clusters
-    compile 'com.google.maps.android:android-maps-utils:0.4+'
+    implementation 'com.google.maps.android:android-maps-utils:0.4+'
 
     //Corrige l'erreur   des google play services
     //com.android.build.api.transform.TransformException: com.android.ide.common.process.ProcessException: java.util.concurrent.ExecutionException: com.android.dex.DexIndexOverflowException: method ID not in [0, 0xffff]: 65536
-    compile 'com.android.support:multidex:1.0.1'
-    compile project(':FormationUtils')
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation project(':FormationUtils')
 
     //Direction API
-    compile 'com.cs:googlemaproute:1.0.0'
+    implementation 'com.cs:googlemaproute:1.0.0'
 
 
 }
