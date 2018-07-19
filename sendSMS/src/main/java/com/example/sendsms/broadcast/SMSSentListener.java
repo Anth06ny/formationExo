@@ -54,11 +54,14 @@ public class SMSSentListener extends BroadcastReceiver {
                     break;
             }
         }
-
+        else {
+            Toast.makeText(context, "Action : " + intent.getAction(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
      * Methode permetant de tester si le device peut envoyer des sms.
+     *
      * @param context
      * @return
      */
@@ -101,7 +104,5 @@ public class SMSSentListener extends BroadcastReceiver {
                 context.unregisterReceiver(smsUtils);
             }
         }, 10000);//on se desinscrit au bout de 10s
-
     }
-
 }

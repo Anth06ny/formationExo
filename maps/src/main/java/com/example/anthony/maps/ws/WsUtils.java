@@ -74,7 +74,6 @@ public class WsUtils {
         //Execution de la requête
         Response response = client.newCall(request).execute();
 
-
         //Analyse du code retour
         if (response.code() != HttpURLConnection.HTTP_OK) {
             throw new Exception("Reponse du serveur incorrect : " + response.code());

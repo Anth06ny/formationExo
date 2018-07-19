@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Test Connexion</string>
+    <string name="dialog_title_error">Problème rencontré</string>
+    <string name="dialog_title_ok">Connexion correct</string>
+    <string name="airplane">Désactiver le mode avion</string>
+    <string name="noreseau">Connectez vous à un Wifi ou à un réseau téléphonique</string>
+    <string name="error_server_client">Internet fonctionne mais connexion impossible à Medisys\n%s</string>
+    <string name="internet_faible">Vous êtes connectés à un réseau, mais la bande passante est trop faible ou non fonctionnelle\n</string>
+    <string name="internet_ok">La connexion avec Medisys fonctionne\n%s</string>
+    <string name="analyse_en_cours">Analyse en cours…</string>
+
+</resources>
