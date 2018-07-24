@@ -12,10 +12,6 @@ public class MyApplication extends Application {
     private static MyApplication instance;
     private static Bus bus;
 
-    public static MyApplication getInstance() {
-        return instance;
-    }
-
     @Override
     public void onCreate() {
 
@@ -26,5 +22,9 @@ public class MyApplication extends Application {
 
     public static Bus getBus() {
         return bus;
+    }
+
+    public static MyApplication getInstance() {
+        return instance;
     }
 }

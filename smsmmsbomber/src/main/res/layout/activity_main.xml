@@ -1,9 +1,10 @@
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:id="@+id/linearLayout1"
+<LinearLayout android:id="@+id/linearLayout1"
               xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="http://www.amonteiro.fr/sms/numeros.json"/>
+            android:text="@string/url_server"/>
 
         <Button
             android:id="@+id/btCharger"
@@ -34,52 +35,23 @@
         android:text="TextView"
         android:textSize="18sp"/>
 
-    <TextView
-        android:id="@+id/textViewSMS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Message : "
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-    <EditText
-        android:id="@+id/editTextSMS"
+    <ImageView
+        android:id="@+id/iv"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="5"/>
+        android:layout_height="100dp"
+        android:src="@drawable/croix_bleu"/>
 
     <Button
         android:id="@+id/buttonSend"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Send"/>
+        android:text="Send (Start Service)"/>
 
     <Button
-        android:id="@+id/btSendMMS"
+        android:id="@+id/btStopService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send MMS"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/load"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Load Image"/>
-
-        <ImageView
-            android:id="@+id/iv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/retry"/>
-    </LinearLayout>
+        android:text="Stop Service"/>
 
     <ScrollView
         android:layout_width="match_parent"

@@ -59,6 +59,7 @@ public class MapsUtils {
                 result.close();
             }
         }
+
     }
 
     private final static String URL_WS_GOOGLE = "http://maps.googleapis.com/maps/api/directions/xml?sensor=false&language=fr";

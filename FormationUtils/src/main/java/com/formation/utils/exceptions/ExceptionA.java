@@ -5,50 +5,26 @@ package com.formation.utils.exceptions;
  */
 public class ExceptionA extends Exception {
 
-    private String messageUtilisateur, messageTechnique;
-    private int codeErreur;
-
     //-----------------------
     // Constructeur
     //------------------------
 
-    /**
-     * @param messageUtilisateur message que recevra l'utilisateur
-     * @param messageTechnique   message pour les logs
-     */
-    public ExceptionA(String messageUtilisateur, String messageTechnique) {
-        super();
-        this.messageUtilisateur = messageUtilisateur;
-        this.messageTechnique = messageTechnique;
+    public ExceptionA() {
     }
 
-    /**
-     * @param messageUtilisateur message que recevra l'utilisateur
-     * @param messageTechnique   message pour les logs
-     * @param throwable
-     */
-    public ExceptionA(String messageUtilisateur, String messageTechnique, Throwable throwable) {
-        super(messageUtilisateur + " " + messageTechnique, throwable);
-        this.messageUtilisateur = messageUtilisateur;
-        this.messageTechnique = messageTechnique;
+    public ExceptionA(String message) {
+        super(message);
     }
 
-    @Override
-    public String toString() {
-        String s = super.toString() + "\nMessage utilisateur : " + getMessageUtilisateur();
-        s += "\nMessage technique : " + getMessageTechnique();
-        return s;
+    public ExceptionA(String message, Throwable cause) {
+        super(message, cause);
     }
 
-    //-----------------------
-    // Getter setter
-    //------------------------
-    public String getMessageUtilisateur() {
-        return messageUtilisateur;
+    public ExceptionA(Throwable cause) {
+        super(cause);
     }
 
-    public String getMessageTechnique() {
-        return messageTechnique;
+    public ExceptionA(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
     }
-
 }

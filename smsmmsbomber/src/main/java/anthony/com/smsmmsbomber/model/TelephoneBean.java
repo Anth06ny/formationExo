@@ -12,19 +12,28 @@ public class TelephoneBean implements Serializable {
     private boolean send;
     private long id;
 
+    public TelephoneBean(String numero) {
+        this.numero = numero;
+    }
+
+    public TelephoneBean() {
+    }
+
+    @Override
+    public String toString() {
+        return "TelephoneBean{" +
+                "numero='" + numero + '\'' +
+                ", send=" + send +
+                ", id=" + id +
+                '}';
+    }
+
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public TelephoneBean(String numero) {
-        this.numero = numero;
-    }
-
-    public TelephoneBean() {
     }
 
     public boolean isSend() {

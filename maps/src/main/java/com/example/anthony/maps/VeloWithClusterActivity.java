@@ -125,7 +125,7 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
         //On redrige la creation de l'info window sur les markers (non cluster)
         mMap.setInfoWindowAdapter(this);
 
-        mClusterManager = new ClusterManager<Station>(this, mMap);
+        mClusterManager = new ClusterManager<>(this, mMap);
         //On ajoute la gestion des markerOption pour les clusters
         mClusterManager.setRenderer(new StationIconRenderer(this, mMap, mClusterManager));
         //On redirige la création de l'InfoWindow pour les clusters

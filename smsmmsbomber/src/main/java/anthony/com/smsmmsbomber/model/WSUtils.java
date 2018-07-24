@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 import anthony.com.smsmmsbomber.BuildConfig;
 import anthony.com.smsmmsbomber.MyApplication;
 import anthony.com.smsmmsbomber.utils.Logger;
+import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -36,7 +37,8 @@ public class WSUtils {
      * @return
      * @throws TechnicalException
      */
-    public static CampagneBean getCampagnes(String url) throws TechnicalException {
+    public static CampagneBean getCampagnes(Context context) throws TechnicalException {
+        String url = SharedPreferenceUtils.getSaveURL(context);
 
         Log.w("TAG_URL", url);
         //Création de la requete
@@ -68,7 +70,7 @@ public class WSUtils {
                     campagneBean = new Gson().fromJson(jsonRecu, CampagneBean.class);
                 }
                 catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du .string dans la requete", e);
+                    throw new TechnicalException("Erreur lors du parsing Json", e);
                 }
             }
             else {
@@ -169,11 +171,11 @@ public class WSUtils {
 
             new OkHttpClient.Builder().connectTimeout(2, TimeUnit.SECONDS).build().newCall(request).execute();
             //Ca marche -> C'est le serveur le probleme
-            return new TechnicalException("L'url ne répond pas.", e);
+            return new TechnicalException("L'url ne répond pas", e);
         }
         catch (IOException e1) {
             //Ca crash encore -> problème d'internet
-            return new TechnicalException("Bande passante innexistante.", e1);
+            return new TechnicalException("Bande passante insufisante", e1);
         }
     }
 
