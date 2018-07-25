@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.SmsManager;
+import android.util.Log;
 
 import anthony.com.smsmmsbomber.MyApplication;
 
@@ -20,8 +21,12 @@ public class MultipleSendSMSBR extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        Log.w("TAG_SMS", "MultipleSendSMSBR action=" + intent.getAction()) ;
+
         //Detect l'envoie de sms
         if (intent.getAction().equals(SENT_SMS_ACTION_NAME)) {
+
 
             switch (getResultCode()) {
                 case Activity.RESULT_OK: // Sms sent

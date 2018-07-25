@@ -17,7 +17,6 @@ public class DateUtils {
     }
 
     /**
-     *
      * @param context
      * @param date_format
      * @return le string pour le format voulu en fonction du context (et donc de la langue)
@@ -28,9 +27,9 @@ public class DateUtils {
             case ddMMyyyy:
                 return context.getString(R.string.date_ddMMyyyy);
             case ddMMyyyy_HHmm:
-                return context.getString(R.string.date_ddMMyyyy);
+                return context.getString(R.string.date_ddMMyyyy_HHmm);
             case HHmm:
-                return context.getString(R.string.date_ddMMyyyy);
+                return context.getString(R.string.date_HHmm);
             default:
                 return context.getString(R.string.date_ddMMyyyy);
         }
@@ -38,6 +37,7 @@ public class DateUtils {
 
     /**
      * Parse un String en date
+     *
      * @param dateString
      * @return
      */
@@ -52,6 +52,7 @@ public class DateUtils {
 
     /**
      * Affiche une date dans le format voulu
+     *
      * @param date
      * @param dateFormat
      * @return
@@ -61,7 +62,6 @@ public class DateUtils {
     }
 
     /**
-     *
      * @param d1
      * @param d2
      * @return true si les 2 date sont du même jour
@@ -77,8 +77,6 @@ public class DateUtils {
             cal1.setTime(d1);
             cal2.setTime(d2);
             return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
-
         }
-
     }
 }

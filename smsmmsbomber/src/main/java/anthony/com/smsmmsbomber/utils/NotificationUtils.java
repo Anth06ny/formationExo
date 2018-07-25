@@ -11,6 +11,11 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.util.Log;
+
+import com.formation.utils.DateUtils;
+
+import java.util.Date;
 
 import anthony.com.smsmmsbomber.MainActivity;
 import anthony.com.smsmmsbomber.R;
@@ -50,6 +55,8 @@ public class NotificationUtils {
     public static Notification getNotif(Context c, String message, Bitmap bitmap, Integer imageId) {
         initChannel(c);
 
+        Log.w("TAG_NOTIFICATION", "Notif:" + message);
+
         //Ce qui se passera quand on cliquera sur la notif
         Intent intent = new Intent(c, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(c, 28, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -57,7 +64,9 @@ public class NotificationUtils {
         //La notification
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(c, CHANNEL_ID);
         notificationBuilder.setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(c.getResources().getString(R.string.app_name))
+                .setContentTitle(c.getResources().getString(R.string.app_name) + " " + DateUtils.dateToString(new Date(), DateUtils.getFormat(c, DateUtils
+                        .DATE_FORMAT
+                        .HHmm)))
                 .setContentText(message)
                 .setContentIntent(pendingIntent)//le clic dessus
                 .setDefaults(Notification.DEFAULT_ALL)

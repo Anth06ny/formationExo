@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -21,11 +23,13 @@ public class SMSSentListener extends BroadcastReceiver {
 
     public static final String SENT_SMS_ACTION_NAME = "SMS_SENT";
     public static final String DELIVERED_SMS_ACTION_NAME = "SMS_DELIVERED";
+    private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
         Log.w("TAG_SMS", "SMSSentListener Action : " + intent.getAction());
+
         //Detect l'envoie de sms
         if (intent.getAction().equals(SENT_SMS_ACTION_NAME)) {
             switch (getResultCode()) {
@@ -57,8 +61,33 @@ public class SMSSentListener extends BroadcastReceiver {
                     break;
             }
         }
+        //on recoit un sms
+        else if (intent.getAction().equals(SMS_RECEIVED)) {
+
+        }
         else {
             Toast.makeText(context, "Action : " + intent.getAction(), Toast.LENGTH_SHORT).show();
+        }
+
+        //on tente de lire le message
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            // get sms objects
+            Object[] pdus = (Object[]) bundle.get("pdus");
+            if (pdus.length == 0) {
+                Log.w("TAG_SMS", "SMSSentListener : pdus vide");
+                return;
+            }
+            // large message might be broken into many
+            SmsMessage[] messages = new SmsMessage[pdus.length];
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < pdus.length; i++) {
+                messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
+                sb.append(messages[i].getMessageBody());
+            }
+            String sender = messages[0].getOriginatingAddress();
+            String message = sb.toString();
+            Log.w("TAG_SMS", "SMSSentListener Expediteur=" + sender + "\nmessage=" + message);
         }
     }
 

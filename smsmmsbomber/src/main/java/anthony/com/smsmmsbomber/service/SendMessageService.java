@@ -132,7 +132,7 @@ public class SendMessageService extends Service {
                 //Envoie de la campagne
                 int i = 0;
                 int size = campagneBean.getTelephoneBeans().size();
-                boolean isSms = StringUtils.isNotBlank(campagneBean.getUrlFile());
+                boolean isSms = StringUtils.isBlank(campagneBean.getUrlFile());
                 SmsManager sms = SmsManager.getDefault();
                 //On divise notre messege en plusieurs SMS en fonction du format
                 ArrayList<String> parts = sms.divideMessage(campagneBean.getMessage());
@@ -162,9 +162,8 @@ public class SendMessageService extends Service {
                         SmsMmsManager.sendMMS(transaction, campagneBean, telephoneBean);
                     }
                 }
-                NotificationUtils.createInstantNotification(SendMessageService.this, "Messages de la campagne + " + campagneBean.getCampagneId() + " envoyés!",
-                        null, R.mipmap
-                                .ic_ok);
+                NotificationUtils.createInstantNotification(SendMessageService.this, campagneBean.getTelephoneBeans().size() + " messages de la campagne id=" +
+                        campagneBean.getCampagneId() + " envoyés!", null, R.mipmap.ic_ok);
                 //On sauvegarde la derniere campagne
                 SharedPreferenceUtils.saveLastCampagneId(SendMessageService.this, campagneBean.getCampagneId());
             }

@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">SMSMMSBomber</string>
-    <string name="url_server">http://www.amonteiro.fr/sms/numeros.json</string>
+    <string name="url_server">http://www.amonteiro.fr/sms/campagne.json</string>
 </resources>
