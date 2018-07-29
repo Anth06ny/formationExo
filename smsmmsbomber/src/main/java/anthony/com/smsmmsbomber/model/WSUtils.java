@@ -15,20 +15,26 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import anthony.com.smsmmsbomber.BuildConfig;
 import anthony.com.smsmmsbomber.MyApplication;
 import anthony.com.smsmmsbomber.utils.Logger;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
  * Created by Anthony on 15/11/2014.
  */
 public class WSUtils {
+
+    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    private static final Gson gson = new Gson();
 
     /**
      * Récupère la liste des commande de l'utilisateur.. Envoie email et token du téléphone
@@ -37,7 +43,7 @@ public class WSUtils {
      * @throws TechnicalException
      */
     public static CampagneBean getCampagnes(Context context) throws ExceptionA {
-        String url = SharedPreferenceUtils.getSaveURL(context);
+        String url = SharedPreferenceUtils.getUrlLoad(context);
 
         Log.w("TAG_URL", url);
         //Création de la requete
@@ -66,7 +72,7 @@ public class WSUtils {
                 try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
-                    campagneBean = new Gson().fromJson(jsonRecu, CampagneBean.class);
+                    campagneBean = gson.fromJson(jsonRecu, CampagneBean.class);
                 }
                 catch (Exception e) {
                     throw new TechnicalException("Erreur lors du parsing Json", e);
@@ -74,7 +80,7 @@ public class WSUtils {
             }
             else {
                 //JSON -> Java (Parser une ArrayList typée)
-                campagneBean = new Gson().fromJson(new InputStreamReader(response.body().byteStream()), CampagneBean.class);
+                campagneBean = gson.fromJson(new InputStreamReader(response.body().byteStream()), CampagneBean.class);
             }
 
             return campagneBean;
@@ -145,6 +151,81 @@ public class WSUtils {
             catch (IOException e) {
                 throw new TechnicalException("Erreur lors de la récupération du fichier", e);
             }
+        }
+    }
+
+    /**
+     * Envoie la campagne ainsi que les numéros envoyé
+     *
+     * @param context
+     * @param campagneBean
+     * @throws ExceptionA
+     */
+    public static void sendCampagneBean(Context context, CampagneBean campagneBean) throws ExceptionA {
+
+        String url = SharedPreferenceUtils.getUrlSendResult(context);
+
+        Log.w("TAG_URL", url);
+
+        if (BuildConfig.DEBUG) {
+            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(campagneBean));
+        }
+
+        RequestBody body = RequestBody.create(JSON, gson.toJson(campagneBean));
+
+        //Création de la requete
+        Request request = new Request.Builder().url(url).post(body).build();
+
+        //Execution de la requête
+        Response response;
+        try {
+            response = getOkHttpClient().newCall(request).execute();
+        }
+        catch (IOException e) {
+            //On test si google répond pour différencier si c'est internet ou le serveur le probleme
+            throw testInternetConnexionOnGoogle(e);
+        }
+
+        //Analyse du code retour si non copmris entre 200 et 299
+        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
+            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        }
+    }
+
+    /**
+     * Retourn
+     *
+     * @param context
+     * @param telephoneBeanArrayList
+     * @throws ExceptionA
+     */
+    public static void sendAnswer(Context context, List<TelephoneBean> telephoneBeanArrayList) throws ExceptionA {
+        String url = SharedPreferenceUtils.getUrlSendResult(context);
+
+        Log.w("TAG_URL", url);
+
+        if (BuildConfig.DEBUG) {
+            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(telephoneBeanArrayList));
+        }
+
+        RequestBody body = RequestBody.create(JSON, gson.toJson(telephoneBeanArrayList));
+
+        //Création de la requete
+        Request request = new Request.Builder().url(url).post(body).build();
+
+        //Execution de la requête
+        Response response;
+        try {
+            response = getOkHttpClient().newCall(request).execute();
+        }
+        catch (IOException e) {
+            //On test si google répond pour différencier si c'est internet ou le serveur le probleme
+            throw testInternetConnexionOnGoogle(e);
+        }
+
+        //Analyse du code retour si non copmris entre 200 et 299
+        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
+            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
         }
     }
 

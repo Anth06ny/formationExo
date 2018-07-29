@@ -10,30 +10,38 @@ import android.util.Log;
 import com.klinker.android.send_message.Message;
 import com.klinker.android.send_message.Transaction;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 
 import anthony.com.smsmmsbomber.BuildConfig;
 import anthony.com.smsmmsbomber.broadcast.MultipleSendSMSBR;
 import anthony.com.smsmmsbomber.model.CampagneBean;
 import anthony.com.smsmmsbomber.model.TelephoneBean;
+import anthony.com.smsmmsbomber.model.dao.TelephoneDaoManager;
 
 public class SmsMmsManager {
 
-    public static void sendSMS(final Context context, TelephoneBean telephoneBean, ArrayList<String> parts) {
+    public static void sendSMS(final Context context, TelephoneBean telephoneBean, ArrayList<String> parts, boolean notifEnvoie, boolean accuserReception) {
+        Intent intent;
 
         //Notif d'envoie
-        Intent sentIntent = new Intent(MultipleSendSMSBR.SENT_SMS_ACTION_NAME);
-        sentIntent.putExtra("id", telephoneBean.getId());
-        PendingIntent sentPI = PendingIntent.getBroadcast(context, 0, sentIntent, 0);
-        ArrayList<PendingIntent> sendList = new ArrayList<>();
-        sendList.add(sentPI);
+        ArrayList<PendingIntent> sendList = null;
+        if (notifEnvoie) {
+            intent = new Intent(MultipleSendSMSBR.SENT_SMS_ACTION_NAME);
+            intent.putExtra("id", telephoneBean.getId());
+            sendList = new ArrayList<>();
+            sendList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
+        }
 
         //Notif de reception
-        Intent receiveIntent = new Intent(MultipleSendSMSBR.DELIVERED_SMS_ACTION_NAME);
-        sentIntent.putExtra("id", telephoneBean.getId());
-        PendingIntent receivePI = PendingIntent.getBroadcast(context, 0, receiveIntent, 0);
-        ArrayList<PendingIntent> receiveList = new ArrayList<>();
-        receiveList.add(receivePI);
+        ArrayList<PendingIntent> receiveList = null;
+        if (accuserReception) {
+            intent = new Intent(MultipleSendSMSBR.DELIVERED_SMS_ACTION_NAME);
+            intent.putExtra("id", telephoneBean.getId());
+            receiveList = new ArrayList<>();
+            receiveList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
+        }
 
         SmsManager.getDefault().sendMultipartTextMessage(telephoneBean.getNumero(), null, parts, sendList, receiveList);
     }
@@ -70,6 +78,14 @@ public class SmsMmsManager {
             String message = sb.toString();
             if (BuildConfig.DEBUG) {
                 Log.w("TAG_SMS", "MultipleSendSMSBR" + "\nExpediteur=" + expediteur + "\nmessage=" + message);
+            }
+            if (StringUtils.isNotBlank(expediteur)) {
+                //ON cherche si on a déjà le numéro
+                TelephoneBean telephoneBean = new TelephoneBean();
+                telephoneBean.setNumero(expediteur);
+                telephoneBean.setAnswer(message);
+                telephoneBean.setSend(false); //ON met le champs à false pour indiquer qu'i n'a pas encore été envoyé au serveur
+                TelephoneDaoManager.save(telephoneBean);
             }
         }
     }

@@ -2,530 +2,214 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\c7db5abf39629ce58a6185ba6b27f42868024b1f\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="5803db663655ef5cb38c6bcb17ba326fdb9edfbd">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a9864bd06511e5615c6d7c6d1cf28349669b2765\classes.dex" />
-    </item>
-    <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.5\7941cd2c2c8ec006800d75c35f8a9dacf892ab93\otto-1.3.5.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
-        <dex dex="C:\workspace_studio\formation\greendao\build\intermediates\transforms\preDex\release\17.jar" />
+        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\5.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.3.1.aar\2453b0fa3777f14e038eab4698297a16\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.14.0\102d7be47241d781ef95f1581d414b0943053130\okio-1.14.0.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\1.jar" />
+        sha1="102d7be47241d781ef95f1581d414b0943053130">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\14.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-v4-20.0.0.aar\0d4621471acd92a85a6158dc273e301f\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\913bfbfbb959625de3b9aae16f3c1b08\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="C:\workspace_studio\formation\ZBar_reader\build\intermediates\transforms\preDex\release\7.jar" />
+        sha1="e2bbe48deed35056023eed2cdc0cc92e5c7d3617">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\16.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\workspace_studio\formation\FormationUtils\build\intermediates\intermediate-jars\release\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\e1909fa519d96e7a9bb4f944c0858971\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="24bdb60b5d9a34578616aa72130177fd9a2efe04">
-        <dex dex="C:\workspace_studio\formation\BoutonExemple\build\intermediates\transforms\preDex\release\15.jar" />
+        sha1="2feadd535770271ca57b7b431f42151aa4af324a">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\9.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\7d1277f0998a34be33ef3948ff6956c5\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="C:\workspace_studio\formation\ZBar_reader\build\intermediates\transforms\preDex\release\9.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\workspace_studio\formation\FormationUtils\build\intermediates\bundles\default\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2e8e5137e1fc5ffd1c0acf2f73b747464a45310b">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\4\classes_cfc8b2d54e322ee3b3bedd887d90da123ea374ef\classes.dex" />
+        sha1="c9a721adcd7dbae7a197b0ef81102336539f63ff">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\12.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.8.1\bc373fb6bc7bca3035041b924f158fd2b946ee8d\butterknife-annotations-8.8.1.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.1.0\edf3f7bfb84a7521d0599efa3b0113a0ee90f85\common-1.1.0.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="bc373fb6bc7bca3035041b924f158fd2b946ee8d">
-        <dex dex="C:\workspace_studio\formation\databinding\build\intermediates\transforms\preDex\release\5.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\713314967ca67b5374866a7412cab08b226d1554\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0d0cf557313d2b887d2f711923542c36b4b90742\classes.dex" />
+        sha1="0edf3f7bfb84a7521d0599efa3b0113a0ee90f85">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\19.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\8814b0752842ee660f5583236f04698a\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\10.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\c184843e0144dd50b8c44da9e2df4217d7b13bab\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4fad3c1e2914ff7944f80d7c55682be37a0c5928">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2bb02b9f6ac02df852591ce393eeb30716394189\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.13.0_633c90ea4c164b06debdc96b89317e0fa3e8e8a7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_9e3c63bd18c6299a0811febc90ec81686578868a\classes.dex" />
+        sha1="88c68e5ef7c5ace393d014c9ec5fe736b1ca55cf">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\6.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.greenrobot\greendao\3.2.0\e70040568b2929b8e5869ad1ffca8e4386dc53bc\greendao-3.2.0.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.7\557edd918fd41f9260963583ebf5a61a43a6b423\commons-lang3-3.7.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="e70040568b2929b8e5869ad1ffca8e4386dc53bc">
-        <dex dex="C:\workspace_studio\formation\greendao\build\intermediates\transforms\preDex\release\4.jar" />
+        sha1="557edd918fd41f9260963583ebf5a61a43a6b423">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\4.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.greenrobot\greendao-api\3.2.0\c6d610abe1d75d758431c9234917a349abc0a0ac\greendao-api-3.2.0.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\27.1.1\39ded76b5e1ce1c5b2688e1d25cdc20ecee32007\support-annotations-27.1.1.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="c6d610abe1d75d758431c9234917a349abc0a0ac">
-        <dex dex="C:\workspace_studio\formation\greendao\build\intermediates\transforms\preDex\release\15.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\28e2727c67bbafafba39bf2e80248d786e2b462e\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_779a42e58be0928b26326bfd721093e819c52243\classes.dex" />
+        sha1="39ded76b5e1ce1c5b2688e1d25cdc20ecee32007">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\15.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\commons-cli\commons-cli\1.2\2bf96b7aa8b611c177d329452af1dc933e14501c\commons-cli-1.2.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\f1bc1ac4de23981d09180458155c1890\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="2bf96b7aa8b611c177d329452af1dc933e14501c">
-        <dex dex="C:\workspace_studio\formation\greendao\build\intermediates\transforms\preDex\release\16.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\4e623e63ec4da24a156611666aac67438ad93002\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_44085ace57ff0a6b04bb333d56933d547646a658\classes.dex" />
+        sha1="ec657bb192b20229696216bf233779b16bf75a54">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\11.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-v4-25.3.1.aar\626163ae2fbea0c8df4927e376310ed8\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\218cd1ecfde20e56e573fa9e6bee0662\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\4.jar" />
+        sha1="1fd3ceac7f415975323d52c6c6057db409a907f6">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\18.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\core-1.5.aar\655d6a73ec80c789035d105fe23ebb82\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\3ee04173b0a76d72e6a7317a032df594\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="85fd787f604f8fc6564ff7d4cce05f6522f180ab">
-        <dex dex="C:\workspace_studio\formation\ZBar_reader\build\intermediates\transforms\preDex\release\6.jar" />
+        sha1="23dcb4803d3103bde3f3f5db978a726338fe49ae">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\13.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\56d9bf89598ff52b45f6c88099254b54\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
-        <dex dex="C:\workspace_studio\formation\BoutonExemple\build\intermediates\transforms\preDex\release\5.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\commons-lang3-3.4_0275bbd0a242111677a9adc0108bd75aa1d5ba6f\classes.dex" />
+        sha1="874f1143c11f5d38533efe512bf913e3e847e7df">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\10.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.3.1.aar\299953437a00d6d3eb46829964fd8b43\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\e2bfa692ba94082f3d662d7d6058bbec\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\2.jar" />
+        sha1="d968b9bd0011800e0d333d1571b8d34bcb8a0b6e">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.3.1.aar\b6594f9f5cef02cc70118ce97fcc4d21\jars\classes.jar"
+        jar="C:\workspace_studio\formationExo\FormationUtils\build\intermediates\intermediate-jars\release\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\6.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\5b17b606d651c1b8fc589be5df511b7747277261\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="dd1d0d84da2cff18f741c63a9c3af7d9aa89fdd6">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_af92368f7d877b757656572a74008b4a24f6e36c\classes.dex" />
+        sha1="b04abffe2459f733978b482117793bb6ed8bd183">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\22.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\zbar-1.5.aar\7056aed3a0f0a01673477148b15bb2d9\jars\libs\zbar.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.5\f645ed69d595b24d4cf8b3fbb64cc505bede8829\gson-2.8.5.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="7bbdf7ba57a8a157c0cad51e455609c70887812e">
-        <dex dex="C:\workspace_studio\formation\ZBar_reader\build\intermediates\transforms\preDex\release\5.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.2\3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf\gson-2.8.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.8.2_8fd42c34ca7f5eaeaf2d5694c33b9e0fc12991fd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\4d1895bc7a9e693b3e12eb72e357a6076811773e\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e18ba9ff12b38e0a1ec16855954622d5b9611502\classes.dex" />
+        sha1="f645ed69d595b24d4cf8b3fbb64cc505bede8829">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\2.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.3.1.aar\2a59cc4e1f6f6a35817d49159eb47580\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\e9bb625f6784079a9a0236c136554146\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\3.jar" />
+        sha1="8a9fd7c97f1d13f97f3b52f9d2e54cd857d5acf9">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\17.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.9.1\84b4b7d1c4a238e7899972b7446c250691e65f1f\okhttp-3.9.1.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.1.0\8007981f7d7540d89cd18471b8e5dcd2b4f99167\common-1.1.0.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="84b4b7d1c4a238e7899972b7446c250691e65f1f">
-        <dex dex="C:\workspace_studio\formation\BoutonExemple\build\intermediates\transforms\preDex\release\2.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\b999064535d81073ebf68ee86730b7af93851180\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_29b9bc54cd7d9c1c00f592a1c2a701bce2a3a2cd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\67faee1bf94643ecad6383eee56f54b9df3e1066\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ffcb0754a692537c7f1282a98a2aac77eca9bf03\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\4c2e628d80d8d44f7f9535de01b8c6517f35e297\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_baec0952d7fb0de352484a025d6608331d32363d\classes.dex" />
+        sha1="8007981f7d7540d89cd18471b8e5dcd2b4f99167">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\21.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.3.1.aar\020bb9cec0cbf6775c0a97d971810a83\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\97237b99b013fff2f468a053bc8ecb6d\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\7.jar" />
+        sha1="3304d33470ff64cf83bce9189ff3648a42eb2aa7">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\8.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.3.1.aar\eaac6dd17aa011ce4d6fc0f5a5bedd03\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.10.0\7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e\okhttp-3.10.0.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\8.jar" />
+        sha1="7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\3.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-compat-25.3.1.aar\db67bc347f1142537e3ae7d55eaa68d5\jars\classes.jar"
+        jar="C:\Users\Utilisateur\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\2ab640db5ef8b4ad07fa7f6ce3f45fdc\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="22"
         optimize="true"
         revision="26.0.2"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.3.1.aar\b11534799640eceaa09be390a679f075\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
-        <dex dex="C:\workspace_studio\formation\greendao\build\intermediates\transforms\preDex\release\3.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\f28cceab1b3898ab4ea10855c94e964dea7472a9\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9204aa4b8882fd1f52132f2291a69e869eb74333\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\zbar-1.5.aar\7056aed3a0f0a01673477148b15bb2d9\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="4b10baf38cb190650e6231f136e189a27b70c56b">
-        <dex dex="C:\workspace_studio\formation\ZBar_reader\build\intermediates\transforms\preDex\release\1.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\5f2a377c7387d82c6fd5cdd0b4f57171cc725f29\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b67b150c7e04893e18da6de7a8653339054c9239\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\73c67b0f59e77cbe39703c59a06dedb1\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="6a2bcb61342d09fe9acf55c9daf63961c8866cc0">
-        <dex dex="C:\workspace_studio\formation\databinding\build\intermediates\transforms\preDex\release\2.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\b57465c28933b0c712db8dbc823e0460d458a0f8\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="bf481b2af4d8f89935baf75972976b5681533176">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2a36000f9491f3fb6aa47eb60278b5234c85687c\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.3.1.aar\e474326f78cfc0218d42fc833427a9ac\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="95519720620b553f63afc789beba9ad582807f7c">
-        <dex dex="C:\workspace_studio\formation\greendao\build\intermediates\transforms\preDex\release\2.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\e1e169761322dd5b36835359c7a0e538f3c6cab9\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2c94786ff0c115e8ad0791185933fcb6e8e4c2a2\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\workspace_studio\formation\TestUnitaireRobotium\libs\robotium-solo-5.3.0.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="28c81719af0e439878269bca02bdbd3a924b9ac0">
-        <dex dex="C:\workspace_studio\formation\TestUnitaireRobotium\build\intermediates\transforms\preDex\release\1.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.9.0\1b6c10b5120995a7542c1a31b7828fb8593c8ba\okhttp-3.9.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="01b6c10b5120995a7542c1a31b7828fb8593c8ba">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.9.0_a4481c64826f2eed95b453f420e34422ac538c95\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\3a06c986d7eaf37294eb38fd98ad130606bcceb5\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_17386b1becbba4b52d4bf7d5ca4cabd5dafc8bc7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\939d2ddd04455d3b85ecfffad06e29fb4edffbc0\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="379a48c2da13ffb7ec7134f2c715663834357670">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b26d4ef7f26a48fa353d1bca01b005531ca0374b\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\stetho-1.4.2.aar\e3c45a74aa558f5da91316cfd2681f79\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="32f45bd44a3e7efc235bbfed120029290f5d674a">
-        <dex dex="C:\workspace_studio\formation\greendao\build\intermediates\transforms\preDex\release\5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.2\3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf\gson-2.8.2.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf">
-        <dex dex="C:\workspace_studio\formation\BoutonExemple\build\intermediates\transforms\preDex\release\3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-fragment-25.3.1.aar\b4ab43fa01bf3d627b7d97952f0d803a\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="C:\workspace_studio\formation\daosqlicontentproviderclient\build\intermediates\transforms\preDex\release\5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
-        <dex dex="C:\workspace_studio\formation\BoutonExemple\build\intermediates\transforms\preDex\release\1.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\1ecde1151ce7aba966e05c272c6edd05e31206a1\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6f57b76211a1d7b0c1f18873af59faad95664681">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cc0dde8f5f82569a158c2bc4f9cef53454adb3d2\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Anthony\.android\build-cache\54f253dafb404cf2b17ccb7974cfedf84f57b4d0\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6d0d5e86f5b7203834df01ed78ebfdd5cbf74d48">
-        <dex dex="C:\workspace_studio\formation\maps\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7a8457a6ef0b08aa65cb21634b2a75619c0edcc6\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Anthony\.gradle\caches\transforms-1\files-1.1\support-v4-20.0.0.aar\0d4621471acd92a85a6158dc273e301f\jars\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        min-sdk-version="22"
-        optimize="true"
-        revision="26.0.2"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="C:\workspace_studio\formation\ZBar_reader\build\intermediates\transforms\preDex\release\8.jar" />
+        sha1="71d380aeac037e63bab7bda2ba211777e16a2f42">
+        <dex dex="C:\workspace_studio\formationExo\sendSMS\build\intermediates\transforms\preDex\release\20.jar" />
     </item>
 
 </items>

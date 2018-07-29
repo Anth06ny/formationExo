@@ -1,6 +1,7 @@
 /**
  * (C)opyright 2014 - UrbanPulse - All rights Reserved
  * File : ImageHighlight.java
+ *
  * @date 28 févr. 2014
  * @author Anthony
  */
@@ -10,17 +11,17 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.Button;
 
 /**
  * @author Anthony
  *
  */
-public class ButtonHighlight extends Button implements OnTouchListener {
+public class ButtonHighlight extends AppCompatButton implements OnTouchListener {
 
     private int colorId, highlightedColorId;
 
@@ -68,5 +69,4 @@ public class ButtonHighlight extends Button implements OnTouchListener {
         setColorFilter(resColorId != null ? resource.getColor(resColorId) : 0,
                 resHighlightedColorId != null ? resource.getColor(resHighlightedColorId) : 0);
     }
-
 }

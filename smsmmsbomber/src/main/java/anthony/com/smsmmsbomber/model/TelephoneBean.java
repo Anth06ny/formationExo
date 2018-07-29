@@ -21,10 +21,10 @@ public class TelephoneBean implements Serializable {
 
     @Id
     private Long id;
-    private String numero;
-    private Boolean send;
-    private Boolean received;
-    private String Answer;
+    private String numero;    //numero
+    private Boolean send;             //s'il a bien été envoyé
+    private Boolean received;                                 //s'il a bien été recu
+    private String Answer;                                                          //si on recoit un message
     private long campagneId;
 
     /**
@@ -53,7 +53,7 @@ public class TelephoneBean implements Serializable {
 
     @Generated(hash = 758663091)
     public TelephoneBean(Long id, String numero, Boolean send, Boolean received,
-            String Answer, long campagneId) {
+                         String Answer, long campagneId) {
         this.id = id;
         this.numero = numero;
         this.send = send;

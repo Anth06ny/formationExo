@@ -6,12 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.telephony.SmsMessage;
 import android.util.Log;
 
 import anthony.com.smsmmsbomber.BuildConfig;
 import anthony.com.smsmmsbomber.model.TelephoneBean;
 import anthony.com.smsmmsbomber.model.dao.TelephoneDaoManager;
+import anthony.com.smsmmsbomber.utils.SmsMmsManager;
 
 /**
  * Created by amonteiro on 05/12/2014.
@@ -59,28 +59,8 @@ public class MultipleSendSMSBR extends BroadcastReceiver {
         }
         //on recoit un sms
         else if (intent.getAction().equals(SMS_RECEIVED)) {
-
-            //on tente de lire le message
-            if (intent.getExtras() != null) {
-                // get sms objects
-                Object[] pdus = (Object[]) intent.getExtras().get("pdus");
-                if (pdus == null || pdus.length == 0) {
-                    Log.w("TAG_SMS", "SMSSentListener : pdus vide");
-                    return;
-                }
-                // large message might be broken into many
-                SmsMessage[] messages = new SmsMessage[pdus.length];
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < pdus.length; i++) {
-                    messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-                    sb.append(messages[i].getMessageBody());
-                }
-                String expediteur = messages[0].getOriginatingAddress();
-                String message = sb.toString();
-                if (BuildConfig.DEBUG) {
-                    Log.w("TAG_SMS", "MultipleSendSMSBR resultCode=" + getResultCode() + "\nExpediteur=" + expediteur + "\nmessage=" + message);
-                }
-            }
+            SmsMmsManager.receiveSMS(intent);
+            //Le message sera envoyé au serveur lors du prochaine tick
         }
     }
 

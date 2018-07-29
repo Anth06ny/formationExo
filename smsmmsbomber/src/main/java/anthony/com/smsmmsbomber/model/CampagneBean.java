@@ -16,14 +16,18 @@ public class CampagneBean {
     ArrayList<TelephoneBean> telephoneBeans;
     String urlFile;
     String message;
+    boolean accuserReception; //est ce qu'on activel'accusé reception
+    boolean accuserEnvoie;
+    //is video
+    boolean video;
 
+    //HORS WEB SERVICE
     //image
     Bitmap bitmap;
     //video
     byte[] videoFile;
 
-    //is video
-    boolean video;
+
 
     public CampagneBean() {
     }
@@ -126,5 +130,21 @@ public class CampagneBean {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public boolean isAccuserReception() {
+        return accuserReception;
+    }
+
+    public void setAccuserReception(boolean accuserReception) {
+        this.accuserReception = accuserReception;
+    }
+
+    public boolean isAccuserEnvoie() {
+        return accuserEnvoie;
+    }
+
+    public void setAccuserEnvoie(boolean accuserEnvoie) {
+        this.accuserEnvoie = accuserEnvoie;
     }
 }

@@ -14,6 +14,10 @@ import anthony.com.smsmmsbomber.model.DaoSession;
  */
 public class MyApplication extends Application {
 
+    /**
+     * Annalyser l'envoie de message
+     */
+
     private static MyApplication instance;
     private static Bus bus;
     private static DaoSession daoSession;

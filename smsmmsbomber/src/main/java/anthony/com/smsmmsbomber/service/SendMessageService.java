@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.telephony.SmsManager;
 import android.util.Log;
 
 import com.formation.utils.exceptions.ExceptionA;
+import com.formation.utils.exceptions.LogicException;
 import com.formation.utils.exceptions.TechnicalException;
 import com.klinker.android.send_message.Settings;
 import com.klinker.android.send_message.Transaction;
@@ -17,7 +19,11 @@ import com.klinker.android.send_message.Transaction;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import anthony.com.smsmmsbomber.MyApplication;
 import anthony.com.smsmmsbomber.R;
 import anthony.com.smsmmsbomber.broadcast.MultipleSendSMSBR;
 import anthony.com.smsmmsbomber.model.CampagneBean;
@@ -33,15 +39,12 @@ import static anthony.com.smsmmsbomber.utils.NotificationUtils.NOTIFICATION_ID;
 
 public class SendMessageService extends Service {
 
-    //Charger la campagne
-    //charger l'image
-    //Envoyer les sms//mms
-    //Gerer les réponses des sms recu
-    //Envoyer le rapport
+    public static final int TEMPS_ATTENTE_ENVOIE_RESULTAT = 30000;
 
     private SendSmsAT sendSmsAT;
     private Transaction transaction;
     private MultipleSendSMSBR multipleSendSMSBR;
+    private Timer timer;
 
     @Override
     public void onCreate() {
@@ -59,11 +62,21 @@ public class SendMessageService extends Service {
         Settings settings = new Settings();
         settings.setUseSystemSending(true);
         transaction = new Transaction(this, settings);
+
+        int delai = SharedPreferenceUtils.getDelay(this) * 1000;
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                onStartCommand(null, 0, 0);
+            }
+        }, 0, delai);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
+        //Si on veut envoyer le resultat;
         if (sendSmsAT == null || sendSmsAT.getStatus() == AsyncTask.Status.FINISHED) {
             sendSmsAT = new SendSmsAT();
             sendSmsAT.execute();
@@ -79,6 +92,7 @@ public class SendMessageService extends Service {
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(multipleSendSMSBR);
+        timer.cancel();
         Log.w("TAG_SERVICE", "Arret du service");
     }
 
@@ -103,6 +117,8 @@ public class SendMessageService extends Service {
         context.stopService(new Intent(context, SendMessageService.class));
     }
 
+
+
     /* ---------------------------------
     // Asynctask
     // -------------------------------- */
@@ -124,6 +140,9 @@ public class SendMessageService extends Service {
                 }
                 else if (!Permissionutils.isDefautApp(SendMessageService.this)) {
                     throw new ExceptionA("L'application n'est pas définie comme application par defaut pour les SMS, veuillez accepter dans l'application");
+                }
+                else if (StringUtils.isBlank(SharedPreferenceUtils.getUrlLoad(SendMessageService.this))) {
+                    throw new ExceptionA("Veuillez definir dans l'application une url ou charger la campagne");
                 }
 
                 NotificationUtils.createInstantNotification(SendMessageService.this, "Chargemment de la campagne...", null, R.mipmap.ic_ok);
@@ -202,24 +221,47 @@ public class SendMessageService extends Service {
                     TelephoneBean telephoneBean = campagneBean.getTelephoneBeans().get(i);
                     //Mode mms
                     if (isSms) {
-                        SmsMmsManager.sendSMS(SendMessageService.this, telephoneBean, parts);
+                        SmsMmsManager.sendSMS(SendMessageService.this, telephoneBean, parts, campagneBean.isAccuserEnvoie(), campagneBean.isAccuserReception());
                     }
                     //Mode sms
                     else {
                         SmsMmsManager.sendMMS(transaction, campagneBean, telephoneBean);
                     }
                 }
-                NotificationUtils.createInstantNotification(SendMessageService.this, campagneBean.getTelephoneBeans().size() + " messages de la campagne id=" +
-                        campagneBean.getCampagneId() + " envoyés!", null, R.mipmap.ic_ok);
+
+                String message = campagneBean.getTelephoneBeans().size() + " messages de la campagne id=" +
+                        campagneBean.getCampagneId() + " envoyés!";
+
                 //On sauvegarde la derniere campagne
                 SharedPreferenceUtils.saveLastCampagneId(SendMessageService.this, campagneBean.getCampagneId());
                 Log.w("TAG_CAMPAGNE", "Sauvegarde du campagneId = " + campagneBean.getCampagneId());
+
+                NotificationUtils.createInstantNotification(SendMessageService.this, message, null, R.mipmap.ic_ok);
+
+                if (StringUtils.isBlank(SharedPreferenceUtils.getUrlSendResult(SendMessageService.this))) {
+                    message += "\n Pas d'url pour l'envoie des résultats";
+                    NotificationUtils.createInstantNotification(SendMessageService.this, message, null, R.mipmap.ic_ok);
+                    return null;
+                }
+                else {
+                    //Si c'est un sms et qu'on attend l'accusé reception et qu'on a une url d'envoie
+                    if (campagneBean.isAccuserEnvoie() || campagneBean.isAccuserReception() && StringUtils.isBlank(campagneBean.getUrlFile())) {
+                        message += "\nEnvoie des résultats dans 30 secondes";
+                        NotificationUtils.createInstantNotification(SendMessageService.this, message, null, R.mipmap.ic_ok);
+                        SystemClock.sleep(TEMPS_ATTENTE_ENVOIE_RESULTAT);
+                    }
+
+                    //Envoie des resultats
+                    //ON fait en sorte de recherger les résultats
+                    MyApplication.getDaoSession().clear();
+                    campagneBean.setTelephoneBeans(new ArrayList<>(TelephoneDaoManager.getTelephoneFromCampagneId(campagneBean.getCampagneId())));
+                    NotificationUtils.createInstantNotification(SendMessageService.this, "Envoie du resultat...", null, R.mipmap.ic_ok);
+                    WSUtils.sendCampagneBean(SendMessageService.this, campagneBean);
+                    NotificationUtils.createInstantNotification(SendMessageService.this, message + "\nResultats envoyés" + campagneBean, null, R.mipmap.ic_ok);
+                }
             }
             catch (Exception e) {
                 this.exception = new TechnicalException("Erreur lors de l'envoie de message", e);
-            }
-            finally {
-                //Envoie du resultat
             }
 
             return null;
@@ -234,6 +276,41 @@ public class SendMessageService extends Service {
                 NotificationUtils.createInstantNotification(SendMessageService.this, exception.getMessage(), campagneBean != null ? campagneBean.getBitmap() :
                         null, R.mipmap.ic_error);
             }
+
+            //ON lance l'envoie des sms recu
+            new SendAnswerAT().execute();
+        }
+    }
+
+    public class SendAnswerAT extends AsyncTask {
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+
+            try {
+                if (StringUtils.isBlank(SharedPreferenceUtils.getUrlSendAnswer(SendMessageService.this))) {
+                    throw new LogicException("Pas d'url ou envoyer les sms reçu");
+                }
+                //ON envoie les réponse
+                List<TelephoneBean> list = TelephoneDaoManager.getTelephoneWithAnswer();
+                if (!list.isEmpty()) {
+                    WSUtils.sendAnswer(SendMessageService.this, list);
+
+                    //On sauvegarde l'envoie
+                    TelephoneDaoManager.deleteList(list);
+
+                    NotificationUtils.sendAnswerNotification(SendMessageService.this, "Les " + list.size() + "sms reçus ont été envoyés au serveur", R.mipmap.ic_ok);
+                }
+                else {
+                    NotificationUtils.sendAnswerNotification(SendMessageService.this, "Aucun sms reçu", R.mipmap.ic_ok);
+                }
+            }
+            catch (ExceptionA exceptionA) {
+                exceptionA.printStackTrace();
+                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les sms reçu.\n" + exceptionA.getMessage(), R.mipmap.ic_error);
+            }
+
+            return null;
         }
     }
 }

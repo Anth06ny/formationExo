@@ -18,16 +18,42 @@ public class SharedPreferenceUtils {
     }
 
     /* ---------------------------------
-    //Sauvegarde voix
+    //Sauvegarde url de chargement
     // -------------------------------- */
-    private static final String URL = "URL";
+    private static final String URL_LOAD = "URL_LOAD";
 
-    public static String getSaveURL(Context c) {
-        return getSharedPreference(c).getString(URL, c.getResources().getString(R.string.url_server));
+    public static String getUrlLoad(Context c) {
+        return getSharedPreference(c).getString(URL_LOAD, c.getResources().getString(R.string.url_server));
     }
 
-    public static void saveURL(Context c, String url) {
-        getSharedPreference(c).edit().putString(URL, url).apply();
+    public static void saveUrlLoad(Context c, String url) {
+        getSharedPreference(c).edit().putString(URL_LOAD, url).apply();
+    }
+
+    /* ---------------------------------
+//Sauvegarde url envoie resultat
+// -------------------------------- */
+    private static final String URL_SEND_RESULT = "URL_SEND_RESULT";
+
+    public static String getUrlSendResult(Context c) {
+        return getSharedPreference(c).getString(URL_SEND_RESULT, "");
+    }
+
+    public static void saveUrlSendResult(Context c, String url) {
+        getSharedPreference(c).edit().putString(URL_SEND_RESULT, url).apply();
+    }
+
+    /* ---------------------------------
+//Sauvegarde url envoie resultat
+// -------------------------------- */
+    private static final String URL_SEND_ANSWER = "URL_SEND_ANSWER";
+
+    public static String getUrlSendAnswer(Context c) {
+        return getSharedPreference(c).getString(URL_SEND_ANSWER, "");
+    }
+
+    public static void saveUrlSendAnswer(Context c, String url) {
+        getSharedPreference(c).edit().putString(URL_SEND_ANSWER, url).apply();
     }
 
     /* ---------------------------------
@@ -41,5 +67,18 @@ public class SharedPreferenceUtils {
 
     public static void saveLastCampagneId(Context c, int id) {
         getSharedPreference(c).edit().putInt(LAST_CAMPAGNE_ID, id).apply();
+    }
+
+    /* ---------------------------------
+   //Last CampagneID
+   // -------------------------------- */
+    private static final String TIME_DELAY = "TIME_DELAY";
+
+    public static int getDelay(Context c) {
+        return getSharedPreference(c).getInt(TIME_DELAY, 30);
+    }
+
+    public static void saveDelay(Context c, int id) {
+        getSharedPreference(c).edit().putInt(TIME_DELAY, id).apply();
     }
 }

@@ -8,18 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.formation.utils.exceptions.ExceptionA;
-import com.squareup.otto.Subscribe;
 
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.Date;
 
 import anthony.com.smsmmsbomber.model.CampagneBean;
 import anthony.com.smsmmsbomber.model.WSUtils;
@@ -30,11 +26,9 @@ import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
-    private Button buttonSend, btCharger, btStopService, btResetCampagneId;
-    private TextView tvNbCharger;
     private ProgressDialog waintingDialog;
-    private EditText etUrl;
-    private TextView tvResultat;
+    private EditText etUrlLoad, etUrlSend, etUrlSendAnswer, etDelay;
+    private TextView tvInfo;
     private ImageView iv;
 
     private CampagneBean campagneBean;
@@ -44,25 +38,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonSend = findViewById(R.id.buttonSend);
-        btCharger = findViewById(R.id.btCharger);
-        tvNbCharger = findViewById(R.id.tvNbCharger);
-        tvResultat = findViewById(R.id.tvResultat);
-        btStopService = findViewById(R.id.btStopService);
-        btResetCampagneId = findViewById(R.id.btResetCampagneId);
+        tvInfo = findViewById(R.id.tvInfo);
+        etUrlSend = findViewById(R.id.etUrlSend);
+        etUrlSendAnswer = findViewById(R.id.etUrlSendAnswer);
+        etDelay = findViewById(R.id.etDelay);
         iv = findViewById(R.id.iv);
-        etUrl = findViewById(R.id.etUrl);
-
-        buttonSend.setOnClickListener(this);
-        btCharger.setOnClickListener(this);
-        btStopService.setOnClickListener(this);
-        btResetCampagneId.setOnClickListener(this);
-
-        etUrl.setText(SharedPreferenceUtils.getSaveURL(this));
+        etUrlLoad = findViewById(R.id.etUrlLoad);
 
         refreshScreen();
-
-        MyApplication.getBus().register(this);
     }
 
     @Override
@@ -86,12 +69,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        MyApplication.getBus().unregister(this);
-    }
-
-    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         //on boucle
@@ -106,39 +83,44 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     @Override
     public void onClick(final View v) {
-        if (buttonSend == v) {
+        if (v.getId() == R.id.btSaveUrlLoad) {
+            SharedPreferenceUtils.saveUrlLoad(this, etUrlLoad.getText().toString());
+            Toast.makeText(this, "Url sauvegardée", Toast.LENGTH_SHORT).show();
+        }
+        else if (v.getId() == R.id.btTest) {
+            new MonAT(etUrlLoad.getText().toString()).execute();
+        }
+        else if (v.getId() == R.id.btSaveUrlSend) {
+            SharedPreferenceUtils.saveUrlSendResult(this, etUrlSend.getText().toString());
+            Toast.makeText(this, "Url sauvegardée", Toast.LENGTH_SHORT).show();
+        }
+        else if (v.getId() == R.id.btSaveAnswerUrl) {
+            SharedPreferenceUtils.saveUrlSendAnswer(this, etUrlSendAnswer.getText().toString());
+            Toast.makeText(this, "Url sauvegardée", Toast.LENGTH_SHORT).show();
+        }
+        else if (R.id.btStartService == v.getId()) {
             SendMessageService.startservice(this);
         }
-        else if (v == btCharger) {
-            SharedPreferenceUtils.saveURL(this, etUrl.getText().toString());
-            new MonAT(etUrl.getText().toString()).execute();
-        }
-        else if (btStopService == v) {
+        else if (R.id.btStopService == v.getId()) {
             SendMessageService.stopService(this);
         }
-        else if (btResetCampagneId == v) {
+        else if (R.id.btResetCampagneId == v.getId()) {
             //On supprime l'ancienne campagne de la base
             TelephoneDaoManager.getDao().deleteAll();
             SharedPreferenceUtils.saveLastCampagneId(this, -1);
             Log.w("TAG_CAMPAGNE", "Reset du capagneId");
         }
+        else if (R.id.btSaveDelay == v.getId()) {
+
+            if (StringUtils.isNumeric(etDelay.getText())) {
+                SharedPreferenceUtils.saveDelay(this, Integer.parseInt(etDelay.getText().toString()));
+                Toast.makeText(this, "Délai sauvegardé. Arretez et redémarrez le service pour la prise en compte", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(this, "Ce n'est pas un delay valide", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
-
-    /* ---------------------------------
-    // Callback otto
-    // -------------------------------- */
-
-    @Subscribe
-    public void messageSend(boolean ok) {
-        tvResultat.append(new Date().getTime() + " : " + ok + "\n");
-    }
-
-    @Subscribe
-    public void messageSend(Boolean ok) {
-        tvResultat.append(new Date().getTime() + " : " + ok + "\n");
-    }
-
-
 
 
 
@@ -148,11 +130,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private void refreshScreen() {
 
+        etUrlLoad.setText(SharedPreferenceUtils.getUrlLoad(this));
+        etUrlSendAnswer.setText(SharedPreferenceUtils.getUrlSendAnswer(this));
+        etUrlSend.setText(SharedPreferenceUtils.getUrlSendResult(this));
+        etDelay.setText(SharedPreferenceUtils.getDelay(this) + "");
+
         if (campagneBean == null || campagneBean.getTelephoneBeans() == null || campagneBean.getTelephoneBeans().isEmpty()) {
-            tvNbCharger.setText("Aucun numéro chargé");
+            tvInfo.setText("Aucun numéro chargé");
         }
         else {
-            tvNbCharger.setText(campagneBean.getTelephoneBeans().size() + " numéro(s) chargé(s)\n" + (StringUtils.isNotBlank(campagneBean.getUrlFile()) ? " Mode MMS" : " Mode SMS"));
+            tvInfo.setText(campagneBean.getTelephoneBeans().size() + " numéro(s) chargé(s)\n" + (StringUtils.isNotBlank(campagneBean.getUrlFile()) ? " Mode MMS" : " Mode SMS"));
         }
 
         //Si on a une image

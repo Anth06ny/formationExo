@@ -29,6 +29,7 @@ public class NotificationUtils {
     private static final String CHANNEL_ID = "ChannelId";
     private static final CharSequence CHANNEL_NAME = "Campagne";
     public static final int NOTIFICATION_ID = 3;
+    public static final int NOTIFICATION_ANSWER_ID = 4;
 
     /**
      * Création du channel
@@ -50,6 +51,10 @@ public class NotificationUtils {
     public static void createInstantNotification(Context c, String message, Bitmap bitmap, Integer imageId) {
         //Envoyer la notification
         NotificationManagerCompat.from(c).notify(NOTIFICATION_ID, getNotif(c, message, bitmap, imageId));
+    }
+
+    public static void sendAnswerNotification(Context context, String message, Integer imageId) {
+        NotificationManagerCompat.from(context).notify(NOTIFICATION_ANSWER_ID, getNotif(context, message, null, imageId));
     }
 
     public static Notification getNotif(Context c, String message, Bitmap bitmap, Integer imageId) {
