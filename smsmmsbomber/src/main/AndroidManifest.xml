@@ -28,6 +28,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
         <activity android:name=".SMSReceiveActivity">
             <intent-filter>
 
@@ -44,16 +53,11 @@
                 <data android:scheme="mmsto"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+
 
         <receiver
-            android:name=".broadcast.SMSSentListener"
+            android:name=".broadcast.MultipleSendSMSBR"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS">
@@ -65,6 +69,7 @@
                 <action android:name="android.provider.Telephony.SMS_DELIVER"/>
             </intent-filter>
         </receiver>
+
         <receiver
             android:name=".broadcast.MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH">
@@ -91,6 +96,7 @@
                 <data android:scheme="mmsto"/>
             </intent-filter>
         </service>
+
         <service android:name="com.android.mms.transaction.TransactionService"/>
         <service
             android:name=".service.SendMessageService"

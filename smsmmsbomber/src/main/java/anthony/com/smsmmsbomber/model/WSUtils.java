@@ -7,10 +7,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.formation.utils.exceptions.ExceptionA;
 import com.formation.utils.exceptions.TechnicalException;
 import com.google.gson.Gson;
-
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,7 +36,7 @@ public class WSUtils {
      * @return
      * @throws TechnicalException
      */
-    public static CampagneBean getCampagnes(Context context) throws TechnicalException {
+    public static CampagneBean getCampagnes(Context context) throws ExceptionA {
         String url = SharedPreferenceUtils.getSaveURL(context);
 
         Log.w("TAG_URL", url);
@@ -76,16 +75,6 @@ public class WSUtils {
             else {
                 //JSON -> Java (Parser une ArrayList typée)
                 campagneBean = new Gson().fromJson(new InputStreamReader(response.body().byteStream()), CampagneBean.class);
-            }
-
-            //On télécharge le fichier s'il y en a 1
-            if (StringUtils.isNotBlank(campagneBean.getUrlFile())) {
-                if (campagneBean.isVideo()) {
-                    campagneBean.setVideoFile(downloadVideo(campagneBean.getUrlFile()));
-                }
-                else {
-                    campagneBean.setBitmap(downloadPicture(campagneBean.getUrlFile()));
-                }
             }
 
             return campagneBean;

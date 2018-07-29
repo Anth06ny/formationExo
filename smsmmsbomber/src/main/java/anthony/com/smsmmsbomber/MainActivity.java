@@ -1,16 +1,9 @@
 package anthony.com.smsmmsbomber;
 
-import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Telephony;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,30 +14,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.formation.utils.exceptions.TechnicalException;
-import com.google.gson.Gson;
+import com.formation.utils.exceptions.ExceptionA;
 import com.squareup.otto.Subscribe;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import anthony.com.smsmmsbomber.broadcast.MultipleSendSMSBR;
-import anthony.com.smsmmsbomber.broadcast.SMSSentListener;
 import anthony.com.smsmmsbomber.model.CampagneBean;
-import anthony.com.smsmmsbomber.model.TelephoneBean;
 import anthony.com.smsmmsbomber.model.WSUtils;
+import anthony.com.smsmmsbomber.model.dao.TelephoneDaoManager;
 import anthony.com.smsmmsbomber.service.SendMessageService;
+import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
-
-import static anthony.com.smsmmsbomber.broadcast.MultipleSendSMSBR.SENT_SMS_ACTION_NAME;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
-    private static final int PHOTO_PICKER_ID = 1;
-
-    private Button buttonSend, btCharger, btStopService;
+    private Button buttonSend, btCharger, btStopService, btResetCampagneId;
     private TextView tvNbCharger;
     private ProgressDialog waintingDialog;
     private EditText etUrl;
@@ -52,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     private ImageView iv;
 
     private CampagneBean campagneBean;
-
-    //outils
-    private MultipleSendSMSBR multipleSendSMSBR;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -66,36 +49,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         tvNbCharger = findViewById(R.id.tvNbCharger);
         tvResultat = findViewById(R.id.tvResultat);
         btStopService = findViewById(R.id.btStopService);
+        btResetCampagneId = findViewById(R.id.btResetCampagneId);
         iv = findViewById(R.id.iv);
         etUrl = findViewById(R.id.etUrl);
 
         buttonSend.setOnClickListener(this);
         btCharger.setOnClickListener(this);
         btStopService.setOnClickListener(this);
+        btResetCampagneId.setOnClickListener(this);
 
         etUrl.setText(SharedPreferenceUtils.getSaveURL(this));
-
-        multipleSendSMSBR = new MultipleSendSMSBR();
-        //abonnement au broadcast
-        registerReceiver(multipleSendSMSBR, new IntentFilter(SENT_SMS_ACTION_NAME));
 
         refreshScreen();
 
         MyApplication.getBus().register(this);
-
-        CampagneBean campagneBean = new CampagneBean();
-        campagneBean.setMessage("Bonjour la compagnie");
-        TelephoneBean telephoneBean = new TelephoneBean();
-        telephoneBean.setNumero("06066006");
-        ArrayList<TelephoneBean> list = new ArrayList<>();
-        list.add(telephoneBean);
-        list.add(telephoneBean);
-        list.add(telephoneBean);
-        campagneBean.setTelephoneBeans(list);
-        campagneBean.setVideo(true);
-        campagneBean.setUrlFile("https://ljdchost.com/fWb9tHt.gif");
-
-        Log.w("TAG_JSON", new Gson().toJson(campagneBean));
     }
 
     @Override
@@ -111,8 +78,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     protected void onResume() {
         super.onResume();
 
-        checkPermission();
-        makeDefautSmsApp();
+        //On check les permissions
+        Permissionutils.requestAllPermissionIfNot(this);
+        Permissionutils.makeDefautSmsApp(this);
         //On lance le service au cas ou il ne soit pas deja lancé
         SendMessageService.startservice(this);
     }
@@ -120,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(multipleSendSMSBR);
         MyApplication.getBus().unregister(this);
     }
 
@@ -128,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         //on boucle
-        checkPermission();
+        //On check les permissions
+        Permissionutils.requestAllPermissionIfNot(this);
     }
 
 
@@ -139,30 +107,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     @Override
     public void onClick(final View v) {
         if (buttonSend == v) {
-
-            //            final String phoneNo = textPhoneNo.getText().toString();
-            //            final String sms = textSMS.getText().toString();
-            //
-            //            SMSSentListener.sendSMS(this, phoneNo, sms);
-            if (!SMSSentListener.canSendSMS(this)) {
-                Toast.makeText(this, "Le device ne permet pas l'envoie de SMS", Toast.LENGTH_LONG).show();
-            }
-            else if (campagneBean == null || campagneBean.getTelephoneBeans() == null || campagneBean.getTelephoneBeans().isEmpty()) {
-                Toast.makeText(this, "Aucun numéros chargés", Toast.LENGTH_LONG).show();
-            }
-            else {
-                try {
-                    if (CampagneBean.isCampagneReady(campagneBean)) {
-                        Toast.makeText(this, "Message vide", Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        SendMessageService.startservice(this);
-                    }
-                }
-                catch (TechnicalException e) {
-                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
+            SendMessageService.startservice(this);
         }
         else if (v == btCharger) {
             SharedPreferenceUtils.saveURL(this, etUrl.getText().toString());
@@ -170,6 +115,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
         else if (btStopService == v) {
             SendMessageService.stopService(this);
+        }
+        else if (btResetCampagneId == v) {
+            //On supprime l'ancienne campagne de la base
+            TelephoneDaoManager.getDao().deleteAll();
+            SharedPreferenceUtils.saveLastCampagneId(this, -1);
+            Log.w("TAG_CAMPAGNE", "Reset du capagneId");
         }
     }
 
@@ -195,26 +146,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     // private
     // -------------------------------- */
 
-    private void makeDefautSmsApp() {
-        final String myPackageName = getPackageName();
-        if (!Telephony.Sms.getDefaultSmsPackage(this).equals(myPackageName)) {
-            Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
-            intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, myPackageName);
-            startActivity(intent);
-        }
-    }
-
-    private void checkPermission() {
-        //On check les permissions
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_SMS, Manifest.permission.READ_PHONE_NUMBERS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-        }
-    }
-
     private void refreshScreen() {
 
         if (campagneBean == null || campagneBean.getTelephoneBeans() == null || campagneBean.getTelephoneBeans().isEmpty()) {
@@ -236,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     public class MonAT extends AsyncTask {
 
         String url;
-        Exception exception;
+        ExceptionA exception;
         CampagneBean cb;
 
         public MonAT(String url) {
@@ -255,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             try {
                 cb = WSUtils.getCampagnes(MainActivity.this);
             }
-            catch (TechnicalException e) {
+            catch (ExceptionA e) {
                 exception = e;
                 e.printStackTrace();
             }

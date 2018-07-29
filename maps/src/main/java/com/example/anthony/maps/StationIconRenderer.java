@@ -16,6 +16,8 @@ import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 
 public class StationIconRenderer extends DefaultClusterRenderer<Station> {
 
+    boolean modePieton;
+
     public StationIconRenderer(Context context, GoogleMap map, ClusterManager<Station> clusterManager) {
         super(context, map, clusterManager);
     }
@@ -26,14 +28,11 @@ public class StationIconRenderer extends DefaultClusterRenderer<Station> {
 
         markerOptions.position(item.getPosition());
         markerOptions.title(item.getName());
-        if (item.getAvailable_bikes() == 0 && item.getAvailable_bike_stands() == 0) {
+        if (modePieton && item.getAvailable_bikes() == 0) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         }
-        else if (item.getAvailable_bikes() == 0) {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-        }
-        else if (item.getAvailable_bike_stands() == 0) {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+        else if (!modePieton && item.getAvailable_bike_stands() == 0) {
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         }
         else {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
@@ -44,5 +43,13 @@ public class StationIconRenderer extends DefaultClusterRenderer<Station> {
     protected void onClusterItemRendered(Station clusterItem, Marker marker) {
         super.onClusterItemRendered(clusterItem, marker);
         marker.setTag(clusterItem);
+    }
+
+    public void setModePieton(boolean modePieton) {
+        this.modePieton = modePieton;
+    }
+
+    public boolean isModePieton() {
+        return modePieton;
     }
 }

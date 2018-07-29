@@ -53,6 +53,12 @@
         android:layout_height="wrap_content"
         android:text="Stop Service"/>
 
+    <Button
+        android:id="@+id/btResetCampagneId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset Campagne Id"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

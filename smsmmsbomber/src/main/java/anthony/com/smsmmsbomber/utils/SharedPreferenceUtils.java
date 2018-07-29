@@ -35,7 +35,7 @@ public class SharedPreferenceUtils {
     // -------------------------------- */
     private static final String LAST_CAMPAGNE_ID = "LAST_CAMPAGNE_ID";
 
-    public static int getSaveLastCampagneId(Context c) {
+    public static int getLastCampagneId(Context c) {
         return getSharedPreference(c).getInt(LAST_CAMPAGNE_ID, -1);
     }
 

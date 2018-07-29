@@ -19,10 +19,13 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 
 import anthony.com.smsmmsbomber.R;
+import anthony.com.smsmmsbomber.broadcast.MultipleSendSMSBR;
 import anthony.com.smsmmsbomber.model.CampagneBean;
 import anthony.com.smsmmsbomber.model.TelephoneBean;
 import anthony.com.smsmmsbomber.model.WSUtils;
+import anthony.com.smsmmsbomber.model.dao.TelephoneDaoManager;
 import anthony.com.smsmmsbomber.utils.NotificationUtils;
+import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 import anthony.com.smsmmsbomber.utils.SmsMmsManager;
 
@@ -38,12 +41,19 @@ public class SendMessageService extends Service {
 
     private SendSmsAT sendSmsAT;
     private Transaction transaction;
+    private MultipleSendSMSBR multipleSendSMSBR;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         startForeground(NOTIFICATION_ID, NotificationUtils.getNotif(this, "Démarrage du service", null, null));
+
+        Log.w("TAG_SERVICE", "Démmarage du service");
+
+        multipleSendSMSBR = new MultipleSendSMSBR();
+        //on s'abonne
+        registerReceiver(multipleSendSMSBR, MultipleSendSMSBR.getIntentFilter());
 
         //Transaction pour l'envoie de mms
         Settings settings = new Settings();
@@ -63,6 +73,13 @@ public class SendMessageService extends Service {
         }
 
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(multipleSendSMSBR);
+        Log.w("TAG_SERVICE", "Arret du service");
     }
 
     @Override
@@ -99,16 +116,42 @@ public class SendMessageService extends Service {
         protected Void doInBackground(Void... voids) {
 
             try {
+                Log.w("TAG_SERVICE", "Lancement d'un campagne...");
+
+                //On verifie les permission
+                if (!Permissionutils.isAllPermission(SendMessageService.this)) {
+                    throw new ExceptionA("Permission manquante, veuillez accepter les permissions dans l'applications");
+                }
+                else if (!Permissionutils.isDefautApp(SendMessageService.this)) {
+                    throw new ExceptionA("L'application n'est pas définie comme application par defaut pour les SMS, veuillez accepter dans l'application");
+                }
+
                 NotificationUtils.createInstantNotification(SendMessageService.this, "Chargemment de la campagne...", null, R.mipmap.ic_ok);
                 //Chargement de la campagne
                 campagneBean = WSUtils.getCampagnes(SendMessageService.this);
+                Log.w("TAG_CAMPAGNE", "Campagne id chargé");
 
                 //Si elle a deja été envoyé
-                if (SharedPreferenceUtils.getSaveLastCampagneId(SendMessageService.this) >= campagneBean.getCampagneId()) {
+                if (SharedPreferenceUtils.getLastCampagneId(SendMessageService.this) >= campagneBean.getCampagneId()) {
                     NotificationUtils.createInstantNotification(SendMessageService.this, "La campagne " + campagneBean.getCampagneId() + " a déjà été envoyée",
                             null, R.mipmap
                                     .ic_ok);
                     return null;
+                }
+                else {
+                    //On supprime l'ancienne campagne de la base
+                    TelephoneDaoManager.delete(SharedPreferenceUtils.getLastCampagneId(SendMessageService.this));
+                }
+
+                //On télécharge le fichier s'il y en a 1
+                if (StringUtils.isNotBlank(campagneBean.getUrlFile())) {
+                    Log.w("TAG_CAMPAGNE", "Téléchargement du ficher : " + campagneBean.getUrlFile());
+                    if (campagneBean.isVideo()) {
+                        campagneBean.setVideoFile(WSUtils.downloadVideo(campagneBean.getUrlFile()));
+                    }
+                    else {
+                        campagneBean.setBitmap(WSUtils.downloadPicture(campagneBean.getUrlFile()));
+                    }
                 }
             }
             catch (ExceptionA e) {
@@ -122,6 +165,10 @@ public class SendMessageService extends Service {
                     NotificationUtils.createInstantNotification(SendMessageService.this, "Rien à envoyer", null, R.mipmap.ic_ok);
                     return null;
                 }
+
+                //on la sauvegarde en base
+                TelephoneDaoManager.save(campagneBean);
+                Log.w("TAG_BBD", "Sauvegarde en base de la campagne");
             }
             catch (ExceptionA e) {
                 this.exception = e;
@@ -166,6 +213,7 @@ public class SendMessageService extends Service {
                         campagneBean.getCampagneId() + " envoyés!", null, R.mipmap.ic_ok);
                 //On sauvegarde la derniere campagne
                 SharedPreferenceUtils.saveLastCampagneId(SendMessageService.this, campagneBean.getCampagneId());
+                Log.w("TAG_CAMPAGNE", "Sauvegarde du campagneId = " + campagneBean.getCampagneId());
             }
             catch (Exception e) {
                 this.exception = new TechnicalException("Erreur lors de l'envoie de message", e);

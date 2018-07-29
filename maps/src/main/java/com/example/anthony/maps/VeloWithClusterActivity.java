@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -44,22 +45,29 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
     private static final int SHOW_METRO_ID = 2;
 
     private GoogleMap mMap;
-    private ClusterManager<Station> mClusterManager;
-    private Button bt_refresh;
+    private Button bt_refresh, btMode;
+
     //Données
     private ArrayList<Station> stations;
     private ArrayList<StationMetroBean> stationsMetro;
     private Trajet trajet;
-    private boolean showMetro, showVelo;
+    private boolean showMetro = true, showVelo = true;
+
+    //outils
+    StationIconRenderer stationIconRenderer;
+    private ClusterManager<Station> mClusterManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_velo);
 
-        bt_refresh = (Button) findViewById(R.id.bt_refresh);
+        bt_refresh = findViewById(R.id.bt_refresh);
+        btMode = findViewById(R.id.btMode);
 
         bt_refresh.setOnClickListener(this);
+        btMode.setOnClickListener(this);
+        btMode.setVisibility(View.INVISIBLE);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -81,7 +89,7 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            refreshMap();
+            refreshMap(true);
         }
     }
 
@@ -96,11 +104,11 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == SHOW_METRO_ID) {
             showMetro = !showMetro;
-            refreshMap();
+            refreshMap(false);
         }
         else if (item.getItemId() == SHOW_VELO_ID) {
             showVelo = !showVelo;
-            refreshMap();
+            refreshMap(false);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -127,7 +135,7 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
 
         mClusterManager = new ClusterManager<>(this, mMap);
         //On ajoute la gestion des markerOption pour les clusters
-        mClusterManager.setRenderer(new StationIconRenderer(this, mMap, mClusterManager));
+        mClusterManager.setRenderer(stationIconRenderer = new StationIconRenderer(this, mMap, mClusterManager));
         //On redirige la création de l'InfoWindow pour les clusters
         mClusterManager.getMarkerCollection().setOnInfoWindowAdapter(this);
 
@@ -140,7 +148,7 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
         //Gestion des clics
         mMap.setOnInfoWindowClickListener(this);
 
-        refreshMap();
+        refreshMap(true);
     }
 
     /**
@@ -210,7 +218,21 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
     // Private
     // -------------------------------- */
 
-    private void refreshMap() {
+    private void refreshMap(boolean zoom) {
+
+        if (stationIconRenderer == null) {
+            btMode.setVisibility(View.INVISIBLE);
+        }
+        else {
+            btMode.setVisibility(View.VISIBLE);
+            if (stationIconRenderer.isModePieton()) {
+                btMode.setText("Mode pieton");
+            }
+            else {
+                btMode.setText("Mode vélo");
+            }
+        }
+
         if (mMap == null) {
             return;
         }
@@ -222,6 +244,12 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
         //On efface tous les Markers
         mMap.clear();
         mClusterManager.clearItems();
+        mClusterManager.cluster();
+
+        int padding = 100; // offset from edges of the map in pixels
+
+        LatLngBounds latLngBound = null;
+
         if (!stations.isEmpty() && showVelo) {
             LatLngBounds.Builder latLngBounds = new LatLngBounds.Builder();
             for (Station station : stations) {
@@ -230,18 +258,15 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
             }
 
             if (trajet == null) {
-
                 //Animation de la carte
-                int padding = 100; // offset from edges of the map in pixels
-                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), padding));
+                latLngBound = latLngBounds.build();
             }
             else {
                 //on affiche le trajet
                 mMap.addMarker(trajet.getDepart());
                 mMap.addPolyline(trajet.getPolylineOptions());
                 mMap.addMarker(trajet.getArrivee());
-                int padding = 100; // offset from edges of the map in pixels
-                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(trajet.getLatLngBounds(), padding));
+                latLngBound = trajet.getLatLngBounds();
             }
         }
 
@@ -270,22 +295,27 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
             }
 
             if (trajet == null) {
-
                 //Animation de la carte
-                int padding = 100; // offset from edges of the map in pixels
-                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), padding));
+                latLngBound = latLngBounds.build();
             }
             else {
                 //on affiche le trajet
                 mMap.addMarker(trajet.getDepart());
                 mMap.addPolyline(trajet.getPolylineOptions());
                 mMap.addMarker(trajet.getArrivee());
-                int padding = 100; // offset from edges of the map in pixels
-                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(trajet.getLatLngBounds(), padding));
+                latLngBound = trajet.getLatLngBounds();
             }
         }
 
-        mClusterManager.cluster();
+        if (zoom && latLngBound != null) {
+            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBound, padding));
+        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mClusterManager.cluster();
+            }
+        }, 100);
     }
 
     /* ---------------------------------
@@ -331,7 +361,7 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
                 stations.clear();
                 stations.addAll(stationsServeur);
 
-                refreshMap();
+                refreshMap(true);
             }
         }
     }
@@ -383,7 +413,7 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
                 exception.printStackTrace();
             }
             else {
-                refreshMap();
+                refreshMap(true);
             }
         }
     }
@@ -428,7 +458,7 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
                 stationsMetro.clear();
                 stationsMetro.addAll(stationsMetroServeur);
 
-                refreshMap();
+                refreshMap(true);
             }
         }
     }
@@ -437,6 +467,10 @@ public class VeloWithClusterActivity extends AppCompatActivity implements OnMapR
     public void onClick(View v) {
         if (v == bt_refresh) {
             new ChargerStationAT().execute();
+        }
+        else if (v == btMode) {
+            stationIconRenderer.setModePieton(!stationIconRenderer.isModePieton());
+            refreshMap(false);
         }
     }
 }
