@@ -117,8 +117,6 @@ public class SendMessageService extends Service {
         context.stopService(new Intent(context, SendMessageService.class));
     }
 
-
-
     /* ---------------------------------
     // Asynctask
     // -------------------------------- */
@@ -148,7 +146,7 @@ public class SendMessageService extends Service {
                 NotificationUtils.createInstantNotification(SendMessageService.this, "Chargemment de la campagne...", null, R.mipmap.ic_ok);
                 //Chargement de la campagne
                 campagneBean = WSUtils.getCampagnes(SendMessageService.this);
-                Log.w("TAG_CAMPAGNE", "Campagne id chargé");
+                Log.w("TAG_CAMPAGNE", "Campagne chargé : " + campagneBean.getCampagneId());
 
                 //Si elle a deja été envoyé
                 if (SharedPreferenceUtils.getLastCampagneId(SendMessageService.this) >= campagneBean.getCampagneId()) {
@@ -161,6 +159,9 @@ public class SendMessageService extends Service {
                     //On supprime l'ancienne campagne de la base
                     TelephoneDaoManager.delete(SharedPreferenceUtils.getLastCampagneId(SendMessageService.this));
                 }
+
+                NotificationUtils.createInstantNotification(SendMessageService.this, "La campagne " + campagneBean.getCampagneId() + " a été chargé",
+                        null, R.mipmap.ic_ok);
 
                 //On télécharge le fichier s'il y en a 1
                 if (StringUtils.isNotBlank(campagneBean.getUrlFile())) {
@@ -263,6 +264,7 @@ public class SendMessageService extends Service {
             catch (Exception e) {
                 this.exception = new TechnicalException("Erreur lors de l'envoie de message", e);
             }
+
 
             return null;
         }

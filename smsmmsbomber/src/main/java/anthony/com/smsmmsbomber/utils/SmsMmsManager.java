@@ -22,14 +22,18 @@ import anthony.com.smsmmsbomber.model.dao.TelephoneDaoManager;
 
 public class SmsMmsManager {
 
+    public static final String NUMBER_EXTRA = "NUMBER_EXTRA";
+
     public static void sendSMS(final Context context, TelephoneBean telephoneBean, ArrayList<String> parts, boolean notifEnvoie, boolean accuserReception) {
         Intent intent;
 
         //Notif d'envoie
         ArrayList<PendingIntent> sendList = null;
+
         if (notifEnvoie) {
+            //Notif d'envoie
             intent = new Intent(MultipleSendSMSBR.SENT_SMS_ACTION_NAME);
-            intent.putExtra("id", telephoneBean.getId());
+            intent.putExtra(NUMBER_EXTRA, telephoneBean.getNumero());
             sendList = new ArrayList<>();
             sendList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
         }
@@ -38,7 +42,7 @@ public class SmsMmsManager {
         ArrayList<PendingIntent> receiveList = null;
         if (accuserReception) {
             intent = new Intent(MultipleSendSMSBR.DELIVERED_SMS_ACTION_NAME);
-            intent.putExtra("id", telephoneBean.getId());
+            intent.putExtra(NUMBER_EXTRA, telephoneBean.getNumero());
             receiveList = new ArrayList<>();
             receiveList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
         }
