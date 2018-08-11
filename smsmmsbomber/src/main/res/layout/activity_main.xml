@@ -8,101 +8,11 @@
               tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tvUUID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="URL ou charger la campagne : "
-        android:textStyle="bold"/>
+        android:text="TextView"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/etUrlLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Url pour charger une campagne"
-            android:inputType="textUri"
-            android:text="@string/url_server"/>
-
-        <Button
-            android:id="@+id/btSaveUrlLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="Save"/>
-
-        <Button
-            android:id="@+id/btTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Test"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="URL ou envoyer le resultat : "
-        android:textStyle="bold"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/etUrlSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Url ou envoyer le resultat"
-            android:inputType="textUri"
-            android:text=""/>
-
-        <Button
-            android:id="@+id/btSaveUrlSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="Save"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="URL ou envoyer les sms recus : "
-        android:textStyle="bold"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/etUrlSendAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Url ou envoyer les sms reçu"
-            android:inputType="textUri"
-            android:text=""/>
-
-        <Button
-            android:id="@+id/btSaveAnswerUrl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="Save"/>
-    </LinearLayout>
 
     <TextView
         android:id="@+id/tvInfo"
@@ -111,12 +21,6 @@
         android:layout_margin="10dp"
         android:text="TextView"
         android:textSize="18sp"/>
-
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/croix_bleu"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -140,41 +44,5 @@
             android:text="Stop Service"/>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Rafraichissement : \n(en seconde)"/>
-
-        <EditText
-            android:id="@+id/etDelay"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"/>
-
-        <Button
-            android:id="@+id/btSaveDelay"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:onClick="onClick"
-            android:text="Save"/>
-
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btResetCampagneId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="Reset Campagne Id"/>
 
 </LinearLayout>

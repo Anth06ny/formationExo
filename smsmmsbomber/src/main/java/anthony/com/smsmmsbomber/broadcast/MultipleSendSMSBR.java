@@ -8,11 +8,12 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import anthony.com.smsmmsbomber.BuildConfig;
-import anthony.com.smsmmsbomber.model.TelephoneBean;
-import anthony.com.smsmmsbomber.model.dao.TelephoneDaoManager;
+import anthony.com.smsmmsbomber.model.AnswerBean;
+import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
 import anthony.com.smsmmsbomber.utils.SmsMmsManager;
 
 /**
@@ -24,6 +25,7 @@ public class MultipleSendSMSBR extends BroadcastReceiver {
     public static final String ACTION_MMS_RECEIVED =
             "com.example.android.apis.os.MMS_RECEIVED_ACTION";
     public static final String SENT_SMS_ACTION_NAME = "SMS_SENT";
+    public static final String SENT_MMS_ACTION_NAME = "MMS_SENT";
     public static final String DELIVERED_SMS_ACTION_NAME = "SMS_DELIVERED";        //Recu
     private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
 
@@ -31,36 +33,35 @@ public class MultipleSendSMSBR extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         Log.w("TAG_SMS", "MultipleSendSMSBR action=" + intent.getAction());
-        TelephoneBean telephoneBean = new TelephoneBean();
-        telephoneBean.setSendToServer(true);      //A envoyer au serveur
+        AnswerBean answerBean = new AnswerBean();
         //On récupere le sms concerné s'il y en a un
         if (intent.getExtras() != null) {
-            telephoneBean.setNumero(intent.getStringExtra(SmsMmsManager.NUMBER_EXTRA));
+            answerBean.setNumber(intent.getStringExtra(SmsMmsManager.NUMBER_EXTRA));
         }
 
         //Detect l'envoie de sms
-        if (intent.getAction().equals(SENT_SMS_ACTION_NAME)) {
-            telephoneBean.setSend(getResultCode() == Activity.RESULT_OK);
+        if (intent.getAction().equals(SENT_SMS_ACTION_NAME) || intent.getAction().equals(ACTION_MMS_SENT) || intent.getAction().equals(SENT_MMS_ACTION_NAME)) {
+            answerBean.setSend(getResultCode() == Activity.RESULT_OK);
             if (BuildConfig.DEBUG) {
                 Log.w("TAG_SMS", getResultCode() == Activity.RESULT_OK ? "SMS envoyé" : "non envoyé");
             }
         }
         //detect l'accuse reception d'un sms
         else if (intent.getAction().equals(DELIVERED_SMS_ACTION_NAME)) {
-            telephoneBean.setReceived(getResultCode() == Activity.RESULT_OK);
             if (BuildConfig.DEBUG) {
                 Log.w("TAG_SMS", getResultCode() == Activity.RESULT_OK ? "SMS recu" : "sms non recu");
             }
         }
         //on recoit un sms
         else if (intent.getAction().equals(SMS_RECEIVED)) {
-            SmsMmsManager.receiveSMS(intent);
+            SmsMmsManager.receiveSMS(intent, answerBean);
             //Le message sera envoyé au serveur lors du prochaine tick
         }
 
-        //On a recu un message s'il est bien relié à un numéro on le sauvegarde
-        if (StringUtils.isNotBlank(telephoneBean.getNumero())) {
-            TelephoneDaoManager.save(telephoneBean);
+        //S'il est bien relié à un numéro on le sauvegarde
+        //POUR LE MOMENT ON NE GARDE PAS LES ACCUSé D'ENVOIE  en success
+        if (StringUtils.isNotBlank(answerBean.getNumber()) && BooleanUtils.isNotTrue(answerBean.getSend())) {
+            AnswerDaoManager.save(answerBean);
         }
     }
 

@@ -1,0 +1,18 @@
+{
+	"campagneId": 1,
+	"message": "Bonjour la compagnie",
+	"urlFile": "",
+	"video": false,
+	"urlEnd":"",
+	"urlReceipt":"",
+	"accusedReceipt":true,
+	"accusedSend":true,
+	"phoneBeans": [{
+		"phoneId": 2,
+		"number": "0628473080"
+	},
+	{
+		"phoneId": 1,
+		"number": "0686874310"
+	}]
+}

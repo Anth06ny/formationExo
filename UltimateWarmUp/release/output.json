@@ -1,1 +1,1 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1},"path":"app-release.apk","properties":{"packageId":"anthony.com.ultimatewarmup","split":"","minSdkVersion":"22"}}]
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":10,"versionName":"10","enabled":true,"outputFile":"UltimateWarmUp-release.apk","fullName":"release","baseName":"release"},"path":"UltimateWarmUp-release.apk","properties":{}}]

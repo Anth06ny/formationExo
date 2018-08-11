@@ -6,7 +6,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
@@ -45,19 +44,20 @@ public class NotificationUtils {
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
         channel.setDescription("Campagne");
         channel.enableLights(true);
+        channel.setShowBadge(true);
         notificationManager.createNotificationChannel(channel);
     }
 
-    public static void createInstantNotification(Context c, String message, Bitmap bitmap, Integer imageId) {
+    public static void createInstantNotification(Context c, String message, Integer imageId) {
         //Envoyer la notification
-        NotificationManagerCompat.from(c).notify(NOTIFICATION_ID, getNotif(c, message, bitmap, imageId));
+        NotificationManagerCompat.from(c).notify(NOTIFICATION_ID, getNotif(c, message, imageId));
     }
 
     public static void sendAnswerNotification(Context context, String message, Integer imageId) {
-        NotificationManagerCompat.from(context).notify(NOTIFICATION_ANSWER_ID, getNotif(context, message, null, imageId));
+        NotificationManagerCompat.from(context).notify(NOTIFICATION_ANSWER_ID, getNotif(context, message,  imageId));
     }
 
-    public static Notification getNotif(Context c, String message, Bitmap bitmap, Integer imageId) {
+    public static Notification getNotif(Context c, String message, Integer imageId) {
         initChannel(c);
 
         Log.w("TAG_NOTIFICATION", "Notif:" + message);
@@ -69,15 +69,15 @@ public class NotificationUtils {
         //La notification
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(c, CHANNEL_ID);
         notificationBuilder.setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(c.getResources().getString(R.string.app_name) + " " + DateUtils.dateToString(new Date(), DateUtils.getFormat(c, DateUtils
-                        .DATE_FORMAT
-                        .HHmm)))
+                .setContentTitle(c.getResources().getString(R.string.app_name) + " " + DateUtils.dateToString(new Date(), DateUtils.getFormat(c, DateUtils.DATE_FORMAT.HHmm)))
                 .setContentText(message)
-                .setContentIntent(pendingIntent)//le clic dessus
                 .setDefaults(Notification.DEFAULT_ALL)
-                .setBadgeIconType(Notification.BADGE_ICON_LARGE)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                .addAction(R.mipmap.ic_settings, "Reglages", pendingIntent);
 
-                .setLargeIcon(bitmap);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationBuilder.setBadgeIconType(Notification.BADGE_ICON_LARGE);
+        }
 
         if (imageId != null && imageId == R.mipmap.ic_error) {
             notificationBuilder.setColor(Color.RED);

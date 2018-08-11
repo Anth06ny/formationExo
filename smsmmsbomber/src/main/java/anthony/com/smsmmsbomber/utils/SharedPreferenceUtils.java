@@ -2,6 +2,9 @@ package anthony.com.smsmmsbomber.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.provider.Settings;
+
+import org.apache.commons.lang3.StringUtils;
 
 import anthony.com.smsmmsbomber.R;
 
@@ -31,54 +34,33 @@ public class SharedPreferenceUtils {
     }
 
     /* ---------------------------------
-//Sauvegarde url envoie resultat
+// Get AndroidId
 // -------------------------------- */
-    private static final String URL_SEND_RESULT = "URL_SEND_RESULT";
+    private static final String AndroidId = "AndroidId";
 
-    public static String getUrlSendResult(Context c) {
-        return getSharedPreference(c).getString(URL_SEND_RESULT, "");
-    }
+    public static String getUniqueIDGoodFormat(Context c) {
 
-    public static void saveUrlSendResult(Context c, String url) {
-        getSharedPreference(c).edit().putString(URL_SEND_RESULT, url).apply();
-    }
+        SharedPreferences sharedPreferences = getSharedPreference(c);
+        String uniqueId = sharedPreferences.getString(AndroidId, "");
+        if (StringUtils.isNotBlank(uniqueId)) {
+            return uniqueId;
+        }
 
-    /* ---------------------------------
-//Sauvegarde url envoie resultat
-// -------------------------------- */
-    private static final String URL_SEND_ANSWER = "URL_SEND_ANSWER";
+        uniqueId = Settings.Secure.getString(c.getContentResolver(), Settings.Secure.ANDROID_ID);
 
-    public static String getUrlSendAnswer(Context c) {
-        return getSharedPreference(c).getString(URL_SEND_ANSWER, "");
-    }
+        uniqueId = StringUtils.substring(uniqueId, -12);
+        //On le met en form an-xxxx-xxxx-xxxx
+        String goodFormat = "" + uniqueId.charAt(0);
+        for (int i = 1; i < uniqueId.length(); i++) {
+            if (i % 4 == 0) {
+                goodFormat += '-';
+            }
+            goodFormat += uniqueId.charAt(i);
+        }
 
-    public static void saveUrlSendAnswer(Context c, String url) {
-        getSharedPreference(c).edit().putString(URL_SEND_ANSWER, url).apply();
-    }
+        //on le sauvegarde
+        sharedPreferences.edit().putString(AndroidId, goodFormat).apply();
 
-    /* ---------------------------------
-    //Last CampagneID
-    // -------------------------------- */
-    private static final String LAST_CAMPAGNE_ID = "LAST_CAMPAGNE_ID";
-
-    public static int getLastCampagneId(Context c) {
-        return getSharedPreference(c).getInt(LAST_CAMPAGNE_ID, -1);
-    }
-
-    public static void saveLastCampagneId(Context c, int id) {
-        getSharedPreference(c).edit().putInt(LAST_CAMPAGNE_ID, id).apply();
-    }
-
-    /* ---------------------------------
-   //Last CampagneID
-   // -------------------------------- */
-    private static final String TIME_DELAY = "TIME_DELAY";
-
-    public static int getDelay(Context c) {
-        return getSharedPreference(c).getInt(TIME_DELAY, 30);
-    }
-
-    public static void saveDelay(Context c, int id) {
-        getSharedPreference(c).edit().putInt(TIME_DELAY, id).apply();
+        return goodFormat;
     }
 }

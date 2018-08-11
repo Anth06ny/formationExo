@@ -3,6 +3,7 @@ package anthony.com.smsmmsbomber.utils;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
@@ -16,16 +17,16 @@ import java.util.ArrayList;
 
 import anthony.com.smsmmsbomber.BuildConfig;
 import anthony.com.smsmmsbomber.broadcast.MultipleSendSMSBR;
-import anthony.com.smsmmsbomber.model.CampagneBean;
-import anthony.com.smsmmsbomber.model.TelephoneBean;
-import anthony.com.smsmmsbomber.model.dao.TelephoneDaoManager;
+import anthony.com.smsmmsbomber.model.AnswerBean;
+import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
 
 public class SmsMmsManager {
 
     public static final String NUMBER_EXTRA = "NUMBER_EXTRA";
 
-    public static void sendSMS(final Context context, TelephoneBean telephoneBean, ArrayList<String> parts, boolean notifEnvoie, boolean accuserReception) {
+    public static void sendSMS(final Context context, PhoneBean phoneBean, boolean notifEnvoie, boolean accuserReception) {
         Intent intent;
+        ArrayList<String> parts = SmsManager.getDefault().divideMessage(phoneBean.getContent());
 
         //Notif d'envoie
         ArrayList<PendingIntent> sendList = null;
@@ -33,7 +34,7 @@ public class SmsMmsManager {
         if (notifEnvoie) {
             //Notif d'envoie
             intent = new Intent(MultipleSendSMSBR.SENT_SMS_ACTION_NAME);
-            intent.putExtra(NUMBER_EXTRA, telephoneBean.getNumero());
+            intent.putExtra(NUMBER_EXTRA, phoneBean.getNumber());
             sendList = new ArrayList<>();
             sendList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
         }
@@ -42,27 +43,27 @@ public class SmsMmsManager {
         ArrayList<PendingIntent> receiveList = null;
         if (accuserReception) {
             intent = new Intent(MultipleSendSMSBR.DELIVERED_SMS_ACTION_NAME);
-            intent.putExtra(NUMBER_EXTRA, telephoneBean.getNumero());
+            intent.putExtra(NUMBER_EXTRA, phoneBean.getNumber());
             receiveList = new ArrayList<>();
             receiveList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
         }
 
-        SmsManager.getDefault().sendMultipartTextMessage(telephoneBean.getNumero(), null, parts, sendList, receiveList);
+        SmsManager.getDefault().sendMultipartTextMessage(phoneBean.getNumber(), null, parts, sendList, receiveList);
     }
 
-    public static void sendMMS(Transaction transaction, CampagneBean campagneBean, TelephoneBean telephoneBean) {
+    public static void sendMMS(Transaction transaction, PhoneBean phoneBean, Bitmap bitmap) {
 
-        Message message = new Message(campagneBean.getMessage(), telephoneBean.getNumero());
-        if (campagneBean.isVideo()) {
-            message.addVideo(campagneBean.getVideoFile());
-        }
-        else {
-            message.addImage(campagneBean.getBitmap());
-        }
+        Message message = new Message(phoneBean.getContent(), phoneBean.getNumber());
+        //        if (campagneBean.isVideo()) {
+        //            message.addVideo(campagneBean.getVideoFile());
+        //        }
+        //        else {
+        message.addImage(bitmap);
+        //        }
         transaction.sendNewMessage(message, Transaction.NO_THREAD_ID);
     }
 
-    public static void receiveSMS(Intent intent) {
+    public static void receiveSMS(Intent intent, AnswerBean answerBean) {
         //on tente de lire le message
         if (intent.getExtras() != null) {
             // get sms objects
@@ -85,11 +86,8 @@ public class SmsMmsManager {
             }
             if (StringUtils.isNotBlank(expediteur)) {
                 //ON cherche si on a déjà le numéro
-                TelephoneBean telephoneBean = new TelephoneBean();
-                telephoneBean.setNumero(expediteur);
-                telephoneBean.setAnswer(message);
-                telephoneBean.setSend(false); //ON met le champs à false pour indiquer qu'i n'a pas encore été envoyé au serveur
-                TelephoneDaoManager.save(telephoneBean);
+                answerBean.setNumber(expediteur);
+                answerBean.setAnswer(message);
             }
         }
     }

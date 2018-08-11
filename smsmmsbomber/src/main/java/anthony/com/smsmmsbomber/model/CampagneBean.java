@@ -10,16 +10,20 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
+
 public class CampagneBean {
 
     int campagneId;
-    ArrayList<TelephoneBean> telephoneBeans;
     String urlFile;
     String message;
-    boolean accuserReception; //est ce qu'on activel'accusé reception
-    boolean accuserEnvoie;
+    boolean accusedReceipt; //est ce qu'on activel'accusé reception
+    boolean accusedSend;
     //is video
     boolean video;
+    String urlEnd;
+    String urlReceipt;
+    ArrayList<PhoneBean> phoneBeans;
 
     //HORS WEB SERVICE
     //image
@@ -27,19 +31,17 @@ public class CampagneBean {
     //video
     byte[] videoFile;
 
-
-
     public CampagneBean() {
     }
 
-    public CampagneBean(ArrayList<TelephoneBean> telephoneBeans, String urlFile) {
-        this.telephoneBeans = telephoneBeans;
+    public CampagneBean(ArrayList<PhoneBean> phoneBeans, String urlFile) {
+        this.phoneBeans = phoneBeans;
         this.urlFile = urlFile;
     }
 
     public static boolean isCampagneReady(CampagneBean campagneBean) throws TechnicalException {
         //Si on a des numéros
-        if (campagneBean != null && campagneBean.getTelephoneBeans() != null && !campagneBean.getTelephoneBeans().isEmpty()) {
+        if (campagneBean != null && campagneBean.getPhoneBeans() != null && !campagneBean.getPhoneBeans().isEmpty()) {
 
             //Si on a un message ou une video ou une image
             if (StringUtils.isNotBlank(campagneBean.getUrlFile())) {
@@ -62,7 +64,7 @@ public class CampagneBean {
     public String toString() {
         return "CampagneBean{" +
                 "campagneId=" + campagneId +
-                ", telephoneBeans=" + telephoneBeans +
+                ", phoneBeans=" + phoneBeans +
                 ", urlFile='" + urlFile + '\'' +
                 ", message='" + message + '\'' +
                 ", bitmap=" + bitmap +
@@ -84,12 +86,12 @@ public class CampagneBean {
         this.campagneId = campagneId;
     }
 
-    public ArrayList<TelephoneBean> getTelephoneBeans() {
-        return telephoneBeans;
+    public ArrayList<PhoneBean> getPhoneBeans() {
+        return phoneBeans;
     }
 
-    public void setTelephoneBeans(ArrayList<TelephoneBean> telephoneBeans) {
-        this.telephoneBeans = telephoneBeans;
+    public void setPhoneBeans(ArrayList<PhoneBean> phoneBeans) {
+        this.phoneBeans = phoneBeans;
     }
 
     public String getUrlFile() {
@@ -132,19 +134,35 @@ public class CampagneBean {
         this.message = message;
     }
 
-    public boolean isAccuserReception() {
-        return accuserReception;
+    public boolean isAccusedReceipt() {
+        return accusedReceipt;
     }
 
-    public void setAccuserReception(boolean accuserReception) {
-        this.accuserReception = accuserReception;
+    public void setAccusedReceipt(boolean accusedReceipt) {
+        this.accusedReceipt = accusedReceipt;
     }
 
-    public boolean isAccuserEnvoie() {
-        return accuserEnvoie;
+    public boolean isAccusedSend() {
+        return accusedSend;
     }
 
-    public void setAccuserEnvoie(boolean accuserEnvoie) {
-        this.accuserEnvoie = accuserEnvoie;
+    public void setAccusedSend(boolean accusedSend) {
+        this.accusedSend = accusedSend;
+    }
+
+    public String getUrlEnd() {
+        return urlEnd;
+    }
+
+    public void setUrlEnd(String urlEnd) {
+        this.urlEnd = urlEnd;
+    }
+
+    public String getUrlReceipt() {
+        return urlReceipt;
+    }
+
+    public void setUrlReceipt(String urlReceipt) {
+        this.urlReceipt = urlReceipt;
     }
 }
