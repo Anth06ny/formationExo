@@ -1,0 +1,54 @@
+AdresseMac uuid
+box = telephone
+modem = connexion à internet
+
+
+-> creer compte jm42
+
+
+->(utilisateur) add box uuid
+
+Application affiche identifiant unique :
+an-abcd-abcd-abcd
+
+//0
+//ping sur console
+
+//1
+(a faire toute les x secondes)
+/getendpoint (retourn url ou envoyer les requetes)
+ou 500 si box non enregistré
+
+//2
+Register device si pas deja ete fait, et a memoriser
+
+//3
+appli ping toutes les x secondes et envoyer unique id. Pour la présence
+
+//4
+deviceready (pour présence methode)
+
+//5
+//getScheduled liste des sms a envoyer
+
+//6
+envoie des sms
+
+//7
+// appelle smssent (passe le sms au modem) en retournant la liste
+
+
+//8
+//Envoyer les accusé erreur
+fail
+
+//envoiyer les sms recu
+//etat
+
+
+bztoulouse@gmail.com
+
+
+
+
+
