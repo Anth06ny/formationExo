@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 import anthony.com.smsmmsbomber.BuildConfig;
 import anthony.com.smsmmsbomber.Constants;
 import anthony.com.smsmmsbomber.MyApplication;
-import anthony.com.smsmmsbomber.model.wsbeans.AnswerStatusBean;
+import anthony.com.smsmmsbomber.model.wsbeans.GenericAnswerBean;
 import anthony.com.smsmmsbomber.model.wsbeans.getboxendpoint.GetBoxEndPointAnswerBean;
 import anthony.com.smsmmsbomber.model.wsbeans.getboxendpoint.GetBoxEndPointSendBean;
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.GetScheduledAnswerBean;
@@ -54,7 +54,8 @@ public class WSUtils {
      */
     public static void saveUrlFromBoxEndPoint(Context context) throws ExceptionA {
 
-        Log.w("TAG_URL_POST", Constants.URL_GET_END_POINT);
+        String url = Constants.URL_SERVER_CONSOLE + "getBoxEndpoint";
+        Log.w("TAG_URL_POST", url);
         GetBoxEndPointSendBean getBoxEndPointSendBean = new GetBoxEndPointSendBean(SharedPreferenceUtils.getUniqueIDGoodFormat(context));
 
         if (BuildConfig.DEBUG) {
@@ -64,7 +65,7 @@ public class WSUtils {
         RequestBody body = RequestBody.create(JSON, gson.toJson(getBoxEndPointSendBean));
 
         //Création de la requete
-        Request request = new Request.Builder().url(Constants.URL_GET_END_POINT).post(body).build();
+        Request request = new Request.Builder().url(url).post(body).build();
 
         //Execution de la requête
         Response response;
@@ -110,6 +111,9 @@ public class WSUtils {
             else if (StringUtils.isBlank(answer.getEndpoint())) {
                 throw new TechnicalException("Erreur serveur lors de la réponse du /GetBoxEndpoint, code 200 mais url vide : " + answer.getEndpoint());
             }
+            else if (!answer.getEndpoint().startsWith("https://")) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /GetBoxEndpoint, url invalide : " + answer.getEndpoint());
+            }
 
             //Tout est bon on sauvegarde l'url
             SharedPreferenceUtils.saveUrlLoad(context, answer.getEndpoint());
@@ -154,14 +158,14 @@ public class WSUtils {
         }
         else {
 
-            AnswerStatusBean answer;
+            GenericAnswerBean answer;
 
             if (BuildConfig.DEBUG) {
                 //Résultat de la requete.
                 try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
-                    answer = gson.fromJson(jsonRecu, AnswerStatusBean.class);
+                    answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
                 catch (Exception e) {
                     throw new TechnicalException("Erreur lors du parsing Json", e);
@@ -169,18 +173,26 @@ public class WSUtils {
             }
             else {
                 //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), AnswerStatusBean.class);
+                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
             }
 
             //On analyse la réponse
-            if (answer.getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /registerDevice : " + answer.getStatus());
+            if (answer.getStatus() == null) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /registerDevice : status null");
+            }
+            else if (answer.getStatus().getCode() != 200) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /registerDevice : " + answer.getStatus().getStatus());
             }
         }
     }
 
     public static void pingServeur(Context context) throws ExceptionA {
-        String url = SharedPreferenceUtils.getUrlLoad(context) + "ping";
+
+        String url = SharedPreferenceUtils.getUrlLoad(context);
+        if (StringUtils.isBlank(url)) {
+            url = Constants.URL_SERVER_CONSOLE;
+        }
+        url += "ping";
         Log.w("TAG_URL_POST", url);
         //Meme format pour l'envoie
         RegisterDeviceSendBean send = new RegisterDeviceSendBean(Utils.getIPAddress(), SharedPreferenceUtils.getUniqueIDGoodFormat(context), "");
@@ -210,14 +222,14 @@ public class WSUtils {
         }
         else {
 
-            AnswerStatusBean answer;
+            GenericAnswerBean answer;
 
             if (BuildConfig.DEBUG) {
                 //Résultat de la requete.
                 try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
-                    answer = gson.fromJson(jsonRecu, AnswerStatusBean.class);
+                    answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
                 catch (Exception e) {
                     throw new TechnicalException("Erreur lors du parsing Json", e);
@@ -225,12 +237,16 @@ public class WSUtils {
             }
             else {
                 //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), AnswerStatusBean.class);
+                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
             }
 
             //On analyse la réponse
-            if (answer.getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /ping : " + answer.getStatus());
+            //On analyse la réponse
+            if (answer.getStatus() == null) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /ping : status null");
+            }
+            else if (answer.getStatus().getCode() != 200) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /ping : " + answer.getStatus().getStatus());
             }
         }
     }
@@ -266,14 +282,14 @@ public class WSUtils {
         }
         else {
 
-            AnswerStatusBean answer;
+            GenericAnswerBean answer;
 
             if (BuildConfig.DEBUG) {
                 //Résultat de la requete.
                 try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
-                    answer = gson.fromJson(jsonRecu, AnswerStatusBean.class);
+                    answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
                 catch (Exception e) {
                     throw new TechnicalException("Erreur lors du parsing Json", e);
@@ -281,12 +297,15 @@ public class WSUtils {
             }
             else {
                 //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), AnswerStatusBean.class);
+                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
             }
 
             //On analyse la réponse
-            if (answer.getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /deviceReady : " + answer.getStatus());
+            if (answer.getStatus() == null) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /deviceReady : status null");
+            }
+            else if (answer.getStatus().getCode() != 200) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /deviceReady : " + answer.getStatus().getStatus());
             }
         }
     }
@@ -348,8 +367,11 @@ public class WSUtils {
             }
 
             //On analyse la réponse
-            if (getScheduledAnswerBean.getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /deviceReady : " + getScheduledAnswerBean.getStatus());
+            if (getScheduledAnswerBean.getStatus() == null) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /getScheduleds : status null");
+            }
+            else if (getScheduledAnswerBean.getStatus().getCode() != 200) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /getScheduleds : " + getScheduledAnswerBean.getStatus().getStatus());
             }
 
             return getScheduledAnswerBean;
@@ -386,14 +408,14 @@ public class WSUtils {
         }
         else {
 
-            AnswerStatusBean answer;
+            GenericAnswerBean answer;
 
             if (BuildConfig.DEBUG) {
                 //Résultat de la requete.
                 try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
-                    answer = gson.fromJson(jsonRecu, AnswerStatusBean.class);
+                    answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
                 catch (Exception e) {
                     throw new TechnicalException("Erreur lors du parsing Json", e);
@@ -401,11 +423,14 @@ public class WSUtils {
             }
             else {
                 //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), AnswerStatusBean.class);
+                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
             }
 
             //On analyse la réponse
-            if (answer.getCode() != 200) {
+            if (answer.getStatus() == null) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /getScheduleds : status null");
+            }
+            else if (answer.getStatus().getCode() != 200) {
                 throw new TechnicalException("Erreur serveur lors de la réponse du /smsSent : " + answer.getStatus());
             }
         }
@@ -510,14 +535,14 @@ public class WSUtils {
         }
         else {
 
-            AnswerStatusBean answer;
+            GenericAnswerBean answer;
 
             if (BuildConfig.DEBUG) {
                 //Résultat de la requete.
                 try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
-                    answer = gson.fromJson(jsonRecu, AnswerStatusBean.class);
+                    answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
                 catch (Exception e) {
                     throw new TechnicalException("Erreur lors du parsing Json", e);
@@ -525,12 +550,15 @@ public class WSUtils {
             }
             else {
                 //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), AnswerStatusBean.class);
+                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
             }
 
             //On analyse la réponse
-            if (answer.getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /smsSentFailed : " + answer.getStatus());
+            if (answer.getStatus() == null) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /smsSentFailed : status null");
+            }
+            else if (answer.getStatus().getCode() != 200) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /smsSentFailed : " + answer.getStatus().getStatus());
             }
         }
     }
@@ -567,14 +595,14 @@ public class WSUtils {
         }
         else {
 
-            AnswerStatusBean answer;
+            GenericAnswerBean answer;
 
             if (BuildConfig.DEBUG) {
                 //Résultat de la requete.
                 try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
-                    answer = gson.fromJson(jsonRecu, AnswerStatusBean.class);
+                    answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
                 catch (Exception e) {
                     throw new TechnicalException("Erreur lors du parsing Json", e);
@@ -582,12 +610,15 @@ public class WSUtils {
             }
             else {
                 //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), AnswerStatusBean.class);
+                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
             }
 
             //On analyse la réponse
-            if (answer.getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /smsReceived : " + answer.getStatus());
+            if (answer.getStatus() == null) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /smsReceived : status null");
+            }
+            else if (answer.getStatus().getCode() != 200) {
+                throw new TechnicalException("Erreur serveur lors de la réponse du /smsReceived : " + answer.getStatus().getStatus());
             }
         }
     }

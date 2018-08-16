@@ -136,8 +136,10 @@ public class SendMessageService extends Service {
                 else if (!Permissionutils.isDefautApp(SendMessageService.this)) {
                     throw new ExceptionA("L'application n'est pas définie comme application par defaut pour les SMS, veuillez accepter dans l'application");
                 }
+                //Si on a pas d'url enregistre, on fait un ping sur l'url de la constante
                 else if (StringUtils.isBlank(SharedPreferenceUtils.getUrlLoad(SendMessageService.this))) {
-                    throw new ExceptionA("Veuillez definir dans l'application une url ou charger la campagne");
+                    NotificationUtils.createInstantNotification(SendMessageService.this, "Ping 1er lancement...",  R.mipmap.ic_ok);
+                    WSUtils.pingServeur(SendMessageService.this);
                 }
 
                 //Enregistrement du device et recupération de l'url à utiliser

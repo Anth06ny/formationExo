@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 
-import org.apache.commons.lang3.StringUtils;
+import com.formation.utils.exceptions.TechnicalException;
 
-import anthony.com.smsmmsbomber.R;
+import org.apache.commons.lang3.StringUtils;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -25,8 +25,9 @@ public class SharedPreferenceUtils {
     // -------------------------------- */
     private static final String URL_LOAD = "URL_LOAD";
 
-    public static String getUrlLoad(Context c) {
-        return getSharedPreference(c).getString(URL_LOAD, c.getResources().getString(R.string.url_server));
+    public static String getUrlLoad(Context c) throws TechnicalException {
+
+        return getSharedPreference(c).getString(URL_LOAD, "");
     }
 
     public static void saveUrlLoad(Context c, String url) {
@@ -50,7 +51,7 @@ public class SharedPreferenceUtils {
 
         uniqueId = StringUtils.substring(uniqueId, -12);
         //On le met en form an-xxxx-xxxx-xxxx
-        String goodFormat = "" + uniqueId.charAt(0);
+        String goodFormat = "an-" + uniqueId.charAt(0);
         for (int i = 1; i < uniqueId.length(); i++) {
             if (i % 4 == 0) {
                 goodFormat += '-';

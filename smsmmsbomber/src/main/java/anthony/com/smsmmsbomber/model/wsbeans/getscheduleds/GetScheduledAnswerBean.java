@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+import anthony.com.smsmmsbomber.model.wsbeans.AnswerStatusBean;
+
 public class GetScheduledAnswerBean {
 
     @SerializedName("scheduleds_to_send")
     ArrayList<PhoneBean> phoneList;
-
-    public String status;
-    public int code;
+    private AnswerStatusBean status;
 
     public ArrayList<PhoneBean> getPhoneList() {
         return phoneList;
@@ -20,19 +20,11 @@ public class GetScheduledAnswerBean {
         this.phoneList = phoneList;
     }
 
-    public String getStatus() {
+    public AnswerStatusBean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(AnswerStatusBean status) {
         this.status = status;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
     }
 }

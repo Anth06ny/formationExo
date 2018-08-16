@@ -8,6 +8,7 @@ import org.greenrobot.greendao.database.Database;
 
 import anthony.com.smsmmsbomber.model.DaoMaster;
 import anthony.com.smsmmsbomber.model.DaoSession;
+import anthony.com.smsmmsbomber.service.SendMessageService;
 
 /**
  * Created by Anthony on 05/04/2016.
@@ -29,6 +30,10 @@ public class MyApplication extends Application {
         instance = this;
         bus = new Bus();
         setupDatabase();
+
+        if (!BuildConfig.DEBUG) {
+            SendMessageService.startservice(this);
+        }
     }
 
     private void setupDatabase() {
