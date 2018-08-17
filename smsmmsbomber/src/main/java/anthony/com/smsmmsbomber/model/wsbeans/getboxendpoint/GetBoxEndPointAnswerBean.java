@@ -1,11 +1,10 @@
 package anthony.com.smsmmsbomber.model.wsbeans.getboxendpoint;
 
-import anthony.com.smsmmsbomber.model.wsbeans.AnswerStatusBean;
+import anthony.com.smsmmsbomber.model.wsbeans.GenericAnswerBean;
 
-public class GetBoxEndPointAnswerBean {
+public class GetBoxEndPointAnswerBean extends GenericAnswerBean{
 
     private String endpoint;
-    private AnswerStatusBean status;
 
     public String getEndpoint() {
         return endpoint;
@@ -15,11 +14,4 @@ public class GetBoxEndPointAnswerBean {
         this.endpoint = endpoint;
     }
 
-    public AnswerStatusBean getStatus() {
-        return status;
-    }
-
-    public void setStatus(AnswerStatusBean status) {
-        this.status = status;
-    }
 }

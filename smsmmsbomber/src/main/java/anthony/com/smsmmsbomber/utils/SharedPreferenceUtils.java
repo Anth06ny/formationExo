@@ -31,6 +31,9 @@ public class SharedPreferenceUtils {
     }
 
     public static void saveUrlLoad(Context c, String url) {
+        if (!StringUtils.endsWith(url, "/")) {
+            url += "/";
+        }
         getSharedPreference(c).edit().putString(URL_LOAD, url).apply();
     }
 

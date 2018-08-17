@@ -49,7 +49,7 @@ public class SendMessageService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        startForeground(NOTIFICATION_ID, NotificationUtils.getNotif(this, "Démarrage du service",  null));
+        startForeground(NOTIFICATION_ID, NotificationUtils.getNotif(this, "Démarrage du service", null));
 
         Log.w("TAG_SERVICE", "Démmarage du service");
 
@@ -68,7 +68,7 @@ public class SendMessageService extends Service {
             public void run() {
                 onStartCommand(null, 0, 0);
             }
-        }, 0, Constants.DELAI_SERVICE);
+        }, Constants.DELAI_SERVICE, Constants.DELAI_SERVICE);
     }
 
     @Override
@@ -126,6 +126,8 @@ public class SendMessageService extends Service {
         @Override
         protected Void doInBackground(Void... voids) {
 
+            String ip;
+
             try {
                 Log.w("TAG_SERVICE", "Lancement d'un campagne...");
 
@@ -136,30 +138,34 @@ public class SendMessageService extends Service {
                 else if (!Permissionutils.isDefautApp(SendMessageService.this)) {
                     throw new ExceptionA("L'application n'est pas définie comme application par defaut pour les SMS, veuillez accepter dans l'application");
                 }
+
+                //On récupère notre adresse IP
+                ip = WSUtils.getIP();
+
                 //Si on a pas d'url enregistre, on fait un ping sur l'url de la constante
-                else if (StringUtils.isBlank(SharedPreferenceUtils.getUrlLoad(SendMessageService.this))) {
-                    NotificationUtils.createInstantNotification(SendMessageService.this, "Ping 1er lancement...",  R.mipmap.ic_ok);
-                    WSUtils.pingServeur(SendMessageService.this);
+                if (StringUtils.isBlank(SharedPreferenceUtils.getUrlLoad(SendMessageService.this))) {
+                    NotificationUtils.createInstantNotification(SendMessageService.this, "Ping 1er lancement...", R.mipmap.ic_ok);
+                    WSUtils.pingServeur(SendMessageService.this, ip);
                 }
 
                 //Enregistrement du device et recupération de l'url à utiliser
-                NotificationUtils.createInstantNotification(SendMessageService.this, "Chargement de l'url à utiliser...",  R.mipmap.ic_ok);
+                NotificationUtils.createInstantNotification(SendMessageService.this, "Chargement de l'url à utiliser...", R.mipmap.ic_ok);
                 WSUtils.saveUrlFromBoxEndPoint(SendMessageService.this);
 
                 //On enregistre du modem (ici telephone est modem sont liés donc juste 2 appels  à faire)
-                WSUtils.registerDevice(SendMessageService.this);
+                WSUtils.registerDevice(SendMessageService.this, ip);
 
                 //on envoie un ping comme quoi on est vivant
-                WSUtils.pingServeur(SendMessageService.this);
+                WSUtils.pingServeur(SendMessageService.this, ip);
 
                 //On envoie un autre comme quoi on est vivant aussi
                 WSUtils.deviceReady(SendMessageService.this);
 
-                NotificationUtils.createInstantNotification(SendMessageService.this, "Chargemment de la campagne...",  R.mipmap.ic_ok);
+                NotificationUtils.createInstantNotification(SendMessageService.this, "Chargemment de la campagne...", R.mipmap.ic_ok);
                 //Chargement de la campagne
                 campagneBean = WSUtils.getScheduleds(SendMessageService.this);
                 Log.w("TAG_CAMPAGNE", "Campagne chargé");
-                NotificationUtils.createInstantNotification(SendMessageService.this, "La campagne a été chargé",  R.mipmap.ic_ok);
+                NotificationUtils.createInstantNotification(SendMessageService.this, "La campagne a été chargé", R.mipmap.ic_ok);
 
                 //on regarde si la campagne contient des fichier
                 if (campagneBean.getPhoneList() == null || campagneBean.getPhoneList().isEmpty()) {
@@ -182,37 +188,43 @@ public class SendMessageService extends Service {
 
                 for (; i < size; i++) {
                     if (i % 10 == 0) {
-                        NotificationUtils.createInstantNotification(SendMessageService.this, "Envoie de message en cours : " + i + "/" + size,  R.mipmap
+                        NotificationUtils.createInstantNotification(SendMessageService.this, "Envoie de message en cours : " + i + "/" + size, R.mipmap
                                 .ic_sms);
                     }
 
-                    PhoneBean phoneBean = campagneBean.getPhoneList().get(i);
-                    if (StringUtils.isNotBlank(phoneBean.getUrlFichier())) {
+                    try {
+                        PhoneBean phoneBean = campagneBean.getPhoneList().get(i);
+                        if (StringUtils.isNotBlank(phoneBean.getUrlFichier())) {
 
-                        //Si ce n'est pas la meme image on telecharge
-                        if (StringUtils.isBlank(lastUrl) || !StringUtils.equals(phoneBean.getUrlFichier(), lastUrl)) {
-                            FutureTarget<Bitmap> futureTarget =
-                                    Glide.with(SendMessageService.this).asBitmap().load(phoneBean.getUrlFichier()).submit(Integer.MIN_VALUE, Integer.MIN_VALUE);
-                            bitmap = futureTarget.get();
-                            lastUrl = phoneBean.getUrlFichier();
+                            //Si ce n'est pas la meme image on telecharge
+                            if (StringUtils.isBlank(lastUrl) || !StringUtils.equals(phoneBean.getUrlFichier(), lastUrl)) {
+                                FutureTarget<Bitmap> futureTarget =
+                                        Glide.with(SendMessageService.this).asBitmap().load(phoneBean.getUrlFichier()).submit(Integer.MIN_VALUE, Integer.MIN_VALUE);
+                                bitmap = futureTarget.get();
+                                lastUrl = phoneBean.getUrlFichier();
+                            }
+
+                            //Mode mms
+                            SmsMmsManager.sendMMS(transaction, phoneBean, bitmap);
                         }
-
-                        //Mode mms
-                        SmsMmsManager.sendMMS(transaction, phoneBean, bitmap);
+                        else {
+                            //Mode sms
+                            SmsMmsManager.sendSMS(SendMessageService.this, phoneBean, true, false);
+                        }
                     }
-                    else {
-                        //Mode sms
-                        SmsMmsManager.sendSMS(SendMessageService.this, phoneBean, true, false);
+                    catch (Exception e) {
+                        Log.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
+                        e.printStackTrace();
+                        //TODO a gerer plus tard
                     }
                 }
-
-                NotificationUtils.createInstantNotification(SendMessageService.this, campagneBean.getPhoneList().size() + " messages envoyés!",  R.mipmap.ic_ok);
+                NotificationUtils.createInstantNotification(SendMessageService.this, campagneBean.getPhoneList().size() + " messages envoyés!", R.mipmap.ic_ok);
 
                 //On previent le serveur qu'on a transmis au modem la liste des message
                 WSUtils.smssent(SendMessageService.this, campagneBean.getPhoneList());
             }
             catch (Exception e) {
-                this.exception = new TechnicalException("Erreur lors de l'envoie de message", e);
+                this.exception = new TechnicalException("Erreur lors de l'envoie de messages\n" + e.getMessage(), e);
             }
 
             return null;

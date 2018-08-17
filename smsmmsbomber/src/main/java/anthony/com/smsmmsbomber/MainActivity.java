@@ -66,6 +66,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private void refreshScreen() {
 
-        tvUUID.setText(SharedPreferenceUtils.getUniqueIDGoodFormat(this));
+        tvUUID.setText("Numéro de serie : " + SharedPreferenceUtils.getUniqueIDGoodFormat(this));
     }
 }

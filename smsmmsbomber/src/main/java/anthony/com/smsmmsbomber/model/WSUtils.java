@@ -78,8 +78,9 @@ public class WSUtils {
         }
 
         //Analyse du code retour si non copmris entre 200 et 299
-        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
-            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("Erreur serveur : " + response.code() + "\nErreur:" + response.message());
         }
         else {
 
@@ -102,21 +103,51 @@ public class WSUtils {
             }
 
             //On analyse la réponse
-            if (answer.getStatus() == null) {
-                throw new TechnicalException("Erreur lors de la réponse du /GetBoxEndpoint : status vide");
-            }
-            else if (answer.getStatus().getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /GetBoxEndpoint : " + answer.getStatus().getStatus());
-            }
-            else if (StringUtils.isBlank(answer.getEndpoint())) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /GetBoxEndpoint, code 200 mais url vide : " + answer.getEndpoint());
+            answer.checkError("/GetBoxEndpoint");
+            if (StringUtils.isBlank(answer.getEndpoint())) {
+                throw new TechnicalException("/GetBoxEndpoint : url vide : " + answer.getEndpoint());
             }
             else if (!answer.getEndpoint().startsWith("https://")) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /GetBoxEndpoint, url invalide : " + answer.getEndpoint());
+                throw new TechnicalException("/GetBoxEndpoint : url invalide : " + answer.getEndpoint());
             }
 
             //Tout est bon on sauvegarde l'url
             SharedPreferenceUtils.saveUrlLoad(context, answer.getEndpoint());
+        }
+    }
+
+    public static String getIP() throws ExceptionA {
+        String url = Constants.URL_GET_IP;
+        Log.w("TAG_URL_GET", url);
+
+        //Création de la requete
+        Request request = new Request.Builder().url(url).build();
+
+        //Execution de la requête
+        Response response;
+        try {
+            response = getOkHttpClient().newCall(request).execute();
+        }
+        catch (IOException e) {
+            //On test si google répond pour différencier si c'est internet ou le serveur le probleme
+            throw testInternetConnexionOnGoogle(e);
+        }
+
+        //Analyse du code retour si non copmris entre 200 et 299
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("/getIP : " + response.code() + "\nErreur:" + response.message());
+        }
+        else {
+            //Résultat de la requete.
+            try {
+                String ipRecu = response.body().string();
+                Log.w("TAG_REQ", "ip:" + ipRecu);
+                return ipRecu;
+            }
+            catch (Exception e) {
+                throw new TechnicalException("Erreur : " + e.getMessage(), e);
+            }
         }
     }
 
@@ -126,11 +157,11 @@ public class WSUtils {
      * @param context
      * @throws ExceptionA
      */
-    public static void registerDevice(Context context) throws ExceptionA {
+    public static void registerDevice(Context context, String ip) throws ExceptionA {
 
         String url = SharedPreferenceUtils.getUrlLoad(context) + "registerDevice";
         Log.w("TAG_URL_POST", url);
-        RegisterDeviceSendBean send = new RegisterDeviceSendBean(Utils.getIPAddress(), SharedPreferenceUtils.getUniqueIDGoodFormat(context), Utils.getDeviceIMEI
+        RegisterDeviceSendBean send = new RegisterDeviceSendBean(ip, SharedPreferenceUtils.getUniqueIDGoodFormat(context), Utils.getDeviceIMEI
                 (context));
 
         if (BuildConfig.DEBUG) {
@@ -153,8 +184,9 @@ public class WSUtils {
         }
 
         //Analyse du code retour si non copmris entre 200 et 299
-        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
-            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("Erreur serveur : " + response.code() + "\nErreur:" + response.message());
         }
         else {
 
@@ -177,16 +209,12 @@ public class WSUtils {
             }
 
             //On analyse la réponse
-            if (answer.getStatus() == null) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /registerDevice : status null");
-            }
-            else if (answer.getStatus().getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /registerDevice : " + answer.getStatus().getStatus());
-            }
+            answer.checkError("/registerDevice");
+
         }
     }
 
-    public static void pingServeur(Context context) throws ExceptionA {
+    public static void pingServeur(Context context, String ip) throws ExceptionA {
 
         String url = SharedPreferenceUtils.getUrlLoad(context);
         if (StringUtils.isBlank(url)) {
@@ -195,7 +223,7 @@ public class WSUtils {
         url += "ping";
         Log.w("TAG_URL_POST", url);
         //Meme format pour l'envoie
-        RegisterDeviceSendBean send = new RegisterDeviceSendBean(Utils.getIPAddress(), SharedPreferenceUtils.getUniqueIDGoodFormat(context), "");
+        RegisterDeviceSendBean send = new RegisterDeviceSendBean(ip, SharedPreferenceUtils.getUniqueIDGoodFormat(context), "");
 
         if (BuildConfig.DEBUG) {
             Log.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
@@ -217,8 +245,9 @@ public class WSUtils {
         }
 
         //Analyse du code retour si non copmris entre 200 et 299
-        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
-            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("Erreur serveur : " + response.code() + "\nErreur:" + response.message());
         }
         else {
 
@@ -241,13 +270,7 @@ public class WSUtils {
             }
 
             //On analyse la réponse
-            //On analyse la réponse
-            if (answer.getStatus() == null) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /ping : status null");
-            }
-            else if (answer.getStatus().getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /ping : " + answer.getStatus().getStatus());
-            }
+            answer.checkError("/ping");
         }
     }
 
@@ -277,8 +300,9 @@ public class WSUtils {
         }
 
         //Analyse du code retour si non copmris entre 200 et 299
-        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
-            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("Erreur serveur : " + response.code() + "\nErreur:" + response.message());
         }
         else {
 
@@ -301,12 +325,7 @@ public class WSUtils {
             }
 
             //On analyse la réponse
-            if (answer.getStatus() == null) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /deviceReady : status null");
-            }
-            else if (answer.getStatus().getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /deviceReady : " + answer.getStatus().getStatus());
-            }
+            answer.checkError("/deviceReady");
         }
     }
 
@@ -342,20 +361,20 @@ public class WSUtils {
         }
 
         //Analyse du code retour si non copmris entre 200 et 299
-        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
-            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("Erreur serveur : " + response.code() + "\nErreur:" + response.message());
         }
         else {
 
-            //TODO A continuer
-            GetScheduledAnswerBean getScheduledAnswerBean;
+            GetScheduledAnswerBean answer;
 
             if (BuildConfig.DEBUG) {
                 //Résultat de la requete.
                 try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
-                    getScheduledAnswerBean = gson.fromJson(jsonRecu, GetScheduledAnswerBean.class);
+                    answer = gson.fromJson(jsonRecu, GetScheduledAnswerBean.class);
                 }
                 catch (Exception e) {
                     throw new TechnicalException("Erreur lors du parsing Json", e);
@@ -363,18 +382,13 @@ public class WSUtils {
             }
             else {
                 //JSON -> Java (Parser une ArrayList typée)
-                getScheduledAnswerBean = gson.fromJson(new InputStreamReader(response.body().byteStream()), GetScheduledAnswerBean.class);
+                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GetScheduledAnswerBean.class);
             }
 
             //On analyse la réponse
-            if (getScheduledAnswerBean.getStatus() == null) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /getScheduleds : status null");
-            }
-            else if (getScheduledAnswerBean.getStatus().getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /getScheduleds : " + getScheduledAnswerBean.getStatus().getStatus());
-            }
+            answer.checkError("/getScheduleds");
 
-            return getScheduledAnswerBean;
+            return answer;
         }
     }
 
@@ -403,8 +417,9 @@ public class WSUtils {
         }
 
         //Analyse du code retour si non copmris entre 200 et 299
-        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
-            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("Erreur serveur : " + response.code() + "\nErreur:" + response.message());
         }
         else {
 
@@ -427,12 +442,7 @@ public class WSUtils {
             }
 
             //On analyse la réponse
-            if (answer.getStatus() == null) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /getScheduleds : status null");
-            }
-            else if (answer.getStatus().getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /smsSent : " + answer.getStatus());
-            }
+            answer.checkError("/smsSent");
         }
     }
 
@@ -530,8 +540,9 @@ public class WSUtils {
         }
 
         //Analyse du code retour si non copmris entre 200 et 299
-        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
-            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("Erreur serveur : " + response.code() + "\nErreur:" + response.message());
         }
         else {
 
@@ -554,12 +565,7 @@ public class WSUtils {
             }
 
             //On analyse la réponse
-            if (answer.getStatus() == null) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /smsSentFailed : status null");
-            }
-            else if (answer.getStatus().getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /smsSentFailed : " + answer.getStatus().getStatus());
-            }
+            answer.checkError("/smsSentFailed");
         }
     }
 
@@ -590,8 +596,9 @@ public class WSUtils {
         }
 
         //Analyse du code retour si non copmris entre 200 et 299
-        if (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection.HTTP_MULT_CHOICE) {
-            throw new TechnicalException("Réponse du serveur incorrect : " + response.code() + "\nErreur:" + response.message());
+        if (response.code() != Constants.SERVEUR_CODE_ERROR && (response.code() < HttpURLConnection.HTTP_OK || response.code() >= HttpURLConnection
+                .HTTP_MULT_CHOICE)) {
+            throw new TechnicalException("Erreur serveur : " + response.code() + "\nErreur:" + response.message());
         }
         else {
 
@@ -614,12 +621,7 @@ public class WSUtils {
             }
 
             //On analyse la réponse
-            if (answer.getStatus() == null) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /smsReceived : status null");
-            }
-            else if (answer.getStatus().getCode() != 200) {
-                throw new TechnicalException("Erreur serveur lors de la réponse du /smsReceived : " + answer.getStatus().getStatus());
-            }
+            answer.checkError("/smsReceived");
         }
     }
 
