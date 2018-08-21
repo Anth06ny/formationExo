@@ -1,8 +1,10 @@
 package anthony.com.smsmmsbomber.utils;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.provider.Settings;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 
 import com.formation.utils.exceptions.TechnicalException;
 
@@ -42,7 +44,18 @@ public class SharedPreferenceUtils {
 // -------------------------------- */
     private static final String AndroidId = "AndroidId";
 
-    public static String getUniqueIDGoodFormat(Context c) {
+    public static String getUniqueIDGoodFormat(Context c) throws TechnicalException {
+
+        if (ActivityCompat.checkSelfPermission(c, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return "PasLaPermission";
+        }
 
         SharedPreferences sharedPreferences = getSharedPreference(c);
         String uniqueId = sharedPreferences.getString(AndroidId, "");
@@ -50,7 +63,13 @@ public class SharedPreferenceUtils {
             return uniqueId;
         }
 
-        uniqueId = Settings.Secure.getString(c.getContentResolver(), Settings.Secure.ANDROID_ID);
+        //Change de temps en temps
+        //uniqueId = Settings.Secure.getString(c.getContentResolver(), Settings.Secure.ANDROID_ID);
+        uniqueId = Utils.getDeviceIMEI(c);
+
+        if (uniqueId == null || uniqueId.length() < 12) {
+            throw new TechnicalException("L'IMEI est trop petit : " + uniqueId);
+        }
 
         uniqueId = StringUtils.substring(uniqueId, -12);
         //On le met en form an-xxxx-xxxx-xxxx

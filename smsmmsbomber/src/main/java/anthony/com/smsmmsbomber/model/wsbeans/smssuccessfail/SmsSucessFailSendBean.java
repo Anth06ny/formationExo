@@ -8,24 +8,25 @@ import java.util.List;
 import anthony.com.smsmmsbomber.model.AnswerBean;
 
 public class SmsSucessFailSendBean {
-    private String IMEI;
+    private String host_uid;
+
     @SerializedName("scheduleds_to_send")
     List<AnswerBean> phoneList;
 
     public SmsSucessFailSendBean() {
     }
 
-    public SmsSucessFailSendBean(String IMEI, List<AnswerBean> phoneList) {
-        this.IMEI = IMEI;
+    public SmsSucessFailSendBean(String host_uid, List<AnswerBean> phoneList) {
+        this.host_uid = host_uid;
         this.phoneList = phoneList;
     }
 
-    public String getIMEI() {
-        return IMEI;
+    public String getHost_uid() {
+        return host_uid;
     }
 
-    public void setIMEI(String IMEI) {
-        this.IMEI = IMEI;
+    public void setHost_uid(String host_uid) {
+        this.host_uid = host_uid;
     }
 
     public List<AnswerBean> getPhoneList() {

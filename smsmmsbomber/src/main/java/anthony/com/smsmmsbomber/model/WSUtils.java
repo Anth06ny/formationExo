@@ -3,7 +3,6 @@ package anthony.com.smsmmsbomber.model;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
 import com.formation.utils.exceptions.ExceptionA;
 import com.formation.utils.exceptions.TechnicalException;
@@ -30,6 +29,7 @@ import anthony.com.smsmmsbomber.model.wsbeans.registerdevice.RegisterDeviceInfor
 import anthony.com.smsmmsbomber.model.wsbeans.registerdevice.RegisterDeviceSendBean;
 import anthony.com.smsmmsbomber.model.wsbeans.smssent.SmsSentSendBean;
 import anthony.com.smsmmsbomber.model.wsbeans.smssuccessfail.SmsSucessFailSendBean;
+import anthony.com.smsmmsbomber.utils.LogUtils;
 import anthony.com.smsmmsbomber.utils.Logger;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 import anthony.com.smsmmsbomber.utils.Utils;
@@ -55,12 +55,10 @@ public class WSUtils {
     public static void saveUrlFromBoxEndPoint(Context context) throws ExceptionA {
 
         String url = Constants.URL_SERVER_CONSOLE + "getBoxEndpoint";
-        Log.w("TAG_URL_POST", url);
+        LogUtils.w("TAG_URL_POST", url);
         GetBoxEndPointSendBean getBoxEndPointSendBean = new GetBoxEndPointSendBean(SharedPreferenceUtils.getUniqueIDGoodFormat(context));
 
-        if (BuildConfig.DEBUG) {
-            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(getBoxEndPointSendBean));
-        }
+        LogUtils.w("TAG_REQ", "json envoyé : " + gson.toJson(getBoxEndPointSendBean));
 
         RequestBody body = RequestBody.create(JSON, gson.toJson(getBoxEndPointSendBean));
 
@@ -111,6 +109,10 @@ public class WSUtils {
                 throw new TechnicalException("/GetBoxEndpoint : url invalide : " + answer.getEndpoint());
             }
 
+            if (!StringUtils.endsWithIgnoreCase(answer.getEndpoint(), "api")) {
+                answer.setEndpoint(answer.getEndpoint() + "/API");
+            }
+
             //Tout est bon on sauvegarde l'url
             SharedPreferenceUtils.saveUrlLoad(context, answer.getEndpoint());
         }
@@ -118,7 +120,7 @@ public class WSUtils {
 
     public static String getIP() throws ExceptionA {
         String url = Constants.URL_GET_IP;
-        Log.w("TAG_URL_GET", url);
+        LogUtils.w("TAG_URL_GET", url);
 
         //Création de la requete
         Request request = new Request.Builder().url(url).build();
@@ -142,7 +144,7 @@ public class WSUtils {
             //Résultat de la requete.
             try {
                 String ipRecu = response.body().string();
-                Log.w("TAG_REQ", "ip:" + ipRecu);
+                LogUtils.w("TAG_REQ", "ip:" + ipRecu);
                 return ipRecu;
             }
             catch (Exception e) {
@@ -160,13 +162,11 @@ public class WSUtils {
     public static void registerDevice(Context context, String ip) throws ExceptionA {
 
         String url = SharedPreferenceUtils.getUrlLoad(context) + "registerDevice";
-        Log.w("TAG_URL_POST", url);
+        LogUtils.w("TAG_URL_POST", url);
         RegisterDeviceSendBean send = new RegisterDeviceSendBean(ip, SharedPreferenceUtils.getUniqueIDGoodFormat(context), Utils.getDeviceIMEI
                 (context));
 
-        if (BuildConfig.DEBUG) {
-            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
-        }
+        LogUtils.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
 
         RequestBody body = RequestBody.create(JSON, gson.toJson(send));
 
@@ -210,7 +210,6 @@ public class WSUtils {
 
             //On analyse la réponse
             answer.checkError("/registerDevice");
-
         }
     }
 
@@ -221,13 +220,11 @@ public class WSUtils {
             url = Constants.URL_SERVER_CONSOLE;
         }
         url += "ping";
-        Log.w("TAG_URL_POST", url);
+        LogUtils.w("TAG_URL_POST", url);
         //Meme format pour l'envoie
         RegisterDeviceSendBean send = new RegisterDeviceSendBean(ip, SharedPreferenceUtils.getUniqueIDGoodFormat(context), "");
 
-        if (BuildConfig.DEBUG) {
-            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
-        }
+        LogUtils.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
 
         RequestBody body = RequestBody.create(JSON, gson.toJson(send));
 
@@ -276,13 +273,11 @@ public class WSUtils {
 
     public static void deviceReady(Context context) throws ExceptionA {
         String url = SharedPreferenceUtils.getUrlLoad(context) + "deviceReady";
-        Log.w("TAG_URL_POST", url);
+        LogUtils.w("TAG_URL_POST", url);
         //Meme format pour l'envoie
         RegisterDeviceInformationsBean send = new RegisterDeviceInformationsBean(Utils.getDeviceIMEI(context));
 
-        if (BuildConfig.DEBUG) {
-            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
-        }
+        LogUtils.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
 
         RequestBody body = RequestBody.create(JSON, gson.toJson(send));
 
@@ -337,13 +332,11 @@ public class WSUtils {
      */
     public static GetScheduledAnswerBean getScheduleds(Context context) throws ExceptionA {
         String url = SharedPreferenceUtils.getUrlLoad(context) + "getScheduleds";
-        Log.w("TAG_URL_POST", url);
+        LogUtils.w("TAG_URL_POST", url);
         //Meme format pour l'envoie
         RegisterDeviceSendBean send = new RegisterDeviceSendBean("", SharedPreferenceUtils.getUniqueIDGoodFormat(context), "");
 
-        if (BuildConfig.DEBUG) {
-            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
-        }
+        LogUtils.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
 
         RequestBody body = RequestBody.create(JSON, gson.toJson(send));
 
@@ -394,12 +387,10 @@ public class WSUtils {
 
     public static void smssent(Context context, ArrayList<PhoneBean> phoneList) throws ExceptionA {
         String url = SharedPreferenceUtils.getUrlLoad(context) + "smsSent";
-        Log.w("TAG_URL_POST", url);
+        LogUtils.w("TAG_URL_POST", url);
         SmsSentSendBean send = new SmsSentSendBean(Utils.getDeviceIMEI(context), phoneList);
 
-        if (BuildConfig.DEBUG) {
-            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
-        }
+        LogUtils.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
 
         RequestBody body = RequestBody.create(JSON, gson.toJson(send));
 
@@ -516,13 +507,11 @@ public class WSUtils {
     public static void sendSmsSendFail(Context context, List<AnswerBean> answerBeanList) throws ExceptionA {
         String url = SharedPreferenceUtils.getUrlLoad(context) + "smsSentFailed";
 
-        Log.w("TAG_URL", url);
+        LogUtils.w("TAG_URL", url);
 
-        SmsSucessFailSendBean send = new SmsSucessFailSendBean(Utils.getDeviceIMEI(context), answerBeanList);
+        SmsSucessFailSendBean send = new SmsSucessFailSendBean(SharedPreferenceUtils.getUniqueIDGoodFormat(context), answerBeanList);
 
-        if (BuildConfig.DEBUG) {
-            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
-        }
+        LogUtils.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
 
         RequestBody body = RequestBody.create(JSON, gson.toJson(send));
 
@@ -572,13 +561,11 @@ public class WSUtils {
     public static void sendSmsReceive(Context context, List<AnswerBean> answerBeanList) throws ExceptionA {
         String url = SharedPreferenceUtils.getUrlLoad(context) + "smsReceived";
 
-        Log.w("TAG_URL", url);
+        LogUtils.w("TAG_URL", url);
 
-        SmsSucessFailSendBean send = new SmsSucessFailSendBean(Utils.getDeviceIMEI(context), answerBeanList);
+        SmsSucessFailSendBean send = new SmsSucessFailSendBean(SharedPreferenceUtils.getUniqueIDGoodFormat(context), answerBeanList);
 
-        if (BuildConfig.DEBUG) {
-            Log.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
-        }
+        LogUtils.w("TAG_REQ", "json envoyé : " + gson.toJson(send));
 
         RequestBody body = RequestBody.create(JSON, gson.toJson(send));
 

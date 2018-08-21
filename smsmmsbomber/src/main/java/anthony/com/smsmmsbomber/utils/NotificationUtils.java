@@ -60,7 +60,7 @@ public class NotificationUtils {
     public static Notification getNotif(Context c, String message, Integer imageId) {
         initChannel(c);
 
-        Log.w("TAG_NOTIFICATION", "Notif:" + message);
+        LogUtils.w("TAG_NOTIFICATION", "Notif:" + message);
 
         //Ce qui se passera quand on cliquera sur la notif
         Intent intent = new Intent(c, MainActivity.class);

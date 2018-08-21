@@ -45,4 +45,17 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvExplication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/font_20"
+        android:text="Sans les permissions l'application ne peut pas fonctionner"/>
+
+    <Button
+        android:id="@+id/bt_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Accepter les permissions"/>
+
 </LinearLayout>

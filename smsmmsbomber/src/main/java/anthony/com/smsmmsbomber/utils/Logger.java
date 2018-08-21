@@ -1,7 +1,6 @@
 package anthony.com.smsmmsbomber.utils;
 
 import android.os.Build;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +51,7 @@ public class Logger {
     }
 
     private static void log(String tag, String msg) {
-        Log.w(tag, msg);
+        LogUtils.w(tag, msg);
     }
 
     private static String getSplitter(int length) {

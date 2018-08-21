@@ -8,8 +8,6 @@ import android.telephony.TelephonyManager;
 
 public class Utils {
 
-
-
     /**
      * Returns the unique identifier for the device
      *
@@ -21,7 +19,7 @@ public class Utils {
             return tm.getDeviceId();
         }
         else {
-            return "";
+            return "NoIMEI";
         }
     }
 }

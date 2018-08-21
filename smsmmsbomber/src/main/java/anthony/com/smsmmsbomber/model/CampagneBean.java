@@ -1,7 +1,6 @@
 package anthony.com.smsmmsbomber.model;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import com.formation.utils.exceptions.TechnicalException;
 
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
+import anthony.com.smsmmsbomber.utils.LogUtils;
 
 public class CampagneBean {
 
@@ -55,7 +55,7 @@ public class CampagneBean {
             }
         }
 
-        Log.w("TAG_CAMPAGNE", "CampagneBean=" + campagneBean);
+        LogUtils.w("TAG_CAMPAGNE", "CampagneBean=" + campagneBean);
 
         return false;
     }

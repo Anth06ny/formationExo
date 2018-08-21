@@ -1,5 +1,7 @@
 package anthony.com.smsmmsbomber.model.dao;
 
+import org.greenrobot.greendao.query.QueryBuilder;
+
 import java.util.List;
 
 import anthony.com.smsmmsbomber.MyApplication;
@@ -22,11 +24,12 @@ public class AnswerDaoManager {
     }
 
     public static List<AnswerBean> getSmsReceived() {
-        return getDao().queryBuilder().where(AnswerBeanDao.Properties.Send.eq(false)).list();
+        QueryBuilder<AnswerBean> qb = getDao().queryBuilder();
+        return qb.where(AnswerBeanDao.Properties.Text.isNotNull()).list();
     }
 
     public static List<AnswerBean> getFailedDelivery() {
-        return getDao().queryBuilder().where(AnswerBeanDao.Properties.Send.eq(false)).list();
+        return getDao().queryBuilder().where(AnswerBeanDao.Properties.Send.isNotNull()).list();
     }
 
     public static void deleteList(List<AnswerBean> list) {

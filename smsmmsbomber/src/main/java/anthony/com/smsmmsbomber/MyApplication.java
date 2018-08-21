@@ -2,6 +2,8 @@ package anthony.com.smsmmsbomber;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
+import com.facebook.stetho.Stetho;
 import com.squareup.otto.Bus;
 
 import org.greenrobot.greendao.database.Database;
@@ -9,6 +11,7 @@ import org.greenrobot.greendao.database.Database;
 import anthony.com.smsmmsbomber.model.DaoMaster;
 import anthony.com.smsmmsbomber.model.DaoSession;
 import anthony.com.smsmmsbomber.service.SendMessageService;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Anthony on 05/04/2016.
@@ -28,11 +31,15 @@ public class MyApplication extends Application {
 
         super.onCreate();
         instance = this;
+        Fabric.with(this, new Crashlytics());
         bus = new Bus();
         setupDatabase();
 
         if (!BuildConfig.DEBUG) {
             SendMessageService.startservice(this);
+        }
+        else {
+            Stetho.initializeWithDefaults(this);
         }
     }
 

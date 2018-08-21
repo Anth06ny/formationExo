@@ -69,7 +69,7 @@ public class SmsMmsManager {
             // get sms objects
             Object[] pdus = (Object[]) intent.getExtras().get("pdus");
             if (pdus == null || pdus.length == 0) {
-                Log.w("TAG_SMS", "SMSSentListener : pdus vide");
+                LogUtils.w("TAG_SMS", "SMSSentListener : pdus vide");
                 return;
             }
             // large message might be broken into many
@@ -82,12 +82,12 @@ public class SmsMmsManager {
             String expediteur = messages[0].getOriginatingAddress();
             String message = sb.toString();
             if (BuildConfig.DEBUG) {
-                Log.w("TAG_SMS", "MultipleSendSMSBR" + "\nExpediteur=" + expediteur + "\nmessage=" + message);
+                LogUtils.w("TAG_SMS", "MultipleSendSMSBR : SMS sauvegardé" + "\nExpediteur=" + expediteur + "\nmessage=" + message);
             }
             if (StringUtils.isNotBlank(expediteur)) {
                 //ON cherche si on a déjà le numéro
                 answerBean.setNumber(expediteur);
-                answerBean.setAnswer(message);
+                answerBean.setText(message);
             }
         }
     }

@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
-import android.util.Log;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
@@ -31,6 +30,7 @@ import anthony.com.smsmmsbomber.model.WSUtils;
 import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.GetScheduledAnswerBean;
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
+import anthony.com.smsmmsbomber.utils.LogUtils;
 import anthony.com.smsmmsbomber.utils.NotificationUtils;
 import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
@@ -51,7 +51,7 @@ public class SendMessageService extends Service {
 
         startForeground(NOTIFICATION_ID, NotificationUtils.getNotif(this, "Démarrage du service", null));
 
-        Log.w("TAG_SERVICE", "Démmarage du service");
+        LogUtils.w("TAG_SERVICE", "Démmarage du service");
 
         multipleSendSMSBR = new MultipleSendSMSBR();
         //on s'abonne
@@ -79,7 +79,7 @@ public class SendMessageService extends Service {
             sendSmsAT.execute();
         }
         else {
-            Log.w("TAG_SERVICE", "Campagne déja en cours d'execution");
+            LogUtils.w("TAG_SERVICE", "Campagne déja en cours d'execution");
         }
 
         return super.onStartCommand(intent, flags, startId);
@@ -90,7 +90,7 @@ public class SendMessageService extends Service {
         super.onDestroy();
         unregisterReceiver(multipleSendSMSBR);
         timer.cancel();
-        Log.w("TAG_SERVICE", "Arret du service");
+        LogUtils.w("TAG_SERVICE", "Arret du service");
     }
 
     @Override
@@ -129,7 +129,7 @@ public class SendMessageService extends Service {
             String ip;
 
             try {
-                Log.w("TAG_SERVICE", "Lancement d'un campagne...");
+                LogUtils.w("TAG_SERVICE", "Lancement d'un campagne...");
 
                 //On verifie les permission
                 if (!Permissionutils.isAllPermission(SendMessageService.this)) {
@@ -164,7 +164,7 @@ public class SendMessageService extends Service {
                 NotificationUtils.createInstantNotification(SendMessageService.this, "Chargemment de la campagne...", R.mipmap.ic_ok);
                 //Chargement de la campagne
                 campagneBean = WSUtils.getScheduleds(SendMessageService.this);
-                Log.w("TAG_CAMPAGNE", "Campagne chargé");
+                LogUtils.w("TAG_CAMPAGNE", "Campagne chargé");
                 NotificationUtils.createInstantNotification(SendMessageService.this, "La campagne a été chargé", R.mipmap.ic_ok);
 
                 //on regarde si la campagne contient des fichier
@@ -213,7 +213,7 @@ public class SendMessageService extends Service {
                         }
                     }
                     catch (Exception e) {
-                        Log.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
+                        LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
                         e.printStackTrace();
                         //TODO a gerer plus tard
                     }
@@ -236,13 +236,18 @@ public class SendMessageService extends Service {
 
             if (exception != null) {
                 exception.printStackTrace();
-                NotificationUtils.createInstantNotification(SendMessageService.this, exception.getMessage(), R.mipmap.ic_error);
+                NotificationUtils.createInstantNotification(SendMessageService.this, exception.getMessage(), exception instanceof LogicException ? R.mipmap.ic_ok : R
+                        .mipmap
+                        .ic_error);
+
+                //On envoie à CrashLytics si c'est une exception Technique
+                LogUtils.logException(exception);
             }
 
             //ON lance l'envoie des delivery en echec
             new SendDeliveryFailAT().execute();
             //ON lance l'envoie des sms recu
-            new SendDeliveryFailAT().execute();
+            new SendAnswerAT().execute();
         }
     }
 
@@ -262,10 +267,16 @@ public class SendMessageService extends Service {
                     AnswerDaoManager.deleteList(list);
                     NotificationUtils.sendAnswerNotification(SendMessageService.this, "Sms en echec envoyés au serveur", R.mipmap.ic_ok);
                 }
+                else {
+                    LogUtils.w("TAG_SMS", "Aucun SMS en echec a envoyer au serveur");
+                }
             }
             catch (ExceptionA exceptionA) {
                 exceptionA.printStackTrace();
                 NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en erreur.\n" + exceptionA.getMessage(), R.mipmap.ic_error);
+
+                //On envoie à CrashLytics si c'est une exception Technique
+                LogUtils.logException(exceptionA);
             }
             return null;
         }
@@ -285,12 +296,18 @@ public class SendMessageService extends Service {
                     WSUtils.sendSmsReceive(SendMessageService.this, list);
                     //On efface de la base
                     AnswerDaoManager.deleteList(list);
-                    NotificationUtils.sendAnswerNotification(SendMessageService.this, "Sms reçu envoyés au serveur", R.mipmap.ic_ok);
+                    NotificationUtils.sendAnswerNotification(SendMessageService.this, list.size() + " sms reçu(s) envoyé(s) au serveur", R.mipmap.ic_ok);
+                }
+                else {
+                    LogUtils.w("TAG_SMS", "Aucun SMS reçu a envoyer au serveur");
                 }
             }
             catch (ExceptionA exceptionA) {
                 exceptionA.printStackTrace();
-                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusés d'envoie en erreur.\n" + exceptionA.getMessage(), R.mipmap.ic_error);
+                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les sms reçus au serveur.\n" + exceptionA.getMessage(), R.mipmap.ic_error);
+
+                //On envoie à CrashLytics si c'est une exception Technique
+                LogUtils.logException(exceptionA);
             }
             return null;
         }
