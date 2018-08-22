@@ -83,21 +83,21 @@ public class WSUtils {
         else {
 
             GetBoxEndPointAnswerBean answer;
+            //Résultat de la requete.
+            try {
+                if (BuildConfig.DEBUG) {
 
-            if (BuildConfig.DEBUG) {
-                //Résultat de la requete.
-                try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
                     answer = gson.fromJson(jsonRecu, GetBoxEndPointAnswerBean.class);
                 }
-                catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du parsing Json", e);
+                else {
+                    //JSON -> Java (Parser une ArrayList typée)
+                    answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GetBoxEndPointAnswerBean.class);
                 }
             }
-            else {
-                //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GetBoxEndPointAnswerBean.class);
+            catch (Exception e) {
+                throw new TechnicalException("Erreur lors du parsing Json", e);
             }
 
             //On analyse la réponse
@@ -191,23 +191,22 @@ public class WSUtils {
         else {
 
             GenericAnswerBean answer;
+            //Résultat de la requete.
+            try {
+                if (BuildConfig.DEBUG) {
 
-            if (BuildConfig.DEBUG) {
-                //Résultat de la requete.
-                try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
                     answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
-                catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du parsing Json", e);
+                else {
+                    //JSON -> Java (Parser une ArrayList typée)
+                    answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
                 }
             }
-            else {
-                //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
+            catch (Exception e) {
+                throw new TechnicalException("Erreur lors du parsing Json", e);
             }
-
             //On analyse la réponse
             answer.checkError("/registerDevice");
         }
@@ -249,23 +248,22 @@ public class WSUtils {
         else {
 
             GenericAnswerBean answer;
+            try {
+                if (BuildConfig.DEBUG) {
+                    //Résultat de la requete.
 
-            if (BuildConfig.DEBUG) {
-                //Résultat de la requete.
-                try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
                     answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
-                catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du parsing Json", e);
+                else {
+                    //JSON -> Java (Parser une ArrayList typée)
+                    answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
                 }
             }
-            else {
-                //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
+            catch (Exception e) {
+                throw new TechnicalException("Erreur lors du parsing Json", e);
             }
-
             //On analyse la réponse
             answer.checkError("/ping");
         }
@@ -302,23 +300,22 @@ public class WSUtils {
         else {
 
             GenericAnswerBean answer;
+            try {
+                if (BuildConfig.DEBUG) {
+                    //Résultat de la requete.
 
-            if (BuildConfig.DEBUG) {
-                //Résultat de la requete.
-                try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
                     answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
-                catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du parsing Json", e);
+                else {
+                    //JSON -> Java (Parser une ArrayList typée)
+                    answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
                 }
             }
-            else {
-                //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
+            catch (Exception e) {
+                throw new TechnicalException("Erreur lors du parsing Json", e);
             }
-
             //On analyse la réponse
             answer.checkError("/deviceReady");
         }
@@ -361,23 +358,22 @@ public class WSUtils {
         else {
 
             GetScheduledAnswerBean answer;
+            //Résultat de la requete.
+            try {
+                if (BuildConfig.DEBUG) {
 
-            if (BuildConfig.DEBUG) {
-                //Résultat de la requete.
-                try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
                     answer = gson.fromJson(jsonRecu, GetScheduledAnswerBean.class);
                 }
-                catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du parsing Json", e);
+                else {
+                    //JSON -> Java (Parser une ArrayList typée)
+                    answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GetScheduledAnswerBean.class);
                 }
             }
-            else {
-                //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GetScheduledAnswerBean.class);
+            catch (Exception e) {
+                throw new TechnicalException("Erreur lors du parsing Json", e);
             }
-
             //On analyse la réponse
             answer.checkError("/getScheduleds");
 
@@ -415,23 +411,22 @@ public class WSUtils {
         else {
 
             GenericAnswerBean answer;
+            //Résultat de la requete.
+            try {
+                if (BuildConfig.DEBUG) {
 
-            if (BuildConfig.DEBUG) {
-                //Résultat de la requete.
-                try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
                     answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
-                catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du parsing Json", e);
+                else {
+                    //JSON -> Java (Parser une ArrayList typée)
+                    answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
                 }
             }
-            else {
-                //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
+            catch (Exception e) {
+                throw new TechnicalException("Erreur lors du parsing Json", e);
             }
-
             //On analyse la réponse
             answer.checkError("/smsSent");
         }
@@ -536,23 +531,22 @@ public class WSUtils {
         else {
 
             GenericAnswerBean answer;
+            //Résultat de la requete.
+            try {
+                if (BuildConfig.DEBUG) {
 
-            if (BuildConfig.DEBUG) {
-                //Résultat de la requete.
-                try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
                     answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
-                catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du parsing Json", e);
+                else {
+                    //JSON -> Java (Parser une ArrayList typée)
+                    answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
                 }
             }
-            else {
-                //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
+            catch (Exception e) {
+                throw new TechnicalException("Erreur lors du parsing Json", e);
             }
-
             //On analyse la réponse
             answer.checkError("/smsSentFailed");
         }
@@ -590,21 +584,22 @@ public class WSUtils {
         else {
 
             GenericAnswerBean answer;
+            //Résultat de la requete.
+            try {
+                if (BuildConfig.DEBUG) {
 
-            if (BuildConfig.DEBUG) {
-                //Résultat de la requete.
-                try {
                     String jsonRecu = response.body().string();
                     Logger.logJson("TAG_JSON_RECU", jsonRecu);
                     answer = gson.fromJson(jsonRecu, GenericAnswerBean.class);
                 }
-                catch (Exception e) {
-                    throw new TechnicalException("Erreur lors du parsing Json", e);
+
+                else {
+                    //JSON -> Java (Parser une ArrayList typée)
+                    answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
                 }
             }
-            else {
-                //JSON -> Java (Parser une ArrayList typée)
-                answer = gson.fromJson(new InputStreamReader(response.body().byteStream()), GenericAnswerBean.class);
+            catch (Exception e) {
+                throw new TechnicalException("Erreur lors du parsing Json", e);
             }
 
             //On analyse la réponse

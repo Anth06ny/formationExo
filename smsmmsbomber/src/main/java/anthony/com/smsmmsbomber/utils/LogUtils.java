@@ -8,6 +8,9 @@ import com.formation.utils.BuildConfig;
 import com.formation.utils.exceptions.ExceptionA;
 import com.formation.utils.exceptions.TechnicalException;
 
+import anthony.com.smsmmsbomber.MainActivity;
+import anthony.com.smsmmsbomber.MyApplication;
+
 public class LogUtils {
 
     public static void w(String tag, String text) {
@@ -15,6 +18,9 @@ public class LogUtils {
         //Ajout à CrashLytics
         if (BuildConfig.DEBUG) {
             Log.w(tag, text);
+        }
+        if (MainActivity.LOG_ON) {
+            MyApplication.getBus().post(text);
         }
         Crashlytics.log(text);
     }

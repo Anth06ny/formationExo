@@ -10,7 +10,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.util.Log;
 
 import com.formation.utils.DateUtils;
 
@@ -54,7 +53,7 @@ public class NotificationUtils {
     }
 
     public static void sendAnswerNotification(Context context, String message, Integer imageId) {
-        NotificationManagerCompat.from(context).notify(NOTIFICATION_ANSWER_ID, getNotif(context, message,  imageId));
+        NotificationManagerCompat.from(context).notify(NOTIFICATION_ANSWER_ID, getNotif(context, message, imageId));
     }
 
     public static Notification getNotif(Context c, String message, Integer imageId) {
@@ -71,7 +70,8 @@ public class NotificationUtils {
         notificationBuilder.setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(c.getResources().getString(R.string.app_name) + " " + DateUtils.dateToString(new Date(), DateUtils.getFormat(c, DateUtils.DATE_FORMAT.HHmm)))
                 .setContentText(message)
-                .setDefaults(Notification.DEFAULT_ALL)
+                .setOnlyAlertOnce(true)
+                .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .addAction(R.mipmap.ic_settings, "Reglages", pendingIntent);
 

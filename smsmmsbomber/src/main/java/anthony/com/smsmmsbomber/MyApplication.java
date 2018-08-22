@@ -5,6 +5,7 @@ import android.app.Application;
 import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
 import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -32,7 +33,7 @@ public class MyApplication extends Application {
         super.onCreate();
         instance = this;
         Fabric.with(this, new Crashlytics());
-        bus = new Bus();
+        bus = new Bus(ThreadEnforcer.ANY);
         setupDatabase();
 
         if (!BuildConfig.DEBUG) {
