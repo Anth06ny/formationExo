@@ -10,6 +10,7 @@ import android.os.IBinder;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
+import com.crashlytics.android.Crashlytics;
 import com.formation.utils.exceptions.ExceptionA;
 import com.formation.utils.exceptions.LogicException;
 import com.formation.utils.exceptions.TechnicalException;
@@ -21,6 +22,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 import anthony.com.smsmmsbomber.Constants;
 import anthony.com.smsmmsbomber.R;
@@ -176,6 +178,10 @@ public class SendMessageService extends Service {
                 this.exception = e;
                 return null;
             }
+            catch (Exception e) {
+                exception = new TechnicalException(e);
+                return null;
+            }
 
             try {
                 //Envoie de la campagne
@@ -191,9 +197,8 @@ public class SendMessageService extends Service {
                         NotificationUtils.createInstantNotification(SendMessageService.this, "Envoie de message en cours : " + i + "/" + size, R.mipmap
                                 .ic_sms);
                     }
-
+                    PhoneBean phoneBean = campagneBean.getPhoneList().get(i);
                     try {
-                        PhoneBean phoneBean = campagneBean.getPhoneList().get(i);
                         if (StringUtils.isNotBlank(phoneBean.getUrlFichier())) {
 
                             //Si ce n'est pas la meme image on telecharge
@@ -211,6 +216,11 @@ public class SendMessageService extends Service {
                             //Mode sms
                             SmsMmsManager.sendSMS(SendMessageService.this, phoneBean, true, false);
                         }
+                    }
+                    catch (ExecutionException e) {
+                        Crashlytics.logException(new TechnicalException("Erreur au chargement de l'image : " + phoneBean, e));
+                        LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
+                        e.printStackTrace();
                     }
                     catch (Exception e) {
                         LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
@@ -244,8 +254,8 @@ public class SendMessageService extends Service {
                 LogUtils.logException(exception);
             }
 
-            //ON lance l'envoie des delivery en echec
-            new SendDeliveryFailAT().execute();
+            //ON lance l'envoie des delivery
+            new SendDeliveryFailOrSuccessAT().execute();
             //ON lance l'envoie des sms recu
             new SendAnswerAT().execute();
         }
@@ -255,14 +265,16 @@ public class SendMessageService extends Service {
     // AT Envoie d'sms en erreur
     // -------------------------------- */
 
-    public class SendDeliveryFailAT extends AsyncTask {
+    public class SendDeliveryFailOrSuccessAT extends AsyncTask {
 
         @Override
         protected Object doInBackground(Object[] objects) {
+
+            //SMS en echec
             try {
                 List<AnswerBean> list = AnswerDaoManager.getFailedDelivery();
                 if (!list.isEmpty()) {
-                    WSUtils.sendSmsSendFail(SendMessageService.this, list);
+                    WSUtils.sendSmsSendFail(SendMessageService.this, list, false);
                     //On efface de la base
                     AnswerDaoManager.deleteList(list);
                     NotificationUtils.sendAnswerNotification(SendMessageService.this, "Sms en echec envoyés au serveur", R.mipmap.ic_ok);
@@ -277,6 +289,41 @@ public class SendMessageService extends Service {
 
                 //On envoie à CrashLytics si c'est une exception Technique
                 LogUtils.logException(exceptionA);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en erreur.\n" + e.getMessage(), R.mipmap.ic_error);
+
+                //On envoie à CrashLytics si c'est une exception Technique
+                LogUtils.logException(new TechnicalException(e));
+            }
+
+            //Accusé récéption
+            try {
+                List<AnswerBean> list = AnswerDaoManager.getSuccessDelivery();
+                if (!list.isEmpty()) {
+                    WSUtils.sendSmsSendFail(SendMessageService.this, list, true);
+                    //On efface de la base
+                    AnswerDaoManager.deleteList(list);
+                    NotificationUtils.sendAnswerNotification(SendMessageService.this, "Accusé d'envoie envoyés au serveur", R.mipmap.ic_ok);
+                }
+                else {
+                    LogUtils.w("TAG_SMS", "Aucun SMS en echec a envoyer au serveur");
+                }
+            }
+            catch (ExceptionA exceptionA) {
+                exceptionA.printStackTrace();
+                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en succes.\n" + exceptionA.getMessage(), R.mipmap.ic_error);
+
+                //On envoie à CrashLytics si c'est une exception Technique
+                LogUtils.logException(exceptionA);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en succes.\n" + e.getMessage(), R.mipmap.ic_error);
+
+                //On envoie à CrashLytics si c'est une exception Technique
+                LogUtils.logException(new TechnicalException(e));
             }
             return null;
         }

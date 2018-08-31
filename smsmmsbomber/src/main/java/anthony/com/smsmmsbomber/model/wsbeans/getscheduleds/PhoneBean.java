@@ -8,7 +8,6 @@ public class PhoneBean implements Serializable {
     public static final long serialVersionUID = 123456;
 
     private long id;
-    private Long phoneId;
     private String number;
     @SerializedName("id_compagne")
     private long campagneId;
@@ -22,14 +21,6 @@ public class PhoneBean implements Serializable {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Long getPhoneId() {
-        return phoneId;
-    }
-
-    public void setPhoneId(Long phoneId) {
-        this.phoneId = phoneId;
     }
 
     public String getNumber() {

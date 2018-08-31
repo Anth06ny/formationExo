@@ -14,22 +14,17 @@ public class AnswerDaoManager {
         getDao().insertOrReplace(dao);
     }
 
-    /**
-     * les reponses reçus
-     *
-     * @return
-     */
-    public static List<AnswerBean> getAnswer() {
-        return getDao().loadAll();
-    }
-
     public static List<AnswerBean> getSmsReceived() {
         QueryBuilder<AnswerBean> qb = getDao().queryBuilder();
         return qb.where(AnswerBeanDao.Properties.Text.isNotNull()).list();
     }
 
     public static List<AnswerBean> getFailedDelivery() {
-        return getDao().queryBuilder().where(AnswerBeanDao.Properties.Send.isNotNull()).list();
+        return getDao().queryBuilder().where(AnswerBeanDao.Properties.Send.isNotNull(), AnswerBeanDao.Properties.Send.eq(false)).list();
+    }
+
+    public static List<AnswerBean> getSuccessDelivery() {
+        return getDao().queryBuilder().where(AnswerBeanDao.Properties.Send.isNotNull(), AnswerBeanDao.Properties.Send.eq(true)).list();
     }
 
     public static void deleteList(List<AnswerBean> list) {

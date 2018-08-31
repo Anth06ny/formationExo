@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
-import android.util.Log;
 
 import com.klinker.android.send_message.Message;
 import com.klinker.android.send_message.Transaction;
@@ -23,30 +22,40 @@ import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
 public class SmsMmsManager {
 
     public static final String NUMBER_EXTRA = "NUMBER_EXTRA";
+    public static final String SMS_OUT_BOX = "SMS_OUT_BOX";
+
+    private static String outboxFormat(String code) {
+        return "AN-OUT-" + code;
+    }
 
     public static void sendSMS(final Context context, PhoneBean phoneBean, boolean notifEnvoie, boolean accuserReception) {
         Intent intent;
         ArrayList<String> parts = SmsManager.getDefault().divideMessage(phoneBean.getContent());
 
         //Notif d'envoie
-        ArrayList<PendingIntent> sendList = null;
+        ArrayList<PendingIntent> sendList = new ArrayList<>();
 
         if (notifEnvoie) {
             //Notif d'envoie
             intent = new Intent(MultipleSendSMSBR.SENT_SMS_ACTION_NAME);
             intent.putExtra(NUMBER_EXTRA, phoneBean.getNumber());
-            sendList = new ArrayList<>();
-            sendList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
+            intent.putExtra(SMS_OUT_BOX, outboxFormat(phoneBean.getId() + ""));
         }
+        else {
+            intent = new Intent();
+        }
+        sendList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
 
         //Notif de reception
-        ArrayList<PendingIntent> receiveList = null;
+        ArrayList<PendingIntent> receiveList = new ArrayList<>();
         if (accuserReception) {
             intent = new Intent(MultipleSendSMSBR.DELIVERED_SMS_ACTION_NAME);
             intent.putExtra(NUMBER_EXTRA, phoneBean.getNumber());
-            receiveList = new ArrayList<>();
-            receiveList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
         }
+        else {
+            intent = new Intent();
+        }
+        receiveList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
 
         SmsManager.getDefault().sendMultipartTextMessage(phoneBean.getNumber(), null, parts, sendList, receiveList);
     }
@@ -60,6 +69,11 @@ public class SmsMmsManager {
         //        else {
         message.addImage(bitmap);
         //        }
+        Intent intent = new Intent(MultipleSendSMSBR.SENT_MMS_ACTION_NAME);
+        intent.putExtra(NUMBER_EXTRA, phoneBean.getNumber());
+        intent.putExtra(SMS_OUT_BOX, outboxFormat(phoneBean.getId() + ""));
+
+        transaction.setExplicitBroadcastForSentMms(intent);
         transaction.sendNewMessage(message, Transaction.NO_THREAD_ID);
     }
 

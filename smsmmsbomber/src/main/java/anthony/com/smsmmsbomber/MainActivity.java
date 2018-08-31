@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Permissionutils.requestAllPermissionIfNot(this);
         Permissionutils.makeDefautSmsApp(this);
         MyApplication.getBus().register(this);
+
     }
 
     @Override

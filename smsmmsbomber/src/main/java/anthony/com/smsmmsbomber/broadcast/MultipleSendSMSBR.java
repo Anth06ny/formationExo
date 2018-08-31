@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 
-import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import anthony.com.smsmmsbomber.model.AnswerBean;
@@ -37,6 +36,7 @@ public class MultipleSendSMSBR extends BroadcastReceiver {
         //On récupere le sms concerné s'il y en a un
         if (intent.getExtras() != null) {
             answerBean.setNumber(intent.getStringExtra(SmsMmsManager.NUMBER_EXTRA));
+            answerBean.setOutbox(intent.getStringExtra(SmsMmsManager.SMS_OUT_BOX));
         }
 
         //Detect l'envoie de sms
@@ -56,9 +56,10 @@ public class MultipleSendSMSBR extends BroadcastReceiver {
 
         LogUtils.w("TAG_SMS", answerBean.toString());
 
-        //S'il est bien relié à un numéro on le sauvegarde
-        //POUR LE MOMENT ON NE GARDE PAS LES ACCUSé D'ENVOIE  en success
-        if (StringUtils.isNotBlank(answerBean.getNumber()) && BooleanUtils.isNotTrue(answerBean.getSend())) {
+        //On le sauvegarde s'il y a un numéro ou si il y a une réponse
+        //POUR LE MOMENT ON NE GARDE PAS LES ACCUSé D'ENVOIE
+        if (StringUtils.isNotBlank(answerBean.getNumber()) || answerBean.getSend() != null) {
+            //On cherche parmi les sms envoyés celui qui a le même numéro
             AnswerDaoManager.save(answerBean);
         }
     }

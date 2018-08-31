@@ -13,8 +13,9 @@ import org.greenrobot.greendao.annotation.Id;
 )
 public class AnswerBean {
 
-    @Id
-    private Long id;
+    @Id(autoincrement = true)
+    private long id;
+    private String outbox;
     private String number;
 
     private Boolean send;  //accusé d'envoie
@@ -44,9 +45,10 @@ public class AnswerBean {
     @Generated(hash = 877692854)
     private transient AnswerBeanDao myDao;
 
-    @Generated(hash = 808327403)
-    public AnswerBean(Long id, String number, Boolean send, String text) {
+    @Generated(hash = 837709263)
+    public AnswerBean(long id, String outbox, String number, Boolean send, String text) {
         this.id = id;
+        this.outbox = outbox;
         this.number = number;
         this.send = send;
         this.text = text;
@@ -122,6 +124,20 @@ public class AnswerBean {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getOutbox() {
+        return this.outbox;
+    }
+
+    public void setOutbox(String outbox) {
+        this.outbox = outbox;
     }
 
     /** called by internal mechanisms, do not call yourself. */
