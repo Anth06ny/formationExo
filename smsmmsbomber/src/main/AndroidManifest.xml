@@ -56,13 +56,28 @@
 
 
         <receiver
-            android:name=".broadcast.MultipleSendSMSBR"
+            android:name=".broadcast.GestionAccuserReceptionBR"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
-                <action android:name="SMS_SENT"/>
-                <action android:name="SMS_DELIVERED"/>
+                <!--<action android:name="SMS_SENT"/>-->
+                <!--<action android:name="SMS_DELIVERED"/>-->
+
+                <!-- pour etre appli de sms -->
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_DELIVER"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS"
+            android:name=".broadcast.GestionReceptionSMSBR">
+            <intent-filter>
+                <!--<action android:name="SMS_SENT"/>-->
+                <!--<action android:name="SMS_DELIVERED"/>-->
 
                 <!-- pour etre appli de sms -->
                 <action android:name="android.provider.Telephony.SMS_DELIVER"/>

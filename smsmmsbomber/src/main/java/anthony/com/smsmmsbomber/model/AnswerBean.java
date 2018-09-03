@@ -25,9 +25,10 @@ public class AnswerBean {
     public String toString() {
         return "AnswerBean{" +
                 "id=" + id +
+                ", outbox='" + outbox + '\'' +
                 ", number='" + number + '\'' +
                 ", send=" + send +
-                ", answer='" + text + '\'' +
+                ", text='" + text + '\'' +
                 '}';
     }
 

@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
 
 import anthony.com.smsmmsbomber.Constants;
 import anthony.com.smsmmsbomber.R;
-import anthony.com.smsmmsbomber.broadcast.MultipleSendSMSBR;
+import anthony.com.smsmmsbomber.broadcast.GestionReceptionSMSBR;
 import anthony.com.smsmmsbomber.model.AnswerBean;
 import anthony.com.smsmmsbomber.model.WSUtils;
 import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
@@ -44,7 +44,7 @@ public class SendMessageService extends Service {
 
     private SendSmsAT sendSmsAT;
     private Transaction transaction;
-    private MultipleSendSMSBR multipleSendSMSBR;
+    private GestionReceptionSMSBR gestionReceptionSMSBR;
     private Timer timer;
 
     @Override
@@ -55,9 +55,9 @@ public class SendMessageService extends Service {
 
         LogUtils.w("TAG_SERVICE", "Démmarage du service");
 
-        multipleSendSMSBR = new MultipleSendSMSBR();
+        gestionReceptionSMSBR = new GestionReceptionSMSBR();
         //on s'abonne
-        registerReceiver(multipleSendSMSBR, MultipleSendSMSBR.getIntentFilter());
+        registerReceiver(gestionReceptionSMSBR, GestionReceptionSMSBR.getIntentFilter());
 
         //Transaction pour l'envoie de mms
         Settings settings = new Settings();
@@ -90,7 +90,7 @@ public class SendMessageService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(multipleSendSMSBR);
+        unregisterReceiver(gestionReceptionSMSBR);
         timer.cancel();
         LogUtils.w("TAG_SERVICE", "Arret du service");
     }
@@ -210,11 +210,11 @@ public class SendMessageService extends Service {
                             }
 
                             //Mode mms
-                            SmsMmsManager.sendMMS(transaction, phoneBean, bitmap);
+                            SmsMmsManager.sendMMS(SendMessageService.this, transaction, phoneBean, bitmap);
                         }
                         else {
                             //Mode sms
-                            SmsMmsManager.sendSMS(SendMessageService.this, phoneBean, true, false);
+                            SmsMmsManager.sendSMS(SendMessageService.this, phoneBean, false);
                         }
                     }
                     catch (ExecutionException e) {
