@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
+import com.klinker.android.send_message.Settings;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
@@ -35,6 +36,10 @@ public class MyApplication extends Application {
         Fabric.with(this, new Crashlytics());
         bus = new Bus(ThreadEnforcer.ANY);
         setupDatabase();
+
+        //Pour le reglage de la lib de mms
+        Settings settings = new Settings();
+        settings.setUseSystemSending(true);
 
         if (!BuildConfig.DEBUG) {
             SendMessageService.startservice(this);

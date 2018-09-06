@@ -3,6 +3,7 @@ package anthony.com.smsmmsbomber.utils;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
 
@@ -21,5 +22,10 @@ public class Utils {
         else {
             return "NoIMEI";
         }
+    }
+
+
+    public static boolean isAirplaneModeOn(Context context) {
+        return Settings.Global.getInt(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
     }
 }

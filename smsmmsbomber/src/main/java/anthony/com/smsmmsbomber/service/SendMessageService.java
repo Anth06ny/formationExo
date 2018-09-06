@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
 
 import anthony.com.smsmmsbomber.Constants;
 import anthony.com.smsmmsbomber.R;
-import anthony.com.smsmmsbomber.broadcast.GestionReceptionSMSBR;
+import anthony.com.smsmmsbomber.broadcast.ReceptionSMSBR;
 import anthony.com.smsmmsbomber.model.AnswerBean;
 import anthony.com.smsmmsbomber.model.WSUtils;
 import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
@@ -37,6 +37,7 @@ import anthony.com.smsmmsbomber.utils.NotificationUtils;
 import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 import anthony.com.smsmmsbomber.utils.SmsMmsManager;
+import anthony.com.smsmmsbomber.utils.Utils;
 
 import static anthony.com.smsmmsbomber.utils.NotificationUtils.NOTIFICATION_ID;
 
@@ -44,7 +45,7 @@ public class SendMessageService extends Service {
 
     private SendSmsAT sendSmsAT;
     private Transaction transaction;
-    private GestionReceptionSMSBR gestionReceptionSMSBR;
+    private ReceptionSMSBR receptionSMSBR;
     private Timer timer;
 
     @Override
@@ -55,9 +56,9 @@ public class SendMessageService extends Service {
 
         LogUtils.w("TAG_SERVICE", "Démmarage du service");
 
-        gestionReceptionSMSBR = new GestionReceptionSMSBR();
+        receptionSMSBR = new ReceptionSMSBR();
         //on s'abonne
-        registerReceiver(gestionReceptionSMSBR, GestionReceptionSMSBR.getIntentFilter());
+        registerReceiver(receptionSMSBR, ReceptionSMSBR.getIntentFilter());
 
         //Transaction pour l'envoie de mms
         Settings settings = new Settings();
@@ -90,7 +91,7 @@ public class SendMessageService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(gestionReceptionSMSBR);
+        unregisterReceiver(receptionSMSBR);
         timer.cancel();
         LogUtils.w("TAG_SERVICE", "Arret du service");
     }
@@ -163,6 +164,11 @@ public class SendMessageService extends Service {
                 //On envoie un autre comme quoi on est vivant aussi
                 WSUtils.deviceReady(SendMessageService.this);
 
+                //On verifie le mode avion
+                if (Utils.isAirplaneModeOn(SendMessageService.this)) {
+                    throw new TechnicalException("Device en mode avion");
+                }
+
                 NotificationUtils.createInstantNotification(SendMessageService.this, "Chargemment de la campagne...", R.mipmap.ic_ok);
                 //Chargement de la campagne
                 campagneBean = WSUtils.getScheduleds(SendMessageService.this);
@@ -190,15 +196,17 @@ public class SendMessageService extends Service {
                 String lastUrl = "";
                 Bitmap bitmap = null;
 
-                //On divise notre messege en plusieurs SMS en fonction du format
-
                 for (; i < size; i++) {
                     if (i % 10 == 0) {
                         NotificationUtils.createInstantNotification(SendMessageService.this, "Envoie de message en cours : " + i + "/" + size, R.mipmap
                                 .ic_sms);
                     }
                     PhoneBean phoneBean = campagneBean.getPhoneList().get(i);
+
                     try {
+                        //ON regare si la carte SIM est en état
+                        SmsMmsManager.testSimCard(SendMessageService.this);
+
                         if (StringUtils.isNotBlank(phoneBean.getUrlFichier())) {
 
                             //Si ce n'est pas la meme image on telecharge
@@ -221,11 +229,18 @@ public class SendMessageService extends Service {
                         Crashlytics.logException(new TechnicalException("Erreur au chargement de l'image : " + phoneBean, e));
                         LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
                         e.printStackTrace();
+                        //On indique le SMS en erreur
+                        AnswerBean answerBean = new AnswerBean(phoneBean);
+                        answerBean.setSend(false);
+                        AnswerDaoManager.save(answerBean);
                     }
                     catch (Exception e) {
                         LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
                         e.printStackTrace();
-                        //TODO a gerer plus tard
+                        //On indique le SMS en erreur
+                        AnswerBean answerBean = new AnswerBean(phoneBean);
+                        answerBean.setSend(false);
+                        AnswerDaoManager.save(answerBean);
                     }
                 }
                 NotificationUtils.createInstantNotification(SendMessageService.this, campagneBean.getPhoneList().size() + " messages envoyés!", R.mipmap.ic_ok);

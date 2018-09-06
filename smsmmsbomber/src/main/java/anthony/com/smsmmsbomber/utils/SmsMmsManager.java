@@ -3,7 +3,6 @@ package anthony.com.smsmmsbomber.utils;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
@@ -14,16 +13,13 @@ import com.klinker.android.send_message.Transaction;
 
 import java.util.ArrayList;
 
-import anthony.com.smsmmsbomber.broadcast.GestionAccuserReceptionBR;
+import anthony.com.smsmmsbomber.broadcast.AccuserReceptionMMSBR;
+import anthony.com.smsmmsbomber.broadcast.AccuserReceptionSMSBR;
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
 
 public class SmsMmsManager {
 
     public static final String NUMBER_EXTRA = "NUMBER_EXTRA";
-
-    public static String outboxFormat(String code) {
-        return "AN-OUT-" + code;
-    }
 
     public static void sendSMS(final Context context, final PhoneBean phoneBean, boolean accuserReception) {
 
@@ -35,12 +31,12 @@ public class SmsMmsManager {
         //Notif d'envoie
         ArrayList<PendingIntent> sendList = new ArrayList<>();
         //Notif d'envoie
-        sendList.add(PendingIntent.getBroadcast(context, 0, new Intent(GestionAccuserReceptionBR.SENT_SMS_ACTION_NAME), 0));
+        sendList.add(PendingIntent.getBroadcast(context, 0, new Intent(AccuserReceptionSMSBR.SENT_SMS_ACTION_NAME), 0));
 
         //Notif de reception
         ArrayList<PendingIntent> receiveList = new ArrayList<>();
         if (accuserReception) {
-            intent = new Intent(GestionAccuserReceptionBR.DELIVERED_SMS_ACTION_NAME);
+            intent = new Intent(AccuserReceptionSMSBR.DELIVERED_SMS_ACTION_NAME);
             intent.putExtra(NUMBER_EXTRA, phoneBean.getNumber());
         }
         else {
@@ -49,7 +45,7 @@ public class SmsMmsManager {
         receiveList.add(PendingIntent.getBroadcast(context, 0, intent, 0));
 
         //une instance par sms sinon cela mixte les numéros
-        context.registerReceiver(new GestionAccuserReceptionBR(phoneBean), new IntentFilter(GestionAccuserReceptionBR.SENT_SMS_ACTION_NAME));
+        AccuserReceptionSMSBR.createGestionAccuserReceptionBR(context, phoneBean);
 
         SmsManager.getDefault().sendMultipartTextMessage(phoneBean.getNumber(), null, parts, sendList, receiveList);
     }
@@ -57,32 +53,39 @@ public class SmsMmsManager {
     public static void sendMMS(Context context, Transaction transaction, PhoneBean phoneBean, Bitmap bitmap) {
 
         Message message = new Message(phoneBean.getContent(), phoneBean.getNumber());
-        //        if (campagneBean.isVideo()) {
-        //            message.addVideo(campagneBean.getVideoFile());
-        //        }
-        //        else {
         message.addImage(bitmap);
-        //        }
-        Intent intent = new Intent(GestionAccuserReceptionBR.SENT_MMS_ACTION_NAME);
-        transaction.setExplicitBroadcastForSentMms(intent);
-
-        context.registerReceiver(new GestionAccuserReceptionBR(phoneBean), new IntentFilter(GestionAccuserReceptionBR.SENT_MMS_ACTION_NAME));
-
+        AccuserReceptionMMSBR.createGestionAccuserReceptionBR(context, phoneBean);
+        Intent intennt = new Intent(AccuserReceptionMMSBR.SENT_MMS_ACTION_NAME);
+        transaction.setExplicitBroadcastForSentMms(intennt);
         transaction.sendNewMessage(message, Transaction.NO_THREAD_ID);
     }
 
-    private static void testSimCard(Context c) throws TechnicalException {
+    public static void testSimCard(Context c) throws TechnicalException {
         TelephonyManager telMgr = (TelephonyManager) c.getSystemService(Context.TELEPHONY_SERVICE);
-        int simState = telMgr.getSimState();
-        switch (simState) {
+
+        switch (telMgr.getSimState()) {
+            case TelephonyManager.SIM_STATE_READY:
+                return;
+            case TelephonyManager.SIM_STATE_UNKNOWN:
+                throw new TechnicalException("SIM_STATE_UNKNOWN : Carte Sim en cours de changement d'etat : ");
             case TelephonyManager.SIM_STATE_ABSENT:
-                throw new TechnicalException("Aucune carte Sim");
-            case TelephonyManager.SIM_STATE_NETWORK_LOCKED:
-                throw new TechnicalException("Carte Sim bloqué");
+                throw new TechnicalException("SIM_STATE_ABSENT : Aucune carte Sim");
             case TelephonyManager.SIM_STATE_PIN_REQUIRED:
-                throw new TechnicalException("Carte Sim non dévérouillée");
+                throw new TechnicalException("SIM_STATE_PIN_REQUIRED : Carte Sim non dévérouillée (Code Pin)");
             case TelephonyManager.SIM_STATE_PUK_REQUIRED:
-                throw new TechnicalException("Carte Sim Code Puk nécéssaire");
+                throw new TechnicalException("SIM_STATE_PUK_REQUIRED : Carte Sim non dévérouillée (Code Puk)");
+            case TelephonyManager.SIM_STATE_NETWORK_LOCKED:
+                throw new TechnicalException("SIM_STATE_NETWORK_LOCKED : Carte Sim non dévérouillée (Code reseau)");
+            case TelephonyManager.SIM_STATE_NOT_READY:
+                throw new TechnicalException("SIM_STATE_NOT_READY : Carte non préte");
+            case TelephonyManager.SIM_STATE_PERM_DISABLED:
+                throw new TechnicalException("SIM_STATE_PERM_DISABLED : Carte désactivé de manière permanente");
+            case TelephonyManager.SIM_STATE_CARD_IO_ERROR:
+                throw new TechnicalException("SIM_STATE_CARD_IO_ERROR : Carte en erreur");
+            case TelephonyManager.SIM_STATE_CARD_RESTRICTED:
+                throw new TechnicalException("SIM_STATE_CARD_RESTRICTED : Carte restreinte");
+            default:
+                throw new TechnicalException(telMgr.getSimState() + " : état inconnu pour la carte SIM");
         }
     }
 }

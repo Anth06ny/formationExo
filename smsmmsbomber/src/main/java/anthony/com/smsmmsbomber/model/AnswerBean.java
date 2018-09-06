@@ -5,6 +5,8 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 
+import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
+
 @Entity(
 
         active = true,
@@ -14,7 +16,7 @@ import org.greenrobot.greendao.annotation.Id;
 public class AnswerBean {
 
     @Id(autoincrement = true)
-    private long id;
+    private Long id;
     private String outbox;
     private String number;
 
@@ -32,6 +34,13 @@ public class AnswerBean {
                 '}';
     }
 
+    public AnswerBean(PhoneBean phoneBean) {
+        if (phoneBean != null) {
+            number = phoneBean.getNumber();
+            outbox = "AN-OUT-" + phoneBean.getId();
+        }
+    }
+
     /* ---------------------------------
     // Generate
     // -------------------------------- */
@@ -46,8 +55,8 @@ public class AnswerBean {
     @Generated(hash = 877692854)
     private transient AnswerBeanDao myDao;
 
-    @Generated(hash = 837709263)
-    public AnswerBean(long id, String outbox, String number, Boolean send, String text) {
+    @Generated(hash = 1534126948)
+    public AnswerBean(Long id, String outbox, String number, Boolean send, String text) {
         this.id = id;
         this.outbox = outbox;
         this.number = number;
@@ -126,8 +135,6 @@ public class AnswerBean {
     public void setText(String text) {
         this.text = text;
     }
-
-
 
     public void setId(long id) {
         this.id = id;

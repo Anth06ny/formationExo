@@ -18,7 +18,9 @@
     <uses-permission android:name="android.provider.Telephony.SMS_RECEIVED"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
 
     <application
         android:name=".MyApplication"
@@ -56,7 +58,7 @@
 
 
         <receiver
-            android:name=".broadcast.GestionAccuserReceptionBR"
+            android:name=".broadcast.AccuserReceptionSMSBR"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS">
@@ -71,10 +73,11 @@
         </receiver>
 
         <receiver
+            android:name=".broadcast.ReceptionSMSBR"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS"
-            android:name=".broadcast.GestionReceptionSMSBR">
+            >
             <intent-filter>
                 <!--<action android:name="SMS_SENT"/>-->
                 <!--<action android:name="SMS_DELIVERED"/>-->
@@ -84,6 +87,14 @@
             </intent-filter>
         </receiver>
 
+
+        <receiver
+            android:name=".broadcast.AccuserReceptionMMSBR"
+            android:taskAffinity="com.klinker.android.messaging.MMS_SENT">
+
+        </receiver>
+
+        <!-- Pour etre application de mms -->
         <receiver
             android:name=".broadcast.MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH">

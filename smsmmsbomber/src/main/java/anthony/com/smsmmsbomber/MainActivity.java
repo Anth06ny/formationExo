@@ -103,6 +103,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         });
     }
 
+
+
+
     private void refreshScreen() {
 
         if (!Permissionutils.isAllPermission(this) || !Permissionutils.isDefautApp(this)) {

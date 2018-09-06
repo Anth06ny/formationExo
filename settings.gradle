@@ -1,4 +1,4 @@
-include ':FormationUtils', ':ZBar_reader', ':servicebinding', ':notificationexemple', ':daosqlicontentproviderclient', ':databinding', ':maps', ':webServiceGSONSolution', ':testunitaireexemple', ':TestUnitaireRobotium', ':UltimateWarmUp', ':backgroundservice', ':smsmmsbomber', ':glidesynchroneexemple'
+include ':FormationUtils', ':ZBar_reader', ':servicebinding', ':notificationexemple', ':daosqlicontentproviderclient',  ':maps', ':webServiceGSONSolution',   ':UltimateWarmUp', ':backgroundservice', ':smsmmsbomber', ':glidesynchroneexemple', ':PicturePicker'
 include ':listViewRecyclage'
 include ':sendSMS'
 include ':serviceWithotto'

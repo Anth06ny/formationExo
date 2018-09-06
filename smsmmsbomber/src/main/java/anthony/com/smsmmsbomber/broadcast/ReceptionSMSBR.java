@@ -13,7 +13,7 @@ import anthony.com.smsmmsbomber.model.AnswerBean;
 import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
 import anthony.com.smsmmsbomber.utils.LogUtils;
 
-public class GestionReceptionSMSBR extends BroadcastReceiver {
+public class ReceptionSMSBR extends BroadcastReceiver {
 
     private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
     private static final String SMS_DELIVER = "android.provider.Telephony.SMS_DELIVER";
@@ -42,7 +42,7 @@ public class GestionReceptionSMSBR extends BroadcastReceiver {
                 String expediteur = messages[0].getOriginatingAddress();
                 String message = sb.toString();
                 if (BuildConfig.DEBUG) {
-                    LogUtils.w("TAG_SMS", "GestionReceptionSMSBR : SMS recu : " + "\nExpediteur=" + expediteur + "\nmessage=" + message);
+                    LogUtils.w("TAG_SMS", "ReceptionSMSBR : SMS recu : " + "\nExpediteur=" + expediteur + "\nmessage=" + message);
                 }
                 if (StringUtils.isNotBlank(expediteur)) {
                     //ON cherche si on a déjà le numéro
