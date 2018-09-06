@@ -56,6 +56,11 @@ public class NotificationUtils {
         NotificationManagerCompat.from(context).notify(NOTIFICATION_ANSWER_ID, getNotif(context, message, imageId));
     }
 
+    public static void removeAllNotification(Context context) {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
+    }
+
     public static Notification getNotif(Context c, String message, Integer imageId) {
         initChannel(c);
 

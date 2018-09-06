@@ -31,7 +31,7 @@ public class AccuserReceptionSMSBR extends BroadcastReceiver {
     private AnswerBean answerBean;
 
     public AccuserReceptionSMSBR() {
-
+        answerBean = new AnswerBean();
     }
 
     public AccuserReceptionSMSBR(PhoneBean phoneBean, Context context) {
@@ -44,7 +44,7 @@ public class AccuserReceptionSMSBR extends BroadcastReceiver {
 
         LogUtils.w("TAG_SMS", "AccuserReceptionSMSBR action=" + intent.getAction());
 
-        if(StringUtils.isNotBlank(answerBean.getNumber())) {
+        if (StringUtils.isNotBlank(answerBean.getNumber())) {
             answerBean.setSend(getResultCode() == Activity.RESULT_OK);
             AnswerDaoManager.save(answerBean);
             Log.w("TAG_SMS", "Accusé d'envoie : " + answerBean.toString());
@@ -80,7 +80,4 @@ public class AccuserReceptionSMSBR extends BroadcastReceiver {
             t.printStackTrace();
         }
     }
-
-
-
 }

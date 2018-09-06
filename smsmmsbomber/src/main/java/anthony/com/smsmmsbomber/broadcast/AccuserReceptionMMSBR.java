@@ -29,7 +29,7 @@ public class AccuserReceptionMMSBR extends com.klinker.android.send_message.MmsS
     private AnswerBean answerBean;
 
     public AccuserReceptionMMSBR() {
-
+        answerBean = new AnswerBean();
     }
 
     public AccuserReceptionMMSBR(PhoneBean phoneBean, Context context) {
@@ -41,7 +41,7 @@ public class AccuserReceptionMMSBR extends com.klinker.android.send_message.MmsS
     public void onMessageStatusUpdated(Context context, Intent intent, int resultCode) {
         LogUtils.w("TAG_MMS", "AccuserReceptionMMSBR action=" + intent.getAction());
 
-        if (answerBean != null && StringUtils.isNotBlank(answerBean.getNumber())) {
+        if (StringUtils.isNotBlank(answerBean.getNumber())) {
             answerBean.setSend(resultCode == Activity.RESULT_OK);
             AnswerDaoManager.save(answerBean);
             Log.w("TAG_MMS", "Accusé d'envoie : " + answerBean.toString());

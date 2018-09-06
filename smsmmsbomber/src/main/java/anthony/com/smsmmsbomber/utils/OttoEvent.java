@@ -2,5 +2,5 @@ package anthony.com.smsmmsbomber.utils;
 
 public enum OttoEvent {
 
-    NEW_ANSWER
+    NEW_ANSWER, SERVICE_STOP, SERVICE_START
 }

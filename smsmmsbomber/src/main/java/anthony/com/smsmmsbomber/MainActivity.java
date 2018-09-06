@@ -6,12 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.formation.utils.exceptions.TechnicalException;
 import com.squareup.otto.Subscribe;
 
 import anthony.com.smsmmsbomber.service.SendMessageService;
+import anthony.com.smsmmsbomber.utils.OttoEvent;
 import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private TextView tvInfo, tvUUID, tvLog;
     private TextView tvExplication;
+    private ImageView ivLampe;
     private Button bt_refresh, btLog;
 
     public static boolean LOG_ON = false;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         bt_refresh = findViewById(R.id.bt_refresh);
         tvLog = findViewById(R.id.tvLog);
         btLog = findViewById(R.id.btLog);
+        ivLampe = findViewById(R.id.ivLampe);
 
         bt_refresh.setOnClickListener(this);
         btLog.setOnClickListener(this);
@@ -41,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Permissionutils.requestAllPermissionIfNot(this);
         Permissionutils.makeDefautSmsApp(this);
         MyApplication.getBus().register(this);
-
     }
 
     @Override
@@ -87,11 +90,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
     }
 
-
-
     /* ---------------------------------
     // private
     // -------------------------------- */
+    @Subscribe
+    public void ottoEvent(OttoEvent event) {
+        switch (event) {
+            case SERVICE_STOP:
+                refreshScreen();
+                break;
+            case SERVICE_START:
+                refreshScreen();
+                break;
+        }
+    }
 
     @Subscribe
     public void addLog(final String message) {
@@ -102,9 +114,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         });
     }
-
-
-
 
     private void refreshScreen() {
 
@@ -130,6 +139,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         catch (TechnicalException e) {
             tvUUID.setText("Numéro de serie : " + e.getMessage());
             e.printStackTrace();
+        }
+
+        //Service Runnuing
+        if (SendMessageService.isRunning(this)) {
+            ivLampe.setImageResource(R.mipmap.turn_on);
+        }
+        else {
+            ivLampe.setImageResource(R.mipmap.turn_off);
         }
     }
 }

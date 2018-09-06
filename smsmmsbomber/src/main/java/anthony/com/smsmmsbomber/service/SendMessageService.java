@@ -1,5 +1,6 @@
 package anthony.com.smsmmsbomber.service;
 
+import android.app.ActivityManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
 import anthony.com.smsmmsbomber.Constants;
+import anthony.com.smsmmsbomber.MyApplication;
 import anthony.com.smsmmsbomber.R;
 import anthony.com.smsmmsbomber.broadcast.ReceptionSMSBR;
 import anthony.com.smsmmsbomber.model.AnswerBean;
@@ -34,6 +36,7 @@ import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.GetScheduledAnswerBe
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
 import anthony.com.smsmmsbomber.utils.LogUtils;
 import anthony.com.smsmmsbomber.utils.NotificationUtils;
+import anthony.com.smsmmsbomber.utils.OttoEvent;
 import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 import anthony.com.smsmmsbomber.utils.SmsMmsManager;
@@ -72,6 +75,8 @@ public class SendMessageService extends Service {
                 onStartCommand(null, 0, 0);
             }
         }, Constants.DELAI_SERVICE, Constants.DELAI_SERVICE);
+
+        MyApplication.getBus().post(OttoEvent.SERVICE_START);
     }
 
     @Override
@@ -94,6 +99,13 @@ public class SendMessageService extends Service {
         unregisterReceiver(receptionSMSBR);
         timer.cancel();
         LogUtils.w("TAG_SERVICE", "Arret du service");
+
+        //On enleve toute les notification
+        NotificationUtils.removeAllNotification(this);
+        //On vide la base
+        AnswerDaoManager.deleteAll();
+
+        MyApplication.getBus().post(OttoEvent.SERVICE_STOP);
     }
 
     @Override
@@ -115,6 +127,20 @@ public class SendMessageService extends Service {
 
     public static void stopService(Context context) {
         context.stopService(new Intent(context, SendMessageService.class));
+        //On enleve toute les notification
+        NotificationUtils.removeAllNotification(context);
+        //On vide la base
+        AnswerDaoManager.deleteAll();
+    }
+
+    public static boolean isRunning(Context context) {
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (SendMessageService.class.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /* ---------------------------------
@@ -189,61 +215,79 @@ public class SendMessageService extends Service {
                 return null;
             }
 
+            //Envoie de la campagne
+            int i = 0;
+            int size = campagneBean.getPhoneList().size();
+
+            boolean cartSimOK = true;
+            //Annalyse de la carte sim
             try {
-                //Envoie de la campagne
-                int i = 0;
-                int size = campagneBean.getPhoneList().size();
-                String lastUrl = "";
-                Bitmap bitmap = null;
-
+                //ON regare si la carte SIM est en état
+                SmsMmsManager.testSimCard(SendMessageService.this);
+            }
+            catch (TechnicalException e) {
+                //Problème avec la carte sim, on parcourt tous les messages pour les mettre en echec
+                cartSimOK = false;
+                Crashlytics.logException(e);
                 for (; i < size; i++) {
-                    if (i % 10 == 0) {
-                        NotificationUtils.createInstantNotification(SendMessageService.this, "Envoie de message en cours : " + i + "/" + size, R.mipmap
-                                .ic_sms);
-                    }
-                    PhoneBean phoneBean = campagneBean.getPhoneList().get(i);
+                    //On indique les SMS en erreur
+                    AnswerBean answerBean = new AnswerBean(campagneBean.getPhoneList().get(i));
+                    answerBean.setSend(false);
+                    AnswerDaoManager.save(answerBean);
+                }
+            }
 
-                    try {
-                        //ON regare si la carte SIM est en état
-                        SmsMmsManager.testSimCard(SendMessageService.this);
+            try {
+                if (cartSimOK) {
 
-                        if (StringUtils.isNotBlank(phoneBean.getUrlFichier())) {
+                    String lastUrl = "";
+                    Bitmap bitmap = null;
 
-                            //Si ce n'est pas la meme image on telecharge
-                            if (StringUtils.isBlank(lastUrl) || !StringUtils.equals(phoneBean.getUrlFichier(), lastUrl)) {
-                                FutureTarget<Bitmap> futureTarget =
-                                        Glide.with(SendMessageService.this).asBitmap().load(phoneBean.getUrlFichier()).submit(Integer.MIN_VALUE, Integer.MIN_VALUE);
-                                bitmap = futureTarget.get();
-                                lastUrl = phoneBean.getUrlFichier();
+                    for (; i < size; i++) {
+                        if (i % 10 == 0) {
+                            NotificationUtils.createInstantNotification(SendMessageService.this, "Envoie de message en cours : " + i + "/" + size, R.mipmap
+                                    .ic_sms);
+                        }
+                        PhoneBean phoneBean = campagneBean.getPhoneList().get(i);
+                        try {
+                            if (StringUtils.isNotBlank(phoneBean.getUrlFichier())) {
+
+                                //Si ce n'est pas la meme image on telecharge
+                                if (StringUtils.isBlank(lastUrl) || !StringUtils.equals(phoneBean.getUrlFichier(), lastUrl)) {
+                                    FutureTarget<Bitmap> futureTarget =
+                                            Glide.with(SendMessageService.this).asBitmap().load(phoneBean.getUrlFichier()).submit(Integer.MIN_VALUE, Integer.MIN_VALUE);
+                                    bitmap = futureTarget.get();
+                                    lastUrl = phoneBean.getUrlFichier();
+                                }
+
+                                //Mode mms
+                                SmsMmsManager.sendMMS(SendMessageService.this, transaction, phoneBean, bitmap);
                             }
-
-                            //Mode mms
-                            SmsMmsManager.sendMMS(SendMessageService.this, transaction, phoneBean, bitmap);
+                            else {
+                                //Mode sms
+                                SmsMmsManager.sendSMS(SendMessageService.this, phoneBean, false);
+                            }
                         }
-                        else {
-                            //Mode sms
-                            SmsMmsManager.sendSMS(SendMessageService.this, phoneBean, false);
+                        catch (ExecutionException e) {
+                            Crashlytics.logException(new TechnicalException("Erreur au chargement de l'image : " + phoneBean, e));
+                            LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
+                            e.printStackTrace();
+                            //On indique le SMS en erreur
+                            AnswerBean answerBean = new AnswerBean(phoneBean);
+                            answerBean.setSend(false);
+                            AnswerDaoManager.save(answerBean);
                         }
-                    }
-                    catch (ExecutionException e) {
-                        Crashlytics.logException(new TechnicalException("Erreur au chargement de l'image : " + phoneBean, e));
-                        LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
-                        e.printStackTrace();
-                        //On indique le SMS en erreur
-                        AnswerBean answerBean = new AnswerBean(phoneBean);
-                        answerBean.setSend(false);
-                        AnswerDaoManager.save(answerBean);
-                    }
-                    catch (Exception e) {
-                        LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
-                        e.printStackTrace();
-                        //On indique le SMS en erreur
-                        AnswerBean answerBean = new AnswerBean(phoneBean);
-                        answerBean.setSend(false);
-                        AnswerDaoManager.save(answerBean);
+                        catch (Exception e) {
+                            LogUtils.w("TAG_SMS", "Erreur lors de l'envoie d'un sms/mms : " + e.getMessage());
+                            e.printStackTrace();
+                            //On indique le SMS en erreur
+                            AnswerBean answerBean = new AnswerBean(phoneBean);
+                            answerBean.setSend(false);
+                            AnswerDaoManager.save(answerBean);
+                        }
                     }
                 }
-                NotificationUtils.createInstantNotification(SendMessageService.this, campagneBean.getPhoneList().size() + " messages envoyés!", R.mipmap.ic_ok);
+                NotificationUtils.createInstantNotification(SendMessageService.this, campagneBean.getPhoneList().size() + " messages transmis au modem!", R.mipmap.ic_ok);
 
                 //On previent le serveur qu'on a transmis au modem la liste des message
                 WSUtils.smssent(SendMessageService.this, campagneBean.getPhoneList());

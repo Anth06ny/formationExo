@@ -1,4 +1,5 @@
-<LinearLayout android:id="@+id/linearLayout1"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/linearLayout1"
               xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
@@ -30,15 +31,22 @@
         <Button
             android:id="@+id/btStartService"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onClick"
-            android:text="Send (Start Service)"/>
+            android:text="Start Service"/>
+
+        <ImageView
+            android:id="@+id/ivLampe"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            app:srcCompat="@mipmap/turn_off"/>
 
         <Button
             android:id="@+id/btStopService"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onClick"
             android:text="Stop Service"/>

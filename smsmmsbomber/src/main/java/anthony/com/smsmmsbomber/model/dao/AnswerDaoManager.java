@@ -32,6 +32,10 @@ public class AnswerDaoManager {
         MyApplication.getDaoSession().clear();
     }
 
+    public static void deleteAll(){
+        getDao().deleteAll();
+    }
+
     public static AnswerBeanDao getDao() {
         return MyApplication.getDaoSession().getAnswerBeanDao();
     }
