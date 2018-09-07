@@ -1,6 +1,8 @@
 package anthony.com.smsmmsbomber;
 
 import android.app.Application;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
@@ -27,6 +29,7 @@ public class MyApplication extends Application {
     private static MyApplication instance;
     private static Bus bus;
     private static DaoSession daoSession;
+    private static String versionAppli;
 
     @Override
     public void onCreate() {
@@ -41,6 +44,14 @@ public class MyApplication extends Application {
         Settings settings = new Settings();
         settings.setUseSystemSending(true);
 
+        //Version de l'application
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionAppli = "v0.0.2." + pInfo.versionCode;   //v0.0.0.2.xxx ou xxx correspond au numerond de la version mobile
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
         if (!BuildConfig.DEBUG) {
             SendMessageService.startservice(this);
         }
@@ -65,5 +76,9 @@ public class MyApplication extends Application {
 
     public static DaoSession getDaoSession() {
         return daoSession;
+    }
+
+    public static String getVersionAppli() {
+        return versionAppli;
     }
 }

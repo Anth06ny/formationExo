@@ -1,9 +1,12 @@
 package anthony.com.smsmmsbomber.model.wsbeans.registerdevice;
 
+import anthony.com.smsmmsbomber.MyApplication;
+
 public class RegisterDeviceSendBean {
 
     private String ip_remote;
     private String host_uid;
+    private String box_version;  //v0.0.0.2.xxx ou xxx correspond au numerond de la version mobile
     private String SIM_status = "ready";
     private int SIM_ready = 1;
     private RegisterDeviceInformationsBean informations;
@@ -15,9 +18,8 @@ public class RegisterDeviceSendBean {
         this.ip_remote = ip_remote;
         this.host_uid = host_uid;
         informations = new RegisterDeviceInformationsBean(imei);
+        box_version = MyApplication.getVersionAppli();
     }
-
-
 
     public String getIp_remote() {
         return ip_remote;

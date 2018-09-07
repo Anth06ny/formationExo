@@ -357,7 +357,7 @@ public class SendMessageService extends Service {
                 LogUtils.logException(new TechnicalException(e));
             }
 
-            //Accusé récéption
+            //SMS en succes
             try {
                 List<AnswerBean> list = AnswerDaoManager.getSuccessDelivery();
                 if (!list.isEmpty()) {

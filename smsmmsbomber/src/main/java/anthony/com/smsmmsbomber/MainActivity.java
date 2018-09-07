@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         bt_refresh.setOnClickListener(this);
         btLog.setOnClickListener(this);
 
+        tvInfo.setText(MyApplication.getVersionAppli());
+
         Permissionutils.requestAllPermissionIfNot(this);
         Permissionutils.makeDefautSmsApp(this);
         MyApplication.getBus().register(this);
