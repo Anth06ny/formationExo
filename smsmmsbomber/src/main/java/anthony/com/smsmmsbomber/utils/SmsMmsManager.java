@@ -57,6 +57,9 @@ public class SmsMmsManager {
         AccuserReceptionMMSBR.createGestionAccuserReceptionBR(context, phoneBean);
         Intent intennt = new Intent(AccuserReceptionMMSBR.SENT_MMS_ACTION_NAME);
         transaction.setExplicitBroadcastForSentMms(intennt);
+
+        Intent intennt2 = new Intent(AccuserReceptionMMSBR.SENT_MMS_ACTION_NAME);
+        transaction.setExplicitBroadcastForDeliveredSms(intennt2);
         transaction.sendNewMessage(message, Transaction.NO_THREAD_ID);
     }
 

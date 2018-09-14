@@ -23,7 +23,12 @@ public class AccuserReceptionMMSBR extends com.klinker.android.send_message.MmsS
     public static final ArrayList<AccuserReceptionMMSBR> list = new ArrayList<>();
 
     public static final String SENT_MMS_ACTION_NAME = "MMS_SENT";
+    public static final String RECEIVED_MMS_ACTION_NAME = "MMS_RECEIVED";
     public static final IntentFilter INTENT_FILTER_MMS2 = new IntentFilter(SENT_MMS_ACTION_NAME);
+
+    static {
+        INTENT_FILTER_MMS2.addAction(RECEIVED_MMS_ACTION_NAME);
+    }
     //public static final IntentFilter INTENT_FILTER_MMS = new IntentFilter(MMS_SENT);
 
     private AnswerBean answerBean;
@@ -40,6 +45,7 @@ public class AccuserReceptionMMSBR extends com.klinker.android.send_message.MmsS
     @Override
     public void onMessageStatusUpdated(Context context, Intent intent, int resultCode) {
         LogUtils.w("TAG_MMS", "AccuserReceptionMMSBR action=" + intent.getAction());
+
 
         if (StringUtils.isNotBlank(answerBean.getNumber())) {
             answerBean.setSend(resultCode == Activity.RESULT_OK);
