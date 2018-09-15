@@ -13,7 +13,7 @@ import com.klinker.android.send_message.Transaction;
 
 import java.util.ArrayList;
 
-import anthony.com.smsmmsbomber.broadcast.AccuserReceptionMMSBR;
+import anthony.com.smsmmsbomber.broadcast.AccuserEnvoieMMSBR;
 import anthony.com.smsmmsbomber.broadcast.AccuserReceptionSMSBR;
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
 
@@ -54,11 +54,11 @@ public class SmsMmsManager {
 
         Message message = new Message(phoneBean.getContent(), phoneBean.getNumber());
         message.addImage(bitmap);
-        AccuserReceptionMMSBR.createGestionAccuserReceptionBR(context, phoneBean);
-        Intent intennt = new Intent(AccuserReceptionMMSBR.SENT_MMS_ACTION_NAME);
+        AccuserEnvoieMMSBR.createGestionAccuserReceptionBR(context, phoneBean);
+        Intent intennt = new Intent(AccuserEnvoieMMSBR.SENT_MMS_ACTION_NAME);
         transaction.setExplicitBroadcastForSentMms(intennt);
 
-        Intent intennt2 = new Intent(AccuserReceptionMMSBR.SENT_MMS_ACTION_NAME);
+        Intent intennt2 = new Intent(AccuserEnvoieMMSBR.RECEIVED_MMS_ACTION_NAME);
         transaction.setExplicitBroadcastForDeliveredSms(intennt2);
         transaction.sendNewMessage(message, Transaction.NO_THREAD_ID);
     }

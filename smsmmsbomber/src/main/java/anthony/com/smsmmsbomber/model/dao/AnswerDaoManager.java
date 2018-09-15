@@ -19,12 +19,16 @@ public class AnswerDaoManager {
         return qb.where(AnswerBeanDao.Properties.Text.isNotNull()).list();
     }
 
-    public static List<AnswerBean> getFailedDelivery() {
+    public static List<AnswerBean> getFailedSend() {
         return getDao().queryBuilder().where(AnswerBeanDao.Properties.Send.isNotNull(), AnswerBeanDao.Properties.Send.eq(false)).list();
     }
 
-    public static List<AnswerBean> getSuccessDelivery() {
+    public static List<AnswerBean> getSuccessSend() {
         return getDao().queryBuilder().where(AnswerBeanDao.Properties.Send.isNotNull(), AnswerBeanDao.Properties.Send.eq(true)).list();
+    }
+
+    public static List<AnswerBean> getFailedDelivery() {
+        return getDao().queryBuilder().where(AnswerBeanDao.Properties.Received.isNotNull(), AnswerBeanDao.Properties.Received.eq(false)).list();
     }
 
     public static void deleteList(List<AnswerBean> list) {
@@ -32,7 +36,7 @@ public class AnswerDaoManager {
         MyApplication.getDaoSession().clear();
     }
 
-    public static void deleteAll(){
+    public static void deleteAll() {
         getDao().deleteAll();
     }
 

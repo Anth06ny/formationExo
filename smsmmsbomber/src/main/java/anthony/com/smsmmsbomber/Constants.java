@@ -11,4 +11,7 @@ public class Constants {
 
     //Code Erreur du serveur
     public static final int SERVEUR_CODE_ERROR = 550;
+
+    //Delai de suppression des broadcast non utilisé
+    public static final int DELETE_BR_DELAY = 1000 * 60 * 20;
 }

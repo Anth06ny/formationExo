@@ -1,9 +1,11 @@
 package anthony.com.smsmmsbomber.model;
 
+import org.apache.commons.lang3.StringUtils;
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Transient;
 
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
 
@@ -22,6 +24,10 @@ public class AnswerBean {
 
     private Boolean send;  //accusé d'envoie
     private String text;       //message recu
+    private Boolean received; //Accusé reception
+
+    @Transient
+    private boolean mms;
 
     @Override
     public String toString() {
@@ -30,6 +36,7 @@ public class AnswerBean {
                 ", outbox='" + outbox + '\'' +
                 ", number='" + number + '\'' +
                 ", send=" + send +
+                ", mms=" + mms +
                 ", text='" + text + '\'' +
                 '}';
     }
@@ -38,7 +45,16 @@ public class AnswerBean {
         if (phoneBean != null) {
             number = phoneBean.getNumber();
             outbox = "AN-OUT-" + phoneBean.getId();
+            mms = StringUtils.isNotBlank(phoneBean.getUrlFichier());
         }
+    }
+
+    public void setMms(boolean mms) {
+        this.mms = mms;
+    }
+
+    public boolean isMms() {
+        return mms;
     }
 
     /* ---------------------------------
@@ -55,13 +71,15 @@ public class AnswerBean {
     @Generated(hash = 877692854)
     private transient AnswerBeanDao myDao;
 
-    @Generated(hash = 1534126948)
-    public AnswerBean(Long id, String outbox, String number, Boolean send, String text) {
+    @Generated(hash = 1347571961)
+    public AnswerBean(Long id, String outbox, String number, Boolean send, String text,
+            Boolean received) {
         this.id = id;
         this.outbox = outbox;
         this.number = number;
         this.send = send;
         this.text = text;
+        this.received = received;
     }
 
     @Generated(hash = 1597358991)
@@ -146,6 +164,14 @@ public class AnswerBean {
 
     public void setOutbox(String outbox) {
         this.outbox = outbox;
+    }
+
+    public void setReceived(Boolean received) {
+        this.received = received;
+    }
+
+    public Boolean getReceived() {
+        return received;
     }
 
     /** called by internal mechanisms, do not call yourself. */

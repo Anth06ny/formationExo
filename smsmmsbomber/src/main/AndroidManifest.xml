@@ -57,6 +57,7 @@
         </activity>
 
 
+        <!-- Gestion des accusés reception -->
         <receiver
             android:name=".broadcast.AccuserReceptionSMSBR"
             android:enabled="true"
@@ -72,6 +73,7 @@
             </intent-filter>
         </receiver>
 
+        <!-- GEstion des sms recu -->
         <receiver
             android:name=".broadcast.ReceptionSMSBR"
             android:enabled="true"
@@ -89,7 +91,7 @@
 
 
         <receiver
-            android:name=".broadcast.AccuserReceptionMMSBR"
+            android:name=".broadcast.AccuserEnvoieMMSBR"
             android:taskAffinity="com.klinker.android.messaging.MMS_SENT">
 
         </receiver>

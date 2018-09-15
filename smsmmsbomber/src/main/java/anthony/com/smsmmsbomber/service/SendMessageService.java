@@ -28,6 +28,7 @@ import java.util.concurrent.ExecutionException;
 import anthony.com.smsmmsbomber.Constants;
 import anthony.com.smsmmsbomber.MyApplication;
 import anthony.com.smsmmsbomber.R;
+import anthony.com.smsmmsbomber.broadcast.AccuserEnvoieMMSBR;
 import anthony.com.smsmmsbomber.broadcast.ReceptionSMSBR;
 import anthony.com.smsmmsbomber.model.AnswerBean;
 import anthony.com.smsmmsbomber.model.WSUtils;
@@ -46,7 +47,7 @@ import static anthony.com.smsmmsbomber.utils.NotificationUtils.NOTIFICATION_ID;
 
 public class SendMessageService extends Service {
 
-    private SendSmsAT sendSmsAT;
+    private AsyncTask<Void, String, Void> currentTask;
     private Transaction transaction;
     private ReceptionSMSBR receptionSMSBR;
     private Timer timer;
@@ -82,9 +83,9 @@ public class SendMessageService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //Si on veut envoyer le resultat;
-        if (sendSmsAT == null || sendSmsAT.getStatus() == AsyncTask.Status.FINISHED) {
-            sendSmsAT = new SendSmsAT();
-            sendSmsAT.execute();
+        if (currentTask == null || currentTask.getStatus() == AsyncTask.Status.FINISHED) {
+            currentTask = new SendSmsAT();
+            currentTask.execute();
         }
         else {
             LogUtils.w("TAG_SERVICE", "Campagne déja en cours d'execution");
@@ -316,7 +317,8 @@ public class SendMessageService extends Service {
             //ON lance l'envoie des delivery
             new SendDeliveryFailOrSuccessAT().execute();
             //ON lance l'envoie des sms recu
-            new SendAnswerAT().execute();
+            currentTask = new SendAnswerAT();
+            currentTask.execute();
         }
     }
 
@@ -324,14 +326,14 @@ public class SendMessageService extends Service {
     // AT Envoie d'sms en erreur
     // -------------------------------- */
 
-    public class SendDeliveryFailOrSuccessAT extends AsyncTask {
+    public class SendDeliveryFailOrSuccessAT extends AsyncTask<Void, String, Void> {
 
         @Override
-        protected Object doInBackground(Object[] objects) {
+        protected Void doInBackground(Void... voids) {
 
             //SMS en echec
             try {
-                List<AnswerBean> list = AnswerDaoManager.getFailedDelivery();
+                List<AnswerBean> list = AnswerDaoManager.getFailedSend();
                 if (!list.isEmpty()) {
                     WSUtils.sendSmsSendFail(SendMessageService.this, list, false);
                     //On efface de la base
@@ -357,9 +359,37 @@ public class SendMessageService extends Service {
                 LogUtils.logException(new TechnicalException(e));
             }
 
+            //MMS en echec de reception
+            try {
+                List<AnswerBean> list = AnswerDaoManager.getFailedDelivery();
+                if (!list.isEmpty()) {
+                    WSUtils.sendSmsSendFail(SendMessageService.this, list, false);
+                    //On efface de la base
+                    AnswerDaoManager.deleteList(list);
+                    NotificationUtils.sendAnswerNotification(SendMessageService.this, "MMS en echec de reception envoyés au serveur", R.mipmap.ic_ok);
+                }
+                else {
+                    LogUtils.w("TAG_SMS", "Aucun MMS en echec de reception a envoyer au serveur");
+                }
+            }
+            catch (ExceptionA exceptionA) {
+                exceptionA.printStackTrace();
+                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en erreur.\n" + exceptionA.getMessage(), R.mipmap.ic_error);
+
+                //On envoie à CrashLytics si c'est une exception Technique
+                LogUtils.logException(exceptionA);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en erreur.\n" + e.getMessage(), R.mipmap.ic_error);
+
+                //On envoie à CrashLytics si c'est une exception Technique
+                LogUtils.logException(new TechnicalException(e));
+            }
+
             //SMS en succes
             try {
-                List<AnswerBean> list = AnswerDaoManager.getSuccessDelivery();
+                List<AnswerBean> list = AnswerDaoManager.getSuccessSend();
                 if (!list.isEmpty()) {
                     WSUtils.sendSmsSendFail(SendMessageService.this, list, true);
                     //On efface de la base
@@ -384,6 +414,15 @@ public class SendMessageService extends Service {
                 //On envoie à CrashLytics si c'est une exception Technique
                 LogUtils.logException(new TechnicalException(e));
             }
+
+            try {
+                //ON retire les BR des mms en attente de la recpetion
+                AccuserEnvoieMMSBR.cleanMemory();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+
             return null;
         }
     }
@@ -392,10 +431,10 @@ public class SendMessageService extends Service {
     // AT Envoie d'sms reçu
     // -------------------------------- */
 
-    public class SendAnswerAT extends AsyncTask {
+    public class SendAnswerAT extends AsyncTask<Void, String, Void> {
 
         @Override
-        protected Object doInBackground(Object[] objects) {
+        protected Void doInBackground(Void... voids) {
             try {
                 List<AnswerBean> list = AnswerDaoManager.getSmsReceived();
                 if (!list.isEmpty()) {

@@ -12,6 +12,7 @@ import com.squareup.otto.ThreadEnforcer;
 
 import org.greenrobot.greendao.database.Database;
 
+import anthony.com.smsmmsbomber.broadcast.AccuserEnvoieMMSBR;
 import anthony.com.smsmmsbomber.model.DaoMaster;
 import anthony.com.smsmmsbomber.model.DaoSession;
 import anthony.com.smsmmsbomber.service.SendMessageService;
@@ -39,6 +40,7 @@ public class MyApplication extends Application {
         Fabric.with(this, new Crashlytics());
         bus = new Bus(ThreadEnforcer.ANY);
         setupDatabase();
+        AccuserEnvoieMMSBR.init();
 
         //Pour le reglage de la lib de mms
         Settings settings = new Settings();
