@@ -11,6 +11,16 @@ public class GetScheduledAnswerBean extends GenericAnswerBean {
     @SerializedName("scheduleds_to_send")
     ArrayList<PhoneBean> phoneList;
 
+    long delay;             //Delai d'envoie de chaque message
+
+    public long getDelay() {
+        return delay;
+    }
+
+    public void setDelay(long delay) {
+        this.delay = delay;
+    }
+
     public ArrayList<PhoneBean> getPhoneList() {
         return phoneList;
     }

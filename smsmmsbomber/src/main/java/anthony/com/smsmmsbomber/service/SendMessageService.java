@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.SystemClock;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
@@ -249,6 +250,10 @@ public class SendMessageService extends Service {
                             NotificationUtils.createInstantNotification(SendMessageService.this, "Envoie de message en cours : " + i + "/" + size, R.mipmap
                                     .ic_sms);
                         }
+                        //On fait une pause pour laisser le temps au téléphone d'envoyer
+                        if (i > 0 && campagneBean.getDelay() > 0) { //Pas de temps mort pour le 1er message
+                            SystemClock.sleep(campagneBean.getDelay());
+                        }
                         PhoneBean phoneBean = campagneBean.getPhoneList().get(i);
                         try {
                             if (StringUtils.isNotBlank(phoneBean.getUrlFichier())) {
@@ -330,6 +335,8 @@ public class SendMessageService extends Service {
 
         @Override
         protected Void doInBackground(Void... voids) {
+            //On efface tous les mms en erreur de plus de 2min et on les passe en erreur
+            SmsMmsManager.saveAndDeleteAllMmsSentInError(SendMessageService.this);
 
             //SMS en echec
             try {

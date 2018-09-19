@@ -97,11 +97,6 @@ public class AccuserEnvoieMMSBR extends com.klinker.android.send_message.MmsSent
                 context.registerReceiver(accuserEnvoieMMSBR, INTENT_FILTER_MMS);
             }
             else {
-                //si c'est un mms on regarde si on a l'accusé de reception
-                //                if (accuserEnvoieMMSBR.answerBean.isMms() && accuserEnvoieMMSBR.answerBean.getReceived() == null) {
-                //                    //on a pas l'accusé reception on laisse le BR ouvert
-                //                    return;
-                //                }
 
                 list.remove(accuserEnvoieMMSBR);
                 context.unregisterReceiver(accuserEnvoieMMSBR);
@@ -110,6 +105,23 @@ public class AccuserEnvoieMMSBR extends com.klinker.android.send_message.MmsSent
         catch (Throwable t) {
             t.printStackTrace();
         }
+    }
+
+    /**
+     * Retourne le broadcast correspondant au numéro
+     *
+     * @param number
+     * @return
+     */
+    public static AccuserEnvoieMMSBR getBR(String number) {
+        for (AccuserEnvoieMMSBR accuserEnvoieMMSBR : list) {
+            //On compare les 8 derniers numéro pour retirer les +33 et 06
+            if (StringUtils.substring(accuserEnvoieMMSBR.answerBean.getNumber(), -8).equals(StringUtils.substring(number, -8))) {
+                //On a trouvé le brodcast correspondant
+                return accuserEnvoieMMSBR;
+            }
+        }
+        return null;
     }
 
     /**
@@ -124,5 +136,14 @@ public class AccuserEnvoieMMSBR extends com.klinker.android.send_message.MmsSent
                 list.remove(ar);
             }
         }
+    }
+
+
+    /* ---------------------------------
+    //  getter setter
+    // -------------------------------- */
+
+    public AnswerBean getAnswerBean() {
+        return answerBean;
     }
 }

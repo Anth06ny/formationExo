@@ -1,20 +1,32 @@
 package anthony.com.smsmmsbomber.utils;
 
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.Telephony;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import com.formation.utils.exceptions.TechnicalException;
 import com.klinker.android.send_message.Message;
 import com.klinker.android.send_message.Transaction;
 
-import java.util.ArrayList;
+import org.apache.commons.lang3.StringUtils;
 
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import anthony.com.smsmmsbomber.Constants;
 import anthony.com.smsmmsbomber.broadcast.AccuserEnvoieMMSBR;
 import anthony.com.smsmmsbomber.broadcast.AccuserReceptionSMSBR;
+import anthony.com.smsmmsbomber.model.AnswerBean;
+import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
 
 public class SmsMmsManager {
@@ -90,5 +102,108 @@ public class SmsMmsManager {
             default:
                 throw new TechnicalException(telMgr.getSimState() + " : état inconnu pour la carte SIM");
         }
+    }
+
+    /* ---------------------------------
+    // Gestion de la base de donnée des MMS
+    // -------------------------------- */
+
+    public static void printLast10MMS(Context c) {
+
+        Uri uri = Uri.parse("content://mms/sent");
+        Cursor query = c.getContentResolver().query(uri, null, null, null, "date DESC");
+
+        String result = "";
+        for (int i = 0; i < 5 && query.moveToNext(); i++) {
+            for (int iColonne = 0; iColonne < query.getColumnCount(); iColonne++) {
+                result += "-" + query.getColumnName(iColonne) + " : " + query.getString(iColonne) + "\n";
+            }
+            result += "-dest : " + getMMSSender(c, query.getString(query.getColumnIndex("_id"))) + "\n";
+            result += "-------------------------------------\n";
+        }
+        query.close();
+
+        Log.w("TAG_BDD", result);
+    }
+
+    /**
+     * Supprime de la bdd des mms, les mms en erreur et les met dans la bdd de l'appli
+     *
+     * @param c
+     */
+    public static void saveAndDeleteAllMmsSentInError(Context c) {
+
+        ContentResolver contentResolver = c.getContentResolver();
+        final String[] projection = new String[]{"_id", "date", "m_id"};
+        Uri uri = Uri.parse("content://mms/sent");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, Constants.DELAY_MMS_ERROR);   //On retire des minutes
+
+        //Les message en erreur de plus de 5min
+        String selection = "date < " + (calendar.getTimeInMillis() / 1000) + " AND " + Telephony.Mms.MESSAGE_ID + " IS null";
+        Cursor query = contentResolver.query(uri, projection, selection, null, "date DESC");
+
+        ArrayList<AnswerBean> list = new ArrayList<>();
+        if (query != null) {
+            while (query.moveToNext()) {
+
+                long msgId = query.getLong(query.getColumnIndex("_id"));
+                String number = getMMSSender(c, msgId + "");
+
+                AnswerBean answerBean = null;
+                if (StringUtils.isNotBlank(number)) {
+                    AccuserEnvoieMMSBR br = AccuserEnvoieMMSBR.getBR(number);
+                    if (br != null) {
+                        //on a trouvé le br en attente
+                        answerBean = br.getAnswerBean();
+                        //On desactive le BR
+                        AccuserEnvoieMMSBR.addBR(c, br, false);
+                    }
+                }
+                if (answerBean == null) {
+                    answerBean = new AnswerBean();
+                    answerBean.setMms(true);
+                    answerBean.setNumber(number);
+                }
+
+                answerBean.setMsgId(msgId);
+                answerBean.setSend(false);
+
+                list.add(answerBean);
+            }
+            query.close();
+            for (AnswerBean answerBean : list) {
+                //On efface et on met sur la prochaine vague
+                deleteMMS(c, answerBean.getMsgId() + "");
+                AnswerDaoManager.save(answerBean);
+            }
+        }
+    }
+
+    public static String getMMSSender(Context c, String mmsId) {
+
+        ContentResolver contentResolver = c.getContentResolver();
+        final String[] projection = new String[]{"address"};
+
+        //Detail du mms
+        Uri uri = Uri.parse(MessageFormat.format("content://mms/{0}/addr", mmsId));
+        String selection = "msg_id=" + mmsId;
+        Cursor query = contentResolver.query(uri, projection, selection, null, "_id DESC");
+
+        //On ne récupère que le 1er, le 2eme correspond à l'expediteur
+        String res = null;
+        if (query.moveToFirst()) {
+            res = query.getString(query.getColumnIndex("address"));
+        }
+        query.close();
+
+        return res;
+    }
+
+    public static void deleteMMS(Context c, String mmsId) {
+
+        Uri uri = Uri.parse("content://mms/sent");
+        LogUtils.w("TAG_BDD", "delete : " + c.getContentResolver().delete(uri, "_id = " + mmsId, null));
     }
 }

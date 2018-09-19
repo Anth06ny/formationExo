@@ -19,6 +19,7 @@ public class AnswerBean {
 
     @Id(autoincrement = true)
     private Long id;
+    private Long msgId; //id du message en base de donéne des sms/mms
     private String outbox;
     private String number;
 
@@ -33,11 +34,13 @@ public class AnswerBean {
     public String toString() {
         return "AnswerBean{" +
                 "id=" + id +
+                ", msgId=" + msgId +
                 ", outbox='" + outbox + '\'' +
                 ", number='" + number + '\'' +
                 ", send=" + send +
-                ", mms=" + mms +
                 ", text='" + text + '\'' +
+                ", received=" + received +
+                ", mms=" + mms +
                 '}';
     }
 
@@ -47,6 +50,9 @@ public class AnswerBean {
             outbox = "AN-OUT-" + phoneBean.getId();
             mms = StringUtils.isNotBlank(phoneBean.getUrlFichier());
         }
+    }
+    public AnswerBean() {
+
     }
 
     public void setMms(boolean mms) {
@@ -71,10 +77,11 @@ public class AnswerBean {
     @Generated(hash = 877692854)
     private transient AnswerBeanDao myDao;
 
-    @Generated(hash = 1347571961)
-    public AnswerBean(Long id, String outbox, String number, Boolean send, String text,
-            Boolean received) {
+    @Generated(hash = 829240821)
+    public AnswerBean(Long id, Long msgId, String outbox, String number, Boolean send,
+            String text, Boolean received) {
         this.id = id;
+        this.msgId = msgId;
         this.outbox = outbox;
         this.number = number;
         this.send = send;
@@ -82,9 +89,7 @@ public class AnswerBean {
         this.received = received;
     }
 
-    @Generated(hash = 1597358991)
-    public AnswerBean() {
-    }
+
 
     public Long getId() {
         return this.id;
@@ -172,6 +177,14 @@ public class AnswerBean {
 
     public Boolean getReceived() {
         return received;
+    }
+
+    public Long getMsgId() {
+        return this.msgId;
+    }
+
+    public void setMsgId(Long msgId) {
+        this.msgId = msgId;
     }
 
     /** called by internal mechanisms, do not call yourself. */

@@ -26,8 +26,8 @@ android {
         applicationId "anthony.com.smsmmsbomber"
         minSdkVersion 22
         targetSdkVersion 27
-        versionCode 170
-        versionName "1.7"
+        versionCode 181
+        versionName "1.8"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -44,7 +44,7 @@ android {
 
 //Version de la base
 greendao {
-    schemaVersion 170
+    schemaVersion 181
 }
 
 

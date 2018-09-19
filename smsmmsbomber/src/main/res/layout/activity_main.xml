@@ -58,7 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/font_20"
-        android:text="Sans les permissions l'application ne peut pas fonctionner"/>
+        android:text="Sans les permissions l'application ne peut pas fonctionner"
+        android:textIsSelectable="true"/>
 
     <Button
         android:id="@+id/bt_refresh"
@@ -86,7 +87,7 @@
                 android:id="@+id/tvLog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:textIsSelectable="true"/>
         </LinearLayout>
     </ScrollView>
 

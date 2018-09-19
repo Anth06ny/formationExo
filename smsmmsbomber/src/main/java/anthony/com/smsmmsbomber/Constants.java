@@ -14,4 +14,6 @@ public class Constants {
 
     //Delai de suppression des broadcast non utilisé
     public static final int DELETE_BR_DELAY = 1000 * 60 * 20;
+
+    public static final int DELAY_MMS_ERROR = 2; //temps en minute  a partir duquel un mms est concidéré en erreur s'il n'a pas transmis la valeur
 }
