@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import anthony.com.smsmmsbomber.Constants;
+import anthony.com.smsmmsbomber.MyApplication;
 import anthony.com.smsmmsbomber.broadcast.AccuserEnvoieMMSBR;
 import anthony.com.smsmmsbomber.broadcast.AccuserReceptionSMSBR;
 import anthony.com.smsmmsbomber.model.AnswerBean;
@@ -179,6 +180,11 @@ public class SmsMmsManager {
                 AnswerDaoManager.save(answerBean);
             }
         }
+    }
+
+    public static void deleteAllMMSInError() {
+        Uri uri = Uri.parse("content://mms/sent");
+        LogUtils.w("TAG_BDD", "delete : " + MyApplication.getInstance().getContentResolver().delete(uri, Telephony.Mms.MESSAGE_ID + " IS null", null));
     }
 
     public static String getMMSSender(Context c, String mmsId) {

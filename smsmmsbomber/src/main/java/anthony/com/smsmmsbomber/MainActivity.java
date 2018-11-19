@@ -16,6 +16,7 @@ import anthony.com.smsmmsbomber.service.SendMessageService;
 import anthony.com.smsmmsbomber.utils.OttoEvent;
 import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
+import anthony.com.smsmmsbomber.utils.SmsMmsManager;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
@@ -85,6 +86,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         else if (v.getId() == R.id.bt_refresh) {
             Permissionutils.requestAllPermissionIfNot(this);
             Permissionutils.makeDefautSmsApp(this);
+        }
+        else if (v.getId() == R.id.btDeleteMMS) {
+            SmsMmsManager.deleteAllMMSInError();
         }
         else if (v.getId() == R.id.btLog) {
             LOG_ON = !LOG_ON;
