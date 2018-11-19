@@ -1,10 +1,9 @@
 package anthony.com.smsmmsbomber.model.wsbeans;
 
-import com.formation.utils.exceptions.TechnicalException;
-
 import java.util.ArrayList;
 
 import anthony.com.smsmmsbomber.Constants;
+import anthony.com.smsmmsbomber.utils.exceptions.TechnicalException;
 
 public class GenericAnswerBean {
 

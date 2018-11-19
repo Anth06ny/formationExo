@@ -12,7 +12,6 @@ import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.formation.utils.exceptions.TechnicalException;
 import com.klinker.android.send_message.Message;
 import com.klinker.android.send_message.Transaction;
 
@@ -29,6 +28,7 @@ import anthony.com.smsmmsbomber.broadcast.AccuserReceptionSMSBR;
 import anthony.com.smsmmsbomber.model.AnswerBean;
 import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
+import anthony.com.smsmmsbomber.utils.exceptions.TechnicalException;
 
 public class SmsMmsManager {
 
@@ -71,8 +71,8 @@ public class SmsMmsManager {
         Intent intennt = new Intent(AccuserEnvoieMMSBR.SENT_MMS_ACTION_NAME);
         transaction.setExplicitBroadcastForSentMms(intennt);
 
-        Intent intennt2 = new Intent(AccuserEnvoieMMSBR.RECEIVED_MMS_ACTION_NAME);
-        transaction.setExplicitBroadcastForDeliveredSms(intennt2);
+        //        Intent intennt2 = new Intent(AccuserEnvoieMMSBR.RECEIVED_MMS_ACTION_NAME);
+        //        transaction.setExplicitBroadcastForDeliveredSms(intennt2);
         transaction.sendNewMessage(message, Transaction.NO_THREAD_ID);
     }
 

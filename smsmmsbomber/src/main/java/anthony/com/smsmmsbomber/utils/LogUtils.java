@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
-import com.formation.utils.BuildConfig;
-import com.formation.utils.exceptions.ExceptionA;
-import com.formation.utils.exceptions.TechnicalException;
 
+import anthony.com.smsmmsbomber.BuildConfig;
 import anthony.com.smsmmsbomber.MainActivity;
 import anthony.com.smsmmsbomber.MyApplication;
+import anthony.com.smsmmsbomber.utils.exceptions.ExceptionA;
+import anthony.com.smsmmsbomber.utils.exceptions.TechnicalException;
 
 public class LogUtils {
 

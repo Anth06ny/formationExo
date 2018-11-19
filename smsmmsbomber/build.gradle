@@ -24,10 +24,10 @@ android {
 
     defaultConfig {
         applicationId "anthony.com.smsmmsbomber"
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 27
-        versionCode 181
-        versionName "1.8"
+        versionCode 190
+        versionName "1.90"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -67,5 +67,5 @@ dependencies {
         transitive = true
     }
 
-    implementation project(':FormationUtils')
+
 }

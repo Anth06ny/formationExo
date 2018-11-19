@@ -11,8 +11,6 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
-import com.formation.utils.DateUtils;
-
 import java.util.Date;
 
 import anthony.com.smsmmsbomber.MainActivity;

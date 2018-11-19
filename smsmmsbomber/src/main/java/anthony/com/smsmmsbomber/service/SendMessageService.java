@@ -13,9 +13,6 @@ import android.os.SystemClock;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
 import com.crashlytics.android.Crashlytics;
-import com.formation.utils.exceptions.ExceptionA;
-import com.formation.utils.exceptions.LogicException;
-import com.formation.utils.exceptions.TechnicalException;
 import com.klinker.android.send_message.Settings;
 import com.klinker.android.send_message.Transaction;
 
@@ -43,6 +40,9 @@ import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 import anthony.com.smsmmsbomber.utils.SmsMmsManager;
 import anthony.com.smsmmsbomber.utils.Utils;
+import anthony.com.smsmmsbomber.utils.exceptions.ExceptionA;
+import anthony.com.smsmmsbomber.utils.exceptions.LogicException;
+import anthony.com.smsmmsbomber.utils.exceptions.TechnicalException;
 
 import static anthony.com.smsmmsbomber.utils.NotificationUtils.NOTIFICATION_ID;
 
@@ -209,7 +209,7 @@ public class SendMessageService extends Service {
                 }
             }
             catch (ExceptionA e) {
-                this.exception = e;
+                exception = e;
                 return null;
             }
             catch (Exception e) {
@@ -299,7 +299,7 @@ public class SendMessageService extends Service {
                 WSUtils.smssent(SendMessageService.this, campagneBean.getPhoneList());
             }
             catch (Exception e) {
-                this.exception = new TechnicalException("Erreur lors de l'envoie de messages\n" + e.getMessage(), e);
+                exception = new TechnicalException("Erreur lors de l'envoie de messages\n" + e.getMessage(), e);
             }
 
             return null;
@@ -336,7 +336,7 @@ public class SendMessageService extends Service {
         @Override
         protected Void doInBackground(Void... voids) {
             //On efface tous les mms en erreur de plus de 2min et on les passe en erreur
-            SmsMmsManager.saveAndDeleteAllMmsSentInError(SendMessageService.this);
+            //V1.9 a piori ca fout le bordel -> SmsMmsManager.saveAndDeleteAllMmsSentInError(SendMessageService.this);
 
             //SMS en echec
             try {
@@ -367,32 +367,33 @@ public class SendMessageService extends Service {
             }
 
             //MMS en echec de reception
-            try {
-                List<AnswerBean> list = AnswerDaoManager.getFailedDelivery();
-                if (!list.isEmpty()) {
-                    WSUtils.sendSmsSendFail(SendMessageService.this, list, false);
-                    //On efface de la base
-                    AnswerDaoManager.deleteList(list);
-                    NotificationUtils.sendAnswerNotification(SendMessageService.this, "MMS en echec de reception envoyés au serveur", R.mipmap.ic_ok);
-                }
-                else {
-                    LogUtils.w("TAG_SMS", "Aucun MMS en echec de reception a envoyer au serveur");
-                }
-            }
-            catch (ExceptionA exceptionA) {
-                exceptionA.printStackTrace();
-                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en erreur.\n" + exceptionA.getMessage(), R.mipmap.ic_error);
-
-                //On envoie à CrashLytics si c'est une exception Technique
-                LogUtils.logException(exceptionA);
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en erreur.\n" + e.getMessage(), R.mipmap.ic_error);
-
-                //On envoie à CrashLytics si c'est une exception Technique
-                LogUtils.logException(new TechnicalException(e));
-            }
+            //V1.9 -> ON retire les accusé envoie des mms
+//            try {
+//                List<AnswerBean> list = AnswerDaoManager.getFailedDelivery();
+//                if (!list.isEmpty()) {
+//                    WSUtils.sendSmsSendFail(SendMessageService.this, list, false);
+//                    //On efface de la base
+//                    AnswerDaoManager.deleteList(list);
+//                    NotificationUtils.sendAnswerNotification(SendMessageService.this, "MMS en echec de reception envoyés au serveur", R.mipmap.ic_ok);
+//                }
+//                else {
+//                    LogUtils.w("TAG_SMS", "Aucun MMS en echec de reception a envoyer au serveur");
+//                }
+//            }
+//            catch (ExceptionA exceptionA) {
+//                exceptionA.printStackTrace();
+//                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en erreur.\n" + exceptionA.getMessage(), R.mipmap.ic_error);
+//
+//                //On envoie à CrashLytics si c'est une exception Technique
+//                LogUtils.logException(exceptionA);
+//            }
+//            catch (Exception e) {
+//                e.printStackTrace();
+//                NotificationUtils.sendAnswerNotification(SendMessageService.this, "Impossible d'envoyer les accusé d'envoie en erreur.\n" + e.getMessage(), R.mipmap.ic_error);
+//
+//                //On envoie à CrashLytics si c'est une exception Technique
+//                LogUtils.logException(new TechnicalException(e));
+//            }
 
             //SMS en succes
             try {

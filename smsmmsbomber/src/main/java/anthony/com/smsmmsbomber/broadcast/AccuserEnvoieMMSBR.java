@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import com.formation.utils.exceptions.TechnicalException;
-
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -17,6 +15,7 @@ import anthony.com.smsmmsbomber.model.AnswerBean;
 import anthony.com.smsmmsbomber.model.dao.AnswerDaoManager;
 import anthony.com.smsmmsbomber.model.wsbeans.getscheduleds.PhoneBean;
 import anthony.com.smsmmsbomber.utils.LogUtils;
+import anthony.com.smsmmsbomber.utils.exceptions.TechnicalException;
 
 /**
  * Created by amonteiro on 05/12/2014.
@@ -62,6 +61,7 @@ public class AccuserEnvoieMMSBR extends com.klinker.android.send_message.MmsSent
                 LogUtils.w("TAG_MMS", "Accusé d'envoie : PhoneBean a null");
             }
         }
+        //Normalement plus utilisé
         else if (intent.getAction().equals(RECEIVED_MMS_ACTION_NAME)) {
             if (StringUtils.isNotBlank(answerBean.getNumber())) {
                 //On ne retourne pas les mms en recu en succes

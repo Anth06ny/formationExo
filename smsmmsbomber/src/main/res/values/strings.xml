@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">SMSMMSBomber</string>
     <string name="url_server">http://www.amonteiro.fr/sms/campagne.json</string>
+
+    <!-- Date format -->
+    <string name="date_ddMMyyyy">yyyy/MM/dd</string>
+    <string name="date_ddMMyyyy_HHmm">yyyy/MM/dd HH:mm</string>
+    <string name="date_HHmm">HH:mm</string>
 </resources>

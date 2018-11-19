@@ -6,9 +6,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 
-import com.formation.utils.exceptions.TechnicalException;
-
 import org.apache.commons.lang3.StringUtils;
+
+import anthony.com.smsmmsbomber.utils.exceptions.TechnicalException;
 
 import static android.content.Context.MODE_PRIVATE;
 

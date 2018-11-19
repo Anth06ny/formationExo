@@ -4,8 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.formation.utils.exceptions.ExceptionA;
-import com.formation.utils.exceptions.TechnicalException;
 import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
@@ -33,6 +31,8 @@ import anthony.com.smsmmsbomber.utils.LogUtils;
 import anthony.com.smsmmsbomber.utils.Logger;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 import anthony.com.smsmmsbomber.utils.Utils;
+import anthony.com.smsmmsbomber.utils.exceptions.ExceptionA;
+import anthony.com.smsmmsbomber.utils.exceptions.TechnicalException;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.formation.utils.exceptions.TechnicalException;
 import com.squareup.otto.Subscribe;
 
 import anthony.com.smsmmsbomber.service.SendMessageService;
@@ -17,6 +16,7 @@ import anthony.com.smsmmsbomber.utils.OttoEvent;
 import anthony.com.smsmmsbomber.utils.Permissionutils;
 import anthony.com.smsmmsbomber.utils.SharedPreferenceUtils;
 import anthony.com.smsmmsbomber.utils.SmsMmsManager;
+import anthony.com.smsmmsbomber.utils.exceptions.TechnicalException;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
@@ -51,15 +51,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        refreshScreen();
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         MyApplication.getBus().unregister(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshScreen();
     }
 
     @Override
